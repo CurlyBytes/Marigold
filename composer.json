@@ -1,44 +1,39 @@
 {
-	"name": "curlybytes/marigold",
-	"description" : "The Branch Application with branch expansion, branch information and internet module",
-	"scripts": {
-		"check-xdebug": [
-			"phpunit --dump-xdebug-filter ../../bin/build/xdebug-filter.php",
-			"phpunit --prepend bin/build/xdebug-filter.php -vvv --testdox --colors=always"
-		],
-		"check-phpdbg": [
-
-			"phpdbg -q vendor/bin/phpunit --coverage-html bin/build/coverage-reports"
-		],
-		"check-pcov": [
-
-			"pecl install pcov",
-			"php -d pcov.enabled=1 vendor/bin/phpunit — coverage-html=var/coverage-report"
-		],
-		"check-watch": [
-
-			"phpunit-watcher watch"
-		]
-	  },
-	  "scripts-descriptions": {
-		"install-production": "Install the standard setup with code efficiently."
-	  },
-	"require": {
-		"php": ">=7.0.0",
-		"codeigniter/framework": "3.1.11",
-		
-		
-		"hirak/prestissimo": "0.3.10",
-		"nltbinh/codeigniter-service-layer": "^1.0"
-	},
-	"require-dev": {
-		"mikey179/vfsstream": "1.1.*",
-		"kenjis/ci-phpunit-test": "^0.17.3",
-		"nerones/codeigniter-phpcs": "dev-master",
-		"roave/security-advisories": "dev-master",
-		"phpunit/phpunit": "7.5.20",
-		"spatie/phpunit-watcher": "^1.22",
-		"filp/whoops": "2.12.0",
-		"vlucas/phpdotenv": "^4.1"
-	}
+  "name": "curlybytes/marigold",
+  "description": "The Branch Application with branch expansion, branch information and internet module",
+  "scripts": {
+    "check-xdebug": [
+      "phpunit --dump-xdebug-filter ../../bin/build/xdebug-filter.php",
+      "phpunit --prepend bin/build/xdebug-filter.php -vvv --testdox --colors=always"
+    ],
+    "check-phpdbg": [
+      "phpdbg -q vendor/bin/phpunit --coverage-html bin/build/coverage-reports"
+    ],
+    "check-pcov": [
+      "pecl install pcov",
+      "php -d pcov.enabled=1 vendor/bin/phpunit — coverage-html=var/coverage-report"
+    ],
+    "check-watch": [
+      "phpunit-watcher watch"
+    ]
+  },
+  "scripts-descriptions": {
+    "install-production": "Install the standard setup with code efficiently."
+  },
+  "require": {
+    "php": ">=7.0.0",
+    "codeigniter/framework": "3.1.11",
+    "hirak/prestissimo": "0.3.10",
+    "nltbinh/codeigniter-service-layer": "^1.0"
+  },
+  "require-dev": {
+    "mikey179/vfsstream": "1.1.*",
+    "kenjis/ci-phpunit-test": "^0.17.3",
+    "nerones/codeigniter-phpcs": "dev-master",
+    "roave/security-advisories": "dev-master",
+    "phpunit/phpunit": "7.5.20",
+    "spatie/phpunit-watcher": "^1.22",
+    "filp/whoops": "2.12.0",
+    "vlucas/phpdotenv": "^4.1"
+  }
 }
