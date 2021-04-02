@@ -1,0 +1,192 @@
+branch management sytem
+
+
+wala sa rafi ang code jfjfjfj
+
+
+branches 
+- address 
+- contact 
+region 
+distric 
+area 
+'
+
+beginning of the branch opening 
+has a branch expansion module for data entry and proposal
+- maxmimum of 6 entries
+- minimum 3 branches 
+
+== branch expansion and IT
+internet management
+maximum of 3 internet base on branch proposal 
+
+
+= dashboard and viewing  
+- approve branches geomaps address location 
+- for approval branches geomaps  address location 
+- 1 branch propect upon clicking will view on  
+- once approve address will remove all propose  
+- just add a column 
+
+- add another dashboard for approve branches year UI
+- for
+- geomaps 
+- 
+- branch module(approved area , ) open/closed base on the branch expansion office
+ - master file without the specifc location 
+- branch expansion office 
+    - walay pa approve office location 
+    -entry  address 
+    coordinates 
+    - contact information input (number , name , rental price )owner address, contact number , sq area, ratings, rental((monthly) , initial payment(), terms and conditions (), description(), picture uploads(min 3, max 6 pictures) limit
+    - internet facility branch() to be followed basta dili max (fix ang technology, )
+    - 
+- user management 
+
+- map view should be added the approve button 
+- add recommendation
+- internet managment 
+ - entry, ISP name, tech type(wireless, wired), MPBS (coordinates)
+ - infnsadfn 
+opening year opening month
+
+- 
+- php ang choice of language
+- training on defend php 
+-
+
+region 
+district 
+area 
+branch 
+
+lzusy76gwc
+ ============
+https://matthiasnoback.nl/2018/06/doctrine-orm-and-ddd-aggregates/
+
+https://tsh.io/blog/how-create-framework-agnostic-application-php-1-3/
+https://codesamplez.com/development/codeigniter-caching-tutorial-php
+https://roytuts.com/using-template-in-codeigniter/
+https://programmer.group/php-implementation-of-domain-driven-design-domain-events.html
+https://speakerdeck.com/nealio82/the-absolute-beginners-guide-to-ddd-with-symfony?slide=138
+https://medium.com/@djmetzle/ddd-value-objects-in-php-36ee626274be
+https://github.com/CodelyTV/php-ddd-example/tree/master/src
+https://www.youtube.com/watch?v=UjhX2sVf0eg
+https://ocramius.github.io/blog/fluent-interfaces-are-evil/
+https://refactoring.guru/design-patterns/builder/php/example
+https://codeburst.io/write-modern-php-without-framework-d244d8ca2b50
+https://github.com/brandesign/CodeIgniter-ACL
+https://github.com/dfreerksen/ci-acl
+https://github.com/mbhamra/acl-ci
+https://www.greycampus.com/codelabs/php/exception-handling
+https://tsh.io/blog/exception-design-makes-debugging-accurate/
+https://code.tutsplus.com/tutorials/php-exceptions-try-catch-for-error-handling--cms-32013
+https://trowski.com/2015/06/24/throwable-exceptions-and-errors-in-php7/
+https://matthiasnoback.nl/2018/04/exceptions-and-talking-back-to-the-user/
+https://freek.dev/1582-how-to-write-exceptionally-good-exceptions-in-php
+https://airbrake.io/blog/php-exception-handling/badmethodcallexception
+https://tsmatz.wordpress.com/2017/06/22/web-api-and-custom-scope-with-azure-ad-v2-endpoint/
+https://docs.microsoft.com/en-us/azure/active-directory-b2c/access-tokens
+https://stackify.com/php-try-catch-php-exception-tutorial/
+https://www.google.com/search?q=no+framework+with+codeigniter+3&rlz=1C1GCEB_enPH891PH891&sxsrf=ALeKk02p7hWG3vemxwYq1YD42MO3NL7RCg:1617040838953&ei=xhViYP3SOYL8wQOwmbyIDA&start=40&sa=N&ved=2ahUKEwj9zavGitbvAhUCfnAKHbAMD8E4HhDy0wN6BAgBEDw&biw=1422&bih=678
+https://thisinterestsme.com/php-getters-and-setters/
+https://codeinphp.github.io/post/replace-nested-conditions-with-guard-clauses/
+https://medium.com/cook-php/more-about-setter-and-getter-and-oop-76de46e6726c
+https://teamallegiance.com/resources/better-getters-and-setters-php/    
+
+https://itnext.io/php-7-4-setters-and-getters-have-died-2cefa996d26
+https://web.archive.org/web/20160414091631/http://redgreenrefactor.blogsite.org:80/php/code-first-approaching-php-with-doctrine-2-2-1-and-composer
+https://github.com/JacobBennett/formBuilder
+https://github.com/KeithBradley/Codeigniter-Form_builder
+https://packagist.org/packages/tuhin18003/codeigniter-form-builder
+https://www.phpclasses.org/package/10041-PHP-Manage-the-access-of-CodeIgniter-users-using-ACL.html#download
+
+
+https://imron02.wordpress.com/2016/07/18/create-user-permission-by-uri-in-codeigniter-3/
+https://github.com/firoz-ahmad-likhon/codeigniter-role-base-access-control
+https://packagist.org/packages/casbin/codeigniter-permission
+https://forum.codeigniter.com/thread-69630.html
+https://www.youtube.com/watch?v=eeqa3nHI5mI&list=PLLQuc_7jk__VDhXWi544iK-SgljlGGlrX&index=12
+https://www.youtube.com/watch?v=-nq4UbD0NT8&list=PLillGF-RfqbZ3_Xr8do7Q2R752xYrDRAo&index=3
+https://github.com/thecodeholic/php-file-watcher
+https://github.com/thecodeholic/PHPCartOOP/blob/master/Product.php
+https://www.youtube.com/watch?v=1Ip7_hdSqzY
+https://www.infoq.com/articles/php7-getting-started/
+https://github.com/marcelgsantos/learning-oop-in-php
+https://www.youtube.com/watch?v=jHjjsgRNFVE&list=PL0eyrZgxdwhypQiZnYXM7z7-OTkcMgGPh&index=14
+https://dev.to/ianrodrigues/writing-value-objects-in-php-4acg
+https://www.entropywins.wtf/blog/2016/02/03/missing-in-php7-value-objects/
+https://richardmiller.co.uk/2014/11/06/value-objects/
+https://stackoverflow.blog/2020/09/02/if-everyone-hates-it-why-is-oop-still-so-widely-spread/
+https://dev.to/anastasionico/good-practices-handling-error-and-exceptions-in-php-5d8c
+https://github.com/funeralzone/valueobjects
+https://www.droptica.com/blog/10-tricks-work-efficiently-composer-drupal-8/
+https://github.com/eloquent/composer-npm-bridge
+https://stackoverflow.com/questions/27299206/php-websockets-extension-on-microsoft-azure-website
+https://www.twilio.com/blog/create-php-websocket-server-build-real-time-even-driven-application
+https://techalltype.com/display-maintenance-mode-using-hook-in-codeigniter-application/
+https://www.youtube.com/watch?v=Uk2IFJ7IcHw
+https://www.youtube.com/watch?v=_d-A8s2wxyg
+https://www.youtube.com/watch?v=Lw8BzEiRy8M
+https://www.youtube.com/watch?v=lyO1Kia7PmI
+https://www.youtube.com/watch?v=8r8NXGMW0q0
+https://www.youtube.com/watch?v=UIWnhIuZi0s
+https://www.youtube.com/watch?v=Grli9Ssx-AY
+https://www.youtube.com/watch?v=1MpU--f0q9g
+https://www.youtube.com/watch?v=PfssCln4ZkE
+https://www.youtube.com/watch?v=NcyezvtsSh4
+https://www.youtube.com/watch?v=VLoUFo4eUjA
+https://www.youtube.com/watch?v=4tuldF7FiOE
+https://www.youtube.com/watch?v=cRS7iIx0s9Q
+https://www.youtube.com/watch?v=FLC5dJd7CfI
+https://github.com/RefactoringGuru/design-patterns-php/tree/master/src/RefactoringGuru
+https://www.ithands.com/blog/10-quick-codeigniter-tips/
+https://www.twilio.com/blog/create-secured-restful-api-codeigniter-php
+https://roytuts.com/codeigniter-mongodb-crud-example/
+https://stackoverflow.com/questions/40452245/correct-way-of-implementing-a-service-layer-in-codeigniter-applications
+https://github.com/fabiocmazzo/rabbit-orm
+https://medium.com/@matthew.erskine/laravel-5-x-onion-architecture-c81a3d5918f2
+https://www.cloudways.com/blog/rest-api-in-codeigniter/
+https://packagist.org/packages/takielias/codeigniter-websocket
+https://techalltype.com/real-time-notification-using-socket-io-in-codeigniter/
+https://programmerblog.net/create-restful-web-services-in-codeigniter/
+https://aglowiditsolutions.com/blog/optimize-codeigniter-performance/
+https://bhaveshbaku.wordpress.com/2016/03/31/codeigniter-coding-tips-and-tricks/
+https://gist.github.com/JasvinderSingh1/516136cd50a2ef6ac8a9538ef93cb1af
+https://42coders.com/10-tips-for-php-composer
+https://www.amitmerchant.com/lesser-known-composer-tricks-tips/
+https://blog.martinhujer.cz/17-tips-for-using-composer-efficiently/
+https://dev.to/akshaykhale1992/composer-package-development-tips-and-tricks-4cln    
+https://dev.to/appsecmonkey/clickjacking-attacks-and-prevention-133n
+https://www.cloudways.com/blog/rest-api-in-codeigniter/
+https://github.com/fideloper/CI-Hook
+https://github.com/kefranabg/readme-md-generator
+https://github.com/slav123/CodeIgniter-minify
+https://libraries.io/github/aiamk/codeigniter-restserver
+https://hackernoon.com/creating-a-simple-business-directory-using-codeigniter-and-mysql-fo5t3y17
+https://www.netsparker.com/blog/web-security/content-security-policy/
+https://gist.github.com/phpdave/24d879514e7411047267
+https://www.sitepoint.com/content-security-policy-getting-started/
+https://github.com/thomasantony/codeigniter-azure/blob/master/libraries/Microsoft/WindowsAzure/Storage/Blob.php
+https://github.com/avinashseth/codeigniter-azure
+https://github.com/ScottHelme/codeigniter-azure-session-handler
+https://scotthelme.co.uk/offloading-php-session-storage-to-azure-table-storage/
+https://hajekj.net/2016/09/25/session-locking-in-php-on-azure-web-apps/
+https://www.netsparker.com/blog/web-security/content-security-policy/
+
+https://www.google.com/search?q=how+to+secure+your+codeigniter+3&rlz=1C1GCEB_enPH891PH891&sxsrf=ALeKk0354VNaVUMkk2LIvVP5QRhsy5kB5w:1617303080880&ei=KBZmYJGVNeXxhwO6zLNo&start=20&sa=N&ved=2ahUKEwiRyYS9293vAhXl-GEKHTrmDA04ChDy0wN6BAgBEDg&biw=1422&bih=615
+
+
+https://www.monitis.com/blog/codeigniter-security-tips/
+https://medium.com/retedys/security-standards-in-codeigniter-3c02585de17d
+https://riptutorial.com/codeigniter/example/30329/csrf-prevention
+https://makitweb.com/how-to-send-ajax-request-with-csrf-token-in-codeigniter/
+https://www.tutorialandexample.com/codeigniter-security-helper/ 
+https://makitweb.com/category/php/codeigniter3/page/3/
+https://makitweb.com/how-to-send-ajax-request-with-csrf-token-in-codeigniter/
+https://www.sitepoint.com/php-authorization-jwt-json-web-tokens/
+https://stackoverflow.com/questions/41610470/codeigniter-cors-policy-no-access-control-allow-origin-error-how-to-resolve
+https://packagist.org/packages/kenjis/csp
+https://stackoverflow.com/questions/14839786/accessing-azure-blob-storage-using-codeigniter
+https://medium.com/freelancer-journal/codeigniter-restful-authentication-edbc6fe2dec7
