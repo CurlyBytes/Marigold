@@ -13,3 +13,5 @@ RUN apt-get update \
 RUN apt-get update \
     && apt-get -y install git \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+COPY --from=composer:1.10.21 /usr/bin/composer /usr/local/bin/composer
