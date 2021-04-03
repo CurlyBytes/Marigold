@@ -16,6 +16,10 @@ src/logs/*
 !src/logs/index.html
 !src/logs/.htaccess
 !src/logs/.webconfig
+
+src/data/*
+!src/data/index.html
+
 /vendor/
 
 

@@ -24,8 +24,8 @@ You can access your application via **`localhost`**, if you're running the conta
 
 Service|Address outside containers
 ------|---------|-----------
-Webserver|[localhost:7575](http://localhost:7575)
-MySQL|**host:** `localhost`; **port:** `7577`
+Webserver|[localhost:7676](http://localhost:7676)
+MySQL|**host:** `localhost`; **port:** `7678`
 
 ## Hosts within your environment ##
 
@@ -52,9 +52,50 @@ Redis|redis|6379 (default)
         * Run symfony console, `docker-compose exec php-fpm bin/console`
         * Open a mysql shell, `docker-compose exec mysql mysql -uroot -pCHOSEN_ROOT_PASSWORD`
 
+# Application file permissions #
+
+As in all server environments, your application needs the correct file permissions to work proberly. You can change the files throught the container, so you won't care if the user exists or has the same ID on your host.
+
+`docker-compose exec php-fpm chown -R www-data:www-data /application/public`
+
 # Recommendations #
 
 It's hard to avoid file permission issues when fiddling about with containers due to the fact that, from your OS point of view, any files created within the container are owned by the process that runs the docker engine (this is usually root). Different OS will also have different problems, for instance you can run stuff in containers using `docker exec -it -u $(id -u):$(id -g) CONTAINER_NAME COMMAND` to force your current user ID into the process, but this will only work if your host OS is Linux, not mac. Follow a couple of simple rules and save yourself a world of hurt.
 
   * Run composer outside of the php container, as doing so would install all your dependencies owned by `root` within your vendor folder.
   * Run commands (ie Symfony's console, or Laravel's artisan) straight inside of your container. You can easily open a shell as described above and do your thing from there.
+
+# Simple basic Xdebug configuration with integration to PHPStorm
+
+## To config xdebug you need add these lines in php-fpm/php-ini-overrides.ini:
+
+### For linux:
+```
+xdebug.remote_enable=1
+xdebug.remote_connect_back=1
+xdebug.remote_autostart = 1
+```
+
+### For MacOS and Windows:
+```
+xdebug.remote_enable=1
+xdebug.remote_host=host.docker.internal
+xdebug.remote_autostart = 1
+```
+
+## Add the section “environment” to the php-fpm service in docker-compose.yml:
+
+environment:
+
+  PHP_IDE_CONFIG: "serverName=Docker"
+
+### Create a server configuration in PHPStorm:
+ * In PHPStorm open Preferences | Languages & Frameworks | PHP | Servers
+ * Add new server
+ * The “Name” field should be the same as the parameter “serverName” in “environment” in docker-compose.yml
+ * A value of the "port" field should be the same as first port(before a colon) in "webserver" service in docker-compose.yml
+ * Select "Use path mappings" and set mappings between a path to your project on a host system and the Docker container.
+ * Finally, add “Xdebug helper” extension in your browser, set breakpoints and start debugging
+
+
+

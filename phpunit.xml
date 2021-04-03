@@ -1,23 +1,29 @@
 <phpunit
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="phpunit.xsd"
-	bootstrap="./src/tests/Bootstrap.php"
-	cacheTokens ="true"
-	convertDeprecationsToExceptions="true"
-	convertErrorsToExceptions="true"
-	convertNoticesToExceptions ="true"
-	convertWarningsToExceptions ="true"
-	beStrictAboutOutputDuringTests ="true"
+	xmlns:xsi							="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation		="phpunit.xsd"
+	bootstrap 							= "src/tests/Bootstrap.php"
+    backupGlobals               		= "false"
+    backupStaticAttributes      		= "false"
+    colors                     			= "true"
+	cacheTokens 						="true"
+	convertDeprecationsToExceptions		="true"
+	convertErrorsToExceptions			="true"
+	convertNoticesToExceptions 			="true"
+	convertWarningsToExceptions 		="true"
+	beStrictAboutOutputDuringTests 		="true"
 	beStrictAboutResourceUsageDuringSmallTests ="true"
-	backupGlobals="true"
-	colors="true">
-	<testsuites>
+	verbose								="true"
+    processIsolation            		= "false"
+    stopOnFailure               		= "false">
+
+    <testsuites>
 		<testsuite name="CodeIgniter Application Test Suite">
-			<directory suffix="test.php">./src/tests/</directory>
-			<exclude>./_ci_phpunit_test/</exclude>
+			<directory suffix="test.php">src/tests</directory>
+			<exclude>_ci_phpunit_test/</exclude>
 		</testsuite>
-	</testsuites>
-	<filter>
+    </testsuites>
+
+    <filter>
 		<whitelist>
 			<directory suffix=".php">src/controllers</directory>
 			<directory suffix=".php">src/models</directory>
@@ -26,11 +32,14 @@
 			<directory suffix=".php">src/helpers</directory>
 			<directory suffix=".php">src/hooks</directory>
 		</whitelist>
-	</filter>
+    </filter>
 	<logging>
-		<log type="coverage-html" target="bin/build/coverage"/>
-		<log type="coverage-clover" target="bin/build/logs/clover.xml"/>
-		<log type="junit" target="bin/build/logs/junit.xml"/>
+	
 		<log type="testdox-html" target="bin/build/coverage/testdox.html"/>
+		<log type="junit" target="bin/build/logs/junit.xml"/>
 	</logging>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+    </php>
+
 </phpunit>

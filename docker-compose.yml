@@ -8,13 +8,13 @@ services:
       image: memcached:alpine
       container_name: marigold-memcached
       networks:
-        - marigold-vnet
-        
+        - marigold-backend
+
     redis:
       image: redis:alpine
       container_name: marigold-redis
       networks:
-        - marigold-vnet
+        - marigold-backend
 
     mysql:
       image: mysql:8.0
@@ -30,7 +30,7 @@ services:
       ports:
         - "3306:3306"
       networks:
-        - marigold-vnet
+        - marigold-backend
 
     webserver:
       image: nginx:alpine
@@ -39,11 +39,11 @@ services:
       volumes:
           - .:/application
           - ./bin/phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-          - ./src/log/nginx:/var/logs/nginx
+          - ./src/logs/nginx:/var/logs/nginx
       ports:
        - "7575:80"
       networks:
-        - marigold-vnet
+        - marigold-backend
 
     php-fpm:
       build: bin/phpdocker/php-fpm
@@ -51,28 +51,16 @@ services:
       working_dir: /application
       volumes:
         - .:/application
-        - ./bin/phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
+        - ./bin/phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
       networks:
-        - marigold-vnet
-
-    composer:
-      image: composer/composer:1.10.21
-      container_name: marigold-composer
-      command: ["composer","install"]
-      working_dir: /application
-      environment:
-        - COMPOSER_CACHE_DIR=/application/src/cache/composer
-      volumes:
-        - .:/application
-      depends_on:
-        - php-fpm
-      networks:
-        - marigold-vnet
+        - marigold-backend
 
     phpmyadmin:
       image: phpmyadmin/phpmyadmin:latest
       container_name: marigold-phpymadmin
       working_dir: /application
+      volumes:
+        - ./src/data:/var/lib/mysql
       ports:
         - 7374:80
       environment:
@@ -81,8 +69,18 @@ services:
       depends_on:
         - mysql
       networks:
-        - marigold-vnet
+        - marigold-backend
+
+    composer:
+      image: composer:2.0.12
+      container_name: marigold-composer
+      environment:
+        - COMPOSER_CACHE_DIR=/src/cache/composer
+      volumes:
+        - .:/application
+      networks:
+        - marigold-backend
 
 networks:
-  marigold-vnet:
+  marigold-backend:
     driver: bridge

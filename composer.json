@@ -2,18 +2,20 @@
 	"name": "curlybytes/marigold",
 	"description" : "The Branch Application with branch expansion, branch information and internet module",
 	"scripts": {
+		"check-test": [
+			"phpunit -d auto_prepend_file=xdebug_filter.php --bootstrap ./src/tests/Bootstrap.php -vvv --testdox --colors=always"
+		],
 		"check-xdebug": [
-			"phpunit --dump-xdebug-filter ../../bin/build/xdebug-filter.php",
-			"phpunit --prepend bin/build/xdebug-filter.php -vvv --testdox --colors=always"
+			"phpunit --coverage-clover /tmp/coverage.xml"
 		],
 		"check-phpdbg": [
 
-			"phpdbg -q vendor/bin/phpunit --coverage-html bin/build/coverage-reports"
+			"phpdbg -q vendor/bin/phpunit  -vvv --testdox --colors=always"
 		],
 		"check-pcov": [
 
 			"pecl install pcov",
-			"php -d pcov.enabled=1 vendor/bin/phpunit — coverage-html=var/coverage-report"
+			"php -d pcov.enabled=1 vendor/bin/phpunit —coverage-html=var/coverage-report"
 		],
 		"check-watch": [
 
@@ -24,21 +26,21 @@
 		"install-production": "Install the standard setup with code efficiently."
 	  },
 	"require": {
-		"php": ">=7.0.0",
-		"codeigniter/framework": "3.1.11",
-		
-		
-		"hirak/prestissimo": "0.3.10",
-		"nltbinh/codeigniter-service-layer": "^1.0"
+		"codeigniter/framework": "3.1.11"
+	},
+	"repositories": [{
+		"type": "composer",
+		"url": "https://packagist.org"
+	  }],
+	"config": {
+		"secure-http": true
 	},
 	"require-dev": {
-		"mikey179/vfsstream": "1.1.*",
-		"kenjis/ci-phpunit-test": "^0.17.3",
 		"nerones/codeigniter-phpcs": "dev-master",
-		"roave/security-advisories": "dev-master",
-		"phpunit/phpunit": "7.5.20",
+		"vlucas/phpdotenv": "^4.1",
+		"filp/whoops": "^2.7.1",
 		"spatie/phpunit-watcher": "^1.22",
-		"filp/whoops": "2.7.1",
-		"vlucas/phpdotenv": "^4.1"
+		"mikey179/vfsstream": "1.1.*",
+		"kenjis/ci-phpunit-test": "^3.0.0"
 	}
 }

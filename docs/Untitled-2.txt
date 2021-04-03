@@ -221,3 +221,167 @@ if(! $this->dbutil->database_exists('database'))
     // if connection details incorrect show error
     echo 'Incorrect database information provided';
 }
+
+======
+    # ngrok
+    ngrok:
+      image: wernight/ngrok:latest
+      environment:
+        NGROK_AUTH: 1cUyzNyomwDAGBrOrOoT7nzp9Pp_qxfxjjuzbArosxWRUh9Y
+        NGROK_LOOK_DOMAIN: localhost:7575
+        NGROK_PROTOCOL: https
+        NGROK_PORT: 443
+        NGROK_BINDTLS: true
+        NGROK_REMOTE_ADDR: 127.0.0.1:443
+      ports:
+        - "4040:4040"
+
+        php vendor/bin/phpunit --prepend ../...bin/xdebug-filter.php  --verbose --testdox
+
+-----------
+  <phpunit
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="phpunit.xsd"
+	bootstrap="./src/tests/Bootstrap.php"
+	cacheTokens ="true"
+	convertDeprecationsToExceptions="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions ="true"
+	convertWarningsToExceptions ="true"
+	beStrictAboutOutputDuringTests ="true"
+	beStrictAboutResourceUsageDuringSmallTests ="true"
+	backupGlobals="true"
+	verbose="true"
+	colors="true">
+	<testsuites>
+		<testsuite name="CodeIgniter Application Test Suite">
+			<directory suffix="test.php">./src/tests/</directory>
+			<exclude>./_ci_phpunit_test/</exclude>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist>
+			<directory suffix=".php">src/controllers</directory>
+			<directory suffix=".php">src/models</directory>
+			<directory suffix=".php">src/views</directory>
+			<directory suffix=".php">src/libraries</directory>
+			<directory suffix=".php">src/helpers</directory>
+			<directory suffix=".php">src/hooks</directory>
+		</whitelist>
+	</filter>
+	<logging>
+		<log type="coverage-html" target="bin/build/coverage"/>
+		<log type="coverage-crap4j" target="bin/build/lophpgs/crap4j.xml"/>
+		<log type="coverage-text" target="bin/build/logs/text.txt"/>
+		<log type="coverage-clover" target="bin/build/logs/clover.xml"/>
+		<log type="junit" target="bin/build/logs/junit.xml"/>
+		<log type="testdox-html" target="bin/build/coverage/testdox.html"/>
+  		<log type="testdox-text" target="bin/build/logs/testdox.txt"/>
+	</logging>
+</phpunit>
+
+================
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: "3.7"
+services:
+
+    memcached:
+      image: memcached:alpine
+      container_name: marigold-memcached
+        
+    redis:
+      image: redis:alpine
+      container_name: marigold-redis
+
+    mysql:
+      image: mysql:8.0
+      container_name: marigold-mysql
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - MYSQL_ROOT_PASSWORD=rootuser
+        - MYSQL_DATABASE=dbname
+        - MYSQL_USER=dbuser
+        - MYSQL_PASSWORD=dbpassword
+      ports:
+        - "3306:3306"
+
+    webserver:
+      image: nginx:alpine
+      container_name: marigold-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./bin/phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+          - ./src/log/nginx:/var/logs/nginx
+      ports:
+       - "7575:80"
+
+    php-fpm:
+      build: bin/phpdocker/php-fpm
+      container_name: marigold-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./bin/phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
+
+
+
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin:latest
+      container_name: marigold-phpymadmin
+      working_dir: /application
+      volumes:
+        - ./src/data:/var/lib/mysql
+      ports:
+        - 7374:80
+      environment:
+        - PMA_ARBITRARY=1
+        - PMA_HOST=mysql
+      depends_on:
+        - mysql
+
+
+networks:
+  marigold-backend:
+    driver: bridge
+
+========
+_75uskfAUqYRWWZD9orK2bK2eljNkDm20NRRN
+
+/usr/lib/ssl/cert.pem"
+
+composer config --global cafile "/usr/lib/ssl/cert.pem"
+composer config --global cafile "/bin/cacert.pem"
+
+
+php -r 'var_dump(openssl_get_cert_locations());'
+composer config --global cafile '/usr/local/etc/openssl/cert.pem'
+
+// disable cert verification
+$guzzle->setDefaultOption('verify', false);
+
+// use a cert
+$guzzle->setDefaultOption('verify', '/path/to/cacert.pem');
+
+
+
+_75uskfAUqYRWWZD9orK2bK2eljNkDm20NRRN
+
+/usr/lib/ssl/cert.pem"
+
+composer config --global cafile "/usr/lib/ssl/cert.pem"
+composer config --global cafile "/bin/cacert.pem"
+
+
+php -r 'var_dump(openssl_get_cert_locations());'
+composer config --global cafile '/usr/local/etc/openssl/cert.pem'
+
+// disable cert verification
+$guzzle->setDefaultOption('verify', false);
+
+// use a cert
+$guzzle->setDefaultOption('verify', '/path/to/cacert.pem');

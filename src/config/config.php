@@ -234,7 +234,7 @@ $config['log_threshold'] = 4;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = FCPATH . 'app/logs/';
+$config['log_path'] = FCPATH . '../src/logs/';
 
 /*
 |--------------------------------------------------------------------------
@@ -260,7 +260,7 @@ $config['log_file_extension'] = '';
 | IMPORTANT: This MUST be an integer (no quotes) and you MUST use octal
 |            integer notation (i.e. 0700, 0644, etc.)
 */
-$config['log_file_permissions'] = FILE_READ_MODE;
+$config['log_file_permissions'] = 0644;
 
 /*
 |--------------------------------------------------------------------------
