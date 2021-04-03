@@ -11,14 +11,14 @@
 		 
 	<testsuites>
         <testsuite name="unit">
-            <directory suffix="test.php">./tests/models/*</directory>
-			<directory suffix="test.php">./tests/libraries/*</directory>
-			<directory suffix="test.php">./tests/helpers/*</directory>
+            <directory suffix="test.php">./tests/models/</directory>
+			<directory suffix="test.php">./tests/libraries/</directory>
+			<directory suffix="test.php">./tests/helpers/</directory>
         </testsuite>
         <testsuite name="integration">
-            <directory suffix="test.php">./tests/controllers/*</directory>
-			<directory suffix="test.php">./tests/hooks/*</directory>
-			<directory suffix="test.php">./tests/mocks/*</directory>
+            <directory suffix="test.php">./tests/controllers/</directory>
+			<directory suffix="test.php">./tests/hooks/</directory>
+			<directory suffix="test.php">./tests/mocks/</directory>
 			<exclude>tests/_ci_phpunit_test</exclude>
         </testsuite>
 	</testsuites>

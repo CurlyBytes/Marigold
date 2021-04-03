@@ -30,8 +30,15 @@
 		"url": "https://packagist.org"
 	  }],
 	"config": {
-		"secure-http": true
+		"sort-packages": true,
+		"secure-http": true,
+		"htaccess-protect": true
 	},
+	"autoload": {
+        "psr-4": {
+            "Marigold\\Domain\\": "src/libraries"
+        }
+    },
 	"require-dev": {
 		"nerones/codeigniter-phpcs": "dev-master",
 		"vlucas/phpdotenv": "^4.1",

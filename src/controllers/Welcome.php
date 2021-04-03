@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+//use Marigold\Domain\Region;
 class Welcome extends CI_Controller {
 
 	/**
@@ -20,6 +20,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{ 
+		
+
+//$page1 = new Region();
+//var_dump($page1);
 		$this->load->view('welcome_message');
 	}
 }
