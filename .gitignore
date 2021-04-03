@@ -20,12 +20,14 @@ src/logs/*
 src/data/*
 !src/data/index.html
 
+##Package libraries
 /vendor/
+/node_modules/
 
 
 ## Phpunit test for CI3
 bin/build/*
-bin/xdebug-filter.php
 .phpunit.result.cache
 
+##Configs
 .env

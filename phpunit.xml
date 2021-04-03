@@ -3,37 +3,43 @@
 		 xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
 		 bootstrap="./tests/Bootstrap.php"
 		 backupGlobals="true"
+		 beStrictAboutChangesToGlobalState="false"
+		 beStrictAboutOutputDuringTests="true"
+		 beStrictAboutResourceUsageDuringSmallTests ="true"
+		 beStrictAboutTodoAnnotatedTests="true"
 		 colors="true">
+		 
 	<testsuites>
-		<testsuite name="CodeIgniter Application Test Suite">
-			<directory suffix="test.php">./tests/</directory>
-			<exclude>./tests/_ci_phpunit_test/</exclude>
-		</testsuite>
+        <testsuite name="unit">
+            <directory suffix="test.php">./tests/models/*</directory>
+			<directory suffix="test.php">./tests/libraries/*</directory>
+			<directory suffix="test.php">./tests/helpers/*</directory>
+        </testsuite>
+        <testsuite name="integration">
+            <directory suffix="test.php">./tests/controllers/*</directory>
+			<directory suffix="test.php">./tests/hooks/*</directory>
+			<directory suffix="test.php">./tests/mocks/*</directory>
+			<exclude>tests/_ci_phpunit_test</exclude>
+        </testsuite>
 	</testsuites>
-	<coverage processUncoveredFiles="true">
+	<coverage cacheDirectory="src/cache/phpunittest" processUncoveredFiles="true" includeUncoveredFiles="true">
 		<include>
 			<directory suffix=".php">src/controllers</directory>
 			<directory suffix=".php">src/models</directory>
-			<directory suffix=".php">src/views</directory>
 			<directory suffix=".php">src/libraries</directory>
 			<directory suffix=".php">src/helpers</directory>
 			<directory suffix=".php">src/hooks</directory>
 		</include>
 		<report>
-
-			<crap4j outputFile="coveragecrap4j.xml" threshold="50"/>
-			<html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
-			<php outputFile="coverage.php"/>
-			<text outputFile="coveragecoverage.txt" showUncoveredFiles="false" showOnlySummary="true"/>
-			<xml outputDirectory="coverage"/>
+			<html outputDirectory="bin/build/coverage/html" lowUpperBound="50" highLowerBound="90"/>
+			<clover outputFile="bin/build/coverage/clover.xml"/>
+			<crap4j outputFile="bin/build/coverage/crap4j.xml" threshold="50"/>
+			<xml outputDirectory="bin/build/coverage/xml"/>
 		</report>
 	</coverage>
 	<logging>
 		<junit outputFile="bin/build/logs/junit.xml"/>
-		<teamcity outputFile="bin/build/logs/teamcity.txt"/>
 		<testdoxHtml outputFile="bin/build/logs/testdox.html"/>
-		<testdoxText outputFile="bin/build/logs/testdox.txt"/>
 		<testdoxXml outputFile="bin/build/logs/testdox.xml"/>
-		<text outputFile="bin/build/logs/logfile.txt"/>
 	</logging>
 </phpunit>

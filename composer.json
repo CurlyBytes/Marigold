@@ -2,28 +2,25 @@
 	"name": "curlybytes/marigold",
 	"description" : "The Branch Application with branch expansion, branch information and internet module",
 	"scripts": {
-		"check-test": [
+		"check-xdebug": [
 			"XDEBUG_MODE=coverage phpunit  -vvv --testdox --colors=always"
 		],
-		"check-xdebug": [
-			"phpunit"
-		],
 		"check-phpdbg": [
-
-			"phpdbg -q vendor/bin/phpunit  -vvv --testdox --colors=always"
+			"XDEBUG_MODE=coverage phpdbg -qrr   vendor/bin/phpunit -vvv --testdox --colors=always"
 		],
 		"check-pcov": [
-
 			"pecl install pcov",
 			"php -d pcov.enabled=1 vendor/bin/phpunit —coverage-html=var/coverage-report"
 		],
 		"check-watch": [
-
 			"phpunit-watcher watch"
 		]
 	  },
 	  "scripts-descriptions": {
-		"install-production": "Install the standard setup with code efficiently."
+		"check-xdebug": "use this to invoke xdebug in phpunit.",
+		"check-phpdbg": "use this to invoke phpdbg in phpunit.",
+		"check-pcov": "use this to invoke pcov in phpunit.",
+		"check-watch": "use this to auto run phpunit tests scripts"
 	  },
 	"require": {
 		"codeigniter/framework": "3.1.11"
