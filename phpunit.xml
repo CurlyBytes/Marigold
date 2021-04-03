@@ -1,45 +1,39 @@
-<phpunit
-	xmlns:xsi							="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation		="phpunit.xsd"
-	bootstrap 							= "src/tests/Bootstrap.php"
-    backupGlobals               		= "false"
-    backupStaticAttributes      		= "false"
-    colors                     			= "true"
-	cacheTokens 						="true"
-	convertDeprecationsToExceptions		="true"
-	convertErrorsToExceptions			="true"
-	convertNoticesToExceptions 			="true"
-	convertWarningsToExceptions 		="true"
-	beStrictAboutOutputDuringTests 		="true"
-	beStrictAboutResourceUsageDuringSmallTests ="true"
-	verbose								="true"
-    processIsolation            		= "false"
-    stopOnFailure               		= "false">
-
-    <testsuites>
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+		 bootstrap="./tests/Bootstrap.php"
+		 backupGlobals="true"
+		 colors="true">
+	<testsuites>
 		<testsuite name="CodeIgniter Application Test Suite">
-			<directory suffix="test.php">src/tests</directory>
-			<exclude>_ci_phpunit_test/</exclude>
+			<directory suffix="test.php">./tests/</directory>
+			<exclude>./tests/_ci_phpunit_test/</exclude>
 		</testsuite>
-    </testsuites>
-
-    <filter>
-		<whitelist>
+	</testsuites>
+	<coverage processUncoveredFiles="true">
+		<include>
 			<directory suffix=".php">src/controllers</directory>
 			<directory suffix=".php">src/models</directory>
 			<directory suffix=".php">src/views</directory>
 			<directory suffix=".php">src/libraries</directory>
 			<directory suffix=".php">src/helpers</directory>
 			<directory suffix=".php">src/hooks</directory>
-		</whitelist>
-    </filter>
-	<logging>
-	
-		<log type="testdox-html" target="bin/build/coverage/testdox.html"/>
-		<log type="junit" target="bin/build/logs/junit.xml"/>
-	</logging>
-    <php>
-        <env name="APP_ENV" value="testing"/>
-    </php>
+		</include>
+		<report>
 
+			<crap4j outputFile="coveragecrap4j.xml" threshold="50"/>
+			<html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
+			<php outputFile="coverage.php"/>
+			<text outputFile="coveragecoverage.txt" showUncoveredFiles="false" showOnlySummary="true"/>
+			<xml outputDirectory="coverage"/>
+		</report>
+	</coverage>
+	<logging>
+		<junit outputFile="bin/build/logs/junit.xml"/>
+		<teamcity outputFile="bin/build/logs/teamcity.txt"/>
+		<testdoxHtml outputFile="bin/build/logs/testdox.html"/>
+		<testdoxText outputFile="bin/build/logs/testdox.txt"/>
+		<testdoxXml outputFile="bin/build/logs/testdox.xml"/>
+		<text outputFile="bin/build/logs/logfile.txt"/>
+	</logging>
 </phpunit>

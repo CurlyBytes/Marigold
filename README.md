@@ -17,4 +17,7 @@ to open cli on the php  webserver
 docker exec -it marigold-php-fpm bash
 ``
 
+`` phpunit test in codeingnier
+php vendor/kenjis/ci-phpunit-test/install.php -a src -p public -t tests
+``
 ## Test

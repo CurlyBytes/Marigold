@@ -3,10 +3,10 @@
 	"description" : "The Branch Application with branch expansion, branch information and internet module",
 	"scripts": {
 		"check-test": [
-			"phpunit -d auto_prepend_file=xdebug_filter.php --bootstrap ./src/tests/Bootstrap.php -vvv --testdox --colors=always"
+			"XDEBUG_MODE=coverage phpunit  -vvv --testdox --colors=always"
 		],
 		"check-xdebug": [
-			"phpunit --coverage-clover /tmp/coverage.xml"
+			"phpunit"
 		],
 		"check-phpdbg": [
 
@@ -41,6 +41,7 @@
 		"filp/whoops": "^2.7.1",
 		"spatie/phpunit-watcher": "^1.22",
 		"mikey179/vfsstream": "1.1.*",
-		"kenjis/ci-phpunit-test": "^3.0.0"
+		"kenjis/ci-phpunit-test": "^3.0.0",
+		"phpunit/phpunit": "9.4.*"
 	}
 }
