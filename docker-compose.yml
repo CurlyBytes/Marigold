@@ -54,7 +54,9 @@ services:
         - ./bin/phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
       networks:
         - marigold-backend
+      
 
+        
     phpmyadmin:
       image: phpmyadmin/phpmyadmin:latest
       container_name: marigold-phpymadmin
