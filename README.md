@@ -21,3 +21,6 @@ docker exec -it marigold-php-fpm bash
 php vendor/kenjis/ci-phpunit-test/install.php -a src -p public -t tests
 ``
 ## Test
+
+##PS 
+If you update the autoload psr-4, dont forget to add composer dump-autoload

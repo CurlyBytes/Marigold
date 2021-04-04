@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-//use Marigold\Domain\Region;
+use Marigold\Domain\BranchLocation\Region;
+use Marigold\Domain\BranchLocation\ValueObjects\RegionName;
+
 class Welcome extends CI_Controller {
 
 	/**
@@ -20,10 +22,24 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{ 
-		
-
-//$page1 = new Region();
-//var_dump($page1);
-		$this->load->view('welcome_message');
+		$region = new Region(1 ,new RegionName("region--name"));
+		echo '<pre>'; print_r($region->__toArray()); echo '</pre>';
+	//	echo json_encode($region->__toArray(),true);
+	//	var_dump( json_decode(json_encode($region->__toArray()), true));
+		var_dump( $region->__toArray());
+// /var_dump($region);
+	//	$this->load->view('welcome_message');
 	}
 }
+
+
+/**
+ * 
+ * PrimaryID
+ * RecordType
+ * Recordname
+ * RecordDescrption
+ * ParentId
+ * 
+ * 
+ */
