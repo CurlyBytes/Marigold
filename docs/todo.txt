@@ -154,6 +154,9 @@ XSS protection for forms using form_open() and form_close(). Derek Allard hinted
 git submodules
 
 
+review on float and decimal in codeigniter migrations scripts with mysql database
+save image as file or save as base 64?
+
 
 
 --- kkpi for devops
