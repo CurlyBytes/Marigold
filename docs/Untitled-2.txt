@@ -451,3 +451,24 @@ https://github.com/zircote/swagger-php
 https://github.com/JCSama/CodeIgniter-Model
 
 https://packagist.org/packages/rougin/wildfire
+
+========DOCTRINE 
+https://dev.to/ianrodrigues/writing-value-objects-in-php-4acg
+https://documentation.concrete5.org/developers/attributes/creating-custom-attribute-types/adding-custom-value-and-settings-objects-to-an-attribute-type
+
+====documentation of code 
+https://herbertograca.com/2019/08/12/documenting-software-architecture/
+https://herbertograca.com/2018/09/03/action-domain-responder/
+
+
+===
+tobe continue 
+https://github.com/thecodeholic/PHPCartOOP/blob/master/Cart.php
+https://ntorga.com/the-domain-layer-clean-architecture-and-domain-driven-design-on-php/
+https://www.javaer101.com/en/article/13587038.html
+https://dev.to/ludofleury/domain-driven-design-with-php-and-symfony-1bl6
+https://beberlei.de/2012/08/22/building_an_object_model__no_setters_allowed.html
+https://www.sitepoint.com/building-a-domain-model/
+https://dzone.com/articles/practical-php-patterns/practical-php-patterns-domain
+https://dzone.com/articles/implementing-domain-driven-design-in-php
+https://www.entropywins.wtf/blog/2016/05/13/5-ways-to-write-better-mocks/

@@ -22,7 +22,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{ 
-		$region = new Region(1 ,new RegionName("region--name"));
+		$region = new Region(new RegionName("region--name"));
+		$region->setRegionId(1);
 		echo '<pre>'; print_r($region->__toArray()); echo '</pre>';
 	//	echo json_encode($region->__toArray(),true);
 	//	var_dump( json_decode(json_encode($region->__toArray()), true));
@@ -32,7 +33,17 @@ class Welcome extends CI_Controller {
 	}
 }
 
-
+//Compairson
+// public function add(Money $money)
+// {
+// 	if (!$money->currency()->equals($this->currency())) {
+// 		throw new \InvalidArgumentException();
+// 	}
+// 	return new self(
+// 		$money->amount() + $this->amount(),
+// 		$this->currency()
+// 	);
+// }
 /**
  * 
  * PrimaryID
@@ -43,3 +54,39 @@ class Welcome extends CI_Controller {
  * 
  * 
  */
+
+
+//https://programmer.group/php-implementation-of-domain-driven-design-value-object.html
+// class MoneyTest extends FrameworkTestCase
+// {
+//     /**
+//      * @test
+//      */
+//     public function copiedMoneyShouldRepresentSameValue()
+//     {
+//         $aMoney = new Money(100, new Currency('USD'));
+//         $copiedMoney = Money::fromMoney($aMoney);
+//         $this->assertTrue($aMoney->equals($copiedMoney));
+//     }
+
+//     /**
+//      * @test
+//      */
+//     public function originalMoneyShouldNotBeModifiedOnAddition()
+//     {
+//         $aMoney = new Money(100, new Currency('USD'));
+//         $aMoney->add(new Money(20, new Currency('USD')));
+//         $this->assertEquals(100, $aMoney->amount());
+//     }
+
+//     /**
+//      * @test
+//      */
+//     public function moniesShouldBeAdded()
+//     {
+//         $aMoney = new Money(100, new Currency('USD'));
+//         $newMoney = $aMoney->add(new Money(20, new Currency('USD')));
+//         $this->assertEquals(120, $newMoney->amount());
+//     }
+// // ...
+// }

@@ -3,77 +3,52 @@ declare(strict_types=1);
  
 namespace Marigold\Domain\BranchLocation;
 
-use Marigold\Domain\BranchLocation\ValueObjects\RegionName;
-use Marigold\Domain\BranchLocation\Exceptions;
-use Marigold\Domain\SharedKernel\Arrayable;
+use Marigold\Domain\BranchLocation\ValueObjects\RegionName,
+    Marigold\Domain\BranchLocation\Interfaces\RegionContracts,
+    Marigold\Domain\SharedKernel\Models\Entity,
+    Marigold\Domain\SharedKernel\Arrayable;
 
-class Region {
+class Region extends Entity implements RegionContracts{
     use Arrayable;
-    private int $_regionId;
-    private RegionName $_regionName;
-   // private list $_districts 
 
-    public function __construct(int $regionId, RegionName $regionName )
+    private int $_regionId = 0;
+    private RegionName $_regionName;
+    private $_region= array();
+    //TODO: array push
+
+    public function __construct(RegionName $regionName )
     {
-        $this->SetRegionId($regionId);
-        $this->SetRegionName($regionName);
+        $this->setRegionName($regionName);
     }
 
-    public function SetRegionId(int $regionId)
+    public function setRegionId(int $regionId)
     {
-		$this->_regionId = $regionId;	
+	    $this->_regionId = $regionId;	
+       // $this->_region['regionId'] =  $this->getRegionId();
+       $this->array_push_assoc($this->_region, 'regionId', $this->getRegionId());
 	}
 
-	public function SetRegionName(RegionName $regionName)
+	public function setRegionName(RegionName $regionName)
     {
 		$this->_regionName = $regionName;	
+       // $this->_region['regionName'] = $this->getRegionName();
+       $this->array_push_assoc($this->_region, 'regionName', $this->getRegionName());
 	}
 
-    public function GetRegionId() : int 
+    public function getRegionId() : int 
     {
 		return $this->_regionId;	
 	}
     
-    // Typical ValueObjects
-	// public function GetRegionName() : RegionName
-    // {
-	// 	return $this->_regionName;	
-	// }
-
-    public function GetRegionName() : string
+    public function getRegionName() : string
     {
 		return $this->_regionName->__toString();	
 	}
 
-
-    //$object_id = array_column($my_object, 'id');
     //factories
-    public static function Create(int $regionId, RegionName $regionName )
-    {
-        $this->__construct($regionId, $regionName);
-    }
-
-    public function AddDistrict(District $district) : void
-    {
-        $this->__construct($district);
-    }
-
     public function __toArray() : array{
-        $fromObjectToArray = [
-            'regionId' => $this->GetRegionId(),
-            'regionName' => $this->GetRegionName()
-        ];
-        return $this->objectToArray($fromObjectToArray);
-      
-    }
-    
+        return $this->objectToArray($this->_region);
 
-    public static function FromArray(array $input): self 
-    {
-        // TASK: optional $input validation  
-        return new self(
-            $input['regionId'],
-            $input['regionName']
-        );
+
     }
 }

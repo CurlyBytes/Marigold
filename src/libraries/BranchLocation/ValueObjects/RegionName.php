@@ -1,28 +1,22 @@
 <?php
 declare(strict_types=1);
 
-
 namespace Marigold\Domain\BranchLocation\ValueObjects;
 
-use Marigold\Domain\SharedKernel\Exceptions\DomainException;
+use Marigold\Domain\SharedKernel\Models\ValueObject,
+    Marigold\Domain\SharedKernel\Exceptions\DomainException,
+    Assert\Assert;
 
-
-
-final class RegionName
+final class RegionName implements ValueObject
 {
     public const MINIMUM_CHARACTER = 2;
     public const MAXIMUM_CHARACTER = 30;
     public const VALID_REGIONNAME = "/[^a-z_\-0-9 .\-]/i";
     
-    private string $_regionName;
+    protected string $_regionName;
     // referrence https://dev.to/ianrodrigues/writing-value-objects-in-php-4acg
 
     public function __construct(string $regionName)
-    {
-        $this->SetRegionName($regionName);
-    }
-
-    private function SetRegionName($regionName)
     {
         //TASK: add unit testing
         //TASK: define uncover unit test 
@@ -72,8 +66,7 @@ final class RegionName
         $this->_regionName = $regionName;
     }
     
-
-    public function __toString()
+    public function __toString() : string
     {
         try 
         {
@@ -85,10 +78,18 @@ final class RegionName
         }
     }
 
+    public static function Create(string $regionName) : self
+    {
+        return new self(
+            $regionName->_regionName
+        );
+    }
+
     public function isEqualsTo(RegionName $regionName): bool
     {
         return $this->hash() === $regionName->hash();
     }
+
 
     private function hash(): string
     {

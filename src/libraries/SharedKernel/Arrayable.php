@@ -32,4 +32,14 @@ trait Arrayable
         }
         return $array;
     }
+
+    function array_push_assoc(&$array, $key, $value){
+        $array[$key] = $value;
+        return $array;
+    }
+
+    function array_push_multi_assoc(&$array, $key1, $key2, $value){
+        $array[$key1][$key2] = $value;
+        return $array;
+    }
 }
