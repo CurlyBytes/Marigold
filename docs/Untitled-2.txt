@@ -472,3 +472,12 @@ https://www.sitepoint.com/building-a-domain-model/
 https://dzone.com/articles/practical-php-patterns/practical-php-patterns-domain
 https://dzone.com/articles/implementing-domain-driven-design-in-php
 https://www.entropywins.wtf/blog/2016/05/13/5-ways-to-write-better-mocks/
+
+
+<?php
+define("cars", [
+  "test" => "value1",
+  "test2" => "value2",
+  "test23" => "value3"
+]);
+echo cars[test23];
