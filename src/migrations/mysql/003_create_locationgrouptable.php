@@ -15,18 +15,17 @@ class Migration_CreateLocationGroupTable extends CI_Migration
         $fields = array
         (
             'LocationGroupId' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'auto_increment' => TRUE
+                'type' => 'CHAR',
+                'constraint' => 16
             ),
             'LocationNameIdParent' => array(
-                'type' => 'INT',
-                'constraint' => 11
+                'type' => 'CHAR',
+                'constraint' => 16,
                 'null' => FALSE
             ),
             'LocationNameIdChild' => array(
-                'type' => 'INT',
-                'constraint' => 11
+                'type' => 'CHAR',
+                'constraint' => 16,
                 'null' => FALSE
             ),
             'CreatedAt datetime default current_timestamp',

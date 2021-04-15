@@ -15,13 +15,12 @@ class Migration_CreateBranchInformationTable extends CI_Migration
         $fields = array
         (
             'BranchInformationId' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'auto_increment' => TRUE
+                'type' => 'CHAR',
+                'constraint' => 16
             ),
             'RegionId' => array(
-                'type' => 'INT',
-                'constraint' => 11
+                'type' => 'CHAR',
+                'constraint' => 16,
                 'null' => FALSE
             ),
             'Districtid' => array(
@@ -30,18 +29,18 @@ class Migration_CreateBranchInformationTable extends CI_Migration
                 'null' => FALSE
             ),
             'AreaId' => array(
-                'type' => 'INT',
-                'constraint' => 11
+                'type' => 'CHAR',
+                'constraint' => 16,
                 'null' => FALSE
             ),
             'BranchId' => array(
-                'type' => 'INT',
-                'constraint' => 11
+                'type' => 'CHAR',
+                'constraint' => 16,
                 'null' => FALSE
             ),
             'Latitude' => array(
-                'type' => 'DECIMAL(4,16)',
-                'constraint' => 11
+                'type' => 'CHAR',
+                'constraint' => 16,
                 'null' => FALSE
             ),
             'Longtitude' => array(

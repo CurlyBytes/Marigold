@@ -15,13 +15,12 @@ class Migration_CreateLocationNameTable extends CI_Migration
         $fields = array
         (
             'LocationNameId' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'auto_increment' => TRUE
+                'type' => 'CHAR',
+                'constraint' => 16
             ),
             'LocationTypeId' => array(
-                'type' => 'INT',
-                'constraint' => 11
+                'type' => 'CHAR',
+                'constraint' => 16,
             ),
             'LocationName' => array(
                 'type' => 'VARCHAR',

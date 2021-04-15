@@ -15,13 +15,12 @@ class Migration_CreateInternetServiceProviderTable extends CI_Migration
         $fields = array
         (
             'InternetServiceProviderId' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'auto_increment' => TRUE
+                'type' => 'CHAR',
+                'constraint' => 16
             ),
             'BranchInformationId' => array(
-                'type' => 'INT',
-                'constraint' => 11,
+                'type' => 'CHAR',
+                'constraint' => 16,
                 'null' => FALSE
             ),
             'InternetServiceProviderName' => array(

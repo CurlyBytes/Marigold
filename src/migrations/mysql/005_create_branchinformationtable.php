@@ -15,13 +15,12 @@ class Migration_CreateBranchInformationDetailTable extends CI_Migration
         $fields = array
         (
             'BranchInformationDetailId' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'auto_increment' => TRUE
+                'type' => 'CHAR',
+                'constraint' => 16
             ),
             'BranchInformationId' => array(
-                'type' => 'INT',
-                'constraint' => 11
+                'type' => 'CHAR',
+                'constraint' => 16,
                 'null' => FALSE
             ),
             'ContactPerson' => array(

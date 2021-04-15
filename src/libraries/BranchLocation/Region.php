@@ -4,26 +4,34 @@ declare(strict_types=1);
 namespace Marigold\Domain\BranchLocation;
 
 use Marigold\Domain\BranchLocation\ValueObjects\RegionName,
-    Marigold\Domain\BranchLocation\Interfaces\RegionContracts,
+    Marigold\Domain\BranchLocation\ValueObjects\DistrictName,
+    Marigold\Domain\BranchLocation\District,
     Marigold\Domain\SharedKernel\Models\Entity,
+    Marigold\Domain\SharedKernel\Models\Guid,
     Marigold\Domain\SharedKernel\Arrayable;
 
-class Region extends Entity implements RegionContracts{
-    use Arrayable;
+class Region extends Entity{
+    use Arrayable, Guid;
 
-    private int $_regionId = 0;
-    private RegionName $_regionName;
-    private $_region= array();
-    //TODO: array push
+    private  string $_regionId;
+    private  RegionName $_regionName;
+    private  $_region= array();
+    private  $_district= array();
 
-    public function __construct(RegionName $regionName )
+
+    public function __construct(RegionName $regionName, string $regionId = null)
     {
         $this->setRegionName($regionName);
+        $this->setRegionId($regionId);
     }
 
-    public function setRegionId(int $regionId)
+    public function setRegionId(string $regionId = null)
     {
-	    $this->_regionId = $regionId;	
+        if (isset($regionId) && is_null($regionId)) {
+            $this->_regionId = $regionId;
+        } else {
+            $this->_regionId = $this->Guid();
+        }
        // $this->_region['regionId'] =  $this->getRegionId();
        $this->array_push_assoc($this->_region, 'regionId', $this->getRegionId());
 	}
@@ -31,11 +39,29 @@ class Region extends Entity implements RegionContracts{
 	public function setRegionName(RegionName $regionName)
     {
 		$this->_regionName = $regionName;	
-       // $this->_region['regionName'] = $this->getRegionName();
-       $this->array_push_assoc($this->_region, 'regionName', $this->getRegionName());
+        // $this->_region['regionName'] = $this->getRegionName();
+        $this->array_push_assoc($this->_region, 'regionName', $this->getRegionName());
 	}
 
-    public function getRegionId() : int 
+    public function NewDistrict(DistrictName $distrctName) 
+    {
+        $district = new District();
+        $district->setDistrictName($distrctName);
+        $this->array_push_assoc($this->_district, 'district', $district->properties());
+        $this->array_push_assoc($this->_region, 'district', $this->_district);
+	}
+
+
+    public function RemoveDistrict(string $districtId) 
+    {
+        $district = new District();
+        $district->setDistrictName($distrctName);
+
+        $this->array_pull_assoc($this->_region, 'districtName', $this->_district);
+	}
+
+
+    public function getRegionId() : string 
     {
 		return $this->_regionId;	
 	}
@@ -46,9 +72,8 @@ class Region extends Entity implements RegionContracts{
 	}
 
     //factories
-    public function __toArray() : array{
+    public function properties() : array
+    {
         return $this->objectToArray($this->_region);
-
-
     }
 }

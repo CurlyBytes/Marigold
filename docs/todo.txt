@@ -161,3 +161,71 @@ save image as file or save as base 64?
 
 --- kkpi for devops
 
+settings 
+
+LocationType
+id (1,2,3,4,5)
+LocationType(district,area,branch,region) 
+CreatedAt
+UpdatedAt
+
+LocationName 
+Id (1,2,3,4,5)
+LocationTypeId (1,1,3,3,4)
+RecordName (cebu south, cebu, cebu north, bogo, daanbantayan,region 7)
+CreatedAt
+UpdatedAt
+
+LocationGroup
+LocationGroupId
+LocationNameIdParent
+LocationNameIdChild
+
+1 2 1 
+2 6 2 
+3 2 3 
+4 3 4
+4 3 5
+
+BranchInformation 
+BranchInformationId 
+RegionId 
+Districtid
+AreaId
+BranchId 
+Latitude 
+Longtitude 
+OpeningDate
+IsApprove(Approve,Proposed)(can approve if reach to minimum 3 and cannot add new proposed when hit to maximum of 6[must delete it first])
+        (when approve deleted all child table will be deleted too[BranchInformationDetail,InternetServiceProvider,BranchInformationPhoto])
+CreatedAt
+UpdatedAt
+
+BranchInformationDetail
+BranchInformationDetailId
+BranchInformationId
+ContactPerson
+ContactNumber
+ContactAddress
+SquareMeter
+Description
+RentalPrice
+CreatedAt
+UpdatedAt
+
+BranchInformationPhoto
+BranchInformationPhotoId
+BranchInformationId 
+PhotoName(must unique filename and can upload to minimum of 3 and maximum of 6)
+        (upon edit query oon the number of uploaded photos to avoid upload more tha 6 and cannot save when image are less than 6)
+CreatedAt
+UpdatedAt
+
+InternetServiceProvider
+InternetServiceProviderId
+BranchInformationId
+InternetServiceProviderName
+InternetServiceTechnologyType(DSL, fiber, Wireless)
+Speed
+CreatedAt
+UpdatedAt

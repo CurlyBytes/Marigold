@@ -15,13 +15,12 @@ class Migration_CreateBranchInformationPhotoTable extends CI_Migration
         $fields = array
         (
             'BranchInformationPhotoId' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'auto_increment' => TRUE
+                'type' => 'CHAR',
+                'constraint' => 16
             ),
             'BranchInformationId' => array(
-                'type' => 'INT',
-                'constraint' => 11,
+                'type' => 'CHAR',
+                'constraint' => 16,
             ),
             'PhotoName' => array(
                 'type' => 'VARCHAR',

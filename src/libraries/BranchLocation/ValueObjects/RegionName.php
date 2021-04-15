@@ -4,13 +4,12 @@ declare(strict_types=1);
 namespace Marigold\Domain\BranchLocation\ValueObjects;
 
 use Marigold\Domain\SharedKernel\Models\ValueObject,
-    Marigold\Domain\SharedKernel\Exceptions\DomainException,
-    Assert\Assert;
+    Marigold\Domain\SharedKernel\Exceptions\DomainException;
 
 final class RegionName implements ValueObject
 {
     public const MINIMUM_CHARACTER = 2;
-    public const MAXIMUM_CHARACTER = 30;
+    public const MAXIMUM_CHARACTER = 60;
     public const VALID_REGIONNAME = "/[^a-z_\-0-9 .\-]/i";
     
     protected string $_regionName;
@@ -38,13 +37,13 @@ final class RegionName implements ValueObject
             throw DomainException::withProblem('EMPTY_REGIONNAME', $message_template, $payload);
         }
 
-        if(preg_match(RegionName::VALID_REGIONNAME, $regionName))
+        if(preg_match(RegionName::VALID_REGIONNAME, $regionName))  
         {
             $message_template = ":regionName is not a valid Region Name";
             $payload = [
                 'regionName' => $regionName
             ];
-            throw DomainException::withProblem('EMPTY_REGIONNAME', $message_template, $payload);
+            throw DomainException::withProblem('INVALID_FORMAT_REGIONNAME', $message_template, $payload);
         }
         
         if ( strlen($regionName) > RegionName::MAXIMUM_CHARACTER) {

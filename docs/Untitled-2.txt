@@ -481,3 +481,6 @@ define("cars", [
   "test23" => "value3"
 ]);
 echo cars[test23];
+
+
+http://marcelog.github.io/articles/ci_jenkins_hudson_continuous_integration_php_phing.html

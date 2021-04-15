@@ -42,4 +42,14 @@ trait Arrayable
         $array[$key1][$key2] = $value;
         return $array;
     }
+
+    function array_pull_assoc(&$array, $key){
+        unset($array[$key]); 
+        return $array;
+    }
+
+    function array_pull_multi_assoc(&$array, $key1, $key2){
+        unset($array[$key][$key2]); 
+        return $array;
+    }
 }

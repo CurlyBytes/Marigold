@@ -4,46 +4,43 @@
 version: "3.7"
 services:
 
-    memcached:
-      image: memcached:alpine
-      container_name: marigold-memcached
+    memcached-server:
+      image: memcached:1.6.9-alpine
+      container_name: marigold-memcached-server
       networks:
-        - marigold-backend
+        - vnet-backend-marigold
 
-    redis:
-      image: redis:alpine
-      container_name: marigold-redis
+    redis-server:
+      image: redis:6.0.12-alpine
+      container_name: marigold-redis-server
       networks:
-        - marigold-backend
+        - vnet-backend-marigold
 
-    mysql:
-      image: mysql:8.0
-      container_name: marigold-mysql
-      working_dir: /application
-      volumes:
-        - .:/application
+    mysql-server:
+      image: mysql:8.0.19
+      container_name: marigold-mysql-server
+      restart: always
       environment:
-        - MYSQL_ROOT_PASSWORD=rootuser
-        - MYSQL_DATABASE=dbname
-        - MYSQL_USER=dbuser
-        - MYSQL_PASSWORD=dbpassword
+        MYSQL_ROOT_PASSWORD: secret
+      volumes:
+        - marigold-mysql-data:/var/lib/mysql
       ports:
-        - "3306:3306"
+        - "3308:3306"
       networks:
-        - marigold-backend
+        - vnet-backend-marigold
 
-    webserver:
-      image: nginx:alpine
-      container_name: marigold-webserver
+    nginx-webserver:
+      image: nginx:1.19.10-alpine
+      container_name: marigold-nginx-webserver
       working_dir: /application
       volumes:
           - .:/application
           - ./bin/phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
           - ./src/logs/nginx:/var/logs/nginx
       ports:
-       - "7575:80"
+       - "8091:80"
       networks:
-        - marigold-backend
+        - vnet-backend-marigold
 
     php-fpm:
       build: bin/phpdocker/php-fpm
@@ -53,36 +50,38 @@ services:
         - .:/application
         - ./bin/phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
       networks:
-        - marigold-backend
-      
-
-        
-    phpmyadmin:
-      image: phpmyadmin/phpmyadmin:latest
-      container_name: marigold-phpymadmin
-      working_dir: /application
-      volumes:
-        - ./src/data:/var/lib/mysql
-      ports:
-        - 7374:80
+        - vnet-backend-marigold
+              
+    phpmyadmin-gui:
+      image: phpmyadmin/phpmyadmin:5.0.1
+      container_name: marigold-phpmyadmin-gui
+      restart: always
       environment:
-        - PMA_ARBITRARY=1
-        - PMA_HOST=mysql
-      depends_on:
-        - mysql
+        PMA_HOST: mysql-server
+        PMA_USER: root
+        PMA_PASSWORD: secret
+      ports:
+        - "8090:80"
       networks:
-        - marigold-backend
+        - vnet-backend-marigold
+      depends_on:
+        - mysql-server
 
-    composer:
+    composer-packagemanager:
       image: composer:1.10.13
-      container_name: marigold-composer
+      container_name: marigold-composer-packagemanager
       environment:
         - COMPOSER_CACHE_DIR=/src/cache/composer
       volumes:
         - .:/application
       networks:
-        - marigold-backend
+        - vnet-backend-marigold
+      depends_on:
+        - php-fpm
 
 networks:
-  marigold-backend:
+  vnet-backend-marigold:
     driver: bridge
+
+volumes:
+  marigold-mysql-data:

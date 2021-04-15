@@ -15,9 +15,8 @@ class Migration_CreateLocationTypeTable extends CI_Migration
         $fields = array
         (
             'LocationTypeId' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'auto_increment' => TRUE
+                'type' => 'CHAR',
+                'constraint' => 16
             ),
             'LocationType' => array(
                 'type' => 'VARCHAR',
