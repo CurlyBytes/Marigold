@@ -69,7 +69,7 @@ final class RegionName implements ValueObject
     {
         try 
         {
-            return (string) $this->_regionName;
+            return strtolower((string)$this->_regionName);
         } 
         catch (\Exception $exception) 
         {

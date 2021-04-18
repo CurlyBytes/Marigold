@@ -484,3 +484,31 @@ echo cars[test23];
 
 
 http://marcelog.github.io/articles/ci_jenkins_hudson_continuous_integration_php_phing.html
+
+
+https://github.com/thecodeholic/PHPCartOOP
+https://github.com/rogervila/cart/blob/master/src/Transformers/CartTransformer.php
+https://github.com/rogervila/cart/blob/master/src/Cart.php
+https://github.com/rogervila/cart/blob/master/src/Item.php
+https://forum.codeigniter.com/thread-67871.html
+https://github.com/ksdev-pl/shopping-cart
+https://github.com/ksdev-pl/shopping-cart/blob/master/src/Cart.php
+https://www.sitepoint.com/creating-strictly-typed-arrays-collections-php/
+https://www.youtube.com/watch?v=c2TFM5w-E7Y
+https://www.youtube.com/watch?v=NO7IGJ-oYZM
+https://www.youtube.com/watch?v=NO7IGJ-oYZM
+https://www.youtube.com/watch?v=xBHZ3o6-DVs&list=PL49nwOvNtUC_YZz3Er2KUfwMqpupFs5QJ&index=2
+https://www.youtube.com/watch?v=ciF1XjNj_tQ
+https://www.youtube.com/watch?v=sfqCV0VRfq4
+https://www.youtube.com/watch?v=X73giBRhB7o
+https://www.youtube.com/watch?v=3tdoHmAgmbk
+https://www.youtube.com/watch?v=wpwI4clL4CA
+https://www.youtube.com/c/CTechHindi/playlists
+https://www.youtube.com/watch?v=KAc3AEpQNSs&list=PLRheCL1cXHrtUJKNwE4Ksn6JEpOx5W_ye
+https://www.youtube.com/watch?v=0N6frAVa2GE&list=PLRheCL1cXHrtV_KV9eNobLJnXMtgQd_x0
+https://www.youtube.com/watch?v=OYxlXTaSS48&list=PLRheCL1cXHrvQFepKB6jTr7Nsm5XF8ABI
+https://www.youtube.com/watch?v=BYbTJFtDCMc&list=PLeS3J3RlFi_Y51TJspNd09h8eaYXeMGYS
+https://www.youtube.com/watch?v=8tgZHNBp070
+https://github.com/fadhiilrachman/codeigniter-crud-example
+https://www.youtube.com/watch?v=lNWArvc-uN0&list=PLfdtiltiRHWF0RicJb20da8nECQ1jFvla&index=25
+https://www.youtube.com/watch?v=xSmPiWyLiqY&list=PLT9miexWCpPWKV83pCHGAIIg2lSBHQa9q&index=21

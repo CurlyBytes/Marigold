@@ -69,7 +69,7 @@ final class DistrictName implements ValueObject
     {
         try 
         {
-            return (string) $this->_districtName;
+            return strtolower((string)$this->_districtName);
         } 
         catch (\Exception $exception) 
         {

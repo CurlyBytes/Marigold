@@ -7,8 +7,8 @@ use Marigold\Domain\BranchLocation\ValueObjects\RegionName;
 
 interface RegionContracts
 {
- 	public function setRegionId(int $regionId);
- 	public function getRegionId() : int;
+ 	public function setRegionId(string $regionId);
+ 	public function getRegionId() : string;
  	public function setRegionName(RegionName $regionName);
  	public function getRegionName() : string;
   //  public function create(RegionName $regionName) : self;

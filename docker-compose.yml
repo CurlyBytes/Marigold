@@ -3,6 +3,12 @@
 ###############################################################################
 version: "3.7"
 services:
+  
+    npm-utility:
+      image: node:15.14.0-alpine3.13
+      container_name: marigold-npm-utility
+      networks:
+        - vnet-backend-marigold
 
     memcached-server:
       image: memcached:1.6.9-alpine

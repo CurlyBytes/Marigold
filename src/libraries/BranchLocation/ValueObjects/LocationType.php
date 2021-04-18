@@ -13,7 +13,7 @@ final class LocationType implements ValueObject
      *
      * @var string $_locationType
      */
-    private $_locationType;
+    protected $_locationType;
 
     /**
      * locationTypeCode availabilty
@@ -32,8 +32,6 @@ final class LocationType implements ValueObject
     public function __construct($locationType)
     {
 
-        $locationType = strtoupper((string)$locationType);
-
         if (is_null($locationType)) {
             $message_template = "Null location type. :locationType";
             $payload = [
@@ -50,7 +48,7 @@ final class LocationType implements ValueObject
             throw DomainException::withProblem('EMPTY_LOCATIONTYPE', $message_template, $payload);
         }
 
-        if (!in_array($locationType, self::$locationTypeCode)) {
+        if (!in_array(strtoupper((string)$locationType), self::$locationTypeCode)) {
             $message_template = "Null locationType name. :locationType";
             $payload = [
                 'locationType' => $locationType

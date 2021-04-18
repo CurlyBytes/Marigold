@@ -11,7 +11,7 @@ abstract class Entity
         $field = "_" . strtolower($name);
 
         if (!property_exists($this, $field)) {
-            throw new InvalidArgumentException(
+            throw new \InvalidArgumentException(
                 "Setting the field '$field' is not valid for this entity.");
         }
 
@@ -35,7 +35,7 @@ abstract class Entity
         $field = "_" . strtolower($name);
 
         if (!property_exists($this, $field)) {
-            throw new InvalidArgumentException(
+            throw new \InvalidArgumentException(
                 "Getting the field '$field' is not valid for this entity.");
         }
 

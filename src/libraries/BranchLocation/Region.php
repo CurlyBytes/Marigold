@@ -13,67 +13,68 @@ use Marigold\Domain\BranchLocation\ValueObjects\RegionName,
 class Region extends Entity{
     use Arrayable, Guid;
 
-    private  string $_regionId;
-    private  RegionName $_regionName;
-    private  $_region= array();
-    private  $_district= array();
+    protected  string $regionId;
+    protected  RegionName $regionName;
+    protected  $region= array();
+    protected  $district= array();
 
 
     public function __construct(RegionName $regionName, string $regionId = null)
     {
-        $this->setRegionName($regionName);
         $this->setRegionId($regionId);
+        $this->setRegionName($regionName);
     }
 
     public function setRegionId(string $regionId = null)
     {
         if (isset($regionId) && is_null($regionId)) {
-            $this->_regionId = $regionId;
+            $this->regionId = $regionId;
         } else {
-            $this->_regionId = $this->Guid();
+            $this->regionId = $this->Guid();
         }
-       // $this->_region['regionId'] =  $this->getRegionId();
-       $this->array_push_assoc($this->_region, 'regionId', $this->getRegionId());
+       // $this->region['regionId'] =  $this->getRegionId();
+       $this->array_push_assoc($this->region, 'regionId', $this->getRegionId());
 	}
 
 	public function setRegionName(RegionName $regionName)
     {
-		$this->_regionName = $regionName;	
-        // $this->_region['regionName'] = $this->getRegionName();
-        $this->array_push_assoc($this->_region, 'regionName', $this->getRegionName());
+		$this->regionName = $regionName;	
+        // $this->region['regionName'] = $this->getRegionName();
+        $this->array_push_assoc($this->region, 'regionName', $this->getRegionName());
 	}
 
-    public function NewDistrict(DistrictName $distrctName) 
+    public function NewDistrict(DistrictName $districtName) 
     {
         $district = new District();
-        $district->setDistrictName($distrctName);
-        $this->array_push_assoc($this->_district, 'district', $district->properties());
-        $this->array_push_assoc($this->_region, 'district', $this->_district);
-	}
+        $district->setDistrictName($districtName);
 
+        $this->array_push_assoc($this->district, 'district', $district->properties());
+        $this->array_push_assoc($this->region, 'district', $this->district);
+	}
 
     public function RemoveDistrict(string $districtId) 
     {
         $district = new District();
-        $district->setDistrictName($distrctName);
+        $district->setDistrictName($districtName);
 
-        $this->array_pull_assoc($this->_region, 'districtName', $this->_district);
+        $this->array_pull_multi_assoc($this->district, 'district', $district->properties());
+        $this->array_pull_multi_assoc($this->region, 'district', $this->district);
 	}
 
 
     public function getRegionId() : string 
     {
-		return $this->_regionId;	
+		return $this->regionId;	
 	}
     
     public function getRegionName() : string
     {
-		return $this->_regionName->__toString();	
+		return $this->regionName->__toString();	
 	}
 
     //factories
     public function properties() : array
     {
-        return $this->objectToArray($this->_region);
+        return $this->objectToArray($this->region);
     }
 }

@@ -1,0 +1,34 @@
+{
+  "name": "marigold",
+  "version": "0.1.0",
+  "description": "THe branch information System assets",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CurlyBytes/Marigold.git"
+  },
+  "keywords": [
+    "codeignigter3",
+    "CI3",
+    "AdminKit",
+    "CSS",
+    "JS",
+    "PHP7"
+  ],
+  "author": "CurlyBytes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CurlyBytes/Marigold/issues"
+  },
+  "homepage": "https://github.com/CurlyBytes/Marigold#readme",
+  "dependencies": {
+    "@adminkit/core": "^2.3.0"
+  }
+}

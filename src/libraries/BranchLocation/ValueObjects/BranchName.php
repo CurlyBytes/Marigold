@@ -69,7 +69,7 @@ final class BranchName implements ValueObject
     {
         try 
         {
-            return (string) $this->_branchName;
+            return strtolower((string)$this->_branchName);
         } 
         catch (\Exception $exception) 
         {

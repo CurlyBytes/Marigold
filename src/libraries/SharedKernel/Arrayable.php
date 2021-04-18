@@ -45,11 +45,17 @@ trait Arrayable
 
     function array_pull_assoc(&$array, $key){
         unset($array[$key]); 
+
+        // Recreate array to prevent holes:
+        $array = array_values($array);
         return $array;
     }
 
     function array_pull_multi_assoc(&$array, $key1, $key2){
         unset($array[$key][$key2]); 
+        
+        // Recreate array to prevent holes:
+        $array = array_values($array);
         return $array;
     }
 }

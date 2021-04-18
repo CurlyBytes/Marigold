@@ -69,7 +69,7 @@ final class AreaName implements ValueObject
     {
         try 
         {
-            return (string) $this->_areaName;
+            return strtolower((string)$this->_areaName);
         } 
         catch (\Exception $exception) 
         {
