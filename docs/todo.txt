@@ -262,3 +262,13 @@ branch information
 view all branches that are approve with geo maps (information )
 viw all propose location by branch (forecasted by month )
 view all propose
+
+
+theming 
+https://github.com/bkader/ci-theme  
+https://github.com/terrylinooo/codeigniter-simple-template-library
+https://www.grocerycrud.com/codeigniter-simplicity#installation
+https://github.com/scoumbourdis/codeigniter-simplicity/network/members
+https://github.com/waqleh/codeigniter-simplicity
+https://github.com/mali1991/codeigniter-simplicity
+https://github.com/peepitkm/codeigniter-simplicity

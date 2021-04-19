@@ -23,8 +23,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = $_ENV['BASE_LINK'] ?? $_SERVER['BASE_LINK'] ??  getenv('BASE_LINK') ;
-
+//$config['base_url'] = $_ENV['BASE_LINK'] ?? $_SERVER['BASE_LINK'] ??  getenv('BASE_LINK')  ?? "http://localhost:8091/";
+$config['base_url'] =  "http://localhost:8091/";
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -114,7 +114,7 @@ $config['enable_hooks'] = true;
 | https://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'CT_';
+$config['subclass_prefix'] = 'MariGold_';
 
 /*
 |--------------------------------------------------------------------------

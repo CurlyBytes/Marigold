@@ -20,25 +20,86 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{ 
+// 	public function index()
+// 	{ 
 
-		echo 'jo';
-echo phpinfo();
-	//	$region = new Region(new RegionName("region--name"));
+// 		echo 'jo';
+// echo phpinfo();
+// 	//	$region = new Region(new RegionName("region--name"));
 
 
-		//$region->setRegionId(1);
-	//	echo '<pre>'; print_r($region->properties()); echo '</pre>';
-	//	echo json_encode($region->__toArray(),true);
-	//	var_dump( json_decode(json_encode($region->__toArray()), true));
-		//var_dump( $region->properties());
-// /var_dump($region);
-	//	$this->load->view('welcome_message');
+// 		//$region->setRegionId(1);
+// 	//	echo '<pre>'; print_r($region->properties()); echo '</pre>';
+// 	//	echo json_encode($region->__toArray(),true);
+// 	//	var_dump( json_decode(json_encode($region->__toArray()), true));
+// 		//var_dump( $region->properties());
+// // /var_dump($region);
+// 	//	$this->load->view('welcome_message');
 
 
 	
-	}
+// 	}
+
+    /**
+     * __construct function.
+     *
+     * @access public
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library(array('session', 'layout'));
+        $this->load->helper(array('url'));
+
+        $this->layout->add_custom_meta('meta', array(
+            'charset' => 'utf-8'
+        ));
+        
+        $this->layout->add_custom_meta('meta', array(
+            'http-equiv' => 'X-UA-Compatible',
+            'content' => 'IE=edge'
+        ));
+        
+        $this->layout->add_css_files(array('main.css','normalize.css'), base_url().'assets/css/');
+
+        $css_text = <<<EOF
+.text {
+font-size: 12px;
+background-color: #eeeeee;
+}
+EOF;
+
+        $js_text = <<<EOT
+alert('this is just a test');
+EOT;
+
+        // Load view into a variable for importing javascript
+        $js_text_footer = $this->load->view('themes/demo/includes/footer_javascript', '', true);
+
+        $this->layout->add_css_rawtext($css_text);
+        $this->layout->add_js_rawtext($js_text);
+        $this->layout->add_js_rawtext($js_text_footer, 'footer');
+
+    }
+
+    /**
+     * index function.
+     *
+     * @access public
+     * @param mixed $slug (default: false)
+     * @return void
+     */
+    public function index()
+    {
+        $this->layout->set_title('Test! This is test title');
+        $this->layout->set_body_attr(array('id' => 'home', 'class' => 'test more_class'));
+        $data["dummy"]='test';
+        // load views and send data
+        $this->load->view('themes/demo/includes/header', $data);
+        $this->load->view('themes/demo/includes/index', $data);
+        $this->load->view('themes/demo/includes/footer', $data);
+    }
 }
 
 //Compairson

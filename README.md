@@ -22,6 +22,7 @@ php vendor/kenjis/ci-phpunit-test/install.php -a src -p public -t tests
 ``
 
 docker inspect marigold-mysql-server | grep IPAddres #to get mysqlserver
+php index.php migrate help
 ## Test
 
 ##PS 

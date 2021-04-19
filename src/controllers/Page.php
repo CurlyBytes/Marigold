@@ -19,10 +19,39 @@ class Page extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{ 
-		$region = new Region(new RegionName("region--name"));
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->library(array('session', 'layout'));
+        $this->load->helper(array('url'));
+
+        $this->layout->add_custom_meta('meta', array(
+            'charset' => 'utf-8'
+        ));
+        
+        $this->layout->add_custom_meta('meta', array(
+            'http-equiv' => 'X-UA-Compatible',
+            'content' => 'IE=edge'
+        ));
+        
+
+        $this->layout->add_css_files(array('main.css','normalize.css'), base_url().'assets/css/');
 
 
+    }
+
+	public function view($page = 'home'){
+		if(!file_exists(APPPATH.'views/themes/demo/pages/'.$page.'.php')){
+			show_404();
+		}
+		
+        $this->layout->set_title(ucfirst($page));
+        $this->layout->set_body_attr(array('id' => $page, 'class' => 'test'));
+		$data['title'] = ucfirst($page);
+
+		$this->load->view('themes/demo/includes/header');
+		$this->load->view('themes/demo/pages/'. $page, $data);
+		$this->load->view('themes/demo/includes/footer');
 	}
+	
 }

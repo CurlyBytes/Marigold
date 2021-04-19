@@ -205,7 +205,7 @@ class Migrate extends CI_Controller
             show_error($this->migration->error_string());
         }
 
-        echo "Migrated to the current version!";
+        echo "Migrated to the current version!" . PHP_EOL;
 	}
 
 	// --------------------------------------------------------------------
@@ -222,7 +222,7 @@ class Migrate extends CI_Controller
             show_error($this->migration->error_string());
         }
 
-        echo "Migrated to the latest version!";
+        echo "Migrated to the latest version!" . PHP_EOL;
 	}
 
 	// --------------------------------------------------------------------
@@ -240,7 +240,7 @@ class Migrate extends CI_Controller
             show_error($this->migration->error_string());
         }
 
-        echo "Migrated to the version - "  . $version;
+        echo "Migrated to the version - "  . $version . PHP_EOL;
 	}
 
 	// --------------------------------------------------------------------
@@ -280,7 +280,7 @@ class Migrate extends CI_Controller
 			show_error("Could not all the migration files!");
 		}
 		
-		echo "Migartions have been reset!";
+		echo "Migartions have been reset!" .PHP_EOL;
 	}
 
 	// --------------------------------------------------------------------
@@ -322,7 +322,7 @@ class Migrate extends CI_Controller
 		if ($file_content)
 		{
 			$file_content = str_replace('#', $this->_class_version, $file_content);
-			echo $file_content;
+			echo $file_content . PHP_EOL;
 		}
 	}
 
@@ -395,7 +395,7 @@ class Migrate extends CI_Controller
 			$content = PHP_EOL  .  $header  .  $content;
 		}
 
-		echo $content;
+		echo $content . PHP_EOL;
 	}
 
 	// --------------------------------------------------------------------
