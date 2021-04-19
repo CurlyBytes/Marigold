@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | and disable it back when you're done.
 |
 */
+//TASK: when in ci enable the migrations
 $config['migration_enabled'] = TRUE;
 
 /*
@@ -57,7 +58,7 @@ $config['migration_table'] = 'migrations';
 | in your code to have the latest migration.
 |
 */
-$config['migration_auto_latest'] = FALSE;
+$config['migration_auto_latest'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,7 +70,7 @@ $config['migration_auto_latest'] = FALSE;
 | be upgraded / downgraded to.
 |
 */
-$config['migration_version'] = 0;
+$config['migration_version'] = 007;
 
 /*
 |--------------------------------------------------------------------------

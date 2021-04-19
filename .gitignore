@@ -23,7 +23,7 @@ src/data/*
 ##Package libraries
 /vendor/
 /node_modules/
-
+dist
 
 ## Phpunit test for CI3
 bin/build/*
@@ -31,3 +31,5 @@ bin/build/*
 
 ##Configs
 .env
+
+

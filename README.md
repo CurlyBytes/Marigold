@@ -20,6 +20,8 @@ docker exec -it marigold-php-fpm bash
 `` phpunit test in codeingnier
 php vendor/kenjis/ci-phpunit-test/install.php -a src -p public -t tests
 ``
+
+docker inspect marigold-mysql-server | grep IPAddres #to get mysqlserver
 ## Test
 
 ##PS 

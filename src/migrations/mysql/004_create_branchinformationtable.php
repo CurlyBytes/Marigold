@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_CreateBranchInformationTable extends CI_Migration  
+class Migration_Create_BranchInformationTable extends CI_Migration  
 {
 
     public function __construct()
@@ -16,41 +16,36 @@ class Migration_CreateBranchInformationTable extends CI_Migration
         (
             'BranchInformationId' => array(
                 'type' => 'CHAR',
-                'constraint' => 16
+                'constraint' => 36
             ),
             'RegionId' => array(
                 'type' => 'CHAR',
-                'constraint' => 16,
+                'constraint' => 36,
                 'null' => FALSE
             ),
             'Districtid' => array(
-                'type' => 'INT',
-                'constraint' => 11
+                'type' => 'CHAR',
+                'constraint' => 36,
                 'null' => FALSE
             ),
             'AreaId' => array(
                 'type' => 'CHAR',
-                'constraint' => 16,
+                'constraint' => 36,
                 'null' => FALSE
             ),
             'BranchId' => array(
                 'type' => 'CHAR',
-                'constraint' => 16,
+                'constraint' => 36,
                 'null' => FALSE
             ),
             'Latitude' => array(
-                'type' => 'CHAR',
-                'constraint' => 16,
+                'type' => 'DECIMAL',
+                'constraint' => '10, 8',
                 'null' => FALSE
             ),
             'Longtitude' => array(
-                'type' => 'DECIMAL(4,16)',
-                'constraint' => 11
-                'null' => FALSE
-            ),
-            'IsApprove' => array(
-                'type' => 'TINYINT',
-                'constraint' => 1
+                'type' => 'DECIMAL',
+                'constraint' => '11, 8',
                 'null' => FALSE
             ),
             'OpeningDate datetime default current_timestamp',
@@ -61,11 +56,19 @@ class Migration_CreateBranchInformationTable extends CI_Migration
         $this->dbforge->add_key('BranchInformationId',TRUE);
         $this->dbforge->create_table('BranchInformation',TRUE); 
 
-        $sqlSynxtax = "ALTER TABLE 'BranchInformation' ADD FOREIGN KEY('RegionId') REFERENCES LocationName'('LocationNameId');";
-        $sqlSynxtax .= "ALTER TABLE 'BranchInformation' ADD FOREIGN KEY('Districtid') REFERENCES 'LocationName'('LocationNameId');";
-        $sqlSynxtax .= "ALTER TABLE 'BranchInformation' ADD FOREIGN KEY('AreaId') REFERENCES 'LocationName'('LocationNameId');";
-        $sqlSynxtax .= "ALTER TABLE 'BranchInformation' ADD FOREIGN KEY('BranchId') REFERENCES 'LocationName'('LocationNameId');";
+        $this->db->trans_start();
+        $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(RegionId) REFERENCES LocationName(LocationNameId)";
         $this->db->query($sqlSynxtax);
+
+        $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(Districtid) REFERENCES LocationName(LocationNameId)";
+        $this->db->query($sqlSynxtax);
+
+        $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(AreaId) REFERENCES LocationName(LocationNameId)";
+        $this->db->query($sqlSynxtax);
+
+        $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(BranchId) REFERENCES LocationName(LocationNameId)";
+        $this->db->query($sqlSynxtax);
+        $this->db->trans_complete();
         #TASK  Ifdata exist on dummy page RegionArchive import data on this table
         #Task if going down, archive the data first
     } 

@@ -22,16 +22,22 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{ 
-		$region = new Region(new RegionName("region--name"));
+
+		echo 'jo';
+echo phpinfo();
+	//	$region = new Region(new RegionName("region--name"));
 
 
 		//$region->setRegionId(1);
-		echo '<pre>'; print_r($region->properties()); echo '</pre>';
+	//	echo '<pre>'; print_r($region->properties()); echo '</pre>';
 	//	echo json_encode($region->__toArray(),true);
 	//	var_dump( json_decode(json_encode($region->__toArray()), true));
-		var_dump( $region->properties());
+		//var_dump( $region->properties());
 // /var_dump($region);
 	//	$this->load->view('welcome_message');
+
+
+	
 	}
 }
 

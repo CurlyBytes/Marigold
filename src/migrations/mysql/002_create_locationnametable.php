@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_CreateLocationNameTable extends CI_Migration  
+class Migration_Create_LocationNameTable extends CI_Migration  
 {
 
     public function __construct()
@@ -16,11 +16,11 @@ class Migration_CreateLocationNameTable extends CI_Migration
         (
             'LocationNameId' => array(
                 'type' => 'CHAR',
-                'constraint' => 16
+                'constraint' => 36
             ),
             'LocationTypeId' => array(
                 'type' => 'CHAR',
-                'constraint' => 16,
+                'constraint' => 36,
             ),
             'LocationName' => array(
                 'type' => 'VARCHAR',
@@ -31,15 +31,20 @@ class Migration_CreateLocationNameTable extends CI_Migration
             'UpdatedAt datetime default current_timestamp'
         );
         $this->dbforge->add_field($fields);
-        $this->dbforge->add_key('LocationTypeId',TRUE);
+        $this->dbforge->add_key('LocationNameId',TRUE);
         $this->dbforge->create_table('LocationName',TRUE); 
 
-        $sqlSynxtax = "ALTER TABLE 'LocationName' ADD FOREIGN KEY('LocationTypeId') REFERENCES 'LocationType'('LocationTypeId');";
-        // $this->dbforge->add_column("LocationName",[
-          //  $query
-       // ]);
+        $sqlSynxtax = "ALTER TABLE LocationName ADD FOREIGN KEY(LocationTypeId) REFERENCES LocationType(LocationTypeId);";
+        $sqls = explode(';', $sqlSynxtax);
+        array_pop($sqls);
 
-        $this->db->query($sqlSynxtax);
+        $this->db->trans_start();
+        foreach($sqls as $statement){
+            $statment = $statement . ";";
+            $this->db->query($statement);   
+        }
+        $this->db->trans_complete(); 
+
         #TASK  Ifdata exist on dummy page RegionArchive import data on this table
         #Task if going down, archive the data first
     } 

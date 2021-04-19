@@ -229,3 +229,36 @@ InternetServiceTechnologyType(DSL, fiber, Wireless)
 Speed
 CreatedAt
 UpdatedAt
+
+
+https://wouterdekort.com/2019/09/12/measuring-your-way-around-azure-devops/
+https://www.youtube.com/watch?v=F93dKycIqEM
+https://pleasereleaseme.net/tag/azure-devops/
+https://crmchap.co.uk/working-with-variables-in-an-azure-devops-release-pipeline/
+https://hackernoon.com/creating-a-simple-business-directory-using-codeigniter-and-mysql-fo5t3y17
+https://www.oneclickitsolution.com/blog/setting-up-migration-in-codeigniter/
+
+
+CICD
+https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema%2Cparameter-schema
+https://wouterdekort.com/2018/02/25/build-your-own-hosted-vsts-agent-cloud-part-1-build/
+https://docs.microsoft.com/en-us/azure/devops/release-notes/features-timeline
+https://www.codemag.com/Article/1901041/A-Professional-Grade-Configuration-for-Azure-DevOps-Services-Beyond-the-Quickstarts
+
+function checksum($input) {
+    $hash = hash('sha256', $input, true);
+    $hash_base64 = base64_encode($hash);
+    return "sha256-$hash_base64";
+}
+branch location type 
+
+region crud 
+district crud 
+area crud 
+branch crud 
+propose branch crud 
+    internet propose module 
+branch information 
+view all branches that are approve with geo maps (information )
+viw all propose location by branch (forecasted by month )
+view all propose

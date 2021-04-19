@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_CreateInternetServiceProviderTable extends CI_Migration  
+class Migration_Create_InternetServiceProviderTable extends CI_Migration  
 {
 
     public function __construct()
@@ -16,11 +16,11 @@ class Migration_CreateInternetServiceProviderTable extends CI_Migration
         (
             'InternetServiceProviderId' => array(
                 'type' => 'CHAR',
-                'constraint' => 16
+                'constraint' => 36
             ),
             'BranchInformationId' => array(
                 'type' => 'CHAR',
-                'constraint' => 16,
+                'constraint' => 36,
                 'null' => FALSE
             ),
             'InternetServiceProviderName' => array(
@@ -45,9 +45,10 @@ class Migration_CreateInternetServiceProviderTable extends CI_Migration
         $this->dbforge->add_key('InternetServiceProviderId',TRUE);
         $this->dbforge->create_table('InternetServiceProvider',TRUE);
         
-        $sqlSynxtax = "ALTER TABLE 'InternetServiceProvider' ADD FOREIGN KEY('BranchInformationId') REFERENCES BranchInformation'('BranchInformationId');";
+        $this->db->trans_start();
+        $sqlSynxtax = "ALTER TABLE InternetServiceProvider ADD FOREIGN KEY(BranchInformationId) REFERENCES BranchInformation(BranchInformationId)";
         $this->db->query($sqlSynxtax);
-        #TASK  Ifdata exist on dummy page RegionArchive import data on this table
+        $this->db->trans_complete();
         #Task if going down, archive the data first
     } 
 

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_CreateBranchInformationPhotoTable extends CI_Migration  
+class Migration_Create_BranchInformationPhotoTable extends CI_Migration  
 {
 
     public function __construct()
@@ -16,11 +16,11 @@ class Migration_CreateBranchInformationPhotoTable extends CI_Migration
         (
             'BranchInformationPhotoId' => array(
                 'type' => 'CHAR',
-                'constraint' => 16
+                'constraint' => 36
             ),
             'BranchInformationId' => array(
                 'type' => 'CHAR',
-                'constraint' => 16,
+                'constraint' => 36,
             ),
             'PhotoName' => array(
                 'type' => 'VARCHAR',
@@ -34,8 +34,11 @@ class Migration_CreateBranchInformationPhotoTable extends CI_Migration
         $this->dbforge->add_key('BranchInformationPhotoId',TRUE);
         $this->dbforge->create_table('BranchInformationPhoto',TRUE); 
 
-        $sqlSynxtax = "ALTER TABLE 'BranchInformationPhoto' ADD FOREIGN KEY('BranchInformationId') REFERENCES BranchInformation'('BranchInformationId');";
+        $this->db->trans_start();
+        $sqlSynxtax = "ALTER TABLE BranchInformationPhoto ADD FOREIGN KEY(BranchInformationId) REFERENCES BranchInformation(BranchInformationId)";
         $this->db->query($sqlSynxtax);
+        $this->db->trans_complete();
+        #TASK  Ifdata exist on dummy pa
         #TASK  Ifdata exist on dummy page RegionArchive import data on this table
         #Task if going down, archive the data first
     } 

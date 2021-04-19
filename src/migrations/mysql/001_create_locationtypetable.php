@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_CreateLocationTypeTable extends CI_Migration  
+class Migration_Create_locationtypetable extends CI_Migration  
 {
 
     public function __construct()
@@ -16,7 +16,7 @@ class Migration_CreateLocationTypeTable extends CI_Migration
         (
             'LocationTypeId' => array(
                 'type' => 'CHAR',
-                'constraint' => 16
+                'constraint' => 36
             ),
             'LocationType' => array(
                 'type' => 'VARCHAR',
