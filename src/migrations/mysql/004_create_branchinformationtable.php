@@ -40,12 +40,16 @@ class Migration_Create_BranchInformationTable extends CI_Migration
             ),
             'Latitude' => array(
                 'type' => 'DECIMAL',
-                'constraint' => '10, 8',
+                'constraint' => '12, 8',
                 'null' => FALSE
             ),
             'Longtitude' => array(
                 'type' => 'DECIMAL',
-                'constraint' => '11, 8',
+                'constraint' => '13, 8',
+                'null' => FALSE
+            ),
+            'IsApprove' => array(
+                'type' => 'TINYINT',
                 'null' => FALSE
             ),
             'OpeningDate datetime default current_timestamp',
