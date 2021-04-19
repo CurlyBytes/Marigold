@@ -23,7 +23,7 @@ services:
         - vnet-backend-marigold
 
     mysql-server:
-      image: mysql:8.0.19
+      image: mysql:8.0.24
       container_name: marigold-mysql-server
       restart: always
       environment:
