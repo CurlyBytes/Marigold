@@ -3,87 +3,86 @@
 ###############################################################################
 version: "3.7"
 services:
-  
-    npm-utility:
-      image: node:15.14.0-alpine3.13
-      container_name: marigold-npm-utility
-      networks:
-        - vnet-backend-marigold
+  npm-utility:
+    image: node:15.14.0-alpine3.13
+    container_name: marigold-npm-utility
+    networks:
+      - vnet-backend-marigold
 
-    memcached-server:
-      image: memcached:1.6.9-alpine
-      container_name: marigold-memcached-server
-      networks:
-        - vnet-backend-marigold
+  memcached-server:
+    image: memcached:1.6.9-alpine
+    container_name: marigold-memcached-server
+    networks:
+      - vnet-backend-marigold
 
-    redis-server:
-      image: redis:6.0.12-alpine
-      container_name: marigold-redis-server
-      networks:
-        - vnet-backend-marigold
+  redis-server:
+    image: redis:6.0.12-alpine
+    container_name: marigold-redis-server
+    networks:
+      - vnet-backend-marigold
 
-    mysql-server:
-      image: mysql:8.0.24
-      container_name: marigold-mysql-server
-      restart: always
-      environment:
-        MYSQL_ROOT_PASSWORD: secret
-      volumes:
-        - marigold-mysql-data:/var/lib/mysql
-      ports:
-        - "3308:3306"
-      networks:
-        - vnet-backend-marigold
+  mysql-server:
+    image: mysql:8.0.24
+    container_name: marigold-mysql-server
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - marigold-mysql-data:/var/lib/mysql
+    ports:
+      - "3308:3306"
+    networks:
+      - vnet-backend-marigold
 
-    nginx-webserver:
-      image: nginx:1.19.10-alpine
-      container_name: marigold-nginx-webserver
-      working_dir: /application
-      volumes:
-          - .:/application
-          - ./bin/phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-          - ./src/logs/nginx:/var/logs/nginx
-      ports:
-       - "8091:80"
-      networks:
-        - vnet-backend-marigold
+  nginx-webserver:
+    image: nginx:1.19.10-alpine
+    container_name: marigold-nginx-webserver
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./bin/phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./src/logs/nginx:/var/logs/nginx
+    ports:
+      - "8091:80"
+    networks:
+      - vnet-backend-marigold
 
-    php-fpm:
-      build: bin/phpdocker/php-fpm
-      container_name: marigold-php-fpm
-      working_dir: /application
-      volumes:
-        - .:/application
-        - ./bin/phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
-      networks:
-        - vnet-backend-marigold
-              
-    phpmyadmin-gui:
-      image: phpmyadmin/phpmyadmin:5.0.1
-      container_name: marigold-phpmyadmin-gui
-      restart: always
-      environment:
-        PMA_HOST: mysql-server
-        PMA_USER: root
-        PMA_PASSWORD: secret
-      ports:
-        - "8090:80"
-      networks:
-        - vnet-backend-marigold
-      depends_on:
-        - mysql-server
+  php-fpm:
+    build: bin/phpdocker/php-fpm
+    container_name: marigold-php-fpm
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./bin/phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+    networks:
+      - vnet-backend-marigold
 
-    composer-packagemanager:
-      image: composer:1.10.13
-      container_name: marigold-composer-packagemanager
-      environment:
-        - COMPOSER_CACHE_DIR=/src/cache/composer
-      volumes:
-        - .:/application
-      networks:
-        - vnet-backend-marigold
-      depends_on:
-        - php-fpm
+  phpmyadmin-gui:
+    image: phpmyadmin/phpmyadmin:5.0.1
+    container_name: marigold-phpmyadmin-gui
+    restart: always
+    environment:
+      PMA_HOST: mysql-server
+      PMA_USER: root
+      PMA_PASSWORD: secret
+    ports:
+      - "8090:80"
+    networks:
+      - vnet-backend-marigold
+    depends_on:
+      - mysql-server
+
+  composer-packagemanager:
+    image: composer:1.10.13
+    container_name: marigold-composer-packagemanager
+    environment:
+      - COMPOSER_CACHE_DIR=/src/cache/composer
+    volumes:
+      - .:/application
+    networks:
+      - vnet-backend-marigold
+    depends_on:
+      - php-fpm
 
 networks:
   vnet-backend-marigold:
