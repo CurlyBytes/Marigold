@@ -2,17 +2,19 @@
 
 class MBranchInformation extends MariGold_Model {
 
-    private const $MinimumBranchProposal = 3;
-    private const $MaximumBranchProposal = 6;
-    private const $BranchProposalForApproval = 0;
-    private const $BranchWasApproved = 1;
+    private int const $MinimumBranchProposal = 3;
+    private int const $MaximumBranchProposal = 6;
+    private int const $BranchProposalForApproval = 0;
+    private int const $BranchWasApproved = 1;
 
     public function __construct(){
          parent::__construct(); 
+         $this->load->database();
     }
 
 	//Insert single data
 	public function propose($data){    
+        $now = date('Y-m-d H:i:s');
         $branchInformation =  $this->Guid();
 
         $branchInformationRecord = array(
@@ -25,8 +27,8 @@ class MBranchInformation extends MariGold_Model {
             'Longtitude ' => $data['longtitude'],
             'IsApprove ' => $this->BranchProposalForApproval,
             'OpeningDate ' => $data['locationtypeid']
-            'CreatedAt' => getdate(),
-            'UpdatedAt' => getdate()
+            'CreatedAt' => $now,
+            'UpdatedAt' => $now
         );
 
 
@@ -36,13 +38,14 @@ class MBranchInformation extends MariGold_Model {
 
 	//Insert single data
 	public function approve($data){    
+        $now = date('Y-m-d H:i:s');
         $branchInformation =  $this->Guid();
 
 
 
         $branchInformationRecord = array(
             'IsApprove ' => $this->BranchWasApproved,
-            'UpdatedAt' => getdate()
+            'UpdatedAt' => $now
         );
 
         $this->db->where('BranchInformationId ', $data['locationnameid']);
@@ -56,6 +59,23 @@ class MBranchInformation extends MariGold_Model {
     }
 	
 	
+    public function modify($data){
+        $now = date('Y-m-d H:i:s');
+        $branchInformationRecord = array(
+            'RegionId ' => $data['regionid'],
+            'Districtid  ' => $data['districtid'],
+            'AreaId  ' => $data['areaid'],
+            'BranchId  ' => $data['branchid'],
+            'Latitude ' => $data['latitude'],
+            'Longtitude ' => $data['longtitude'],
+            'OpeningDate ' => $data['locationtypeid']
+            'UpdatedAt' => $now
+        );
+
+
+        $this->db->where('BranchInformationId', $data['locationnameid']);
+        return $this->db->update('BranchInformation', $branchInformationRecord);
+    }
 
     public function remove($data){
         

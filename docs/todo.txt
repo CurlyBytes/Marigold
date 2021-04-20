@@ -263,7 +263,7 @@ view all branches that are approve with geo maps (information )
 viw all propose location by branch (forecasted by month )
 view all propose
 
-
+e
 theming 
 https://github.com/bkader/ci-theme  
 https://github.com/terrylinooo/codeigniter-simple-template-library
@@ -272,3 +272,13 @@ https://github.com/scoumbourdis/codeigniter-simplicity/network/members
 https://github.com/waqleh/codeigniter-simplicity
 https://github.com/mali1991/codeigniter-simplicity
 https://github.com/peepitkm/codeigniter-simplicity
+
+
+
+https://dev.to/luciunknown/building-a-simple-api-using-codeigniter-3-25fn
+https://dev.to/pardip_trivedi/create-a-rest-api-in-codeigniter-with-basic-authentication-1e7f
+https://dev.to/robertlook/search-data-from-database-in-codeigniter-with-example-561m
+https://dev.to/ltdsolace/10-secret-tips-to-speed-up-the-codeigniter-website-41a7
+https://dev.to/ezhurik/codeigniter-helper-functions-part-2-544o
+https://dev.to/ezhurik/codeigniter-custom-helper-functions-which-will-increase-your-productivity-1jl0
+https://dev.to/robertlook/how-to-check-codeigniter-version-g3c

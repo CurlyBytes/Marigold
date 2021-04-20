@@ -7,7 +7,7 @@ use Marigold\Domain\SharedKernel\Models\Entity,
     Marigold\Domain\SharedKernel\Arrayable;
 
 
-class MariGold_Controller extends CI_Controller
+class MariGold_Model extends CI_Model
 {
     use Arrayable, Guid;
 

@@ -24,6 +24,7 @@ class Welcome extends CI_Controller {
 // 	{ 
 
 // 		echo 'jo';
+//$this->load->view("{$this->router->class}/{$this->router->method}");
 // echo phpinfo();
 // 	//	$region = new Region(new RegionName("region--name"));
 

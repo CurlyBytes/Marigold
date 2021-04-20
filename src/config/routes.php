@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+$guidRegexWithCurlyBrackets = "/^\{?[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}\}?$/";
+$guidRegex = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+//TASK: UUI ID TO BIN in mysql? and multiple supporting language
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -49,13 +51,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+// TASK http verbs $route['products']['put'] = 'product/insert';
+
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
-$route['(:any)'] = 'page/view/$1';
+
 
 // URI like '/en/about' -> use controller 'about'
 $route['^(en|fil)/(.+)$'] = "$2";
 
 // '/en', '/fil', '/fr'  URIs -> use default controller
 $route['^(en|fil)$'] = $route['default_controller'];
+
+
+$route['(:any)'] = 'page/view/$1';
+$route['(:any)/add'] = 'page/add/$1';
+$route['(:any)/edit/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}+)'] = 'page/edit/$1/$2';
+
+//TASK review remap
+// $controllers=array('admin', 'user', 'blog', 'api');
+// if(array_search($this->uri->segment(1), $controllers)){
+//     $route['.*'] = "polica/ogled/$1";
+// }
