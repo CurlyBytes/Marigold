@@ -1,3 +1,3 @@
 <?php 
 
-echo 'hello location type';
+echo var_dump($data);

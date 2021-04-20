@@ -532,3 +532,79 @@ https://www.google.com/search?q=ADMINKIT+SCSS&rlz=1C1GCEB_enPH891PH891&oq=ADMINK
 https://adminkit.io/snippets/
 https://github.com/adminkit/awesome-bootstrap
 https://github.com/adminkit/adminkit
+
+
+
+============
+private function _yourfunction(){
+
+
+}
+
+
+=========
+/**
+ * RESTful remap method for CodeIgniter controllers
+ * 
+ * @author Clint Tyler <ctyler@cdtwebsolutions.com>
+ */
+class MY_Controller extends CI_Controller
+{
+    public function _remap($method, $arguments = array())
+    {
+        $requestMethod = strtolower($this->input->server('REQUEST_METHOD'));
+
+        if($method == 'index'){
+            $callMethod = strtolower($requestMethod);
+        }else{
+            $callMethod = $requestMethod . ucfirst($method);
+        }
+
+        if(method_exists($this, $callMethod)){
+            return call_user_func_array(array($this, $callMethod), $arguments);
+        }
+        
+        throw new \BadMethodCallException("{$callMethod} does not exist!");
+    }
+}
+
+
+https://gist.github.com/cdtweb/5f96296ca58f8df3ca8c
+
+
+
+============
+private function _yourfunction(){
+
+
+}
+
+
+=========
+/**
+ * RESTful remap method for CodeIgniter controllers
+ * 
+ * @author Clint Tyler <ctyler@cdtwebsolutions.com>
+ */
+class MY_Controller extends CI_Controller
+{
+    public function _remap($method, $arguments = array())
+    {
+        $requestMethod = strtolower($this->input->server('REQUEST_METHOD'));
+
+        if($method == 'index'){
+            $callMethod = strtolower($requestMethod);
+        }else{
+            $callMethod = $requestMethod . ucfirst($method);
+        }
+
+        if(method_exists($this, $callMethod)){
+            return call_user_func_array(array($this, $callMethod), $arguments);
+        }
+        
+        throw new \BadMethodCallException("{$callMethod} does not exist!");
+    }
+}
+
+
+https://gist.github.com/cdtweb/5f96296ca58f8df3ca8c

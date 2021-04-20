@@ -3,7 +3,7 @@
 class MLocationType extends MariGold_Model {
     public function __construct(){
          parent::__construct(); 
-         $this->load->database();
+         
     }
 
 	//Insert single data
@@ -23,7 +23,7 @@ class MLocationType extends MariGold_Model {
     }
 	
 
-    public function modify($data){
+    public function modify($data){ 
         $now = date('Y-m-d H:i:s');
         $record = array(
             'LocationType' => $data['locationtype'],
@@ -44,5 +44,11 @@ class MLocationType extends MariGold_Model {
         return true;       
     }
 	
+    public function getAllLocationType(){
 
+        $this->db->select('*');
+        $query = $this->db->get('LocationType');
+        
+        return $query->row();
+    }
 }

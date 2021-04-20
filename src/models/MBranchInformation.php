@@ -9,7 +9,7 @@ class MBranchInformation extends MariGold_Model {
 
     public function __construct(){
          parent::__construct(); 
-         $this->load->database();
+         
     }
 
 	//Insert single data

@@ -46,7 +46,7 @@ class Locationtype extends CI_Controller {
         $this->form_validation->set_rules('locationtype', 'locationtype', 'required');
 
 
-        if($this->form_validation->run() == FALSE){
+        if($this->form_validation->run() === FALSE){
 
             $this->layout->set_title('Info Type');
             $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
@@ -65,4 +65,51 @@ class Locationtype extends CI_Controller {
             redirect('locationtype');
         }
     }
+
+
+    public function modify()
+    {
+        $this->layout->set_title('Info Type');
+        $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
+
+        $this->form_validation->set_rules('locationtype', 'locationtype', 'required');
+
+
+        if($this->form_validation->run() === FALSE){
+
+            $this->layout->set_title('Info Type');
+            $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
+
+            $this->load->view('themes/demo/includes/header');
+            $this->load->view('themes/demo/pages/edit/locationtype');
+            $this->load->view('themes/demo/includes/footer');
+        } else {
+
+            $data = array(
+                'locationtypeid' => $this->input->post('locationtypeid'),
+				'locationtype' => $this->input->post('locationtype')
+			);
+
+            $this->load->model('MLocationType');
+            $this->MLocationType->modify($data);
+            redirect('locationtype');
+        }
+    }
+
+    public function retrieve()
+    {
+        $this->layout->set_title('Info Type');
+        $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
+
+        $this->load->model('MLocationType');
+        $data = $this->MLocationType->getAllLocationType();
+        
+
+        $this->load->view('themes/demo/includes/header');
+        $this->load->view('themes/demo/pages/locationtype' , $data);
+        $this->load->view('themes/demo/includes/footer');        
+    }
+
+
+
 }

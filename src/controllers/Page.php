@@ -26,7 +26,7 @@ class Page extends CI_Controller {
         $this->load->helper(array('url','form','text'));
 
         $this->layout->add_custom_meta('meta', array(
-            'charset' => 'utf-8'
+            'charset' => 'utf-8' 
         ));
         
         $this->layout->add_custom_meta('meta', array(
@@ -70,19 +70,19 @@ class Page extends CI_Controller {
 		$this->load->view('themes/demo/includes/footer');
 	}
 
-	// public function edit($page = '', $guid = '' ){
-	// 	if(!file_exists(APPPATH.'views/themes/demo/pages/edit/'.ucfirst($page).'.php')){
-	// 		show_404();
-	// 	}
+	public function edit($page = '', $guid = '' ){
+		if(!file_exists(APPPATH.'views/themes/demo/pages/edit/'.$page.'.php')){
+			show_404();
+		}
 		
-    //     $this->layout->set_title(ucfirst($page));
-    //     $this->layout->set_body_attr(array('id' => $page, 'class' => 'test'));
-	// 	$data['title'] = ucfirst($page);
+        $this->layout->set_title(ucfirst($page));
+        $this->layout->set_body_attr(array('id' => $page, 'class' => $page));
 
-	// 	$this->load->view('themes/demo/includes/header');
-	// 	$this->load->view('themes/demo/pages/edit/'. $ucfirst($page), $data);
-	// 	$this->load->view('themes/demo/includes/footer');
-	// }
+
+		$this->load->view('themes/demo/includes/header');
+		$this->load->view('themes/demo/pages/edit/'. $page);
+		$this->load->view('themes/demo/includes/footer');
+	}
 
 	// function _remap($method,  $params = array())
 	// {
