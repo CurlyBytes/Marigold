@@ -74,7 +74,7 @@ services:
         - mysql-server
 
     composer-packagemanager:
-      image: composer:1.10.13
+      image: composer:1.10.22
       container_name: marigold-composer-packagemanager
       environment:
         - COMPOSER_CACHE_DIR=/src/cache/composer
