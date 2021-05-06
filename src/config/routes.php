@@ -65,9 +65,9 @@ $route['^(en|fil)/(.+)$'] = "$2";
 $route['^(en|fil)$'] = $route['default_controller'];
 
 
-$route['(:any)'] = 'page/view/$1';
-$route['(:any)/add'] = 'page/add/$1';
-$route['(:any)/edit/(:any)'] = 'page/edit/$1/$2';
+//$route['(:any)'] = 'page/view/$1';
+//$route['(:any)/add'] = 'page/add/$1';
+//$route['(:any)/edit/(:any)'] = 'page/edit/$1/$2';
 
 //TASK review remap
 // $controllers=array('admin', 'user', 'blog', 'api');

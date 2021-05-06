@@ -1,3 +1,13 @@
+DDD 
+https://programmer.group/php-implementation-of-domain-driven-design-value-object.html
+https://domaincentric.net/blog/validating-value-objects
+https://ntorga.com/the-domain-layer-clean-architecture-and-domain-driven-design-on-php/
+https://ntorga.com/introduction-to-clean-architecture-and-domain-driven-design-on-php/
+https://matthiasnoback.nl/2020/05/ddd-and-your-database/
+https://matthiasnoback.nl/2018/01/simple-cqrs-reduce-coupling-allow-the-model-to-evolve/
+https://matthiasnoback.nl/2018/03/ormless-a-memento-like-pattern-for-object-persistence/
+
+
 https://www.sitepoint.com/multi-language-support-in-codeigniter/
 https://www.beingidea.com/multi-language-switcher-in-codeigniter/
 https://www.formget.com/codeigniter-language/

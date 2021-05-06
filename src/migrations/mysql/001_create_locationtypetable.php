@@ -32,6 +32,7 @@ class Migration_Create_locationtypetable extends CI_Migration
         //$this->db->query("ALTER TABLE {$this->tables['phones']} CHANGE COLUMN update_time update_time TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP() ;");
         #TASK  Ifdata exist on dummy page RegionArchive import data on this table
         #Task if going down, archive the data first
+        //https://avenir.ro/the-migrations-in-codeigniter-or-how-to-have-a-git-for-your-database-part-2-of-3-alter-tables-with-migrations-in-codeigniter/
     } 
 
     public function down()

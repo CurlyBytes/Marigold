@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c89f1189543b53afc4101991d8af503b",
+    "content-hash": "9f71bde34de15e1b508f9581faae0dbf",
     "packages": [
         {
             "name": "chriskacerguis/codeigniter-restserver",
@@ -220,6 +220,37 @@
                 }
             ],
             "time": "2020-05-25T17:44:05+00:00"
+        },
+        {
+            "name": "nltbinh/codeigniter-service-layer",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nltbinh/codeigniter-service-layer.git",
+                "reference": "e59baf918cefb33f8fdc8f886cdcfb78fc606b84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nltbinh/codeigniter-service-layer/zipball/e59baf918cefb33f8fdc8f886cdcfb78fc606b84",
+                "reference": "e59baf918cefb33f8fdc8f886cdcfb78fc606b84",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nguyen Luu Thanh binh",
+                    "email": "nguyenluuthanhbinh@outlook.com"
+                }
+            ],
+            "description": "A simple service layer for CodeIgniter",
+            "time": "2017-03-16T04:18:11+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
