@@ -45,7 +45,7 @@
 	"require-dev": {
 		"nerones/codeigniter-phpcs": "dev-master",
 		"vlucas/phpdotenv": "^4.1",
-		"filp/whoops": "^2.7.1",
+		"filp/whoops": "2.12.1",
 		"spatie/phpunit-watcher": "^1.22",
 		"mikey179/vfsstream": "1.1.*",
 		"kenjis/ci-phpunit-test": "^3.0.0",
