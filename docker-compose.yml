@@ -17,7 +17,7 @@ services:
         - vnet-backend-marigold
 
     redis-server:
-      image: redis:6.0.12-alpine
+      image: redis:6.2.3-alpine
       container_name: marigold-redis-server
       networks:
         - vnet-backend-marigold
