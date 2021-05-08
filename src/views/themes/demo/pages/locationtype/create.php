@@ -1,4 +1,10 @@
-<?php echo validation_errors(); ?>
+<?php 
+
+echo validation_errors();
+
+
+
+?>
 
 <?php echo form_open('locationtype/create'); ?>
 	<div class="row">

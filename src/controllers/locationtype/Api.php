@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Locationtype extends CI_Controller {
+class Api extends CI_Controller {
 
 
 
@@ -40,19 +40,17 @@ class Locationtype extends CI_Controller {
      */
     public function create()
     {
-        $this->layout->set_title('Info Type');
-        $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
 
-        $this->form_validation->set_rules('locationtype', 'locationtype', 'required');
+
+        $this->form_validation->set_rules('locationtype', 'locationtype', 'required|min_length[2]|max_length[70]|alpha_numeric');
 
 
         if($this->form_validation->run() === FALSE){
-
             $this->layout->set_title('Info Type');
             $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
 
             $this->load->view('themes/demo/includes/header');
-            $this->load->view('themes/demo/pages/add/locationtype');
+            $this->load->view('themes/demo/pages/locationtype/create');
             $this->load->view('themes/demo/includes/footer');
         } else {
 
@@ -81,7 +79,7 @@ class Locationtype extends CI_Controller {
             $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
 
             $this->load->view('themes/demo/includes/header');
-            $this->load->view('themes/demo/pages/edit/locationtype');
+            $this->load->view('themes/demo/pages/locationtype/modify');
             $this->load->view('themes/demo/includes/footer');
         } else {
 
@@ -110,6 +108,19 @@ class Locationtype extends CI_Controller {
         $this->load->view('themes/demo/includes/footer');        
     }
 
+	public function index(){
+		if(!file_exists(APPPATH.'views/themes/demo/pages/location.php')){
+			echo file_exists(APPPATH.'views/themes/demo/pages/location.php');
+			//show_404();
+		}
+		
+        $this->layout->set_title(ucfirst($page));
+        $this->layout->set_body_attr(array('id' => $page, 'class' => 'test'));
+		$data['title'] = ucfirst($page);
 
+		$this->load->view('themes/demo/includes/header');
+		$this->load->view('themes/demo/pages/'. $page , $data);
+		$this->load->view('themes/demo/includes/footer');
+	}
 
 }

@@ -1,6 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class MLocationType extends MariGold_Model {
+
+    protected $locationType= 'LocationType';
+
     public function __construct(){
          parent::__construct(); 
          
@@ -19,7 +22,7 @@ class MLocationType extends MariGold_Model {
         );
 
 
-        return $this->db->insert('LocationType', $locationTypeRecord);
+        return $this->db->insert($this->locationType, $locationTypeRecord);
     }
 	
 
@@ -31,7 +34,7 @@ class MLocationType extends MariGold_Model {
         );
 
         $this->db->where('LocationTypeId', $data['locationtypeid']);
-        return $this->db->update('LocationType', $record);
+        return $this->db->update($this->locationType, $record);
     }
 	
 	
@@ -39,16 +42,31 @@ class MLocationType extends MariGold_Model {
     public function remove($data){
         $now = date('Y-m-d H:i:s');
         $this->db->where('LocationTypeId', $data['locationtypeid']);
-        $this->db->delete('LocationType');
+        $this->db->delete($this->locationType);
 
         return true;       
     }
 	
-    public function getAllLocationType(){
+    public function getAllLocationType($limit, $start){
 
-        $this->db->select('*');
-        $query = $this->db->get('LocationType');
+
+        $this->db->limit($limit, $start);
+        $query = $this->db->get($this->locationType);
+        return $query->result();
+    }
+
+    public function getSpecificLocationType($locationTypeId){
+
+        $query = $this->db
+            ->get_where($this->locationType, 
+                array('LocationTypeId' => $locationTypeId)
+            )
+            ->row();
         
-        return $query->row();
+        return $query;
+    }
+
+    public function get_count() {
+        return $this->db->count_all($this->locationType);
     }
 }

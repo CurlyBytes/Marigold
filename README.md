@@ -27,3 +27,9 @@ php index.php migrate help
 
 ##PS 
 If you update the autoload psr-4, dont forget to add composer dump-autoload
+
+
+``
+check of mysql server ip address
+docker inspect marigold-mysql-server
+``

@@ -1,6 +1,6 @@
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('locationtype/create'); ?>
+<?php echo form_open('locationtype/edit'); ?>
 <input type="hidden" name="locationtypeid" value="<?php echo $data['locationtypeid']; ?>">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4"> 
