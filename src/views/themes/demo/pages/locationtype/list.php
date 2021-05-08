@@ -8,7 +8,7 @@
                 <th>Contact Name</th>
                 <th>Contact Number</th>
                 <th>Email</th>
-                <th>City</th>
+                <th>Operations</th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +18,12 @@
                         <td><?php echo  $locationtyperow->LocationType; ?></td>
                         <td><?php echo  $locationtyperow->CreatedAt; ?></td>
                         <td><?php  echo $locationtyperow->UpdatedAt; ?></td>
+                        <td>
+
+                        <a class="btn btn-info" href="<?php echo site_url('locationtype/modify/'.$locationtyperow->LocationTypeId) ?>"> modify</a>
+                        <a class="btn btn-primary" href="<?php echo site_url('locationtype/remove/'.$locationtyperow->LocationTypeId) ?>"> remove</a>
+
+                        </td>
                     </tr>
                 <?php endforeach; ?>
         </tbody>

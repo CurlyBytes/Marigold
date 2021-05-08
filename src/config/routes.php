@@ -64,11 +64,12 @@ $route['^(en|fil)/(.+)$'] = "$2";
 // '/en', '/fil', '/fr'  URIs -> use default controller
 $route['^(en|fil)$'] = $route['default_controller'];
 
-$route['locationtype'] = "locationtype/page/list";
+
+$route['locationtype'] = 'locationtype/page/list';
 $route['locationtype/create'] = "locationtype/page/create";
 $route['locationtype/modify/(:any)'] = "locationtype/page/modify/$1";
 $route['locationtype/remove/(:any)'] = "locationtype/page/remove/$1";
-$route['locationtype/(:num)'] = 'locationtype/page/list';
+$route['locationtype/(:num)'] = 'locationtype/page/list/$1';
 // $route['locationtype/add']['post'] = "locationtype/page/add";
 // $route['locationtype/edit/(:any)']['put'] = "locationtype/page/edit/$1";
 // $route['locationtype/delete/(:any)']['delete'] = "locationtype/page/delete/$1";

@@ -2,7 +2,8 @@
 
 class MLocationType extends MariGold_Model {
 
-    protected $locationType= 'LocationType';
+    protected $locationType = 'LocationType';
+    protected $locationTypeId = 'LocationTypeId';
 
     public function __construct(){
          parent::__construct(); 
@@ -33,18 +34,16 @@ class MLocationType extends MariGold_Model {
             'UpdatedAt' => $now
         );
 
-        $this->db->where('LocationTypeId', $data['locationtypeid']);
+        $this->db->where($this->locationTypeId, $data['locationtypeid']);
         return $this->db->update($this->locationType, $record);
     }
 	
 	
 
     public function remove($data){
-        $now = date('Y-m-d H:i:s');
-        $this->db->where('LocationTypeId', $data['locationtypeid']);
-        $this->db->delete($this->locationType);
 
-        return true;       
+        $this->db->where($this->locationTypeId, $data['locationtypeid']);
+        return $this->db->delete($this->locationType);
     }
 	
     public function getAllLocationType($limit, $start){
@@ -59,7 +58,7 @@ class MLocationType extends MariGold_Model {
 
         $query = $this->db
             ->get_where($this->locationType, 
-                array('LocationTypeId' => $locationTypeId)
+                array($this->locationTypeId => $locationTypeId)
             )
             ->row();
         
