@@ -55,7 +55,7 @@ class Page extends MariGold_Controller {
                 'locationnameidparent' => false
 			);
             $this->MLocationName->create($data);
-            $this->session->set_flashdata('session_region','Region created successfully:'. $this->input->post('locationname'));
+            $this->session->set_flashdata('session_region_create','Region created successfully:'. $this->input->post('locationname'));
             redirect(base_url('region'));
         }
 
@@ -81,7 +81,7 @@ class Page extends MariGold_Controller {
 				'locationname' => $this->input->post('locationname')
 			);
             $this->MLocationName->modify($data);
-            $this->session->set_flashdata('session_region','Region updated successfully:'. $this->input->post('locationname'));
+            $this->session->set_flashdata('session_region_modify','Region updated successfully:'. $this->input->post('locationname'));
             redirect(base_url('region'));
         }
 
@@ -107,7 +107,7 @@ class Page extends MariGold_Controller {
 				'locationnameid' => $this->input->post('locationnameid')
 			);
             $this->MLocationName->remove($data);
-            $this->session->set_flashdata('session_region','Region remove successfully:'. $this->input->post('locationname'));
+            $this->session->set_flashdata('session_region_remove','Region remove successfully:'. $this->input->post('locationname'));
             redirect(base_url('region'));
         }
 

@@ -52,7 +52,7 @@ class Page extends MariGold_Controller {
 				'locationtype' => $this->input->post('locationtype')
 			);
             $this->MLocationType->create($data);
-            $this->session->set_flashdata('session_locationtype','LocationType created successfully:'. $this->input->post('locationtype'));
+            $this->session->set_flashdata('session_locationtype_create','LocationType created successfully:'. $this->input->post('locationtype'));
             redirect(base_url('locationtype'));
         }
 
@@ -78,7 +78,7 @@ class Page extends MariGold_Controller {
 				'locationtype' => $this->input->post('locationtype')
 			);
             $this->MLocationType->modify($data);
-            $this->session->set_flashdata('session_locationtype','LocationType updated successfully:'. $this->input->post('locationtype'));
+            $this->session->set_flashdata('session_locationtype_modify','LocationType updated successfully:'. $this->input->post('locationtype'));
             redirect(base_url('locationtype'));
         }
 
@@ -104,7 +104,7 @@ class Page extends MariGold_Controller {
 				'locationtypeid' => $this->input->post('locationtypeid')
 			);
             $this->MLocationType->remove($data);
-            $this->session->set_flashdata('session_locationtype','LocationType remove successfully:'. $this->input->post('locationtype'));
+            $this->session->set_flashdata('session_locationtype_remove','LocationType remove successfully:'. $this->input->post('locationtype'));
             redirect(base_url('locationtype'));
         }
 

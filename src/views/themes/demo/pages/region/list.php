@@ -1,6 +1,27 @@
+         
             <main class="content">
 				<div class="container-fluid p-0">
+<?php
 
+if ($this->session->flashdata('session_region_create')){
+    echo '<div class="alert alert-success alert-dismissible" role="alert">';
+    echo $this->session->flashdata('session_region_create');
+    echo "</div>";
+}
+
+if ($this->session->flashdata('session_region_modify')){
+    echo '<div class="alert alert-primary alert-dismissible" role="alert">';
+    echo $this->session->flashdata('session_region_modify');
+    echo "</div>";
+}
+
+if ($this->session->flashdata('session_region_remove')){
+    echo '<div class="alert alert-danger alert-dismissible" role="alert">';
+    echo $this->session->flashdata('session_region_remove');
+    echo "</div>";
+}
+
+?>
 					<h1 class="h3 mb-3">Region</h1>
                     
 					<div class="row">
