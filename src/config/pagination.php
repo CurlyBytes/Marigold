@@ -1,7 +1,7 @@
 <?php
 
 
-$config['per_page'] = 2;
+$config['per_page'] = 10;
 $config['uri_segment'] = 2;
 $config['attributes'] = array('class' => 'btn btn-primary');
 //  $config['num_tag_open'] = '<p class='btn btn-secondary'>';

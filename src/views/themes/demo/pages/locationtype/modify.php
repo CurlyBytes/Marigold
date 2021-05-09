@@ -8,6 +8,7 @@
 			<div class="form-group">
 				<label>LocationType</label>
 				<input type="text" class="form-control" id="locationtype" name="locationtype" placeholder="locationtype" value="<?php echo $locationtype->LocationType; ?>">
+				<?php echo form_error('locationtype'); ?> 
 			</div>
 			<button type="submit" class="btn btn-primary btn-block">Modify</button>
 		</div>

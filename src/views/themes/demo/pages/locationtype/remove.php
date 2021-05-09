@@ -9,7 +9,7 @@
 			<h1 class="text-center">Location Type</h1>
 			<div class="form-group">
 				<label>LocationType</label>
-				<input type="text" class="form-control" id="locationtype" name="locationtype" placeholder="locationtype" value="<?php echo $locationtype->LocationType; ?> readonly">
+				<input type="text" class="form-control" id="locationtype" name="locationtype" placeholder="locationtype" value="<?php echo $locationtype->LocationType; ?>" readonly>
 			</div>
 			<button type="submit" class="btn btn-primary btn-block">Remove</button>
 		</div>

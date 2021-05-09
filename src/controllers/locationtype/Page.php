@@ -15,6 +15,7 @@ class Page extends MariGold_Controller {
         $this->load->model('MLocationType');
         $this->layout->set_title('Location Type');
         $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
+        $this->form_validation->set_error_delimiters('<div class="error">','</div>');
     }
 
 	public function list(){
@@ -42,9 +43,8 @@ class Page extends MariGold_Controller {
 
     public function create()
     {
-        $this->form_validation->set_rules('locationtype', 'Location Type', 'required|min_length[2]|max_length[70]|alpha_numeric');   
-        $this->form_validation->set_error_delimiters('<div class="error">','</div>');
-        if($this->input->post() && $this->form_validation->run() === true){
+
+        if($this->input->post() && $this->form_validation->run('locationtype/create') === true){
             $data = array(
 				'locationtype' => $this->input->post('locationtype')
 			);
@@ -60,8 +60,6 @@ class Page extends MariGold_Controller {
 
     public function modify($locationTypeId)
     {
-        $this->form_validation->set_rules('locationtype', 'Location Type', 'required|min_length[2]|max_length[70]|alpha_numeric');  
-        $this->form_validation->set_error_delimiters('<div class="error">','</div>'); 
         $data['locationtype'] = $this->MLocationType->getSpecificLocationType($locationTypeId);
 
         if($data['locationtype'] === null){
@@ -69,7 +67,7 @@ class Page extends MariGold_Controller {
         }
         
 
-        if($this->input->post() && $this->form_validation->run() === true){
+        if($this->input->post() && $this->form_validation->run('locationtype/modify') === true){
             $data = array(
                 'locationtypeid' => $this->input->post('locationtypeid'),
 				'locationtype' => $this->input->post('locationtype')
@@ -87,8 +85,6 @@ class Page extends MariGold_Controller {
     public function remove($locationTypeId)
     {
         
-        $this->form_validation->set_rules('locationtype', 'Location Type', 'required|min_length[2]|max_length[70]|alpha_numeric');  
-        $this->form_validation->set_error_delimiters('<div class="error">','</div>'); 
         $data['locationtype'] = $this->MLocationType->getSpecificLocationType($locationTypeId);
 
         if($data['locationtype'] === null){
@@ -96,7 +92,7 @@ class Page extends MariGold_Controller {
         }
         
 
-        if($this->input->post() && $this->form_validation->run() === true){
+        if($this->input->post() && $this->form_validation->run('locationtype/remove') === true){
             $data = array(
 				'locationtypeid' => $this->input->post('locationtypeid')
 			);
