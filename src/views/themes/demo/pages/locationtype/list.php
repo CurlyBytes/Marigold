@@ -31,8 +31,8 @@
                                                         <td><?php  echo $locationtyperow->UpdatedAt; ?></td>
                                                         <td>
 
-                                                        <a class="btn btn-primary" href="<?php echo site_url('locationtype/modify/'.$locationtyperow->LocationTypeId) ?>"> modify</a>
-                                                        <a class="btn btn-danger" href="<?php echo site_url('locationtype/remove/'.$locationtyperow->LocationTypeId) ?>"> remove</a>
+                                                        <a class="btn btn-primary" href="<?php echo site_url('locationtype/modify/'.$locationtyperow->LocationTypeId); ?>"> modify</a>
+                                                        <a class="btn btn-danger" href="<?php echo site_url('locationtype/remove/'.$locationtyperow->LocationTypeId); ?>"> remove</a>
 
                                                         </td>
                                                     </tr>

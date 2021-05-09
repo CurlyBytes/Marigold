@@ -1,17 +1,45 @@
-<h2>Are you sure you want to delete?</h2>
 
-<?php echo validation_errors(); ?>
 
-<?php echo form_open('locationtype/remove/'. $locationtype->LocationTypeId); ?>
-<input type="hidden" name="locationtypeid" value="<?php echo $locationtype->LocationTypeId; ?>">
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4"> 
-			<h1 class="text-center">Location Type</h1>
-			<div class="form-group">
-				<label>LocationType</label>
-				<input type="text" class="form-control" id="locationtype" name="locationtype" placeholder="locationtype" value="<?php echo $locationtype->LocationType; ?>" readonly>
-			</div>
-			<button type="submit" class="btn btn-primary btn-block">Remove</button>
-		</div>
-	</div>
-<?php echo form_close(); ?>
+<?php
+	$locationname = set_value('locationname') == false ? $region->LocationName : set_value('locationname');
+?>		
+			<main class="content">
+				<div class="container-fluid p-0">
+
+					<h1 class="h3 mb-3">Region - Remove</h1>
+
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Region: </h5>
+								</div>
+								<div class="card-body">
+
+									<div class="column">
+										<?php echo form_open('region/remove/'. $region->LocationNameId); ?>
+										<input type="hidden" name="locationnameid" value="<?php echo $region->LocationNameId; ?>">
+											<div class="row">
+												<div class="mb-3">
+													<h1 class="text-center">Region</h1>
+													<div class="form-group">
+														<label class="form-label" for="locationname">Region Name</label>
+														<input type="text" class="form-control" id="locationname" name="locationname" placeholder="Region Name" value="<?php echo $locationname; ?>" readonly>
+														<?php echo form_error('locationname'); ?> 
+													</div>
+													
+												</div>
+											</div>
+											<button type="submit" class="btn btn-danger btn-block">Proceed</button>
+										<?php echo form_close(); ?>  
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</main>
+
+
+

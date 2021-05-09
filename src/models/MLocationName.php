@@ -4,7 +4,7 @@ class MLocationName extends MariGold_Model {
 
     protected $locationName = 'LocationName';
     protected $locationNameId = 'LocationNameId';
-    protected $locationGroup = 'LocationGroup'
+    protected $locationGroup = 'LocationGroup';
     protected $locationGroupId = 'LocationGroupId';
 
     public function __construct(){
@@ -26,11 +26,11 @@ class MLocationName extends MariGold_Model {
             'UpdatedAt' => $now
         );
 
-        if($data['locationNameIdParent']){
+        if($data['locationnameidparent']){
 
             $locationGroupRecord = array(
                 'LocationGroupId' => $locationGroupid,
-                'LocationNameIdParent' => $data['locationNameIdParent'],
+                'LocationNameIdParent' => $data['locationnameidparent'],
                 'LocationNameIdChild' => $locationNameId,
                 'CreatedAt' => $now,
                 'UpdatedAt' => $now
@@ -47,12 +47,11 @@ class MLocationName extends MariGold_Model {
     public function modify($data){
         $now = date('Y-m-d H:i:s');
         $record = array(
-            'LocationTypeId' => $data['locationtypeid'],
             'LocationName' => $data['locationname'],
             'UpdatedAt' => $now
         );
 
-        $this->db->where($this->LocationNameId, $data['locationnameid']);
+        $this->db->where($this->locationNameId, $data['locationnameid']);
         return $this->db->update($this->locationName, $record);
     }
 	
@@ -60,7 +59,7 @@ class MLocationName extends MariGold_Model {
 
     public function remove($data){
         
-        $this->db->where($this->LocationNameId, $data['locationnameid']);
+        $this->db->where($this->locationNameId, $data['locationnameid']);
         $this->db->delete($this->locationName);
         
         $this->db->where('LocationNameIdChild', $data['locationnameid']);
@@ -83,20 +82,23 @@ class MLocationName extends MariGold_Model {
 
     public function getAllLocationNameByLocationType($limit, $start,$locationTypeId){
         $this->db->limit($limit, $start);
-        $query = $this->db
-                    ->from($this->locationName)
-                    ->where('LocationTypeId', $locationTypeId)
-                    
+        $query = $this->db->get_where($this->locationName, 
+            array(
+                'LocationTypeId' => $locationTypeId 
+            )
+        );      
+
         return $query->result();
     }
 
 
 
-    public function hasLocationNameExist($data){
+    public function hasLocationNameExist($locationNameId, $locationTypeId, $locationName){
         $query = $this->db->get_where($this->locationName, 
             array(
-                'LocationTypeId' => $data['locationtypeid'] ,
-                'LocationName' => $data['locationname']
+                'LocationNameId !=' => $locationNameId ,
+                'LocationTypeId' => $locationTypeId ,
+                'LocationName' => $locationName
             )
         );
 

@@ -76,6 +76,12 @@ $route['locationtype/(:num)'] = 'locationtype/page/list/$1';
 
 $route['api/locationtype/(:any)'] = 'locationtype/api/$1';
 
+
+$route['region'] = 'region/page/list';
+$route['region/create'] = "region/page/create";
+$route['region/modify/(:any)'] = "region/page/modify/$1";
+$route['region/remove/(:any)'] = "region/page/remove/$1";
+$route['region/(:num)'] = 'region/page/list/$1';
 //$route['(:any)'] = 'page/view/$1';
 //$route['(:any)/add'] = 'page/add/$1';
 //$route['(:any)/edit/(:any)'] = 'page/edit/$1/$2';

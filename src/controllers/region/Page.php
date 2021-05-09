@@ -13,6 +13,7 @@ class Page extends MariGold_Controller {
     {
         parent::__construct();
         $this->load->model('MLocationName');
+        $this->load->helper('security');
         $this->layout->set_title('Region');
         $this->layout->set_body_attr(array('id' => 'region', 'class' => 'region'));
         $this->form_validation->set_error_delimiters('<div class="error">','</div>');
@@ -47,7 +48,8 @@ class Page extends MariGold_Controller {
         if($this->input->post() && $this->form_validation->run('region/create') === true){
             $data = array(
                 'locationtypeid' => GUID_REGION,
-				'locationname' => $this->input->post('locationname')
+				'locationname' => $this->input->post('locationname'),
+                'locationnameidparent' => false
 			);
             $this->MLocationName->create($data);
             $this->session->set_flashdata('session_region','Region created successfully:'. $this->input->post('locationname'));
@@ -71,7 +73,6 @@ class Page extends MariGold_Controller {
         if($this->input->post() && $this->form_validation->run('region/modify') === true){
             $data = array(
                 'locationnameid' => $this->input->post('locationnameid'),
-                'locationtypeid' => GUID_REGION,
 				'locationname' => $this->input->post('locationname')
 			);
             $this->MLocationName->modify($data);
@@ -109,4 +110,20 @@ class Page extends MariGold_Controller {
     }
 
 
+
+    public function _region_name_exist()
+    {
+        $locationNameId = $this->input->post('locationnameid');
+        $locationName = $this->input->post('locationname');
+        $isExist = $this->MLocationName->hasLocationNameExist($locationNameId , GUID_REGION, $locationName);
+
+        if ($isExist === true)
+        {
+            $this->form_validation->set_message('_region_name_exist', 'The {field} field can not be the word "test"');
+            return true;
+        }
+ 
+        return false;
+        
+    }
 }
