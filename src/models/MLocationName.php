@@ -1,6 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class MLocationName extends MariGold_Model {
+
+    protected $locationName = 'LocationName';
+    protected $locationNameId = 'LocationNameId';
+    protected $locationGroup = 'LocationGroup'
+    protected $locationGroupId = 'LocationGroupId';
+
     public function __construct(){
          parent::__construct(); 
          
@@ -20,16 +26,21 @@ class MLocationName extends MariGold_Model {
             'UpdatedAt' => $now
         );
 
-        $locationGroupRecord = array(
-            'LocationGroupId' => $locationGroupid,
-            'LocationNameIdParent' => $data['locationNameIdParent'],
-            'LocationNameIdChild' => $locationNameId,
-            'CreatedAt' => $now,
-            'UpdatedAt' => $now
-        );
+        if($data['locationNameIdParent']){
 
-        $this->db->insert('LocationGroup', $locationGroupRecord);
-        return $this->db->insert('LocationName', $locationNameRecord);
+            $locationGroupRecord = array(
+                'LocationGroupId' => $locationGroupid,
+                'LocationNameIdParent' => $data['locationNameIdParent'],
+                'LocationNameIdChild' => $locationNameId,
+                'CreatedAt' => $now,
+                'UpdatedAt' => $now
+            );
+            $this->db->insert($this->locationGroup, $locationGroupRecord);
+        }
+
+
+
+        return $this->db->insert($this->locationName, $locationNameRecord);
     }
 	
 
@@ -41,31 +52,48 @@ class MLocationName extends MariGold_Model {
             'UpdatedAt' => $now
         );
 
-        $this->db->where('LocationNameId', $data['locationnameid']);
-        return $this->db->update('LocationName', $record);
+        $this->db->where($this->LocationNameId, $data['locationnameid']);
+        return $this->db->update($this->locationName, $record);
     }
 	
 	
 
     public function remove($data){
         
-        $this->db->where('LocationNameId', $data['locationnameid']);
-        $this->db->delete('LocationName');
+        $this->db->where($this->LocationNameId, $data['locationnameid']);
+        $this->db->delete($this->locationName);
         
         $this->db->where('LocationNameIdChild', $data['locationnameid']);
-        $this->db->delete('LocationGroup');
+        $this->db->delete($this->locationGroup);
 
         return true;       
     }
 	
+    public function getSpecificLocationNameByLocationType($locationNameId){
 
-    public function getByLocationType($data){
-        $query = $this->db->get_where('LocationName', array('LocationTypeId' => $data['locationtypeid']));
-        return $query->row();
+        $query = $this->db
+            ->get_where($this->locationName, 
+                array($this->locationNameId => $locationNameId)
+            )
+            ->row();
+        
+        return $query;
     }
 
+
+    public function getAllLocationNameByLocationType($limit, $start,$locationTypeId){
+        $this->db->limit($limit, $start);
+        $query = $this->db
+                    ->from($this->locationName)
+                    ->where('LocationTypeId', $locationTypeId)
+                    
+        return $query->result();
+    }
+
+
+
     public function hasLocationNameExist($data){
-        $query = $this->db->get_where('LocationName', 
+        $query = $this->db->get_where($this->locationName, 
             array(
                 'LocationTypeId' => $data['locationtypeid'] ,
                 'LocationName' => $data['locationname']
@@ -77,5 +105,13 @@ class MLocationName extends MariGold_Model {
         } else {
             return false;
         }
+    }
+
+
+    public function get_count($locationTypeId) {
+        return $this->db
+            ->from($this->locationName)
+            ->where('LocationTypeId', $locationTypeId)
+            ->count_all_results();
     }
 }

@@ -90,3 +90,9 @@ defined('API_LOCATIONTYPE_CREATE')             OR define('API_LOCATIONTYPE_CREAT
 defined('API_LOCATIONTYPE_MODIFY')          OR define('API_LOCATIONTYPE_MODIFY', 'locationtype/modify'); 
 
 
+
+defined('GUID_REGION')           OR define('GUID_REGION', '2FC937F6-9FF0-55E0-FFE9-F07830C92269'); 
+defined('GUID_DISTRICT')         OR define('GUID_DISTRICT', '5B69D034-3178-D2F2-3E8E-4832677475CC'); 
+defined('GUID_AREA')             OR define('GUID_AREA', '91C25312-29F3-E2AB-2159-6B7FC92B1D32'); 
+defined('GUID_BRANCH')           OR define('GUID_BRANCH', 'AE149697-0FB2-516D-97F1-AB73C8786936'); 
+
