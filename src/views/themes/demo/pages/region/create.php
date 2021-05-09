@@ -16,7 +16,6 @@
 										<?php echo form_open('region/create'); ?>
 											<div class="row">
 												<div class="mb-3">
-													<h1 class="text-center">Region</h1>
 													<div class="form-group">
 														<label class="form-label" for="locationname">Region Name</label>
 														<input type="text" class="form-control" id="locationname" name="locationname" placeholder="Region Name" value="<?php echo set_value('locationname'); ?>">
@@ -26,6 +25,8 @@
 												</div>
 											</div>
 											<button type="submit" class="btn btn-primary btn-block">Submit</button>
+											<a class="btn btn-secondary col" href="<?php echo site_url('region'); ?>"> Cancel</a>
+                                    
 										<?php echo form_close(); ?>  
 									</div>
 								</div>

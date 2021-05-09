@@ -82,6 +82,13 @@ $route['region/create'] = "region/page/create";
 $route['region/modify/(:any)'] = "region/page/modify/$1";
 $route['region/remove/(:any)'] = "region/page/remove/$1";
 $route['region/(:num)'] = 'region/page/list/$1';
+
+$route['district/index'] = 'district/page/index';
+$route['district'] = 'district/page/list';
+$route['district/create'] = "district/page/create";
+$route['district/modify/(:any)'] = "district/page/modify/$1";
+$route['district/remove/(:any)'] = "district/page/remove/$1";
+$route['district/(:num)'] = 'district/page/list/$1';
 //$route['(:any)'] = 'page/view/$1';
 //$route['(:any)/add'] = 'page/add/$1';
 //$route['(:any)/edit/(:any)'] = 'page/edit/$1/$2';

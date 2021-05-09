@@ -87,13 +87,13 @@ class MBranchInformation extends MariGold_Model {
 	
     public function getProposedBranchLocationList($data){
         $query = $this->db->get_where('BranchInformation', array('IsApprove' => $this->BranchProposalForApproval));
-        return $query->row();
+        return $query->result();
     }
 
 
     public function getApproveBranchLocationList($data){
         $query = $this->db->get_where('BranchInformation', array('IsApprove' => $this->BranchWasApproved));
-        return $query->row();
+        return $query->result();
     }
 
 

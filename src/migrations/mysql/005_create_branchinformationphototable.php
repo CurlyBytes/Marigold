@@ -35,8 +35,8 @@ class Migration_Create_BranchInformationPhotoTable extends CI_Migration
         $this->dbforge->create_table('BranchInformationPhoto',TRUE); 
 
         $this->db->trans_start();
-        $sqlSynxtax = "ALTER TABLE BranchInformationPhoto ADD FOREIGN KEY(BranchInformationId) REFERENCES BranchInformation(BranchInformationId)";
-        $this->db->query($sqlSynxtax);
+        // $sqlSynxtax = "ALTER TABLE BranchInformationPhoto ADD FOREIGN KEY(BranchInformationId) REFERENCES BranchInformation(BranchInformationId)";
+        // $this->db->query($sqlSynxtax);
         $this->db->trans_complete();
         #TASK  Ifdata exist on dummy pa
         #TASK  Ifdata exist on dummy page RegionArchive import data on this table

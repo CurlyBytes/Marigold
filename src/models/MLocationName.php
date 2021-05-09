@@ -51,6 +51,16 @@ class MLocationName extends MariGold_Model {
             'UpdatedAt' => $now
         );
 
+        
+        if($data['locationnameidparent']){
+
+            $locationGroupRecord = array(
+                'LocationNameIdParent' => $data['locationnameidparent'],
+                'UpdatedAt' => $now
+            );
+            $this->db->where($this->locationGroupId, $data['locationgroupid']);
+            return $this->db->update($this->locationGroup, $locationGroupRecord);
+        }
         $this->db->where($this->locationNameId, $data['locationnameid']);
         return $this->db->update($this->locationName, $record);
     }
@@ -79,6 +89,16 @@ class MLocationName extends MariGold_Model {
         return $query;
     }
 
+    public function getSpecificLocationGroupByLocationNameIdChild($locationNameIdChild){
+
+        $query = $this->db
+            ->get_where($this->locationGroup, 
+                array('LocationNameIdChild' => $locationNameIdChild)
+            )
+            ->row();
+        
+        return $query;
+    }
 
     public function getAllLocationNameByLocationType($limit, $start,$locationTypeId){
         $this->db->limit($limit, $start);
@@ -91,6 +111,16 @@ class MLocationName extends MariGold_Model {
         return $query->result();
     }
 
+    public function getAllLocationNameByLocationTypeNoPagination($locationTypeId){
+
+        $query = $this->db->get_where($this->locationName, 
+            array(
+                'LocationTypeId' => $locationTypeId 
+            )
+        );      
+
+        return $query->result();
+    }
 
 
     public function hasLocationNameExist($locationNameId, $locationTypeId, $locationName){
@@ -109,6 +139,20 @@ class MLocationName extends MariGold_Model {
         }
     }
 
+    public function hasLocationNameIdParent($locationNameId, $locationTypeId){
+        $query = $this->db->get_where($this->locationName, 
+            array(
+                'LocationNameId' => $locationNameId ,
+                'LocationTypeId' => $locationTypeId 
+            )
+        );
+
+        if(empty($query->row_array())){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     public function get_count($locationTypeId) {
         return $this->db

@@ -61,17 +61,17 @@ class Migration_Create_BranchInformationTable extends CI_Migration
         $this->dbforge->create_table('BranchInformation',TRUE); 
 
         $this->db->trans_start();
-        $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(RegionId) REFERENCES LocationName(LocationNameId)";
-        $this->db->query($sqlSynxtax);
+        // $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(RegionId) REFERENCES LocationName(LocationNameId)";
+        // $this->db->query($sqlSynxtax);
 
-        $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(Districtid) REFERENCES LocationName(LocationNameId)";
-        $this->db->query($sqlSynxtax);
+        // $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(Districtid) REFERENCES LocationName(LocationNameId)";
+        // $this->db->query($sqlSynxtax);
 
-        $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(AreaId) REFERENCES LocationName(LocationNameId)";
-        $this->db->query($sqlSynxtax);
+        // $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(AreaId) REFERENCES LocationName(LocationNameId)";
+        // $this->db->query($sqlSynxtax);
 
-        $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(BranchId) REFERENCES LocationName(LocationNameId)";
-        $this->db->query($sqlSynxtax);
+        // $sqlSynxtax = "ALTER TABLE BranchInformation ADD FOREIGN KEY(BranchId) REFERENCES LocationName(LocationNameId)";
+        // $this->db->query($sqlSynxtax);
         $this->db->trans_complete();
         #TASK  Ifdata exist on dummy page RegionArchive import data on this table
         #Task if going down, archive the data first

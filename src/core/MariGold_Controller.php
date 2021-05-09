@@ -4,11 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //https://avenir.ro/how-to-make-truly-seo-urls-in-codeigniter-without-duplicate-content-on-underscore-urls/
 class MariGold_Controller extends CI_Controller {
+    protected $template_header;
+    protected $template_footer;
+    
+
     function __construct()
     {
         parent::__construct();
         $this->load->library(array('session', 'layout','form_validation'));
-        $this->load->helper(array('url','form','text'));
+        $this->load->helper(array('url','form','text', 'security'));
         
         $this->layout->add_custom_meta('meta', array(
             'charset' => 'utf-8'
@@ -20,11 +24,8 @@ class MariGold_Controller extends CI_Controller {
         ));
         
         $this->layout->add_css_files(array('main.css','normalize.css'), base_url().'assets/css/');
-        $this->load->view('themes/demo/includes/header');
+   
     } 
  
-    function __destruct()
-    {
-        $this->load->view('themes/demo/includes/footer');
-    } 
+  
 }

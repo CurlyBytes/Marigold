@@ -39,10 +39,10 @@ class Migration_Create_LocationNameTable extends CI_Migration
         array_pop($sqls);
 
         $this->db->trans_start();
-        foreach($sqls as $statement){
-            $statment = $statement . ";";
-            $this->db->query($statement);   
-        }
+        // foreach($sqls as $statement){
+        //     $statment = $statement . ";";
+        //     $this->db->query($statement);   
+        // }
         $this->db->trans_complete(); 
 
         #TASK  Ifdata exist on dummy page RegionArchive import data on this table

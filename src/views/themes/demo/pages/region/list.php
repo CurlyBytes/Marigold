@@ -27,8 +27,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($region as $regionrow): ?>
-                                                    <tr>
+                                            <?php
+                                                if($region){
+                                                    foreach ($region as $regionrow): 
+                                            ?>
+                                  
+                                                     <tr>
                                                         <td><?php echo $regionrow->LocationNameId; ?></td>
                                                         <td><?php echo  $regionrow->LocationName; ?></td>
                                                         <td><?php echo  $regionrow->CreatedAt; ?></td>
@@ -40,7 +44,14 @@
 
                                                         </td>
                                                     </tr>
-                                                <?php endforeach; ?>
+                                                <?php 
+                                                        endforeach;
+                                                    } else {
+                                                ?>
+                                                         <tr><td colspan="6">No District record found.</td></trd>
+                                                <?php 
+                                                    }
+                                                ?>
                                         </tbody>
                                     </table>
                                     <p><?php echo $links; ?></p>

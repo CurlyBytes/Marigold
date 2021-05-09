@@ -46,8 +46,8 @@ class Migration_Create_InternetServiceProviderTable extends CI_Migration
         $this->dbforge->create_table('InternetServiceProvider',TRUE);
         
         $this->db->trans_start();
-        $sqlSynxtax = "ALTER TABLE InternetServiceProvider ADD FOREIGN KEY(BranchInformationId) REFERENCES BranchInformation(BranchInformationId)";
-        $this->db->query($sqlSynxtax);
+        // $sqlSynxtax = "ALTER TABLE InternetServiceProvider ADD FOREIGN KEY(BranchInformationId) REFERENCES BranchInformation(BranchInformationId)";
+        // $this->db->query($sqlSynxtax);
         $this->db->trans_complete();
         #Task if going down, archive the data first
     } 

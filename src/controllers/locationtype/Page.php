@@ -34,10 +34,13 @@ class Page extends MariGold_Controller {
         $this->pagination->initialize($settings);
         $data["links"] = $this->pagination->create_links();
         $data['locationtype'] = $this->MLocationType->getAllLocationType($per_page, $page);
+        
 
         $this->layout->set_title("Location Type - List");
         $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'test'));
-		$this->load->view('themes/demo/pages/locationtype/list', $data);
+        $this->load->view('themes/demo/includes/header');
+        $this->load->view('themes/demo/pages/locationtype/list', $data);
+        $this->load->view('themes/demo/includes/footer');
 	}
 
 
@@ -55,7 +58,9 @@ class Page extends MariGold_Controller {
 
         $this->layout->set_title('Location Type - Create');
         $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
+        $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/locationtype/create');
+        $this->load->view('themes/demo/includes/footer');
     }
 
     public function modify($locationTypeId)
@@ -79,7 +84,9 @@ class Page extends MariGold_Controller {
 
         $this->layout->set_title('Location Type - Modify');
         $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
+        $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/locationtype/modify', $data);
+        $this->load->view('themes/demo/includes/footer');
     }
 
     public function remove($locationTypeId)
@@ -103,7 +110,9 @@ class Page extends MariGold_Controller {
 
         $this->layout->set_title('Location Type - Remove');
         $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
+        $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/locationtype/remove', $data);
+        $this->load->view('themes/demo/includes/footer');
     }
 
 

@@ -28,6 +28,20 @@
         'region/remove' => array(
             arrayf('locationnameid', 'LocationNameId', 'required|exact_length[36]'),
             arrayf('locationname', 'Region Name', 'required|min_length[2]|max_length[70]|alpha_numeric_spaces|callback__region_name_exist')
+        ),
+        'district/create' => array(
+            arrayf('locationnameidparent', 'LocationNameIdParent', 'required|exact_length[36]|callback__region_name_exist'),
+            arrayf('locationname', 'Region Name', 'required|min_length[2]|max_length[70]|alpha_numeric_spaces|callback__district_name_exist')
+        ),
+        'district/modify' => array(
+            arrayf('locationnameid', 'LocationNameId', 'required|exact_length[36]'),
+            arrayf('locationnameidparent', 'LocationNameIdParent', 'required|exact_length[36]|callback__region_name_exist'),
+            arrayf('locationname', 'Region Name', 'required|min_length[2]|max_length[70]|alpha_numeric_spaces|callback__district_name_exist')
+        ),
+        'district/remove' => array(
+            arrayf('locationnameid', 'LocationNameId', 'required|exact_length[36]'),
+            arrayf('locationnameidparent', 'LocationNameIdParent', 'required|exact_length[36]|callback__region_name_exist'),
+            arrayf('locationname', 'Region Name', 'required|min_length[2]|max_length[70]|alpha_numeric_spaces|callback__district_name_exist')
         )
     );
 
