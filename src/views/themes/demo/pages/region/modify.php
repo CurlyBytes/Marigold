@@ -23,7 +23,7 @@
 												<div class="mb-3">
 													<div class="form-group">
 														<label class="form-label" for="locationname">Region Name</label>
-														<input type="text" class="form-control" id="locationname" name="locationname" placeholder="Region Name" value="<?php echo set_value('locationname', $region->LocationName); ?>">
+														<input type="text" class="form-control <?php echo (form_error('locationname') ? 'is-invalid' : 'is-valid');?>" id="locationname" name="locationname" placeholder="Region Name" value="<?php echo html_escape(set_value('locationname', $region->LocationName)); ?>">
 														<?php echo form_error('locationname'); ?> 
 													</div>
 													

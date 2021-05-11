@@ -77,7 +77,8 @@ class Page extends MariGold_Controller {
         if($this->input->post() && $this->form_validation->run('region/modify') === true){
             $data = array(
                 'locationnameid' => $this->input->post('locationnameid'),
-				'locationname' => $this->input->post('locationname')
+				'locationname' => $this->input->post('locationname'),
+                'locationnameidparent' => false
 			);
             $this->MLocationName->modify($data);
             $this->session->set_flashdata('session_region_modify','Region updated successfully:'. $this->input->post('locationname'));
