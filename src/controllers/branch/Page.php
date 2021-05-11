@@ -13,12 +13,12 @@ class Page extends MariGold_Controller {
     {
         parent::__construct();
         $this->load->model('MLocationName');
-        $this->layout->set_title('Area');
-        $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));
+        $this->layout->set_title('Branch');
+        $this->layout->set_body_attr(array('id' => 'branch', 'class' => 'branch'));
     }
 
 	public function list(){
-		if(!file_exists(APPPATH.'views/themes/demo/pages/area/list.php')){
+		if(!file_exists(APPPATH.'views/themes/demo/pages/branch/list.php')){
 			show_404();
 		}
         $this->load->library("pagination");
@@ -27,53 +27,53 @@ class Page extends MariGold_Controller {
         $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
         $per_page = $this->config->item('per_page', 'pagination');
         $settings = $this->config->item('pagination',true);
-        $settings["total_rows"] = $this->MLocationName->get_count(GUID_AREA);
-        $settings['base_url'] = site_url('area');
+        $settings["total_rows"] = $this->MLocationName->get_count(GUID_BRANCH);
+        $settings['base_url'] = site_url('branch');
         
         $this->pagination->initialize($settings);
         $data["links"] = $this->pagination->create_links();
-        $data['area'] = $this->MLocationName->getAllLocationNameByLocationTypeWithParentJoin($per_page, $page, GUID_AREA);
-        $this->layout->set_title("Area - List");
-        $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));	
+        $data['branch'] = $this->MLocationName->getAllLocationNameByLocationTypeWithParentJoin($per_page, $page, GUID_BRANCH);
+        $this->layout->set_title("Branch - List");
+        $this->layout->set_body_attr(array('id' => 'branch', 'class' => 'branch'));	
         $this->load->view('themes/demo/includes/header');
-        $this->load->view('themes/demo/pages/area/list', $data);
+        $this->load->view('themes/demo/pages/branch/list', $data);
         $this->load->view('themes/demo/includes/footer');
 	}
 
 
     public function create()
     {
-        $data['region'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_DISTRICT);
+        $data['region'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
 
-        if($this->input->post() && $this->form_validation->run('area/create') === true){
+        if($this->input->post() && $this->form_validation->run('branch/create') === true){
             $data = array(
-                'locationtypeid' => GUID_AREA,
+                'locationtypeid' => GUID_BRANCH,
 				'locationname' => $this->input->post('locationname'),
                 'locationnameidparent' => $this->input->post('locationnameidparent')
 			);
             $this->MLocationName->create($data);
-            $this->session->set_flashdata('session_area_create','Area created successfully:'. $this->input->post('locationname'));
-            redirect(base_url('area'));
+            $this->session->set_flashdata('session_branch_create','Branch created successfully:'. $this->input->post('locationname'));
+            redirect(base_url('branch'));
         }
 
-        $this->layout->set_title('Area - Create');
+        $this->layout->set_title('Branch - Create');
         $this->layout->set_body_attr(array('id' => 'locationname', 'class' => 'locationname'));
         $this->load->view('themes/demo/includes/header');
-        $this->load->view('themes/demo/pages/area/create', $data);
+        $this->load->view('themes/demo/pages/branch/create', $data);
         $this->load->view('themes/demo/includes/footer');
     }
 
     public function modify($locationNameId)
     {
-        $data['region'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_DISTRICT);
-        $data['area'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
+        $data['region'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
+        $data['branch'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
         $data['group'] = $this->MLocationName->getSpecificLocationGroupByLocationNameIdChild($locationNameId);
 
-        if($data['area'] === null){
+        if($data['branch'] === null){
             show_404();
         }
         
-        if($this->input->post() && $this->form_validation->run('area/modify') === true){
+        if($this->input->post() && $this->form_validation->run('branch/modify') === true){
             $data = array(
                 'locationnameid' => $this->input->post('locationnameid'),
                 'locationnameidparent' => $this->input->post('locationnameidparent'),
@@ -81,62 +81,62 @@ class Page extends MariGold_Controller {
                 'locationgroupid' => $this->input->post('locationgroupid')
 			);
             $this->MLocationName->modify($data);
-            $this->session->set_flashdata('session_area_modify','Area updated successfully:'. $this->input->post('locationname'));
-            redirect(base_url('area'));
+            $this->session->set_flashdata('session_branch_modify','Branch updated successfully:'. $this->input->post('locationname'));
+            redirect(base_url('branch'));
         }
        // die(var_dump($data));
-        $this->layout->set_title('Area - Modify');
-        $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));
+        $this->layout->set_title('Branch - Modify');
+        $this->layout->set_body_attr(array('id' => 'branch', 'class' => 'branch'));
         $this->load->view('themes/demo/includes/header');
-        $this->load->view('themes/demo/pages/area/modify', $data);
+        $this->load->view('themes/demo/pages/branch/modify', $data);
         $this->load->view('themes/demo/includes/footer');
     }
 
     public function remove($locationNameId)
     {
-        $data['region'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_DISTRICT);
-        $data['area'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
+        $data['region'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
+        $data['branch'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
 
-        if($data['area'] === null){
+        if($data['branch'] === null){
             show_404();
         }
         
 
-        if($this->input->post() && $this->form_validation->run('area/remove') === true){
+        if($this->input->post() && $this->form_validation->run('branch/remove') === true){
             $data = array(
 				'locationnameid' => $this->input->post('locationnameid')
 			);
             $this->MLocationName->remove($data);
-            $this->session->set_flashdata('session_area_remove','Area remove successfully:'. $this->input->post('locationname'));
-            redirect(base_url('area'));
+            $this->session->set_flashdata('session_branch_remove','Branch remove successfully:'. $this->input->post('locationname'));
+            redirect(base_url('branch'));
         }
 
-        $this->layout->set_title('Area - Remove');
-        $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));
+        $this->layout->set_title('Branch - Remove');
+        $this->layout->set_body_attr(array('id' => 'branch', 'class' => 'branch'));
         $this->load->view('themes/demo/includes/header');
-        $this->load->view('themes/demo/pages/area/remove', $data);
+        $this->load->view('themes/demo/pages/branch/remove', $data);
         $this->load->view('themes/demo/includes/footer');
     }
 
-    public function _area_name_exist()
+    public function _branch_name_exist()
     {
         $locationNameId = $this->input->post('locationnameid');
         $locationName = $this->input->post('locationname');
-        $isExist = $this->MLocationName->hasLocationNameExist($locationNameId , GUID_AREA, $locationName);
+        $isExist = $this->MLocationName->hasLocationNameExist($locationNameId , GUID_BRANCH, $locationName);
 
         if ($isExist === false)
         {
-            $this->form_validation->set_message('_area_name_exist', 'The {field} already exist.');
+            $this->form_validation->set_message('_branch_name_exist', 'The {field} already exist.');
             return false;
         }else{
             return true;
         }  
     }
 
-    public function _district_name_exist()
+    public function _area_name_exist()
     {
         $locationnameidparent = $this->input->post('locationnameidparent');
-        $isExist = $this->MLocationName->hasLocationNameIdParent($locationnameidparent , GUID_DISTRICT);
+        $isExist = $this->MLocationName->hasLocationNameIdParent($locationnameidparent , GUID_AREA);
 
         if ($isExist === false)
         {
