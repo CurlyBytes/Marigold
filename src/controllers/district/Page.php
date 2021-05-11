@@ -15,7 +15,6 @@ class Page extends MariGold_Controller {
         $this->load->model('MLocationName');
         $this->layout->set_title('District');
         $this->layout->set_body_attr(array('id' => 'district', 'class' => 'district'));
-        $this->form_validation->set_error_delimiters('<div class="error">','</div>');
     }
 
 	public function list(){
@@ -78,7 +77,8 @@ class Page extends MariGold_Controller {
             $data = array(
                 'locationnameid' => $this->input->post('locationnameid'),
                 'locationnameidparent' => $this->input->post('locationnameidparent'),
-				'locationname' => $this->input->post('locationname')
+				'locationname' => $this->input->post('locationname'),
+                'locationgroupid' => $this->input->post('locationgroupid')
 			);
             $this->MLocationName->modify($data);
             $this->session->set_flashdata('session_district_modify','District updated successfully:'. $this->input->post('locationname'));
@@ -94,7 +94,7 @@ class Page extends MariGold_Controller {
 
     public function remove($locationNameId)
     {
-        
+        $data['region'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_REGION);
         $data['district'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
 
         if($data['district'] === null){
@@ -118,8 +118,6 @@ class Page extends MariGold_Controller {
         $this->load->view('themes/demo/includes/footer');
     }
 
-
-
     public function _district_name_exist()
     {
         $locationNameId = $this->input->post('locationnameid');
@@ -131,31 +129,50 @@ class Page extends MariGold_Controller {
             $this->form_validation->set_message('_district_name_exist', 'The {field} already exist.');
             return false;
         }else{
-
             return true;
-
-        }
- 
-    
-        
+        }  
     }
 
     public function _region_name_exist()
     {
         $locationnameidparent = $this->input->post('locationnameidparent');
-
         $isExist = $this->MLocationName->hasLocationNameIdParent($locationnameidparent , GUID_REGION);
 
         if ($isExist === false)
         {
-            $this->form_validation->set_message('_region_name_exist', 'The {field} field already does not exist.');
+            $this->form_validation->set_message('_region_name_exist', 'The {field} field does not exist.');
             return false;
         }else{
-
             return true;
         }
- 
-       
-        
     }
+
+    public function _group_location_id_exist()
+    {
+        $locationnameidparent = $this->input->post('locationgroupid');
+        $isExist = $this->MLocationName->hasLocationGroupIdExist($locationnameidparent);
+
+        if ($isExist === false)
+        {
+            $this->form_validation->set_message('_group_location_id_exist', 'The {field} field does not exist.');
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public function _has_location_name_has_child()
+    {
+        $locationnameidparent = $this->input->post('locationnameid');
+        $isExist = $this->MLocationName->hasLocationGroupHasChild($locationnameidparent);
+
+        if ($isExist === true)
+        {
+            $this->form_validation->set_message('_has_location_name_has_child', 'The {field} cannot delete, has an information within.');
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 }

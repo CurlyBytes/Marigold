@@ -524,3 +524,4 @@ $config['proxy_ips'] = '';
 
 // language available
 $config['language_available'] = array('english' => 'en','tagalog' => 'fil');
+

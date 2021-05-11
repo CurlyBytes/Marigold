@@ -38,8 +38,6 @@ class MLocationName extends MariGold_Model {
             $this->db->insert($this->locationGroup, $locationGroupRecord);
         }
 
-
-
         return $this->db->insert($this->locationName, $locationNameRecord);
     }
 	
@@ -51,16 +49,15 @@ class MLocationName extends MariGold_Model {
             'UpdatedAt' => $now
         );
 
-        
         if($data['locationnameidparent']){
-
             $locationGroupRecord = array(
                 'LocationNameIdParent' => $data['locationnameidparent'],
                 'UpdatedAt' => $now
             );
             $this->db->where($this->locationGroupId, $data['locationgroupid']);
-            return $this->db->update($this->locationGroup, $locationGroupRecord);
+            $this->db->update($this->locationGroup, $locationGroupRecord);
         }
+
         $this->db->where($this->locationNameId, $data['locationnameid']);
         return $this->db->update($this->locationName, $record);
     }
@@ -100,6 +97,8 @@ class MLocationName extends MariGold_Model {
         return $query;
     }
 
+
+
     public function getAllLocationNameByLocationType($limit, $start,$locationTypeId){
         $this->db->limit($limit, $start);
         $query = $this->db->get_where($this->locationName, 
@@ -122,6 +121,7 @@ class MLocationName extends MariGold_Model {
  
         return $this->db->get()->result();
     }
+
     public function getAllLocationNameByLocationTypeNoPagination($locationTypeId){
 
         $query = $this->db->get_where($this->locationName, 
@@ -165,6 +165,34 @@ class MLocationName extends MariGold_Model {
         }
     }
 
+    public function hasLocationGroupIdExist($locationGroupId){
+
+        $query = $this->db
+            ->get_where('LocationGroup', 
+                array('LocationGroupId' => $locationGroupId)
+            )
+            ->row();
+        if(empty($query)){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+    public function hasLocationGroupHasChild($locationNamedId){
+
+        $query = $this->db
+            ->get_where('LocationGroup', 
+                array('LocationNameIdParent' => $locationNamedId)
+            )
+            ->row();
+        if(empty($query)){
+            return false;
+        } else {
+            return true;
+        }
+    }
     public function get_count($locationTypeId) {
         return $this->db
             ->from($this->locationName)

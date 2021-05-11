@@ -16,7 +16,6 @@ class Page extends MariGold_Controller {
         $this->load->helper('security');
         $this->layout->set_title('Region');
         $this->layout->set_body_attr(array('id' => 'region', 'class' => 'region'));
-        $this->form_validation->set_error_delimiters('<div class="error">','</div>');
     }
 
 	public function list(){
@@ -134,5 +133,19 @@ class Page extends MariGold_Controller {
  
         return false;
         
+    }
+
+    public function _has_location_name_has_child()
+    {
+        $locationnameidparent = $this->input->post('locationnameid');
+        $isExist = $this->MLocationName->hasLocationGroupHasChild($locationnameidparent);
+
+        if ($isExist === true)
+        {
+            $this->form_validation->set_message('_has_location_name_has_child', 'The {field} cannot delete, has an information within.');
+            return false;
+        }else{
+            return true;
+        }
     }
 }

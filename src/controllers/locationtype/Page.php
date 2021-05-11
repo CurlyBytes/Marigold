@@ -15,7 +15,6 @@ class Page extends MariGold_Controller {
         $this->load->model('MLocationType');
         $this->layout->set_title('Location Type');
         $this->layout->set_body_attr(array('id' => 'locationtype', 'class' => 'locationtype'));
-        $this->form_validation->set_error_delimiters('<div class="error">','</div>');
     }
 
 	public function list(){

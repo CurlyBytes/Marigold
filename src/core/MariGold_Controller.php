@@ -13,7 +13,6 @@ class MariGold_Controller extends CI_Controller {
         parent::__construct();
         $this->load->library(array('session', 'layout','form_validation'));
         $this->load->helper(array('url','form','text', 'security'));
-        
         $this->layout->add_custom_meta('meta', array(
             'charset' => 'utf-8'
         ));
@@ -23,8 +22,7 @@ class MariGold_Controller extends CI_Controller {
             'content' => 'IE=edge'
         ));
         
-        $this->layout->add_css_files(array('main.css','normalize.css'), base_url().'assets/css/');
-   
+        $this->layout->add_css_files(array('main.css','normalize.css'), base_url().'assets/css/');  
     } 
  
   
