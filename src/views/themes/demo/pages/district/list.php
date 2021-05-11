@@ -1,6 +1,35 @@
             <main class="content">
 				<div class="container-fluid p-0">
-
+                <?php if ($this->session->flashdata('session_district_create')){ ?>
+                <div class="row">    
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="alert-message">
+                            <strong>Success</strong>  <?php echo $this->session->flashdata('session_district_create'); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+                <?php if ($this->session->flashdata('session_district_modify')){ ?>
+                <div class="row">    
+                    <div class="alert alert-primary alert-dismissible" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="alert-message">
+                            <strong>Success</strong>  <?php echo $this->session->flashdata('session_district_modify'); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+                <?php if ($this->session->flashdata('session_district_remove')){ ?>
+                <div class="row">    
+                    <div class="alert alert-primary alert-danger" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="alert-message">
+                            <strong>Success</strong>  <?php echo $this->session->flashdata('session_district_remove'); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
 					<h1 class="h3 mb-3">District</h1>
                     
 					<div class="row">
@@ -20,6 +49,7 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Region Name</th>
                                                 <th>District Name</th>
                                                 <th>Date Created</th>
                                                 <th>Date Updated</th>
@@ -34,7 +64,8 @@
                                 
                                                     <tr>
                                                         <td><?php echo $districtrow->LocationNameId; ?></td>
-                                                        <td><?php echo  $districtrow->LocationName; ?></td>
+                                                        <td><?php echo  $districtrow->ParentName; ?></td>
+                                                        <td><?php echo  $districtrow->ChildName; ?></td>
                                                         <td><?php echo  $districtrow->CreatedAt; ?></td>
                                                         <td><?php  echo $districtrow->UpdatedAt; ?></td>
                                                         <td>

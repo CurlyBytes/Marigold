@@ -111,6 +111,17 @@ class MLocationName extends MariGold_Model {
         return $query->result();
     }
 
+    public function getAllLocationNameByLocationTypeWithParentJoin($limit, $start,$locationTypeId){
+
+        $this->db->select('Child.LocationNameId AS LocationNameId, Parent.LocationName AS ParentName ,Child.LocationName As ChildName,Child.CreatedAt,Child.UpdatedAt');
+        $this->db->from($this->locationName . ' AS Child');
+        $this->db->where('Child.LocationTypeId', $locationTypeId);
+        $this->db->join('LocationGroup', 'LocationGroup.LocationNameIdChild=Child.LocationNameId');
+        $this->db->join($this->locationName . ' AS Parent', 'Parent.LocationNameId=LocationGroup.LocationNameIdParent');
+        $this->db->limit($limit, $start);
+ 
+        return $this->db->get()->result();
+    }
     public function getAllLocationNameByLocationTypeNoPagination($locationTypeId){
 
         $query = $this->db->get_where($this->locationName, 

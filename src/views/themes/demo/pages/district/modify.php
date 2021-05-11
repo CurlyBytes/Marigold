@@ -1,5 +1,6 @@
 
-			
+	
+	
 			<main class="content">
 				<div class="container-fluid p-0">
 
@@ -14,14 +15,13 @@
 								<div class="card-body">
 
 									<div class="column">
-										<?php echo form_open('district/modify'); ?>
+										<?php echo form_open('district/modify/'. $district->LocationNameId); ?>
 										<input type="hidden" name="locationnameid" value="<?php echo $district->LocationNameId; ?>">
-										<div class="row">
+											<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">
 														<label class="form-label" for="locationnameidparent">Region Name</label>
-														<select class="form-control mb-3" id="locationnameidparent" name="locationnameidparent"">
-															<option>--------</option>
+														<select class="form-control mb-3" id="locationnameidparent" name="locationnameidparent">
 															<?php foreach ($region as $regionrow): ?>
 																<option value="<?php echo $regionrow->LocationNameId; ?>" <?php echo set_select('locationnameidparent', $regionrow->LocationNameId, ((empty(set_select('locationnameidparent', $regionrow->LocationNameId)) ) ? true : false )); ?> ><?php echo $regionrow->LocationName; ?></option>
 															<?php endforeach; ?>
@@ -34,7 +34,7 @@
 	
 													<div class="form-group">
 														<label class="form-label" for="locationname">District Name</label>
-														<input type="text" class="form-control" id="locationname" name="locationname" placeholder="District Name" value="<?php echo set_value('locationname'); ?>">
+														<input type="text" class="form-control" id="locationname" name="locationname" placeholder="District Name"  value="<?php echo set_value('locationname', $district->LocationName); ?>">
 														<?php echo form_error('locationname'); ?> 
 													</div>
 													

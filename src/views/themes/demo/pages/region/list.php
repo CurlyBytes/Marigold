@@ -1,27 +1,36 @@
          
             <main class="content">
 				<div class="container-fluid p-0">
-<?php
-
-if ($this->session->flashdata('session_region_create')){
-    echo '<div class="alert alert-success alert-dismissible" role="alert">';
-    echo $this->session->flashdata('session_region_create');
-    echo "</div>";
-}
-
-if ($this->session->flashdata('session_region_modify')){
-    echo '<div class="alert alert-primary alert-dismissible" role="alert">';
-    echo $this->session->flashdata('session_region_modify');
-    echo "</div>";
-}
-
-if ($this->session->flashdata('session_region_remove')){
-    echo '<div class="alert alert-danger alert-dismissible" role="alert">';
-    echo $this->session->flashdata('session_region_remove');
-    echo "</div>";
-}
-
-?>
+                <?php if ($this->session->flashdata('session_region_create')){ ?>
+                <div class="row">    
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="alert-message">
+                            <strong>Success</strong>  <?php echo $this->session->flashdata('session_region_create'); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+                <?php if ($this->session->flashdata('session_region_modify')){ ?>
+                <div class="row">    
+                    <div class="alert alert-primary alert-dismissible" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="alert-message">
+                            <strong>Success</strong>  <?php echo $this->session->flashdata('session_region_modify'); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+                <?php if ($this->session->flashdata('session_region_remove')){ ?>
+                <div class="row">    
+                    <div class="alert alert-primary alert-danger" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="alert-message">
+                            <strong>Success</strong>  <?php echo $this->session->flashdata('session_region_remove'); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
 					<h1 class="h3 mb-3">Region</h1>
                     
 					<div class="row">

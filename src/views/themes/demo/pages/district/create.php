@@ -20,7 +20,7 @@
 												<div class="col mb-3">
 													<div class="form-group">
 														<label class="form-label" for="locationnameidparent">Region Name</label>
-														<select class="form-control mb-3" id="locationnameidparent" name="locationnameidparent"">
+														<select class="form-control mb-3" id="locationnameidparent" name="locationnameidparent">
 															<option>--------</option>
 															<?php foreach ($region as $regionrow): ?>
 																<option value="<?php echo $regionrow->LocationNameId; ?>" <?php echo set_select('locationnameidparent', $regionrow->LocationNameId, ((empty(set_select('locationnameidparent', $regionrow->LocationNameId)) ) ? true : false )); ?> ><?php echo $regionrow->LocationName; ?></option>

@@ -33,8 +33,7 @@ class Page extends MariGold_Controller {
         
         $this->pagination->initialize($settings);
         $data["links"] = $this->pagination->create_links();
-        $data['district'] = $this->MLocationName->getAllLocationNameByLocationType($per_page, $page, GUID_DISTRICT);
-
+        $data['district'] = $this->MLocationName->getAllLocationNameByLocationTypeWithParentJoin($per_page, $page, GUID_DISTRICT);
         $this->layout->set_title("District - List");
         $this->layout->set_body_attr(array('id' => 'district', 'class' => 'district'));	
         $this->load->view('themes/demo/includes/header');
@@ -46,7 +45,6 @@ class Page extends MariGold_Controller {
     public function create()
     {
         $data['region'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_REGION);
- //die(var_dump($data['region'] ));
 
         if($this->input->post() && $this->form_validation->run('district/create') === true){
             $data = array(
@@ -76,7 +74,6 @@ class Page extends MariGold_Controller {
             show_404();
         }
         
-
         if($this->input->post() && $this->form_validation->run('district/modify') === true){
             $data = array(
                 'locationnameid' => $this->input->post('locationnameid'),
@@ -87,13 +84,12 @@ class Page extends MariGold_Controller {
             $this->session->set_flashdata('session_district_modify','District updated successfully:'. $this->input->post('locationname'));
             redirect(base_url('district'));
         }
-
+       // die(var_dump($data));
         $this->layout->set_title('District - Modify');
         $this->layout->set_body_attr(array('id' => 'district', 'class' => 'district'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/district/modify', $data);
         $this->load->view('themes/demo/includes/footer');
-        
     }
 
     public function remove($locationNameId)
