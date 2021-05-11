@@ -5,15 +5,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="AdminKit">
+	<meta name="description" content="Branch Information System">
+	<meta name="author" content="curylbytes">
 	<title><?php echo CI_title(); ?></title>
 	<?php echo CI_head(); ?>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="stylesheet" href="https://unpkg.com/@adminkit/core@latest/dist/css/app.css">
 	<script src="https://unpkg.com/@adminkit/core@latest/dist/js/app.js"></script>
 </head>
-<body<?php echo  CI_body_attr(); ?>>
+<body <?php echo  CI_body_attr(); ?>>
 
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">

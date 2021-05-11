@@ -62,25 +62,7 @@ class Welcome extends CI_Controller {
             'content' => 'IE=edge'
         ));
         
-        $this->layout->add_css_files(array('main.css','normalize.css'), base_url().'assets/css/');
-
-        $css_text = <<<EOF
-.text {
-font-size: 12px;
-background-color: #eeeeee;
-}
-EOF;
-
-        $js_text = <<<EOT
-alert('this is just a test');
-EOT;
-
-        // Load view into a variable for importing javascript
-        $js_text_footer = $this->load->view('themes/demo/includes/footer_javascript', '', true);
-
-        $this->layout->add_css_rawtext($css_text);
-        $this->layout->add_js_rawtext($js_text);
-        $this->layout->add_js_rawtext($js_text_footer, 'footer');
+ 
 
     }
 
@@ -98,7 +80,6 @@ EOT;
         $data["dummy"]='test';
         // load views and send data
         $this->load->view('themes/demo/includes/header', $data);
-        $this->load->view('themes/demo/includes/index', $data);
         $this->load->view('themes/demo/includes/footer', $data);
     }
 }

@@ -54,7 +54,7 @@ $guidRegex = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
 // TASK http verbs $route['products']['put'] = 'product/insert';
 
 $route['default_controller'] = 'welcome';
-$route['404_override'] = '';
+$route['404_override'] = 'PageNotFound';
 $route['translate_uri_dashes'] = false;
 
 
