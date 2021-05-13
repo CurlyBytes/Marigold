@@ -158,22 +158,28 @@ class MLocationName extends MariGold_Model {
     }
 
 
-    public function hasLocationNameExistWithParentId($locationNameId, $locationParentId, $locationTypeId, $locationName){
+    public function hasLocationNameExistWithParentId($locationNameId,
+     $locationNameIdParent, 
+     $locationTypeId, 
+     $locationName){
 
-        $locationGroup = array(
-            'LocationGroup.LocationNameIdParent' => $locationParentId ,
-            'LocationGroup.LocationNameIdChild !=' => $locationNameId,
-            'LocationName.LocationTypeId' => $locationTypeId ,
-            'LocationName.LocationName' => $locationName,
-            'LocationName.LocationNameId' => $locationNameId
+        $locationGroupFilter = array(
+            'LocationGroup.LocationNameIdParent' => $locationNameIdParent 
             );
-
-        $this->db->select('LocationName');
-        $this->db->from($this->locationGroup . ' AS LocationGroup');
-        $this->db->join($this->locationName . ' AS LocationName' , 'LocationGroup.LocationNameIdParent = LocationName.LocationNameId','LEFT');
-        $this->db->where($locationGroup);
+     
+        $locationNameFilter = array(
+            'LocationName.LocationNameId !=' => $locationNameId,
+            'LocationName.LocationTypeId' => $locationTypeId,
+            'LocationName.LocationName' => $locationName 
+             
+            );
+        $this->db->select('*');
+        $this->db->from($this->locationName . ' AS LocationName');
+        $this->db->where($locationNameFilter);
+        $this->db->join($this->locationGroup . ' AS LocationGroup' , 'LocationGroup.LocationNameIdChild = LocationName.LocationNameId','LEFT');
+        $this->db->where($locationGroupFilter);
         $query = $this->db->get()->result();
-
+        
         if(empty($query)){
             return false;
         } else {
@@ -181,6 +187,8 @@ class MLocationName extends MariGold_Model {
         }
     }
 
+
+    
     public function hasLocationNameIdParent($locationNameId, $locationTypeId){
         $query = $this->db->get_where($this->locationName, 
             array(

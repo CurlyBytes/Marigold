@@ -22,9 +22,9 @@
 												<div class="col mb-3">
 													<div class="form-group">
 														<label class="form-label" for="locationnameidparent">Region Name</label>
-														<select class="form-control mb-3" id="locationnameidparent" name="locationnameidparent" readonly>
+														<select class="form-control mb-3 <?php echo (form_error('locationnameidparent') ? 'is-invalid' : 'is-valid');?>" id="locationnameidparent" name="locationnameidparent">
 															<?php foreach ($region as $regionrow): ?>
-																<option value="<?php echo $regionrow->LocationNameId; ?>" <?php echo html_escape(set_select('locationnameidparent', $regionrow->LocationNameId, ((empty(set_select('locationnameidparent', $regionrow->LocationNameId)) ) ? true : false ))); ?> ><?php echo $regionrow->LocationName; ?></option>
+																<option value="<?php echo $regionrow->LocationNameId; ?>" <?php echo set_select('locationnameidparent', $regionrow->LocationNameId, (($regionrow->LocationNameId == $group->LocationNameIdParent) ? true: false)); ?> ><?php echo $regionrow->LocationName; ?></option>
 															<?php endforeach; ?>
 														</select>
 														<?php echo form_error('locationnameidparent'); ?> 
@@ -32,13 +32,11 @@
 													
 												</div>
 												<div class="col mb-3">
-	
 													<div class="form-group">
 														<label class="form-label" for="locationname">District Name</label>
-														<input type="text" class="form-control" id="locationname" name="locationname" placeholder="District Name"  readonly value="<?php echo html_escape(set_value('locationname', $district->LocationName)); ?>">
+														<input type="text" class="form-control <?php echo (form_error('locationname') ? 'is-invalid' : 'is-valid');?>" id="locationname" name="locationname" placeholder="District Name"  value="<?php echo html_escape(set_value('locationname', $district->LocationName)); ?>">
 														<?php echo form_error('locationname'); ?> 
-													</div>
-													
+													</div>							
 												</div>
 											</div>
 

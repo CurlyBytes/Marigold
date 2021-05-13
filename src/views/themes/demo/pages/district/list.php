@@ -34,7 +34,7 @@
                             <i class="far fa-fw fa-bell"></i>
                         </div>
                         <div class="alert-message">
-                            <strong>Updated</strong> - <?php echo $this->session->flashdata('session_district_remove'); ?>
+                            <strong>Deleted</strong> - <?php echo $this->session->flashdata('session_district_remove'); ?>
                         </div>
                     </div>
                 </div>

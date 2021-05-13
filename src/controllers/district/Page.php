@@ -69,6 +69,7 @@ class Page extends MariGold_Controller {
         $data['district'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
         $data['group'] = $this->MLocationName->getSpecificLocationGroupByLocationNameIdChild($locationNameId);
 
+        
         if($data['district'] === null){
             show_404();
         }
@@ -77,13 +78,14 @@ class Page extends MariGold_Controller {
             $data = array(
                 'locationnameid' => $this->input->post('locationnameid'),
                 'locationnameidparent' => $this->input->post('locationnameidparent'),
-				'locationname' => $this->input->post('locationname')
+				'locationname' => $this->input->post('locationname'),
+                'locationgroupid' => $this->input->post('locationgroupid')
 			);
             $this->MLocationName->modify($data);
             $this->session->set_flashdata('session_district_modify','District updated successfully:'. $this->input->post('locationname'));
             redirect(base_url('district'));
         }
-       // die(var_dump($data));
+
         $this->layout->set_title('District - Modify');
         $this->layout->set_body_attr(array('id' => 'district', 'class' => 'district'));
         $this->load->view('themes/demo/includes/header');
@@ -101,10 +103,10 @@ class Page extends MariGold_Controller {
             show_404();
         }
         
-
         if($this->input->post() && $this->form_validation->run('district/remove') === true){
             $data = array(
-				'locationnameid' => $this->input->post('locationnameid')
+				'locationnameid' => $this->input->post('locationnameid'),
+                'locationgroupid' => $this->input->post('locationgroupid'),
 			);
             $this->MLocationName->remove($data);
             $this->session->set_flashdata('session_district_remove','District remove successfully:'. $this->input->post('locationname'));
@@ -121,10 +123,9 @@ class Page extends MariGold_Controller {
     public function _district_name_exist()
     {
         $locationNameId = $this->input->post('locationnameid');
+        $locationNameIddParent = $this->input->post('locationnameidparent');   
         $locationName = $this->input->post('locationname');
-        $locationNameIdParent = $this->input->post('locationnameidparent');
-        $isExist = $this->MLocationName->hasLocationNameExistWithParentId($locationNameId, $locationNameIdParent, GUID_DISTRICT, $locationName);
-
+        $isExist = $this->MLocationName->hasLocationNameExistWithParentId($locationNameId, $locationNameIddParent, GUID_DISTRICT, $locationName);
 
         if ($isExist === true )
         {
