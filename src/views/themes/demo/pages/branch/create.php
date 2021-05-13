@@ -19,10 +19,13 @@
 													<div class="form-group">
 														<label class="form-label" for="locationnameidparent">Area Name</label>
 														<select class="form-control mb-3 <?php echo (form_error('locationnameidparent') ? 'is-invalid' : 'is-valid');?>" id="locationnameidparent" name="locationnameidparent">
-															<option>--------</option>
+														<?php if(empty($area)) { ?>
+																<option>--No Area Option.--</option>															
+														<?php } else { ?>
 															<?php foreach ($area as $arearow): ?>
 																<option value="<?php echo $arearow->LocationNameId; ?>" <?php echo html_escape(set_select('locationnameidparent', $arearow->LocationNameId, ((empty(set_select('locationnameidparent', $arearow->LocationNameId)) ) ? true : false ))); ?> ><?php echo $arearow->LocationName; ?></option>
 															<?php endforeach; ?>
+														<?php }  ?>
 														</select>
 														<?php echo form_error('locationnameidparent'); ?> 
 													</div>
