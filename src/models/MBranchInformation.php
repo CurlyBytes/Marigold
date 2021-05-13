@@ -2,23 +2,46 @@
 
 class MBranchInformation extends MariGold_Model {
 
-    private int const $MinimumBranchProposal = 3;
-    private int const $MaximumBranchProposal = 6;
-    private int const $BranchProposalForApproval = 0;
-    private int const $BranchWasApproved = 1;
+    private int $MinimumBranchProposal = 3;
+    private int $MaximumBranchProposal = 6;
+    private int $BranchProposalForApproval = 0;
+    private int $BranchWasApproved = 1;
 
     public function __construct(){
          parent::__construct(); 
          
     }
 
+    	//Insert single data
+	public function branchWithoutLocation(){    
+ 
+        $this->db->select('LocationName, LocationNameId');
+        $this->db->from('LocationName AS LocationName');
+        $this->db->join('BranchInformation AS BranchInformation', 'BranchInformation.BranchId = LocationName.LocationNameId','LEFT');
+        $this->db->where('LocationName.LocationTypeId', GUID_BRANCH);
+        $this->db->where('BranchInformation.IsApprove', null);
+        $this->db->or_where('BranchInformation.IsApprove', $this->BranchProposalForApproval);
+
+        return $this->db->get()->result();
+    }
+	
+
 	//Insert single data
-	public function propose($data){    
+	public function propose($data = null){    
         $now = date('Y-m-d H:i:s');
         $branchInformation =  $this->Guid();
+        $data['branchid'] =  "DF1F33B2-3AB4-1F88-0ADF-335BBAFABE6A";
+        $query = $this->db->query("SELECT BranchRecord.LocationName AS BranchRecord, BranchRecord.LocationNameId AS BranchId, Branch.LocationNameIdParent AS AreaId, Area.LocationNameIdParent AS DistrictId, District.LocationNameIdParent AS RegionId FROM LocationName AS BranchRecord LEFT JOIN LocationGroup AS Branch ON Branch.LocationNameIdChild = BranchRecord.LocationNameId LEFT JOIN LocationGroup AS Area ON Area.LocationNameIdChild = Branch.LocationNameIdParent LEFT JOIN LocationGroup AS District ON District.LocationNameIdChild = Area.LocationNameIdParent LEFT JOIN LocationGroup AS Region ON District.LocationNameIdChild = District.LocationNameIdParent WHERE BranchRecord.LocationNameId = ?" , array($data['branchid']) );
 
+        $row = $query->row_array();
+        if (isset($row))
+        {
+            $data['areaid'] = $row['AreaId'];
+            $data['districtid'] = $row['DistrictId'];
+            $data['regionid'] = $row['RegionId'];
+        }
         $branchInformationRecord = array(
-            'BranchInformationId ' => $locationNameId,
+            'BranchInformationId ' => $branchInformation,
             'RegionId ' => $data['regionid'],
             'Districtid  ' => $data['districtid'],
             'AreaId  ' => $data['areaid'],
@@ -26,13 +49,13 @@ class MBranchInformation extends MariGold_Model {
             'Latitude ' => $data['latitude'],
             'Longtitude ' => $data['longtitude'],
             'IsApprove ' => $this->BranchProposalForApproval,
-            'OpeningDate ' => $data['locationtypeid']
+            'OpeningDate ' => $data['openingdate'],
             'CreatedAt' => $now,
             'UpdatedAt' => $now
         );
 
 
-        return $this->db->insert('BranchInformation', $branchInformationRecord);
+       return $this->db->insert('BranchInformation', $branchInformationRecord);
     }
 	
 
@@ -68,7 +91,7 @@ class MBranchInformation extends MariGold_Model {
             'BranchId  ' => $data['branchid'],
             'Latitude ' => $data['latitude'],
             'Longtitude ' => $data['longtitude'],
-            'OpeningDate ' => $data['locationtypeid']
+            'OpeningDate ' => $data['locationtypeid'],
             'UpdatedAt' => $now
         );
 
@@ -96,7 +119,20 @@ class MBranchInformation extends MariGold_Model {
         return $query->result();
     }
 
+    public function IsBranchIdExist($locationNameId, $locationTypeId){
+        $query = $this->db->get_where('LocationName', 
+            array(
+                'LocationNameId' => $locationNameId ,
+                'LocationTypeId' => $locationTypeId 
+            )
+        );
 
+        if(empty($query->row_array())){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     public function hasBranchProposalExist($data){
         $query = $this->db->get_where('BranchInformation', 
@@ -144,5 +180,22 @@ class MBranchInformation extends MariGold_Model {
         } else {         
             return false;
         }
+    }
+
+    public function get_count(){    
+ 
+        $locationNameFilter = array(
+            'LocationName.LocationTypeId' => GUID_BRANCH,
+            'BranchInformation.IsApprove' => null
+        );
+
+        $this->db->select('LocationName, LocationNameId');
+        $this->db->from('LocationName AS LocationName');
+        $this->db->join('BranchInformation AS BranchInformation', 'BranchInformation.BranchId = LocationName.LocationNameId','LEFT');
+        $this->db->where('LocationName.LocationTypeId', GUID_BRANCH);
+        $this->db->where('BranchInformation.IsApprove', null);
+        $this->db->or_where('BranchInformation.IsApprove', 1);
+
+        return count($this->db->get()->row_array());
     }
 }

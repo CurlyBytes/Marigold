@@ -101,6 +101,12 @@ $route['branch/create'] = "branch/page/create";
 $route['branch/modify/(:any)'] = "branch/page/modify/$1";
 $route['branch/remove/(:any)'] = "branch/page/remove/$1";
 $route['branch/(:num)'] = 'branch/page/list/$1';
+
+$route['propose-branch'] = 'propose-branch/page/list';
+$route['propose-branch/create'] = "propose-branch/page/create";
+$route['propose-branch/modify/(:any)'] = "propose-branch/page/modify/$1";
+$route['propose-branch/remove/(:any)'] = "propose-branch/page/remove/$1";
+$route['propose-branch/(:num)'] = 'propose-branch/page/list/$1';
 //$route['(:any)'] = 'page/view/$1';
 //$route['(:any)/add'] = 'page/add/$1';
 //$route['(:any)/edit/(:any)'] = 'page/edit/$1/$2';

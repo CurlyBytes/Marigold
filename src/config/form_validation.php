@@ -77,6 +77,12 @@
             arrayf('locationnameidparent', 'Area Name', 'required|exact_length[36]|callback__area_name_exist'),
             arrayf('locationname', 'Branch Name', 'required|trim|min_length[2]|max_length[70]|alpha_numeric_spaces|callback__has_location_name_has_child')
         ),
+        'propose-branch/create' => array(
+            arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist'),
+            arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude'),
+            arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude'),
+            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]')
+        )
     );
 
     $config['error_prefix']= '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button><div class="alert-message">';

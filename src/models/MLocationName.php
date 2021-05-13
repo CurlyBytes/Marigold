@@ -143,7 +143,7 @@ class MLocationName extends MariGold_Model {
             );
 
         if($locationNameId == false){
-            $paramaters['LocationNameId !='] = $LocationNameId;
+            $paramaters['LocationNameId !='] = $locationNameId;
         }
        
         
