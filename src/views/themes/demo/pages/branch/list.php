@@ -27,14 +27,14 @@
                 </div>
                 <?php } ?>
                 <?php if ($this->session->flashdata('session_branch_remove')){ ?>
-                <div class="row">    
-                    <div class="alert alert-primary alert-outline-coloured alert-danger" role="alert">
+                 <div class="row">    
+                    <div class="alert alert-danger alert-outline-coloured alert-dismissible" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         <div class="alert-icon">
                             <i class="far fa-fw fa-bell"></i>
                         </div>
                         <div class="alert-message">
-                            <strong>Deleted</strong> - <?php echo $this->session->flashdata('session_branch_remove'); ?>
+                            <strong>Updated</strong> - <?php echo $this->session->flashdata('session_branch_modify'); ?>
                         </div>
                     </div>
                 </div>

@@ -15,8 +15,9 @@
 								<div class="card-body">
 
 									<div class="column">
-										<?php echo form_open('district/modify/'. $district->LocationNameId); ?>
+										<?php echo form_open('district/remove/'. $district->LocationNameId); ?>
 										<input type="hidden" name="locationnameid" value="<?php echo $district->LocationNameId; ?>">
+										<input type="hidden" name="locationgroupid" value="<?php echo $group->LocationGroupId; ?>">
 											<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">
@@ -41,7 +42,7 @@
 												</div>
 											</div>
 
-											<button type="submit" class="btn btn-primary btn-block">Proceed</button>
+											<button type="submit" class="btn btn-danger btn-block">Proceed</button>
 											<a class="btn btn-secondary col" href="<?php echo site_url('district'); ?>"> Cancel</a>
 										<?php echo form_close(); ?>  
 									</div>

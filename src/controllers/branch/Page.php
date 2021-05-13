@@ -43,7 +43,7 @@ class Page extends MariGold_Controller {
 
     public function create()
     {
-        $data['region'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
+        $data['branch'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
 
         if($this->input->post() && $this->form_validation->run('branch/create') === true){
             $data = array(
@@ -65,7 +65,7 @@ class Page extends MariGold_Controller {
 
     public function modify($locationNameId)
     {
-        $data['region'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
+        $data['branch'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
         $data['branch'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
         $data['group'] = $this->MLocationName->getSpecificLocationGroupByLocationNameIdChild($locationNameId);
 
@@ -94,7 +94,7 @@ class Page extends MariGold_Controller {
 
     public function remove($locationNameId)
     {
-        $data['region'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
+        $data['branch'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
         $data['branch'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
 
         if($data['branch'] === null){
@@ -122,9 +122,10 @@ class Page extends MariGold_Controller {
     {
         $locationNameId = $this->input->post('locationnameid');
         $locationName = $this->input->post('locationname');
-        $isExist = $this->MLocationName->hasLocationNameExist($locationNameId , GUID_BRANCH, $locationName);
+        $locationNameIdParent = $this->input->post('locationnameidparent');
+        $isExist = $this->MLocationName->hasLocationNameExist($locationNameId, GUID_BRANCH, $locationName);
 
-        if ($isExist === false)
+        if ($isExist === true)
         {
             $this->form_validation->set_message('_branch_name_exist', 'The {field} already exist.');
             return false;

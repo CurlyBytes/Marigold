@@ -122,17 +122,33 @@ class Page extends MariGold_Controller {
 
     public function _region_name_exist()
     {
+
+        $locationName = $this->input->post('locationname');
+        $isExist = $this->MLocationName->hasLocationNameExist(false , GUID_REGION, $locationName);
+
+        if ($isExist === true)
+        {
+            $this->form_validation->set_message('_region_name_exist', 'The {field} already exist');
+            return false;
+        }
+ 
+        return true;
+        
+    }
+
+    public function _region_name_modify_exist()
+    {
         $locationNameId = $this->input->post('locationnameid');
         $locationName = $this->input->post('locationname');
         $isExist = $this->MLocationName->hasLocationNameExist($locationNameId , GUID_REGION, $locationName);
 
         if ($isExist === true)
         {
-            $this->form_validation->set_message('_region_name_exist', 'The {field} field can not be the word "test"');
-            return true;
+            $this->form_validation->set_message('_region_name_modify_exist', 'The {field} already exist');
+            return false;
         }
  
-        return false;
+        return true;
         
     }
 

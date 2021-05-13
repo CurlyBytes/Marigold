@@ -28,7 +28,7 @@
                 <?php } ?>
                 <?php if ($this->session->flashdata('session_area_remove')){ ?>
                 <div class="row">    
-                    <div class="alert alert-primary alert-outline-coloured alert-danger" role="alert">
+                    <div class="alert alert-danger alert-outline-coloured alert-dismissible" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         <div class="alert-icon">
                             <i class="far fa-fw fa-bell"></i>
@@ -58,7 +58,7 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>District Name</th>
+                                                <th>Area Name</th>
                                                 <th>Area Name</th>
                                                 <th>Date Created</th>
                                                 <th>Date Updated</th>

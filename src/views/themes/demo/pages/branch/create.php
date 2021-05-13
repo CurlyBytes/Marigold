@@ -17,11 +17,11 @@
 										<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">
-														<label class="form-label" for="locationnameidparent">District Name</label>
+														<label class="form-label" for="locationnameidparent">Area Name</label>
 														<select class="form-control mb-3 <?php echo (form_error('locationnameidparent') ? 'is-invalid' : 'is-valid');?>" id="locationnameidparent" name="locationnameidparent">
 															<option>--------</option>
-															<?php foreach ($district as $districtrow): ?>
-																<option value="<?php echo $districtrow->LocationNameId; ?>" <?php echo html_escape(set_select('locationnameidparent', $districtrow->LocationNameId, ((empty(set_select('locationnameidparent', $districtrow->LocationNameId)) ) ? true : false ))); ?> ><?php echo $districtrow->LocationName; ?></option>
+															<?php foreach ($area as $arearow): ?>
+																<option value="<?php echo $arearow->LocationNameId; ?>" <?php echo html_escape(set_select('locationnameidparent', $arearow->LocationNameId, ((empty(set_select('locationnameidparent', $arearow->LocationNameId)) ) ? true : false ))); ?> ><?php echo $arearow->LocationName; ?></option>
 															<?php endforeach; ?>
 														</select>
 														<?php echo form_error('locationnameidparent'); ?> 

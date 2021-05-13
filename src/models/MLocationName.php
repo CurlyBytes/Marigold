@@ -135,18 +135,49 @@ class MLocationName extends MariGold_Model {
 
 
     public function hasLocationNameExist($locationNameId, $locationTypeId, $locationName){
-        $query = $this->db->get_where($this->locationName, 
-            array(
-                'LocationNameId !=' => $locationNameId ,
-                'LocationTypeId' => $locationTypeId ,
-                'LocationName' => $locationName
-            )
-        );
+
+        $query = '';
+        $paramaters = array(
+            'LocationTypeId' => $locationTypeId ,
+            'LocationName' => $locationName
+            );
+
+        if($locationNameId == false){
+            $paramaters['LocationNameId !='] = $LocationNameId;
+        }
+       
+        
+        $query = $this->db->get_where($this->locationName,  $paramaters);
+        
 
         if(empty($query->row_array())){
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
+        }
+    }
+
+
+    public function hasLocationNameExistWithParentId($locationNameId, $locationParentId, $locationTypeId, $locationName){
+
+        $locationGroup = array(
+            'LocationGroup.LocationNameIdParent' => $locationParentId ,
+            'LocationGroup.LocationNameIdChild !=' => $locationNameId,
+            'LocationName.LocationTypeId' => $locationTypeId ,
+            'LocationName.LocationName' => $locationName,
+            'LocationName.LocationNameId' => $locationNameId
+            );
+
+        $this->db->select('LocationName');
+        $this->db->from($this->locationGroup . ' AS LocationGroup');
+        $this->db->join($this->locationName . ' AS LocationName' , 'LocationGroup.LocationNameIdParent = LocationName.LocationNameId','LEFT');
+        $this->db->where($locationGroup);
+        $query = $this->db->get()->result();
+
+        if(empty($query)){
+            return false;
+        } else {
+            return true;
         }
     }
 

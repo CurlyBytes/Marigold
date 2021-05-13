@@ -17,7 +17,7 @@
 									<div class="column">
 										<?php echo form_open('district/modify/'. $district->LocationNameId); ?>
 										<input type="hidden" name="locationnameid" value="<?php echo $district->LocationNameId; ?>">
-										<input type="hidden" name="locationgroupid" value="<?php echo $group->LocationGroupId; ?>">
+										
 											<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">

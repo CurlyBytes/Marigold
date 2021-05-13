@@ -76,7 +76,7 @@ $query_builder = TRUE;
 //TASK: getenv on envinroment
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '172.19.0.3',
+	'hostname' => '172.19.0.2',
 	'username' => 'root',
 	'password' => 'secret',
 	'database' => 'sample',

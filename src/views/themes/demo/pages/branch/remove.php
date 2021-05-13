@@ -15,15 +15,16 @@
 								<div class="card-body">
 
 									<div class="column">
-										<?php echo form_open('branch/modify/'. $branch->LocationNameId); ?>
+										<?php echo form_open('branch/remove/'. $branch->LocationNameId); ?>
 										<input type="hidden" name="locationnameid" value="<?php echo $branch->LocationNameId; ?>">
+										<input type="hidden" name="locationgroupid" value="<?php echo $group->LocationGroupId; ?>">
 											<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">
-														<label class="form-label" for="locationnameidparent">District Name</label>
+														<label class="form-label" for="locationnameidparent">Area Name</label>
 														<select class="form-control mb-3" id="locationnameidparent" name="locationnameidparent" readonly>
-															<?php foreach ($district as $districtrow): ?>
-																<option value="<?php echo $districtrow->LocationNameId; ?>" <?php echo html_escape(set_select('locationnameidparent', $districtrow->LocationNameId, ((empty(set_select('locationnameidparent', $districtrow->LocationNameId)) ) ? true : false ))); ?> ><?php echo $districtrow->LocationName; ?></option>
+															<?php foreach ($area as $arearow): ?>
+																<option value="<?php echo $arearow->LocationNameId; ?>" <?php echo html_escape(set_select('locationnameidparent', $arearow->LocationNameId, ((empty(set_select('locationnameidparent', $arearow->LocationNameId)) ) ? true : false ))); ?> ><?php echo $arearow->LocationName; ?></option>
 															<?php endforeach; ?>
 														</select>
 														<?php echo form_error('locationnameidparent'); ?> 
@@ -41,7 +42,7 @@
 												</div>
 											</div>
 
-											<button type="submit" class="btn btn-primary btn-block">Proceed</button>
+											<button type="submit" class="btn btn-danger btn-block">Proceed</button>
 											<a class="btn btn-secondary col" href="<?php echo site_url('branch'); ?>"> Cancel</a>
 										<?php echo form_close(); ?>  
 									</div>
