@@ -76,13 +76,8 @@
                                                         <td><?php echo html_escape($regionrow->LocationName); ?></td>
                                                         <td><?php echo html_escape($regionrow->CreatedAt); ?></td>
                                                         <td><?php echo html_escape($regionrow->UpdatedAt); ?></td>
-                                                        <td>
-                                                        
-
-                                                        <a class="btn btn-primary" href="<?php echo site_url('region/modify/'.$regionrow->LocationNameId); ?>"> modify</a>
-                                                        <a class="btn btn-danger" href="<?php echo site_url('region/remove/'.$regionrow->LocationNameId); ?>"> remove</a>
-
-                                                        </td>
+                                                        <td><a class="btn btn-primary" href="<?php echo site_url('region/modify/'.$regionrow->LocationNameId); ?>"> modify</a></td>
+                                                        <td><a class="btn btn-danger" href="<?php echo site_url('region/remove/'.$regionrow->LocationNameId); ?>"> remove</a></td>
                                                     </tr>
                                                 <?php 
                                                         endforeach;

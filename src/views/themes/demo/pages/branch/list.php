@@ -77,18 +77,14 @@
                                                         <td><?php echo html_escape($branchrow->ChildName); ?></td>
                                                         <td><?php echo html_escape($branchrow->CreatedAt); ?></td>
                                                         <td><?php echo html_escape($branchrow->UpdatedAt); ?></td>
-                                                        <td>
-
-                                                        <a class="btn btn-primary" href="<?php echo site_url('branch/modify/'.$branchrow->LocationNameId); ?>"> modify</a>
-                                                        <a class="btn btn-danger" href="<?php echo site_url('branch/remove/'.$branchrow->LocationNameId); ?>"> remove</a>
-
-                                                        </td>
+                                                        <td><a class="btn btn-primary" href="<?php echo site_url('branch/modify/'.$branchrow->LocationNameId); ?>"> modify</a></td>
+                                                        <td><a class="btn btn-danger" href="<?php echo site_url('branch/remove/'.$branchrow->LocationNameId); ?>"> remove</a></td>
                                                     </tr>
                                             <?php 
                                                     endforeach;
                                                 } else {
                                             ?>
-                                                        <tr><td colspan="6">No Branch record found.</td></tr>
+                                                        <tr><td colspan="7">No Branch record found.</td></tr>
                                             <?php 
                                                 }
                                             ?>

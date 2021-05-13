@@ -70,25 +70,20 @@
                                                 if($district){
                                                     foreach ($district as $districtrow): 
                                             ?>
-                                
                                                     <tr>
                                                         <td><?php echo html_escape($districtrow->LocationNameId); ?></td>
                                                         <td><?php echo html_escape($districtrow->ParentName); ?></td>
                                                         <td><?php echo html_escape($districtrow->ChildName); ?></td>
                                                         <td><?php echo html_escape($districtrow->CreatedAt); ?></td>
                                                         <td><?php echo html_escape($districtrow->UpdatedAt); ?></td>
-                                                        <td>
-
-                                                        <a class="btn btn-primary" href="<?php echo site_url('district/modify/'.$districtrow->LocationNameId); ?>"> modify</a>
-                                                        <a class="btn btn-danger" href="<?php echo site_url('district/remove/'.$districtrow->LocationNameId); ?>"> remove</a>
-
-                                                        </td>
+                                                        <td><a class="btn btn-primary" href="<?php echo site_url('district/modify/'.$districtrow->LocationNameId); ?>"> modify</a></td>
+                                                        <td><a class="btn btn-danger" href="<?php echo site_url('district/remove/'.$districtrow->LocationNameId); ?>"> remove</a></td>
                                                     </tr>
                                             <?php 
                                                     endforeach;
                                                 } else {
                                             ?>
-                                                        <tr><td colspan="6">No District record found.</td></tr>
+                                                        <tr><td colspan="7">No District record found.</td></tr>
                                             <?php 
                                                 }
                                             ?>

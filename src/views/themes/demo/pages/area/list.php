@@ -77,18 +77,15 @@
                                                         <td><?php echo html_escape($arearow->ChildName); ?></td>
                                                         <td><?php echo html_escape($arearow->CreatedAt); ?></td>
                                                         <td><?php echo html_escape($arearow->UpdatedAt); ?></td>
-                                                        <td>
-
-                                                        <a class="btn btn-primary" href="<?php echo site_url('area/modify/'.$arearow->LocationNameId); ?>"> modify</a>
-                                                        <a class="btn btn-danger" href="<?php echo site_url('area/remove/'.$arearow->LocationNameId); ?>"> remove</a>
-
+                                                        <td><a class="btn btn-primary" href="<?php echo site_url('area/modify/'.$arearow->LocationNameId); ?>"> modify</a>
                                                         </td>
+                                                        <td><a class="btn btn-danger" href="<?php echo site_url('area/remove/'.$arearow->LocationNameId); ?>"> remove</a></td>
                                                     </tr>
                                             <?php 
                                                     endforeach;
                                                 } else {
                                             ?>
-                                                        <tr><td colspan="6">No Area record found.</td></tr>
+                                                        <tr><td colspan="7">No Area record found.</td></tr>
                                             <?php 
                                                 }
                                             ?>
