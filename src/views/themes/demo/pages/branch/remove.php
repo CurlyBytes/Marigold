@@ -22,7 +22,7 @@
 												<div class="col mb-3">
 													<div class="form-group">
 														<label class="form-label" for="locationnameidparent">Area Name</label>
-														<select class="form-control mb-3 <?php echo (form_error('locationnameidparent') ? 'is-invalid' : 'is-valid');?>" id="locationnameidparent" name="locationnameidparent">
+														<select class="form-control mb-3 <?php echo (form_error('locationnameidparent') ? 'is-invalid' : 'is-valid');?>" id="locationnameidparent" name="locationnameidparent" readonly>
 														<?php if(empty($area)) { ?>
 																<option>--No Area Option.--</option>															
 														<?php } else { ?>
@@ -38,7 +38,7 @@
 												<div class="col mb-3">
 													<div class="form-group">
 														<label class="form-label" for="locationname">Branch Name</label>
-														<input type="text" class="form-control <?php echo (form_error('locationname') ? 'is-invalid' : 'is-valid');?>" id="locationname" name="locationname" placeholder="Branch Name"  value="<?php echo html_escape(set_value('locationname', $branch->LocationName)); ?>">
+														<input type="text" class="form-control <?php echo (form_error('locationname') ? 'is-invalid' : 'is-valid');?>" id="locationname" name="locationname" placeholder="Branch Name"  value="<?php echo html_escape(set_value('locationname', $branch->LocationName)); ?>" readonly>
 														<?php echo form_error('locationname'); ?> 
 													</div>							
 												</div>
