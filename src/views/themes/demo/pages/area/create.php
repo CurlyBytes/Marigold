@@ -32,7 +32,7 @@
 	
 													<div class="form-group">
 														<label class="form-label" for="locationname">Area Name</label>
-														<input type="text" class="form-control  <?php echo (form_error('locationname') ? 'is-invalid' : 'is-valid');?>">
+														<input type="text" class="form-control  <?php echo (form_error('locationname') ? 'is-invalid' : 'is-valid');?>" id="locationname" name="locationname" placeholder="Area Name" value="<?php echo html_escape(set_value('locationname')); ?>">
 														<?php echo form_error('locationname'); ?> 
 													</div>
 													

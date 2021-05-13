@@ -72,11 +72,11 @@
                                             ?>
                                 
                                                     <tr>
-                                                        <td><?php echo $districtrow->LocationNameId; ?></td>
-                                                        <td><?php echo  $districtrow->ParentName; ?></td>
-                                                        <td><?php echo  $districtrow->ChildName; ?></td>
-                                                        <td><?php echo  $districtrow->CreatedAt; ?></td>
-                                                        <td><?php  echo $districtrow->UpdatedAt; ?></td>
+                                                        <td><?php echo html_escape($districtrow->LocationNameId); ?></td>
+                                                        <td><?php echo html_escape($districtrow->ParentName); ?></td>
+                                                        <td><?php echo html_escape($districtrow->ChildName); ?></td>
+                                                        <td><?php echo html_escape($districtrow->CreatedAt); ?></td>
+                                                        <td><?php echo html_escape($districtrow->UpdatedAt); ?></td>
                                                         <td>
 
                                                         <a class="btn btn-primary" href="<?php echo site_url('district/modify/'.$districtrow->LocationNameId); ?>"> modify</a>

@@ -23,7 +23,7 @@
 												<div class="mb-3">
 													<div class="form-group">
 														<label class="form-label" for="locationname">Region Name</label>
-														<input type="text" class="form-control" id="locationname" name="locationname" placeholder="Region Name" value="<?php echo $locationname; ?>" readonly>
+														<input type="text" class="form-control" id="locationname" name="locationname" placeholder="Region Name" value="<?php echo html_escape($locationname); ?>" readonly>
 														<?php echo form_error('locationname'); ?> 
 													</div>
 													

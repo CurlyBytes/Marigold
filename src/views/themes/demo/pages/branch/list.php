@@ -27,14 +27,14 @@
                 </div>
                 <?php } ?>
                 <?php if ($this->session->flashdata('session_branch_remove')){ ?>
-                 <div class="row">    
+                <div class="row">    
                     <div class="alert alert-danger alert-outline-coloured alert-dismissible" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         <div class="alert-icon">
                             <i class="far fa-fw fa-bell"></i>
                         </div>
                         <div class="alert-message">
-                            <strong>Updated</strong> - <?php echo $this->session->flashdata('session_branch_modify'); ?>
+                            <strong>Deleted</strong> - <?php echo $this->session->flashdata('session_branch_remove'); ?>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>District Name</th>
+                                                <th>Area Name</th>
                                                 <th>Branch Name</th>
                                                 <th>Date Created</th>
                                                 <th>Date Updated</th>
@@ -72,11 +72,11 @@
                                             ?>
                                 
                                                     <tr>
-                                                        <td><?php echo $branchrow->LocationNameId; ?></td>
-                                                        <td><?php echo  $branchrow->ParentName; ?></td>
-                                                        <td><?php echo  $branchrow->ChildName; ?></td>
-                                                        <td><?php echo  $branchrow->CreatedAt; ?></td>
-                                                        <td><?php  echo $branchrow->UpdatedAt; ?></td>
+                                                        <td><?php echo html_escape($branchrow->LocationNameId); ?></td>
+                                                        <td><?php echo html_escape($branchrow->ParentName); ?></td>
+                                                        <td><?php echo html_escape($branchrow->ChildName); ?></td>
+                                                        <td><?php echo html_escape($branchrow->CreatedAt); ?></td>
+                                                        <td><?php echo html_escape($branchrow->UpdatedAt); ?></td>
                                                         <td>
 
                                                         <a class="btn btn-primary" href="<?php echo site_url('branch/modify/'.$branchrow->LocationNameId); ?>"> modify</a>

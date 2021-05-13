@@ -72,10 +72,11 @@
                                             ?>
                                   
                                                      <tr>
-                                                        <td><?php echo $regionrow->LocationNameId; ?></td>
-                                                        <td><?php echo  $regionrow->LocationName; ?></td>
-                                                        <td><?php echo  $regionrow->CreatedAt; ?></td>
-                                                        <td><?php  echo $regionrow->UpdatedAt; ?></td>
+                                                        <td><?php echo html_escape($regionrow->LocationNameId); ?></td>
+                                                        <td><?php echo html_escape($regionrow->LocationName); ?></td>
+                                                        <td><?php echo html_escape($regionrow->CreatedAt); ?></td>
+                                                        <td><?php echo html_escape($regionrow->UpdatedAt); ?></td>
+                                                        <td>
                                                         <td>
 
                                                         <a class="btn btn-primary" href="<?php echo site_url('region/modify/'.$regionrow->LocationNameId); ?>"> modify</a>

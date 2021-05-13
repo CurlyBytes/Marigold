@@ -21,10 +21,10 @@
 											<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">
-														<label class="form-label" for="locationnameidparent">Area Name</label>
-														<select class="form-control mb-3" id="locationnameidparent" name="locationnameidparent" readonly>
+														<label class="form-label" for="locationnameidparent">District Name</label>
+														<select class="form-control mb-3 <?php echo (form_error('locationnameidparent') ? 'is-invalid' : 'is-valid');?>" id="locationnameidparent" name="locationnameidparent">
 															<?php foreach ($district as $districtrow): ?>
-																<option value="<?php echo $districtrow->LocationNameId; ?>" <?php echo html_escape(set_select('locationnameidparent', $districtrow->LocationNameId, ((empty(set_select('locationnameidparent', $arearow->LocationNameId)) ) ? true : false ))); ?> ><?php echo $districtrow->LocationName; ?></option>
+																<option value="<?php echo $districtrow->LocationNameId; ?>" <?php echo set_select('locationnameidparent', $districtrow->LocationNameId, (($districtrow->LocationNameId == $group->LocationNameIdParent) ? true: false)); ?> ><?php echo $districtrow->LocationName; ?></option>
 															<?php endforeach; ?>
 														</select>
 														<?php echo form_error('locationnameidparent'); ?> 
@@ -32,13 +32,11 @@
 													
 												</div>
 												<div class="col mb-3">
-	
 													<div class="form-group">
 														<label class="form-label" for="locationname">Area Name</label>
-														<input type="text" class="form-control" id="locationname" name="locationname" placeholder="Area Name"  readonly value="<?php echo html_escape(set_value('locationname', $area->LocationName)); ?>">
+														<input type="text" class="form-control <?php echo (form_error('locationname') ? 'is-invalid' : 'is-valid');?>" id="locationname" name="locationname" placeholder="Area Name"  value="<?php echo html_escape(set_value('locationname', $area->LocationName)); ?>">
 														<?php echo form_error('locationname'); ?> 
-													</div>
-													
+													</div>							
 												</div>
 											</div>
 

@@ -69,6 +69,7 @@ class Page extends MariGold_Controller {
         $data['area'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
         $data['group'] = $this->MLocationName->getSpecificLocationGroupByLocationNameIdChild($locationNameId);
 
+        
         if($data['area'] === null){
             show_404();
         }
@@ -84,7 +85,7 @@ class Page extends MariGold_Controller {
             $this->session->set_flashdata('session_area_modify','Area updated successfully:'. $this->input->post('locationname'));
             redirect(base_url('area'));
         }
-       // die(var_dump($data));
+
         $this->layout->set_title('Area - Modify');
         $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));
         $this->load->view('themes/demo/includes/header');
@@ -96,15 +97,16 @@ class Page extends MariGold_Controller {
     {
         $data['district'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_DISTRICT);
         $data['area'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
+        $data['group'] = $this->MLocationName->getSpecificLocationGroupByLocationNameIdChild($locationNameId);
 
         if($data['area'] === null){
             show_404();
         }
         
-
         if($this->input->post() && $this->form_validation->run('area/remove') === true){
             $data = array(
-				'locationnameid' => $this->input->post('locationnameid')
+				'locationnameid' => $this->input->post('locationnameid'),
+                'locationgroupid' => $this->input->post('locationgroupid'),
 			);
             $this->MLocationName->remove($data);
             $this->session->set_flashdata('session_area_remove','Area remove successfully:'. $this->input->post('locationname'));
@@ -121,11 +123,11 @@ class Page extends MariGold_Controller {
     public function _area_name_exist()
     {
         $locationNameId = $this->input->post('locationnameid');
+        $locationNameIddParent = $this->input->post('locationnameidparent');   
         $locationName = $this->input->post('locationname');
-        $locationNameIdParent = $this->input->post('locationnameidparent');
-        $isExist = $this->MLocationName->hasLocationNameExist($locationNameId, GUID_AREA, $locationName);
+        $isExist = $this->MLocationName->hasLocationNameExistWithParentId($locationNameId, $locationNameIddParent, GUID_AREA, $locationName);
 
-        if ($isExist === true)
+        if ($isExist === true )
         {
             $this->form_validation->set_message('_area_name_exist', 'The {field} already exist.');
             return false;
@@ -141,7 +143,7 @@ class Page extends MariGold_Controller {
 
         if ($isExist === false)
         {
-            $this->form_validation->set_message('_region_name_exist', 'The {field} field does not exist.');
+            $this->form_validation->set_message('_district_name_exist', 'The {field} field does not exist.');
             return false;
         }else{
             return true;

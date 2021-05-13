@@ -58,7 +58,7 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Area Name</th>
+                                                <th>District Name</th>
                                                 <th>Area Name</th>
                                                 <th>Date Created</th>
                                                 <th>Date Updated</th>
@@ -72,11 +72,11 @@
                                             ?>
                                 
                                                     <tr>
-                                                        <td><?php echo $arearow->LocationNameId; ?></td>
-                                                        <td><?php echo  $arearow->ParentName; ?></td>
-                                                        <td><?php echo  $arearow->ChildName; ?></td>
-                                                        <td><?php echo  $arearow->CreatedAt; ?></td>
-                                                        <td><?php  echo $arearow->UpdatedAt; ?></td>
+                                                        <td><?php echo html_escape($arearow->LocationNameId); ?></td>
+                                                        <td><?php echo html_escape($arearow->ParentName); ?></td>
+                                                        <td><?php echo html_escape($arearow->ChildName); ?></td>
+                                                        <td><?php echo html_escape($arearow->CreatedAt); ?></td>
+                                                        <td><?php echo html_escape($arearow->UpdatedAt); ?></td>
                                                         <td>
 
                                                         <a class="btn btn-primary" href="<?php echo site_url('area/modify/'.$arearow->LocationNameId); ?>"> modify</a>

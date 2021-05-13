@@ -43,7 +43,7 @@ class Page extends MariGold_Controller {
 
     public function create()
     {
-        $data['branch'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
+        $data['area'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
 
         if($this->input->post() && $this->form_validation->run('branch/create') === true){
             $data = array(
@@ -65,10 +65,11 @@ class Page extends MariGold_Controller {
 
     public function modify($locationNameId)
     {
-        $data['branch'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
+        $data['area'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
         $data['branch'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
         $data['group'] = $this->MLocationName->getSpecificLocationGroupByLocationNameIdChild($locationNameId);
 
+        
         if($data['branch'] === null){
             show_404();
         }
@@ -84,7 +85,7 @@ class Page extends MariGold_Controller {
             $this->session->set_flashdata('session_branch_modify','Branch updated successfully:'. $this->input->post('locationname'));
             redirect(base_url('branch'));
         }
-       // die(var_dump($data));
+
         $this->layout->set_title('Branch - Modify');
         $this->layout->set_body_attr(array('id' => 'branch', 'class' => 'branch'));
         $this->load->view('themes/demo/includes/header');
@@ -94,17 +95,18 @@ class Page extends MariGold_Controller {
 
     public function remove($locationNameId)
     {
-        $data['branch'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
+        $data['area'] = $this->MLocationName->getAllLocationNameByLocationTypeNoPagination(GUID_AREA);
         $data['branch'] = $this->MLocationName->getSpecificLocationNameByLocationType($locationNameId);
+        $data['group'] = $this->MLocationName->getSpecificLocationGroupByLocationNameIdChild($locationNameId);
 
         if($data['branch'] === null){
             show_404();
         }
         
-
         if($this->input->post() && $this->form_validation->run('branch/remove') === true){
             $data = array(
-				'locationnameid' => $this->input->post('locationnameid')
+				'locationnameid' => $this->input->post('locationnameid'),
+                'locationgroupid' => $this->input->post('locationgroupid'),
 			);
             $this->MLocationName->remove($data);
             $this->session->set_flashdata('session_branch_remove','Branch remove successfully:'. $this->input->post('locationname'));
@@ -121,11 +123,11 @@ class Page extends MariGold_Controller {
     public function _branch_name_exist()
     {
         $locationNameId = $this->input->post('locationnameid');
+        $locationNameIddParent = $this->input->post('locationnameidparent');   
         $locationName = $this->input->post('locationname');
-        $locationNameIdParent = $this->input->post('locationnameidparent');
-        $isExist = $this->MLocationName->hasLocationNameExist($locationNameId, GUID_BRANCH, $locationName);
+        $isExist = $this->MLocationName->hasLocationNameExistWithParentId($locationNameId, $locationNameIddParent, GUID_BRANCH, $locationName);
 
-        if ($isExist === true)
+        if ($isExist === true )
         {
             $this->form_validation->set_message('_branch_name_exist', 'The {field} already exist.');
             return false;
@@ -141,7 +143,7 @@ class Page extends MariGold_Controller {
 
         if ($isExist === false)
         {
-            $this->form_validation->set_message('_region_name_exist', 'The {field} field does not exist.');
+            $this->form_validation->set_message('_area_name_exist', 'The {field} field does not exist.');
             return false;
         }else{
             return true;
