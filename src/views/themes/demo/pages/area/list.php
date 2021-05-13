@@ -88,7 +88,7 @@
                                                     endforeach;
                                                 } else {
                                             ?>
-                                                        <tr><td colspan="6">No Area record found.</td></trd>
+                                                        <tr><td colspan="6">No Area record found.</td></tr>
                                             <?php 
                                                 }
                                             ?>

@@ -62,7 +62,7 @@
                                                 <th>Region Name</th>
                                                 <th>Date Created</th>
                                                 <th>Date Updated</th>
-                                                <th>Operations</th>
+                                                <th colspan="2">Operations</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -77,7 +77,7 @@
                                                         <td><?php echo html_escape($regionrow->CreatedAt); ?></td>
                                                         <td><?php echo html_escape($regionrow->UpdatedAt); ?></td>
                                                         <td>
-                                                        <td>
+                                                        
 
                                                         <a class="btn btn-primary" href="<?php echo site_url('region/modify/'.$regionrow->LocationNameId); ?>"> modify</a>
                                                         <a class="btn btn-danger" href="<?php echo site_url('region/remove/'.$regionrow->LocationNameId); ?>"> remove</a>
@@ -88,7 +88,7 @@
                                                         endforeach;
                                                     } else {
                                                 ?>
-                                                         <tr><td colspan="6">No District record found.</td></trd>
+                                                         <tr><td colspan="6">No District record found.</td></tr>
                                                 <?php 
                                                     }
                                                 ?>

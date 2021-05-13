@@ -58,8 +58,10 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Region Name</th>
                                                 <th>District Name</th>
                                                 <th>Area Name</th>
+                                                <th>Branch Name</th>
                                                 <th>Date Created</th>
                                                 <th>Date Updated</th>
                                                 <th colspan="2">Operations</th>
@@ -72,21 +74,21 @@
                                             ?>
                                 
                                                     <tr>
-                                                        <td><?php echo html_escape($propose_branchrow->LocationName); ?></td>
-                                                        <td><?php echo html_escape($propose_branchrow->LocationNameId); ?></td>
-
-                                                        <td>
-
-                                                        <a class="btn btn-primary" href="<?php echo site_url('propose-branch/modify/'.$propose_branchrow->LocationNameId); ?>"> modify</a>
-                                                        <a class="btn btn-danger" href="<?php echo site_url('propose-branch/remove/'.$propose_branchrow->LocationNameId); ?>"> remove</a>
-
-                                                        </td>
+                                                        <td><?php echo html_escape($propose_branchrow->BranchInformationId); ?></td>
+                                                        <td><?php echo html_escape($propose_branchrow->BranchName); ?></td>
+                                                        <td><?php echo html_escape($propose_branchrow->AreaName); ?></td>
+                                                        <td><?php echo html_escape($propose_branchrow->DistrictName); ?></td>
+                                                        <td><?php echo html_escape($propose_branchrow->RegionName); ?></td>
+                                                        <td><?php echo html_escape($propose_branchrow->CreatedAt); ?></td>
+                                                        <td><?php echo html_escape($propose_branchrow->UpdatedAt); ?></td>
+                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/modify/'.$propose_branchrow->BranchInformationId); ?>"> modify</a></td>
+                                                        <td><a class="btn btn-danger" href="<?php echo site_url('propose-branch/remove/'.$propose_branchrow->BranchInformationId); ?>"> remove</a></td>
                                                     </tr>
                                             <?php 
                                                     endforeach;
                                                 } else {
                                             ?>
-                                                        <tr><td colspan="6">No Propose Branch record found.</td></trd>
+                                                        <tr><td colspan="9">No Propose Branch record found.</td></tr>
                                             <?php 
                                                 }
                                             ?>

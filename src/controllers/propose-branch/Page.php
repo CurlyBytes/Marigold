@@ -32,8 +32,8 @@ class Page extends MariGold_Controller {
         
         $this->pagination->initialize($settings);
         $data["links"] = $this->pagination->create_links();
-        $data['propose_branch'] = $this->MBranchInformation->branchWithoutLocation();
-     
+        $data['propose_branch'] = $this->MBranchInformation->getAllProposeBranch($per_page, $page );
+       // die(var_dump($data['propose_branch'] ));
         $this->layout->set_title("Propose Branch - List");
         $this->layout->set_body_attr(array('id' => 'propose-branch', 'class' => 'propose-branch'));	
         $this->load->view('themes/demo/includes/header');

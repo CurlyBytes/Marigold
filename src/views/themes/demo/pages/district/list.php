@@ -88,7 +88,7 @@
                                                     endforeach;
                                                 } else {
                                             ?>
-                                                        <tr><td colspan="6">No District record found.</td></trd>
+                                                        <tr><td colspan="6">No District record found.</td></tr>
                                             <?php 
                                                 }
                                             ?>

@@ -88,7 +88,7 @@
                                                     endforeach;
                                                 } else {
                                             ?>
-                                                        <tr><td colspan="6">No Branch record found.</td></trd>
+                                                        <tr><td colspan="6">No Branch record found.</td></tr>
                                             <?php 
                                                 }
                                             ?>
