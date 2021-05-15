@@ -23,28 +23,19 @@ class Page extends MariGold_Controller {
 		if(!file_exists(APPPATH.'views/themes/demo/pages/branch_expansion/geomap.php')){
 			show_404();
 		}
-       
-        $data['branch'] = $this->MGeoMap->branchWithoutLocation();
-        $propose_branch['propose_branch'] = null;
-        
-        if($this->input->post() && $this->form_validation->run('branch-expansion/monthyear-filter') === true){
+              
+        if($this->input->post() && $this->form_validation->run('branch-expansion') === true){
             $parameter = array(
-                'branchid' => $this->input->post('branchid'),
-                'beginningdate' => $this->input->post('beginningdate'),
-                'endingdate' => $this->input->post('endingdate')
+                'openingdate' => $this->input->post('openingdate')
             );
-            $propose_branch['propose_branch'] = $this->MGeoMap->getAllProposeLocationWithOpeningDateRange($parameter);
         }else{
             $dateToday = date('Y-m-d'); 
-            $dateComputation = date_create($dateToday);
-            $endingdate = date_add($dateComputation, date_interval_create_from_date_string('1 month'));
             $parameter = array(
-                'beginningdate' => $dateToday,
-                'endingdate' => $endingdate->format('Y-m-d')
-            );
-            $propose_branch['propose_branch'] = $this->MGeoMap->getAllProposeLocationWithOpeningDateRange($parameter);
+                'openingdate' => $dateToday
+            );      
         }
-
+        $data['branch'] = $this->MGeoMap->branchWithoutLocation();
+        $propose_branch['propose_branch'] = $this->MGeoMap->getAllProposeLocationWithOpeningDateRange($parameter);
         if(!empty($propose_branch['propose_branch'])){
             $js_geomap_javascript = $this->load->view('themes/demo/pages/branch_expansion/geomap_javascript', $propose_branch, true);
             $this->layout->add_js_rawtext($js_geomap_javascript, 'footer');
@@ -55,6 +46,14 @@ class Page extends MariGold_Controller {
         $this->load->view('themes/demo/pages/branch_expansion/geomap', $data);
         $this->load->view('themes/demo/includes/footer');
 	}
+
+    // $dateToday = date('Y-m-d'); 
+    // $dateComputation = date_create($dateToday);
+    // $endingDate = date_add($dateComputation, date_interval_create_from_date_string('1 month'));
+    // $parameter = array(
+    //     'openingdate' => $dateToday,
+    //     'endingdate' => $endingDate->format('Y-m-d')
+    // );
 
     //TODO: add button for branch approval  
     public function create()
@@ -77,5 +76,28 @@ class Page extends MariGold_Controller {
         $this->load->view('themes/demo/pages/area/create', $data);
         $this->load->view('themes/demo/includes/footer');
     }
+    
+    public function _branch_name_exist()
+    {
+        $branchid = $this->input->post('branchid');
+        $isExist = $this->MBranchInformation->IsBranchIdExist($branchid , GUID_BRANCH);
 
+        if ($isExist === false)
+        {
+            $this->form_validation->set_message('_branch_name_exist', 'The {field} record does not exist.');
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public function _valid_date($date, $format){
+        $d = DateTime::createFromFormat($format, $date);
+        if($d && $d->format($format) == $date) {
+            return true;
+        } else {
+            $this->form_validation->set_message('_valid_date', 'The {field} field must have a Date format.');
+            return false;
+        }
+    }
 }

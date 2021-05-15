@@ -96,6 +96,9 @@
             arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude'),
             arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude'),
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]')
+        ),
+        'branch-expansion' => array(
+            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m]')
         )
     );
 

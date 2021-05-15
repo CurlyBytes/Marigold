@@ -47,10 +47,8 @@ class MGeoMap extends MariGold_Model {
         $this->db->join('LocationName AS Area', 'Area.LocationNameId=BranchInformation.AreaId');
         $this->db->join('LocationName AS Branch', 'Branch.LocationNameId=BranchInformation.BranchId');
         $this->db->where('BranchInformation.IsApprove', $this->BranchProposalForApproval);
-        $this->db->where('BranchInformation.OpeningDate >=',$data['beginningdate']);
-        $this->db->where('BranchInformation.OpeningDate <=', $data['endingdate']);
-        $query = $this->db->get()->result();
-       
+        $this->db->where('DATE_FORMAT(BranchInformation.OpeningDate,"%Y-%m")',$data['openingdate']);
+        $query = $this->db->get()->result();   
         return $query;
     }
   
@@ -61,10 +59,6 @@ class MGeoMap extends MariGold_Model {
     }
 
 
-    public function getApproveBranchLocationList($data){
-        $query = $this->db->get_where('BranchInformation', array('IsApprove' => $this->BranchWasApproved));
-        return $query->result();
-    }
 
     public function IsBranchIdExist($locationNameId, $locationTypeId){
         $query = $this->db->get_where('LocationName', 
