@@ -14,15 +14,14 @@ class MBranchInformation extends MariGold_Model {
 
     	//Insert single data
 	public function branchWithoutLocation(){    
- 
-        $this->db->select('LocationName, LocationNameId');
-        $this->db->from('LocationName AS LocationName');
-        $this->db->join('BranchInformation AS BranchInformation', 'BranchInformation.BranchId = LocationName.LocationNameId','LEFT');
-        $this->db->where('LocationName.LocationTypeId', GUID_BRANCH);
-        $this->db->where('BranchInformation.IsApprove', null);
-        $this->db->or_where('BranchInformation.IsApprove', $this->BranchProposalForApproval);
 
-        return $this->db->get()->result();
+        $this->db->select("LocationName, LocationNameId");
+        $this->db->from('LocationName AS LocationName');
+        $this->db->where('LocationName.LocationTypeId', GUID_BRANCH);
+        $this->db->join('BranchInformation AS BranchInformation', 'BranchInformation.BranchId = LocationName.LocationNameId','left');
+        $this->db->group_by('LocationNameId');
+
+        return $this->db->get()->result();     
     }
 	
 

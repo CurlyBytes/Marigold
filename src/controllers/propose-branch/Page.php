@@ -44,7 +44,7 @@ class Page extends MariGold_Controller {
 
     public function create()
     {
-        $data['propose_branch'] = $this->MBranchInformation->branchWithoutLocation();
+        $data['branch'] = $this->MBranchInformation->branchWithoutLocation();
 
         if($this->input->post() && $this->form_validation->run('propose-branch/create') === true){
             $data = array(
@@ -67,9 +67,9 @@ class Page extends MariGold_Controller {
 
     public function modify($locationNameId)
     {
-        $data['district'] = $this->MBranchInformation->getAllLocationNameByLocationTypeNoPagination(GUID_DISTRICT);
-        $data['area'] = $this->MBranchInformation->getSpecificLocationNameByLocationType($locationNameId);
-        $data['group'] = $this->MBranchInformation->getSpecificLocationGroupByLocationNameIdChild($locationNameId);
+       // $data['district'] = $this->MBranchInformation->getAllLocationNameByLocationTypeNoPagination(GUID_DISTRICT);
+       // $data['area'] = $this->MBranchInformation->getSpecificLocationNameByLocationType($locationNameId);
+      //  $data['group'] = $this->MBranchInformation->getSpecificLocationGroupByLocationNameIdChild($locationNameId);
 
         
         if($data['area'] === null){

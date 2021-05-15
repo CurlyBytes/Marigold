@@ -79,6 +79,7 @@ class Page extends MariGold_Controller {
                 'locationnameid' => $this->input->post('locationnameid'),
                 'locationnameidparent' => $this->input->post('locationnameidparent'),
 				'locationname' => $this->input->post('locationname'),
+                'locationtypeid' => GUID_BRANCH,
                 'locationgroupid' => $this->input->post('locationgroupid')
 			);
             $this->MLocationName->modify($data);

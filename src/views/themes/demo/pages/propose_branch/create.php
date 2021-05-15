@@ -18,13 +18,13 @@
 										<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">
-														<label class="form-label" for="branchid">District Name</label>
+														<label class="form-label" for="branchid">Branch Name</label>
 														<select class="form-control mb-3 <?php echo (form_error('branchid') ? 'is-invalid' : 'is-valid');?>" id="branchid" name="branchid">
-														<?php if(empty($propose_branch)) { ?>
+														<?php if(empty($branch)) { ?>
 																<option>--No Branch Option.--</option>															
 														<?php } else { ?>
-															<?php foreach ($propose_branch as $propose_branchrow): ?>
-																<option value="<?php echo $propose_branchrow->LocationNameId; ?>" <?php echo html_escape(set_select('branchid', $propose_branchrow->LocationNameId, ((empty(set_select('branchid', $propose_branchrow->LocationNameId)) ) ? true : false ))); ?> ><?php echo $propose_branchrow->LocationName; ?></option>
+															<?php foreach ($branch as $branchrow): ?>
+																<option value="<?php echo $branchrow->LocationNameId; ?>" <?php echo html_escape(set_select('branchid', $branchrow->LocationNameId, ((empty(set_select('branchid', $branchrow->LocationNameId)) ) ? true : false ))); ?> ><?php echo $branchrow->LocationName; ?></option>
 															<?php endforeach; ?>
 														<?php }  ?>
 														</select>

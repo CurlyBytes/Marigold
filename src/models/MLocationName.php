@@ -44,10 +44,12 @@ class MLocationName extends MariGold_Model {
 
     public function modify($data){
         $now = date('Y-m-d H:i:s');
+        $branchId = '';
         $record = array(
             'LocationName' => $data['locationname'],
             'UpdatedAt' => $now
         );
+  
 
         if($data['locationnameidparent']){
             $locationGroupRecord = array(
@@ -56,6 +58,36 @@ class MLocationName extends MariGold_Model {
             );
             $this->db->where($this->locationGroupId, $data['locationgroupid']);
             $this->db->update($this->locationGroup, $locationGroupRecord);
+        }
+        switch($data['locationtypeid']){
+
+            case GUID_DISTRICT:
+                $branchInformation = array(
+                    'RegionId' => $data['locationnameidparent'],
+                    'UpdatedAt' => $now
+                );
+                $this->db->where('DistrictId', $data['locationnameid']);
+                $this->db->update('BranchInformation', $branchInformation);
+            break;
+            case GUID_AREA:
+                $branchInformation = array(
+                    'DistrictId' => $data['locationnameidparent'],
+                    'UpdatedAt' => $now
+                );
+                $this->db->where('AreaId', $data['locationnameid']);
+                $this->db->update('BranchInformation', $branchInformation);
+            break;
+            case GUID_BRANCH:
+                $branchInformation = array(
+                    'AreaId' => $data['locationnameidparent'],
+                    'UpdatedAt' => $now
+                );
+                $this->db->where('BranchId', $data['locationnameid']);
+                $this->db->update('BranchInformation', $branchInformation);
+            break;
+            default:
+   
+            break;
         }
 
         $this->db->where($this->locationNameId, $data['locationnameid']);
@@ -238,4 +270,5 @@ class MLocationName extends MariGold_Model {
             ->where('LocationTypeId', $locationTypeId)
             ->count_all_results();
     }
+
 }
