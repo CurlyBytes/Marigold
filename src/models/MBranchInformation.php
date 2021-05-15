@@ -83,18 +83,15 @@ class MBranchInformation extends MariGold_Model {
     public function modify($data){
         $now = date('Y-m-d H:i:s');
         $branchInformationRecord = array(
-            'RegionId ' => $data['regionid'],
-            'Districtid  ' => $data['districtid'],
-            'AreaId  ' => $data['areaid'],
             'BranchId  ' => $data['branchid'],
             'Latitude ' => $data['latitude'],
             'Longtitude ' => $data['longtitude'],
-            'OpeningDate ' => $data['locationtypeid'],
+            'OpeningDate ' => $data['openingdate'],
             'UpdatedAt' => $now
         );
 
 
-        $this->db->where('BranchInformationId', $data['locationnameid']);
+        $this->db->where('BranchInformationId', $data['branchinformationid']);
         return $this->db->update('BranchInformation', $branchInformationRecord);
     }
 
@@ -106,6 +103,17 @@ class MBranchInformation extends MariGold_Model {
         return true;       
     }
 	
+    public function getSpecificLocationProposeBranch($branchInformationId){
+
+        $query = $this->db
+            ->get_where('BranchInformation', 
+                array('BranchInformationid' => $branchInformationId)
+            )
+            ->row();
+        
+        return $query;
+    }
+
     public function getAllProposeBranch($limit, $start){
         $this->db->select('BranchInformation.BranchInformationId, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
         $this->db->from('BranchInformation');

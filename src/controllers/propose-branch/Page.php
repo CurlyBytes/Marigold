@@ -54,8 +54,8 @@ class Page extends MariGold_Controller {
                 'longtitude' => $this->input->post('longtitude')
 			);
             $this->MBranchInformation->propose($data);
-            $this->session->set_flashdata('session_propose_branch_create','Propose new branch successfully:'. $this->input->post('branchid'));
-         //   redirect(base_url('propose-branch'));
+            $this->session->set_flashdata('session_propose_branch_create','Propose new branch successfully: '. $this->input->post('branchid'));
+            redirect(base_url('propose-branch'));
         }
 
         $this->layout->set_title('Propose Branch - Create');
@@ -65,33 +65,33 @@ class Page extends MariGold_Controller {
         $this->load->view('themes/demo/includes/footer');
     }
 
-    public function modify($locationNameId)
+    public function modify($branchInformationId)
     {
-       // $data['district'] = $this->MBranchInformation->getAllLocationNameByLocationTypeNoPagination(GUID_DISTRICT);
-       // $data['area'] = $this->MBranchInformation->getSpecificLocationNameByLocationType($locationNameId);
-      //  $data['group'] = $this->MBranchInformation->getSpecificLocationGroupByLocationNameIdChild($locationNameId);
+        $data['branch'] = $this->MBranchInformation->branchWithoutLocation();
+        $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
 
         
-        if($data['area'] === null){
+        if($data['propose_branch'] === null){
             show_404();
         }
         
-        if($this->input->post() && $this->form_validation->run('area/modify') === true){
+        if($this->input->post() && $this->form_validation->run('propose-branch/modify') === true){
             $data = array(
-                'locationnameid' => $this->input->post('locationnameid'),
-                'locationnameidparent' => $this->input->post('locationnameidparent'),
-				'locationname' => $this->input->post('locationname'),
-                'locationgroupid' => $this->input->post('locationgroupid')
+                'branchinformationid' => $this->input->post('branchinformationid'),
+				'branchid' => $this->input->post('branchid'),
+                'openingdate' => $this->input->post('openingdate'),
+                'latitude' => $this->input->post('latitude'),
+                'longtitude' => $this->input->post('longtitude')
 			);
             $this->MBranchInformation->modify($data);
-            $this->session->set_flashdata('session_propose_branch_modify','Area updated successfully:'. $this->input->post('locationname'));
-            redirect(base_url('area'));
+            $this->session->set_flashdata('session_propose_branch_modify','Area updated successfully:'. $this->input->post('branchid'));
+            redirect(base_url('propose-branch'));
         }
 
-        $this->layout->set_title('Area - Modify');
-        $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));
+        $this->layout->set_title('Propose Branch - Modify');
+        $this->layout->set_body_attr(array('id' => 'propose-branch', 'class' => 'propose-branch'));
         $this->load->view('themes/demo/includes/header');
-        $this->load->view('themes/demo/pages/area/modify', $data);
+        $this->load->view('themes/demo/pages/propose_branch/modify', $data);
         $this->load->view('themes/demo/includes/footer');
     }
 
@@ -105,7 +105,7 @@ class Page extends MariGold_Controller {
             show_404();
         }
         
-        if($this->input->post() && $this->form_validation->run('area/remove') === true){
+        if($this->input->post() && $this->form_validation->run('propose-branch/remove') === true){
             $data = array(
 				'locationnameid' => $this->input->post('locationnameid'),
                 'locationgroupid' => $this->input->post('locationgroupid'),

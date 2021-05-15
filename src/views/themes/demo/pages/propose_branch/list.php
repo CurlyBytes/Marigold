@@ -39,13 +39,13 @@
                     </div>
                 </div>
                 <?php } ?>
-					<h1 class="h3 mb-3">Area</h1>
+					<h1 class="h3 mb-3">Propose Branch</h1>
                     
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
 								<div class="card-header">
-									<h5 class="card-title mb-0 col">Area - List</h5>
+									<h5 class="card-title mb-0 col">Propose Branch - List</h5>
                                   
 								</div>
 								<div class="card-body">
@@ -75,10 +75,10 @@
                                 
                                                     <tr>
                                                         <td><?php echo html_escape($propose_branchrow->BranchInformationId); ?></td>
-                                                        <td><?php echo html_escape($propose_branchrow->BranchName); ?></td>
-                                                        <td><?php echo html_escape($propose_branchrow->AreaName); ?></td>
-                                                        <td><?php echo html_escape($propose_branchrow->DistrictName); ?></td>
                                                         <td><?php echo html_escape($propose_branchrow->RegionName); ?></td>
+                                                        <td><?php echo html_escape($propose_branchrow->DistrictName); ?></td>
+                                                        <td><?php echo html_escape($propose_branchrow->BranchName); ?></td>
+                                                        <td><?php echo html_escape($propose_branchrow->AreaName); ?></td>                       
                                                         <td><?php echo html_escape($propose_branchrow->CreatedAt); ?></td>
                                                         <td><?php echo html_escape($propose_branchrow->UpdatedAt); ?></td>
                                                         <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/modify/'.$propose_branchrow->BranchInformationId); ?>"> modify</a></td>
