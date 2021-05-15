@@ -97,7 +97,7 @@ class MBranchInformation extends MariGold_Model {
 
     public function remove($data){
         
-        $this->db->where('BranchInformationId ', $data['branchinformationid ']);
+        $this->db->where('BranchInformationId ', $data['branchinformationid']);
         $this->db->delete('BranchInformation');
 
         return true;       

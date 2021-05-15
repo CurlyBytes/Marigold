@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Branch Information System">
 	<meta name="author" content="curlybytes">
@@ -73,15 +72,10 @@
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
-				<a class="sidebar-toggle d-flex">
+				<a class="sidebar-toggle d-flex"></a>
           <i class="hamburger align-self-center"></i>
-        </a>
+        
 
-		<div class="main">
-			<nav class="navbar navbar-expand navbar-light navbar-bg">
-				<a class="sidebar-toggle d-flex">
-          <i class="hamburger align-self-center"></i>
-        </a>
 
 
 

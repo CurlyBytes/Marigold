@@ -91,29 +91,28 @@ class Page extends MariGold_Controller {
         $this->load->view('themes/demo/includes/footer');
     }
 
-    public function remove($locationNameId)
+    public function remove($branchInformationId)
     {
-        $data['district'] = $this->MBranchInformation->getAllLocationNameByLocationTypeNoPagination(GUID_DISTRICT);
-        $data['area'] = $this->MBranchInformation->getSpecificLocationNameByLocationType($locationNameId);
-        $data['group'] = $this->MBranchInformation->getSpecificLocationGroupByLocationNameIdChild($locationNameId);
+        $data['branch'] = $this->MBranchInformation->branchWithoutLocation();
+        $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
 
-        if($data['area'] === null){
+        
+        if($data['propose_branch'] === null){
             show_404();
         }
         
         if($this->input->post() && $this->form_validation->run('propose-branch/remove') === true){
             $data = array(
-				'locationnameid' => $this->input->post('locationnameid'),
-                'locationgroupid' => $this->input->post('locationgroupid'),
+                'branchinformationid' => $this->input->post('branchinformationid')
 			);
             $this->MBranchInformation->remove($data);
-            $this->session->set_flashdata('session_propose_branch_remove','Area remove successfully:'. $this->input->post('locationname'));
-            redirect(base_url('area'));
+            $this->session->set_flashdata('session_propose_branch_remove','Propose Branch remove successfully:'. $this->input->post('branchinformationid'));
+            redirect(base_url('propose-branch'));
         }
 
-        $this->layout->set_title('Area - Remove');
+        $this->layout->set_title('Propose Branch - Remove');
         $this->load->view('themes/demo/includes/header');
-        $this->load->view('themes/demo/pages/area/remove', $data);
+        $this->load->view('themes/demo/pages/propose_branch/remove', $data);
         $this->load->view('themes/demo/includes/footer');
     }
 
