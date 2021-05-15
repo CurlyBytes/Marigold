@@ -77,8 +77,10 @@
                                                         <td><?php echo html_escape($propose_branchrow->BranchInformationId); ?></td>
                                                         <td><?php echo html_escape($propose_branchrow->RegionName); ?></td>
                                                         <td><?php echo html_escape($propose_branchrow->DistrictName); ?></td>
+                                                        <td><?php echo html_escape($propose_branchrow->AreaName); ?></td>  
                                                         <td><?php echo html_escape($propose_branchrow->BranchName); ?></td>
-                                                        <td><?php echo html_escape($propose_branchrow->AreaName); ?></td>                       
+                                                        <td><?php echo html_escape($propose_branchrow->Latitude); ?></td>  
+                                                        <td><?php echo html_escape($propose_branchrow->Longtitude); ?></td>  
                                                         <td><?php echo html_escape($propose_branchrow->CreatedAt); ?></td>
                                                         <td><?php echo html_escape($propose_branchrow->UpdatedAt); ?></td>
                                                         <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/modify/'.$propose_branchrow->BranchInformationId); ?>"> modify</a></td>
