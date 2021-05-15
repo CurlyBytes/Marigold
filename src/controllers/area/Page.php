@@ -13,7 +13,6 @@ class Page extends MariGold_Controller {
     {
         parent::__construct();
         $this->load->model('MLocationName');
-        $this->layout->set_title('Area');
         $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));
     }
 
@@ -33,8 +32,7 @@ class Page extends MariGold_Controller {
         $this->pagination->initialize($settings);
         $data["links"] = $this->pagination->create_links();
         $data['area'] = $this->MLocationName->getAllLocationNameByLocationTypeWithParentJoin($per_page, $page, GUID_AREA);
-        $this->layout->set_title("Area - List");
-        $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));	
+        $this->layout->set_title("Area - List");	
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/area/list', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -57,7 +55,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Area - Create');
-        $this->layout->set_body_attr(array('id' => 'locationname', 'class' => 'locationname'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/area/create', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -88,7 +85,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Area - Modify');
-        $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/area/modify', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -115,7 +111,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Area - Remove');
-        $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/area/remove', $data);
         $this->load->view('themes/demo/includes/footer');

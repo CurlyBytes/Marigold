@@ -14,7 +14,6 @@ class Page extends MariGold_Controller {
         parent::__construct();
         $this->load->model('MLocationName');
         $this->load->helper('security');
-        $this->layout->set_title('Region');
         $this->layout->set_body_attr(array('id' => 'region', 'class' => 'region'));
     }
 
@@ -36,7 +35,6 @@ class Page extends MariGold_Controller {
         $data['region'] = $this->MLocationName->getAllLocationNameByLocationType($per_page, $page, GUID_REGION);
 
         $this->layout->set_title("Region - List");
-        $this->layout->set_body_attr(array('id' => 'region', 'class' => 'region'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/region/list', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -59,7 +57,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Region - Create');
-        $this->layout->set_body_attr(array('id' => 'locationname', 'class' => 'locationname'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/region/create');
         $this->load->view('themes/demo/includes/footer');
@@ -86,7 +83,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Region - Modify');
-        $this->layout->set_body_attr(array('id' => 'region', 'class' => 'region'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/region/modify', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -112,7 +108,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Region - Remove');
-        $this->layout->set_body_attr(array('id' => 'region', 'class' => 'region'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/region/remove', $data);
         $this->load->view('themes/demo/includes/footer');

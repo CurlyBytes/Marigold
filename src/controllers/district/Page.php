@@ -13,7 +13,6 @@ class Page extends MariGold_Controller {
     {
         parent::__construct();
         $this->load->model('MLocationName');
-        $this->layout->set_title('District');
         $this->layout->set_body_attr(array('id' => 'district', 'class' => 'district'));
     }
 
@@ -34,7 +33,6 @@ class Page extends MariGold_Controller {
         $data["links"] = $this->pagination->create_links();
         $data['district'] = $this->MLocationName->getAllLocationNameByLocationTypeWithParentJoin($per_page, $page, GUID_DISTRICT);
         $this->layout->set_title("District - List");
-        $this->layout->set_body_attr(array('id' => 'district', 'class' => 'district'));	
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/district/list', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -57,7 +55,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('District - Create');
-        $this->layout->set_body_attr(array('id' => 'locationname', 'class' => 'locationname'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/district/create', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -88,7 +85,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('District - Modify');
-        $this->layout->set_body_attr(array('id' => 'district', 'class' => 'district'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/district/modify', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -115,7 +111,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('District - Remove');
-        $this->layout->set_body_attr(array('id' => 'district', 'class' => 'district'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/district/remove', $data);
         $this->load->view('themes/demo/includes/footer');

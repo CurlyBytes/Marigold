@@ -13,7 +13,6 @@ class Page extends MariGold_Controller {
     {
         parent::__construct();
         $this->load->model('MBranchInformation');
-        $this->layout->set_title('Propose Branch');
         $this->layout->set_body_attr(array('id' => 'propose-branch', 'class' => 'propose-branch'));
     }
 
@@ -35,7 +34,6 @@ class Page extends MariGold_Controller {
         $data['propose_branch'] = $this->MBranchInformation->getAllProposeBranch($per_page, $page );
        // die(var_dump($data['propose_branch'] ));
         $this->layout->set_title("Propose Branch - List");
-        $this->layout->set_body_attr(array('id' => 'propose-branch', 'class' => 'propose-branch'));	
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/propose_branch/list', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -59,7 +57,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Propose Branch - Create');
-        $this->layout->set_body_attr(array('id' => 'propose-branch', 'class' => 'propose-branch'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/propose_branch/create', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -89,7 +86,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Propose Branch - Modify');
-        $this->layout->set_body_attr(array('id' => 'propose-branch', 'class' => 'propose-branch'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/propose_branch/modify', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -116,7 +112,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Area - Remove');
-        $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/area/remove', $data);
         $this->load->view('themes/demo/includes/footer');

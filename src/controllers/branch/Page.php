@@ -13,7 +13,6 @@ class Page extends MariGold_Controller {
     {
         parent::__construct();
         $this->load->model('MLocationName');
-        $this->layout->set_title('Branch');
         $this->layout->set_body_attr(array('id' => 'branch', 'class' => 'branch'));
     }
 
@@ -34,7 +33,6 @@ class Page extends MariGold_Controller {
         $data["links"] = $this->pagination->create_links();
         $data['branch'] = $this->MLocationName->getAllLocationNameByLocationTypeWithParentJoin($per_page, $page, GUID_BRANCH);
         $this->layout->set_title("Branch - List");
-        $this->layout->set_body_attr(array('id' => 'branch', 'class' => 'branch'));	
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/branch/list', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -57,7 +55,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Branch - Create');
-        $this->layout->set_body_attr(array('id' => 'locationname', 'class' => 'locationname'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/branch/create', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -88,7 +85,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Branch - Modify');
-        $this->layout->set_body_attr(array('id' => 'branch', 'class' => 'branch'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/branch/modify', $data);
         $this->load->view('themes/demo/includes/footer');
@@ -115,7 +111,6 @@ class Page extends MariGold_Controller {
         }
 
         $this->layout->set_title('Branch - Remove');
-        $this->layout->set_body_attr(array('id' => 'branch', 'class' => 'branch'));
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/branch/remove', $data);
         $this->load->view('themes/demo/includes/footer');
