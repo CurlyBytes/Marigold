@@ -89,7 +89,7 @@ defined('PAGE_LOCATIONTYPE_NEW')             OR define('PAGE_LOCATIONTYPE_NEW', 
 defined('API_LOCATIONTYPE_CREATE')             OR define('API_LOCATIONTYPE_CREATE', 'locationtype/create'); 
 defined('API_LOCATIONTYPE_MODIFY')          OR define('API_LOCATIONTYPE_MODIFY', 'locationtype/modify'); 
 
-
+defined('BASE_LINK')           OR define('BASE_LINK', $_ENV['BASE_LINK'] ?? $_SERVER['BASE_LINK'] ??  getenv('BASE_LINK')  ?? NULL); 
 defined('GOOGLE_API_KEY')           OR define('GOOGLE_API_KEY', $_ENV['GOOGLE_API_KEY'] ?? $_SERVER['GOOGLE_API_KEY'] ??  getenv('GOOGLE_API_KEY')  ?? NULL); 
 defined('GUID_REGION')           OR define('GUID_REGION', '1A902BF0-0134-15D9-C2C0-022600206F50'); 
 defined('GUID_DISTRICT')         OR define('GUID_DISTRICT', 'A1F0C2FB-C675-414E-C98B-5F31C9CFB3EE'); 

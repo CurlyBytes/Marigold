@@ -28,13 +28,21 @@ $hook['pre_system'][] = array(
     'params'   => array()
   );
 
+  $hook['post_controller'][] = array(
+    'class' => 'Loq', 
+    'function' => 'run',
+    'filename' => 'LogQuery.php',
+    'filepath' => 'hooks'
+  );
 
   $hook['display_override'][] = array(
-    'class'  	=> 'Develbar',
+      'class'  	=> 'Develbar',
       'function' 	=> 'debug',
       'filename' 	=> 'Develbar.php',
       'filepath' 	=> 'third_party/DevelBar/hooks'
   );
+
+
 
 
   /***************************************************************************
