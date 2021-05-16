@@ -1,12 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
 //https://avenir.ro/how-to-make-truly-seo-urls-in-codeigniter-without-duplicate-content-on-underscore-urls/
 class MariGold_Controller extends CI_Controller {
-    protected $template_header;
-    protected $template_footer;
-    
 
     function __construct()
     {

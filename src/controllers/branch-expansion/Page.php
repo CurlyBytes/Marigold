@@ -14,7 +14,7 @@ class Page extends MariGold_Controller {
         parent::__construct();
         $this->load->model('MGeoMap');
         $this->layout->add_js_files(
-            array('js?key=AIzaSyColWfyFStBR5YA_2rBCo4SbKYwvWrzrR4'),
+            array('js?key='. GOOGLE_API_KEY),
             'https://maps.googleapis.com/maps/api/');
         $this->layout->set_body_attr(array('id' => 'branch-expansion', 'class' => 'branch-expansion'));
     }

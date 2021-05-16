@@ -12,7 +12,7 @@ function initMap() {
     // Multiple markers location, latitude, and longitude
     var markers = [
         <?php if($propose_branch !== null){ 
-            foreach($propose_branch as $propose_branchrow){ 
+            foreach($propose_branch as $propose_branchrow){
                 //echo '["'.$row['name'].'", '.$row['latitude'].', '.$row['longitude'].', "'.$row['icon'].'"],'; 
                 echo '["'.$propose_branchrow->BranchName.'", '.$propose_branchrow->Latitude.', '.$propose_branchrow->Latitude.', "'. base_url() . '/assets/theme-demo/img/lightblue-pin-min.png' .'"],'; 
             } 

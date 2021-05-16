@@ -76,10 +76,10 @@ $query_builder = TRUE;
 //TASK: getenv on envinroment
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '172.19.0.2',
-	'username' => 'root',
-	'password' => 'secret',
-	'database' => 'sample',
+	'hostname' => $_ENV['DATABASE_HOSTNAME'] ?? $_SERVER['DATABASE_HOSTNAME'] ??  getenv('DATABASE_HOSTNAME')  ?? NULL,
+	'username' => $_ENV['DATABASE_USERNAME'] ?? $_SERVER['DATABASE_USERNAME'] ??  getenv('DATABASE_USERNAME')  ?? NULL,
+	'password' => $_ENV['DATABASE_PASSWORD'] ?? $_SERVER['DATABASE_PASSWORD'] ??  getenv('DATABASE_PASSWORD')  ?? NULL,
+	'database' => $_ENV['DATABASE_NAME'] ?? $_SERVER['DATABASE_NAME'] ??  getenv('DATABASE_NAME')  ?? NULL,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
