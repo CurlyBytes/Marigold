@@ -70,10 +70,11 @@
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
-				<a class="sidebar-toggle d-flex"></a>
-          <i class="hamburger align-self-center"></i>
-        
+				<a class="sidebar-toggle d-flex"><i class="hamburger align-self-center"></i></a>
 
+		  <div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle d-flex"><i class="hamburger align-self-center"></i> </a>
 
 
 
