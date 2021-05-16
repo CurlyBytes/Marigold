@@ -26,7 +26,7 @@ function initMap() {
             foreach($propose_branch as $propose_branchrow){  ?>
                 ['<div class="info_content">' +
                 '<h3><?php echo $propose_branchrow->BranchName; ?></h3>' +
-                '<p><?php echo $propose_branchrow->BranchName; ?></p>' + '</div>'],
+                '<button class="btn btn-primary my-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight-<?php echo $propose_branchrow->BranchInformationId;?>" aria-controls="offcanvasRight">View</button>' + '</div>'],
         <?php } 
         } 
         ?>
@@ -67,3 +67,6 @@ function initMap() {
 
 // Load initialize function
 google.maps.event.addDomListener(window, 'load', initMap);
+
+
+

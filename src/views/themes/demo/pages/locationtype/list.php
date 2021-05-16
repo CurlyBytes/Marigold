@@ -11,8 +11,8 @@
 								</div>
 								<div class="card-body">
 
-                                <div class="column">
-                                    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                                <div class="column table-responsive">
+                                    <table class="table table-striped table-responsive table-striped  is-narrow table-hover is-fullwidth">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>

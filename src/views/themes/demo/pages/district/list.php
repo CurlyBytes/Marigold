@@ -53,8 +53,8 @@
                                     <a class="btn btn-primary col" href="<?php echo site_url('district/create'); ?>"> Add</a>
                                     
                                </div>
-                                <div class="column">
-                                    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                                <div class="column table-responsive">
+                                    <table class="table table-striped table-responsive table-striped  is-narrow table-hover is-fullwidth">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>

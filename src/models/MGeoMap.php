@@ -26,7 +26,7 @@ class MGeoMap extends MariGold_Model {
 	
 
     public function getAllProposeLocationByBranchNameWithOpeningDateRange($data){
-        $this->db->select('BranchInformation.BranchInformationId, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
+        $this->db->select('BranchInformation.BranchInformationId,Latitude, OpeningDate, Longtitude,  Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
         $this->db->from('BranchInformation');
         $this->db->join('LocationName AS Region', 'Region.LocationNameId=BranchInformation.RegionId');
         $this->db->join('LocationName AS District', 'District.LocationNameId=BranchInformation.DistrictId');
@@ -40,7 +40,7 @@ class MGeoMap extends MariGold_Model {
     }
 
     public function getAllProposeLocationWithOpeningDateRange($data){
-        $this->db->select('BranchInformation.BranchInformationId, Latitude,  Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
+        $this->db->select('BranchInformation.BranchInformationId, Latitude, OpeningDate, Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
         $this->db->from('BranchInformation');
         $this->db->join('LocationName AS Region', 'Region.LocationNameId=BranchInformation.RegionId');
         $this->db->join('LocationName AS District', 'District.LocationNameId=BranchInformation.DistrictId');

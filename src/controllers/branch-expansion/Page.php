@@ -36,6 +36,7 @@ class Page extends MariGold_Controller {
         }
         $data['branch'] = $this->MGeoMap->branchWithoutLocation();
         $propose_branch['propose_branch'] = $this->MGeoMap->getAllProposeLocationWithOpeningDateRange($parameter);
+        $data['propose_branch'] = $propose_branch['propose_branch'];
         if(!empty($propose_branch['propose_branch'])){
             $js_geomap_javascript = $this->load->view('themes/demo/pages/branch_expansion/geomap_javascript', $propose_branch, true);
             $this->layout->add_js_rawtext($js_geomap_javascript, 'footer');

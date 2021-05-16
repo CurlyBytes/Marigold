@@ -93,7 +93,7 @@ class MBranchInformation extends MariGold_Model {
 
         $this->db->where('BranchInformationId', $data['branchinformationid']);
         return $this->db->update('BranchInformation', $branchInformationRecord);
-    }
+    } 
 
     public function remove($data){
         
@@ -115,7 +115,7 @@ class MBranchInformation extends MariGold_Model {
     }
 
     public function getAllProposeBranch($limit, $start){
-        $this->db->select('BranchInformation.BranchInformationId, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
+        $this->db->select('BranchInformation.BranchInformationId, Latitude,  Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
         $this->db->from('BranchInformation');
         $this->db->join('LocationName AS Region', 'Region.LocationNameId=BranchInformation.RegionId');
         $this->db->join('LocationName AS District', 'District.LocationNameId=BranchInformation.DistrictId');

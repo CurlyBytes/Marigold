@@ -53,15 +53,16 @@
                                     <a class="btn btn-primary col" href="<?php echo site_url('propose-branch/create'); ?>"> Add</a>
                                     
                                </div>
-                                <div class="column">
-                                    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                                <div class="column table-responsive">
+                                    <table class="table table-striped table-responsive table-striped  is-narrow table-hover is-fullwidth">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Region Name</th>
                                                 <th>District Name</th>
                                                 <th>Area Name</th>
                                                 <th>Branch Name</th>
+                                                <th>Latitude</th>
+                                                <th>Longtitude</th>
                                                 <th>Date Created</th>
                                                 <th>Date Updated</th>
                                                 <th colspan="2">Operations</th>
@@ -74,7 +75,6 @@
                                             ?>
                                 
                                                     <tr>
-                                                        <td><?php echo html_escape($propose_branchrow->BranchInformationId); ?></td>
                                                         <td><?php echo html_escape($propose_branchrow->RegionName); ?></td>
                                                         <td><?php echo html_escape($propose_branchrow->DistrictName); ?></td>
                                                         <td><?php echo html_escape($propose_branchrow->AreaName); ?></td>  
@@ -90,7 +90,7 @@
                                                     endforeach;
                                                 } else {
                                             ?>
-                                                        <tr><td colspan="9">No Propose Branch record found.</td></tr>
+                                                        <tr><td colspan="10">No Propose Branch record found.</td></tr>
                                             <?php 
                                                 }
                                             ?>
