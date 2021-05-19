@@ -5,7 +5,7 @@ version: "3.7"
 services:
   
     npm-utility:
-      image: node:15.14.0-alpine3.13
+      image: node:16.2.0-alpine3.13
       container_name: marigold-npm-utility
       networks:
         - vnet-backend-marigold
