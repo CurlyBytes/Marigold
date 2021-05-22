@@ -47,7 +47,8 @@ class Page extends MariGold_Controller {
     public function create()
     {
 
-        $data = array(); 
+        $data = array();
+        $photoNames = array();  
         $errorUploadType = $statusMsg = ''; 
        
         $data['branch'] = $this->MBranchInformation->branchWithoutLocation();
@@ -71,22 +72,20 @@ class Page extends MariGold_Controller {
                 if($this->upload->do_upload('file')){ 
                     // Uploaded file data 
                     $fileData = $this->upload->data(); 
-                    $uploadData[$i]['file_name'] = $fileData['file_name']; 
-                    $uploadData[$i]['uploaded_on'] = date("Y-m-d H:i:s"); 
+                    array_push($photoNames, $fileData['file_name']); 
+                  
                 }else{  
                     $errorUploadType .= $_FILES['file']['name'].' | ';  
                 } 
            
             } 
-             
-    
-        
 
             $data = array(
 				'branchid' => $this->input->post('branchid'),
                 'openingdate' => $this->input->post('openingdate'),
                 'latitude' => $this->input->post('latitude'),
-                'longtitude' => $this->input->post('longtitude')
+                'longtitude' => $this->input->post('longtitude'),
+                'photoname' =>  $photoNames  
 			);
             $this->MBranchInformation->propose($data);
             $this->session->set_flashdata('session_propose_branch_create','Propose new branch successfully: '. $this->input->post('branchid'));
@@ -233,6 +232,16 @@ class Page extends MariGold_Controller {
                 $filenamestr .= $filename . "; ";
             }
             $this->form_validation->set_message('_file_check', 'Please select only jpeg/jpg/png file. There are ' .$invalidFileTypeCount .' invalid file type: ' . $filenamestr);
+            return false;
+        }
+
+        if($filesCount < 3){
+            $this->form_validation->set_message('_file_check', 'Minimum with atleast 3 images');
+            return false;
+        }
+
+        if($filesCount > 6){
+            $this->form_validation->set_message('_file_check', 'Maximum number of images should only be at 6');
             return false;
         }
         return true;

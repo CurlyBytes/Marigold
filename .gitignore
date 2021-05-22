@@ -32,4 +32,7 @@ bin/build/*
 ##Configs
 .env
 
+##Attachments 
+/src/uploads/files
+
 

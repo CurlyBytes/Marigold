@@ -52,6 +52,18 @@ class MBranchInformation extends MariGold_Model {
             'UpdatedAt' => $now
         );
 
+        foreach($data['photoname'] as $photoname ){
+
+            $branchInfomrationPhoto = array(
+                'BranchInformationPhotoId ' =>  $this->Guid(),
+                'BranchInformationId ' =>  $branchInformation,
+                'PhotoName ' => $photoname,
+                'CreatedAt' => $now,
+                'UpdatedAt' => $now
+            );
+
+            $this->db->insert('BranchInformationPhoto', $branchInfomrationPhoto);
+        }
 
        return $this->db->insert('BranchInformation', $branchInformationRecord);
     }
