@@ -33,6 +33,6 @@ bin/build/*
 .env
 
 ##Attachments 
-/src/uploads/files
+/public/uploads/files
 
 

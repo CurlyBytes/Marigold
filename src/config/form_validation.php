@@ -79,9 +79,13 @@
         ),
         'propose-branch/create' => array(
             arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist'),
-            arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude'),
-            arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude'),
+            arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude|callback__unique_coordinates'),
+            arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude|callback__unique_coordinates'),
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
+            arrayf('files', 'Branch Images', 'callback__file_check')
+        ),
+        'propose-branch/photo-replace' => array(
+            arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]'),
             arrayf('files', 'Branch Images', 'callback__file_check')
         ),
         'propose-branch/modify' => array(

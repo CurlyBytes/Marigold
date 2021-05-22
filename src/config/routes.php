@@ -104,7 +104,7 @@ $route['branch/(:num)'] = 'branch/page/list/$1';
 
 $route['propose-branch'] = 'propose-branch/page/list';
 $route['propose-branch/create'] = "propose-branch/page/create";
-$route['propose-branch/upload'] = "propose-branch/page/upload";
+$route['propose-branch/photo-replace/(:any)'] = "propose-branch/page/reupload/$1";
 $route['propose-branch/modify/(:any)'] = "propose-branch/page/modify/$1";
 $route['propose-branch/remove/(:any)'] = "propose-branch/page/remove/$1";
 $route['propose-branch/(:num)'] = 'propose-branch/page/list/$1';

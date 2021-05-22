@@ -62,7 +62,32 @@
 													</div>
 												</div>
 											</div>
-
+											<div class="row">
+												
+												<div class="col">
+													<?php  if($branchphoto){
+														$totalrecord = count($branchphoto);
+											
+														$count = 0;
+														foreach ($branchphoto as $branchphotorow){
+															$count++;
+																if($count % 2 ==  0) {?>
+																	<div class="row m-2">
+																		<div class="col  m-1"><img src="<?php echo '/uploads/files/' . $branchphotorow->PhotoName; ?>" width="400" height="350" /></div>
+																	
+																<?php } else { ?>
+																	
+																		<div class="col m-1	"><img src="<?php echo '/uploads/files/' . $branchphotorow->PhotoName; ?>" width="400" height="350"  /></div>
+																	</div>
+																<?php } ?>
+																
+															<?php } 
+														} else { ?>
+                                                        <span>No Propose Branch Images found.</span>
+                                            		<?php } ?>
+													
+												</div>
+											</div>
 											<button type="submit" class="btn btn-danger btn-block">Proceed</button>
 											<a class="btn btn-secondary col" href="<?php echo site_url('propose-branch'); ?>"> Cancel</a>
 										<?php echo form_close(); ?>  

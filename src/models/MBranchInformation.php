@@ -73,9 +73,6 @@ class MBranchInformation extends MariGold_Model {
 	public function approve($data){    
         $now = date('Y-m-d H:i:s');
         $branchInformation =  $this->Guid();
-
-
-
         $branchInformationRecord = array(
             'IsApprove ' => $this->BranchWasApproved,
             'UpdatedAt' => $now
@@ -107,14 +104,58 @@ class MBranchInformation extends MariGold_Model {
         return $this->db->update('BranchInformation', $branchInformationRecord);
     } 
 
+
+    public function replaceimage($data){
+        $now = date('Y-m-d H:i:s');
+        $query = $this->db
+                ->get_where('BranchInformationPhoto', array('BranchInformationid' => $data['branchinformationid']));
+
+        $this->db->where('BranchInformationId ', $data['branchinformationid']);
+        $this->db->delete('BranchInformationPhoto');
+
+        foreach ($query->result() as $row)
+        {   
+            unlink(FCPATH . 'uploads/files/'. $row->PhotoName);    
+        }
+
+        foreach($data['photoname'] as $photoname ){
+            $branchInfomrationPhoto = array(
+                'BranchInformationPhotoId ' =>  $this->Guid(),
+                'BranchInformationId ' =>  $data['branchinformationid'],
+                'PhotoName ' => $photoname,
+                'CreatedAt' => $now,
+                'UpdatedAt' => $now
+            );
+
+            $this->db->insert('BranchInformationPhoto', $branchInfomrationPhoto);
+        }
+    } 
     public function remove($data){
-        
+
+        $query = $this->db
+                ->get_where('BranchInformationPhoto', array('BranchInformationid' => $data['branchinformationid']));
+
+        $this->db->where('BranchInformationId ', $data['branchinformationid']);
+        $this->db->delete('BranchInformationPhoto');
+
+        foreach ($query->result() as $row)
+        {   
+            unlink(FCPATH . 'uploads/files/'. $row->PhotoName);    
+        }
+
         $this->db->where('BranchInformationId ', $data['branchinformationid']);
         $this->db->delete('BranchInformation');
 
         return true;       
     }
 	
+    public function getAllBranchInformationPhotoByBranchInfomrationId($branchInformationId){
+        
+        $query = $this->db->get_where('BranchInformationPhoto', array('BranchInformationid' => $branchInformationId));
+        return $query->result();
+        return $query;
+    }
+
     public function getSpecificLocationProposeBranch($branchInformationId){
 
         $query = $this->db
@@ -179,6 +220,22 @@ class MBranchInformation extends MariGold_Model {
         }
     }
 
+
+    public function IsCoordinateExist($latitude, $longtitude){
+        $query = $this->db->get_where('BranchInformation', 
+            array(
+                'Latitude' => $latitude ,
+                'Longtitude' => $longtitude
+            )
+        );
+
+        if(empty($query->row_array())){
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
     public function hasMinimumBranchProposal($data){
         $query = $this->db->get_where('BranchInformation', 
             array(

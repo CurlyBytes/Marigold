@@ -101,6 +101,7 @@ class Page extends MariGold_Controller {
     public function modify($branchInformationId)
     {
         $data['branch'] = $this->MBranchInformation->branchWithoutLocation();
+        $data['branchphoto'] = $this->MBranchInformation->getAllBranchInformationPhotoByBranchInfomrationId($branchInformationId);
         $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
 
         
@@ -127,11 +128,62 @@ class Page extends MariGold_Controller {
         $this->load->view('themes/demo/includes/footer');
     }
 
+
+    public function reupload($branchInformationId)
+    {
+
+        $data = array();
+        $photoNames = array();  
+        $errorUploadType = $statusMsg = ''; 
+       
+        $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
+
+        if($this->input->post() && $this->form_validation->run('propose-branch/photo-replace') === true){
+
+         
+        // If files are selected to upload 
+
+            $filesCount = count($_FILES['files']['name']); 
+            for($i = 0; $i < $filesCount; $i++){ 
+                $config['file_name'] = $this->MBranchInformation->Guid();
+                $this->load->library('upload', $config);
+                $_FILES['file']['name']     = $_FILES['files']['name'][$i]; 
+                $_FILES['file']['type']     = $_FILES['files']['type'][$i]; 
+                $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i]; 
+                $_FILES['file']['error']     = $_FILES['files']['error'][$i]; 
+                $_FILES['file']['size']     = $_FILES['files']['size'][$i]; 
+
+                // Upload file to server 
+                if($this->upload->do_upload('file')){ 
+                    // Uploaded file data 
+                    $fileData = $this->upload->data(); 
+                    array_push($photoNames, $fileData['file_name']); 
+                  
+                }else{  
+                    $errorUploadType .= $_FILES['file']['name'].' | ';  
+                } 
+           
+            } 
+
+            $data = array(
+				'branchinformationid' => $this->input->post('branchinformationid'),
+                'photoname' =>  $photoNames  
+			);
+            $this->MBranchInformation->replaceimage($data);
+            $this->session->set_flashdata('session_propose_branch_reupload','Replace All images: ');
+            redirect(base_url('propose-branch'));
+        }
+
+        $this->layout->set_title('Propose Branch - ReUpload');
+        $this->load->view('themes/demo/includes/header');
+        $this->load->view('themes/demo/pages/propose_branch/reupload', $data);
+        $this->load->view('themes/demo/includes/footer');
+    }
     public function remove($branchInformationId)
     {
         $data['branch'] = $this->MBranchInformation->branchWithoutLocation();
         $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
-
+        $data['branchphoto'] = $this->MBranchInformation->getAllBranchInformationPhotoByBranchInfomrationId($branchInformationId);
         
         if($data['propose_branch'] === null){
             show_404();
@@ -188,6 +240,19 @@ class Page extends MariGold_Controller {
         }
     }
 
+    
+    public function _unique_coordinates(){
+        $latitude = $this->input->post('latitude');
+        $longtitude = $this->input->post('longtitude');
+
+        $isExist = $this->MBranchInformation->IsCoordinateExist($latitude , $longtitude);
+        if($isExist) {
+            $this->form_validation->set_message('_unique_coordinates', 'The coordinates already exists');
+            return false;
+        } else {
+            return true;
+        }
+    }
     public function _valid_date($date, $format){
         $d = DateTime::createFromFormat($format, $date);
         if($d && $d->format($format) == $date) {
@@ -197,6 +262,8 @@ class Page extends MariGold_Controller {
             return false;
         }
     }
+
+
 
        /*
      * file value and type check during validation
