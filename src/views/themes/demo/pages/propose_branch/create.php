@@ -13,7 +13,7 @@
 								<div class="card-body">
 
 									<div class="column">
-										<?php echo form_open('propose-branch/create'); ?>
+										<?php echo form_open_multipart('propose-branch/create'); ?>
 
 										<div class="row">
 												<div class="col mb-3">
@@ -60,7 +60,16 @@
 												</div>
 											</div>
 
-											<button type="submit" class="btn btn-primary btn-block">Submit</button>
+											<div class="row">
+												<div class="col mb-3">
+													<div class="form-group">
+														<label class="form-label" for="files">Branch Images</label>
+														<input type="file" class="form-control" name="files[]" multiple/>
+										
+													</div>
+												</div>
+											</div>
+											<button type="submit"  name="uploadfile"class="btn btn-primary btn-block">Submit</button>
 											<a class="btn btn-secondary col" href="<?php echo site_url('propose-branch'); ?>"> Cancel</a>
 										<?php echo form_close(); ?>  
 									</div>

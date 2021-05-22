@@ -81,7 +81,8 @@
             arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist'),
             arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude'),
             arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude'),
-            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]')
+            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
+            arrayf('files', 'Branch Images', 'required|callback__file_check]')
         ),
         'propose-branch/modify' => array(
             arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]'),
