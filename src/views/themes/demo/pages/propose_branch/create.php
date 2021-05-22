@@ -65,7 +65,7 @@
 													<div class="form-group">
 														<label class="form-label" for="files">Branch Images</label>
 														<input type="file" class="form-control" name="files[]" multiple/>
-										
+														<?php echo form_error('files'); ?> 
 													</div>
 												</div>
 											</div>
