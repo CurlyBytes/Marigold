@@ -76,8 +76,7 @@
 										</div>
 										<div class="col-sm-9 col-xl-12 col-xxl-9">
 											<strong>Description</strong>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-												magna aliqua.</p>
+											<p><?php echo $propose_branchrow->Description;?>.</p>
 										</div>
 									</div>
 
@@ -115,27 +114,24 @@
 									<ul class="timeline mt-2 mb-0">
 										<li class="timeline-item">
 											<strong>Contact Name</strong>
-											<p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
+											<p><?php echo $propose_branchrow->ContactPerson;?>.</p>
 										</li>
 										<li class="timeline-item">
 											<strong>Contact Number</strong>
-											<p>Sed aliquam ultrices mauris. Integer ante arcu...</p>
+											<p><?php echo $propose_branchrow->ContactNumber;?>.</p>
 										</li>
 										<li class="timeline-item">
 											<strong>Owner Address</strong>
-											<p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
+											<p><?php echo $propose_branchrow->ContactAddress;?>.</p>
 										</li>
 										<li class="timeline-item">
 											<strong>Sq. Area</strong>
-											<p>Curabitur ligula sapien, tincidunt non, euismod vitae...</p>
+											<p><?php echo $propose_branchrow->SquareMeter;?>.</p>
 										</li>
-										<li class="timeline-item">
-											<strong>Ratings</strong>
-											<p>Sed aliquam ultrices mauris. Integer ante arcu...</p>
-										</li>
+			
 										<li class="timeline-item">
 											<strong>Rental Price</strong>
-											 <p>Sed aliquam ultrices mauris. Integer ante arcu...</p>
+											<p><?php echo $propose_branchrow->RentalPrice;?>.</p>
 										</li>
 										<li class="timeline-item">
 											<strong>Date Created</strong>

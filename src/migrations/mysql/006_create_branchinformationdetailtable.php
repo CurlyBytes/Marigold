@@ -35,7 +35,7 @@ class Migration_Create_BranchInformationDetailTable extends CI_Migration
             ),
             'ContactAddress' => array(
                 'type' => 'VARCHAR',
-                'constraint' => 35,
+                'constraint' => 250,
                 'null' => FALSE
             ),
             'SquareMeter' => array(

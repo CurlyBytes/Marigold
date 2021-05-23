@@ -15,6 +15,7 @@
 									<div class="column">
 										<?php echo form_open('propose-branch/remove/'. $propose_branch->BranchInformationId); ?>
 										<input type="hidden" name="branchinformationid" value="<?php echo $propose_branch->BranchInformationId; ?>">
+										<input type="hidden" name="branchinformationdetailid" value="<?php echo $propose_branch_details->BranchInformationDetailId; ?>">
 										<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">
@@ -62,6 +63,64 @@
 													</div>
 												</div>
 											</div>
+
+										
+											<div class="row">
+												<div class="col mb-3">
+													<div class="form-group">
+														<label class="form-label" for="contactperson">Contact Person</label>
+														<input type="text" class="form-control  <?php echo (form_error('contactperson') ? 'is-invalid' : 'is-valid');?>" id="contactperson" name="contactperson" placeholder="Contact Person" value="<?php echo html_escape(set_value('contactperson', $propose_branch_details->ContactPerson)); ?>" readonly>
+														<?php echo form_error('contactperson'); ?> 
+													</div>
+												</div>
+
+												<div class="col mb-3">
+													<div class="form-group">
+														<label class="form-label" for="contactnumber">Contact Number</label>
+														<input type="text" class="form-control  <?php echo (form_error('contactnumber') ? 'is-invalid' : 'is-valid');?>" id="contactnumber" name="contactnumber" placeholder="Contact Number" value="<?php echo html_escape(set_value('contactnumber', $propose_branch_details->ContactNumber)); ?>" readonly>
+														<?php echo form_error('contactnumber'); ?> 
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col mb-3">
+													<div class="form-group">
+														<label class="form-label" for="contactaddress">Contact Address</label>
+														
+														<textarea  class="form-control  <?php echo (form_error('contactaddress') ? 'is-invalid' : 'is-valid');?>" id="contactaddress" name="contactaddress" cols="20"  rows="2" readonly><?php echo html_escape(set_value('contactaddress', $propose_branch_details->ContactAddress)); ?></textarea>
+														<?php echo form_error('contactaddress'); ?> 
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col mb-3">
+													<div class="form-group">
+														<label class="form-label" for="rentalprice">Rental Price</label>
+														<input type="text" class="form-control  <?php echo (form_error('rentalprice') ? 'is-invalid' : 'is-valid');?>" id="rentalprice" name="rentalprice" placeholder="rentalprice" value="<?php echo html_escape(set_value('rentalprice', $propose_branch_details->RentalPrice)); ?>" readonly>
+														<?php echo form_error('rentalprice'); ?> 
+													</div>
+												</div>
+												<div class="col mb-3">
+													<div class="form-group">
+														<label class="form-label" for="squaremeter">Square Meter</label>
+														<input type="text" class="form-control  <?php echo (form_error('squaremeter') ? 'is-invalid' : 'is-valid');?>" id="squaremeter" name="squaremeter" placeholder="squaremeter" value="<?php echo html_escape(set_value('squaremeter', $propose_branch_details->SquareMeter)); ?>" readonly>
+														<?php echo form_error('squaremeter'); ?> 
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col mb-3">
+													<div class="form-group">
+														<label class="form-label" for="description">Description</label>
+														
+														<textarea  class="form-control  <?php echo (form_error('description') ? 'is-invalid' : 'is-valid');?>" id="description" name="description" cols="20"  rows="2" readonly> 
+															<?php echo html_escape(set_value('description', $propose_branch_details->Description)); ?>
+														</textarea>
+														<?php echo form_error('description'); ?> 
+													</div>
+												</div>
+											</div>
+										
 											<div class="row">
 												
 												<div class="col">

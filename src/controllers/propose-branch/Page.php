@@ -85,6 +85,12 @@ class Page extends MariGold_Controller {
                 'openingdate' => $this->input->post('openingdate'),
                 'latitude' => $this->input->post('latitude'),
                 'longtitude' => $this->input->post('longtitude'),
+                'contactperson' => $this->input->post('contactperson'),
+                'contactnumber' => $this->input->post('contactnumber'),
+                'contactaddress' => $this->input->post('contactaddress'),
+                'squaremeter' => $this->input->post('squaremeter'),
+                'description' => $this->input->post('description'),
+                'rentalprice' => $this->input->post('rentalprice'),
                 'photoname' =>  $photoNames  
 			);
             $this->MBranchInformation->propose($data);
@@ -103,8 +109,8 @@ class Page extends MariGold_Controller {
         $data['branch'] = $this->MBranchInformation->branchWithoutLocation();
         $data['branchphoto'] = $this->MBranchInformation->getAllBranchInformationPhotoByBranchInfomrationId($branchInformationId);
         $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
-
-        
+        $data['propose_branch_details'] = $this->MBranchInformation->getAllBranchInformationDetailById($branchInformationId);
+       
         if($data['propose_branch'] === null){
             show_404();
         }
@@ -112,10 +118,17 @@ class Page extends MariGold_Controller {
         if($this->input->post() && $this->form_validation->run('propose-branch/modify') === true){
             $data = array(
                 'branchinformationid' => $this->input->post('branchinformationid'),
+                'branchinformationdetailid' => $this->input->post('branchinformationdetailid'),
 				'branchid' => $this->input->post('branchid'),
                 'openingdate' => $this->input->post('openingdate'),
                 'latitude' => $this->input->post('latitude'),
-                'longtitude' => $this->input->post('longtitude')
+                'longtitude' => $this->input->post('longtitude'),
+                'contactperson' => $this->input->post('contactperson'),
+                'contactnumber' => $this->input->post('contactnumber'),
+                'contactaddress' => $this->input->post('contactaddress'),
+                'squaremeter' => $this->input->post('squaremeter'),
+                'description' => $this->input->post('description'),
+                'rentalprice' => $this->input->post('rentalprice')
 			);
             $this->MBranchInformation->modify($data);
             $this->session->set_flashdata('session_propose_branch_modify','Area updated successfully:'. $this->input->post('branchid'));
@@ -184,14 +197,16 @@ class Page extends MariGold_Controller {
         $data['branch'] = $this->MBranchInformation->branchWithoutLocation();
         $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
         $data['branchphoto'] = $this->MBranchInformation->getAllBranchInformationPhotoByBranchInfomrationId($branchInformationId);
-        
+        $data['propose_branch_details'] = $this->MBranchInformation->getAllBranchInformationDetailById($branchInformationId);
+
         if($data['propose_branch'] === null){
             show_404();
         }
         
         if($this->input->post() && $this->form_validation->run('propose-branch/remove') === true){
             $data = array(
-                'branchinformationid' => $this->input->post('branchinformationid')
+                'branchinformationid' => $this->input->post('branchinformationid'),
+                'branchinformationdetailid' => $this->input->post('branchinformationdetailid')
 			);
             $this->MBranchInformation->remove($data);
             $this->session->set_flashdata('session_propose_branch_remove','Propose Branch remove successfully:'. $this->input->post('branchinformationid'));
@@ -217,6 +232,22 @@ class Page extends MariGold_Controller {
             return true;
         }
     }
+
+
+
+    public function _primarykey_exist($primarykeyid, $primarytablename){
+
+        $isExist = $this->MBranchInformation->IsPrimaryKeyExists($primarykeyid , $primarytablename);
+
+        if ($isExist === false)
+        {
+            $this->form_validation->set_message('_primarykey_exist', 'The primary record does not exist.');
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 
     public function _valid_latitude($latitude)
     {

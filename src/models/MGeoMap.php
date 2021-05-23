@@ -40,12 +40,13 @@ class MGeoMap extends MariGold_Model {
     }
 
     public function getAllProposeLocationWithOpeningDateRange($data){
-        $this->db->select('BranchInformation.BranchInformationId, Latitude, OpeningDate, Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
+        $this->db->select('BranchInformation.BranchInformationId, ContactPerson, ContactNumber, ContactAddress, SquareMeter, Description, RentalPrice, Latitude, OpeningDate, Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
         $this->db->from('BranchInformation');
         $this->db->join('LocationName AS Region', 'Region.LocationNameId=BranchInformation.RegionId');
         $this->db->join('LocationName AS District', 'District.LocationNameId=BranchInformation.DistrictId');
         $this->db->join('LocationName AS Area', 'Area.LocationNameId=BranchInformation.AreaId');
         $this->db->join('LocationName AS Branch', 'Branch.LocationNameId=BranchInformation.BranchId');
+        $this->db->join('BranchInformationDetail AS BranchInformationDetail', 'BranchInformationDetail.BranchInformationId=BranchInformation.BranchInformationId');
         $this->db->where('BranchInformation.IsApprove', $this->BranchProposalForApproval);
         $this->db->where('DATE_FORMAT(BranchInformation.OpeningDate,"%Y-%m")',$data['openingdate']);
         $query = $this->db->get()->result();   

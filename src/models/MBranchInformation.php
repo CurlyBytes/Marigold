@@ -29,6 +29,7 @@ class MBranchInformation extends MariGold_Model {
 	public function propose($data){    
         $now = date('Y-m-d H:i:s');
         $branchInformation =  $this->Guid();
+        $branchInformationDetailId =  $this->Guid();
         $query = $this->db->query("SELECT BranchRecord.LocationName AS BranchRecord, BranchRecord.LocationNameId AS BranchId, Branch.LocationNameIdParent AS AreaId, Area.LocationNameIdParent AS DistrictId, District.LocationNameIdParent AS RegionId FROM LocationName AS BranchRecord LEFT JOIN LocationGroup AS Branch ON Branch.LocationNameIdChild = BranchRecord.LocationNameId LEFT JOIN LocationGroup AS Area ON Area.LocationNameIdChild = Branch.LocationNameIdParent LEFT JOIN LocationGroup AS District ON District.LocationNameIdChild = Area.LocationNameIdParent LEFT JOIN LocationGroup AS Region ON District.LocationNameIdChild = District.LocationNameIdParent WHERE BranchRecord.LocationNameId = ?" , array($data['branchid']) );
 
         $row = $query->row_array();
@@ -40,13 +41,13 @@ class MBranchInformation extends MariGold_Model {
         }
         $branchInformationRecord = array(
             'BranchInformationId ' => $branchInformation,
-            'RegionId ' => $data['regionid'],
-            'Districtid  ' => $data['districtid'],
-            'AreaId  ' => $data['areaid'],
-            'BranchId  ' => $data['branchid'],
-            'Latitude ' => $data['latitude'],
-            'Longtitude ' => $data['longtitude'],
-            'IsApprove ' => $this->BranchProposalForApproval,
+            'RegionId' => $data['regionid'],
+            'Districtid' => $data['districtid'],
+            'AreaId' => $data['areaid'],
+            'BranchId' => $data['branchid'],
+            'Latitude' => $data['latitude'],
+            'Longtitude' => $data['longtitude'],
+            'IsApprove' => $this->BranchProposalForApproval,
             'OpeningDate ' => $data['openingdate'],
             'CreatedAt' => $now,
             'UpdatedAt' => $now
@@ -65,6 +66,19 @@ class MBranchInformation extends MariGold_Model {
             $this->db->insert('BranchInformationPhoto', $branchInfomrationPhoto);
         }
 
+        $branchInformationDetailRecord = array(
+            'BranchInformationDetailId ' => $branchInformationDetailId,
+            'BranchInformationId' => $branchInformation,
+            'ContactPerson' => $data['contactperson'],
+            'ContactNumber' => $data['contactnumber'],
+            'ContactAddress' => $data['contactaddress'],
+            'SquareMeter' => $data['squaremeter'],
+            'Description' => $data['description'],
+            'RentalPrice' =>  $data['rentalprice'],
+            'CreatedAt' => $now,
+            'UpdatedAt' => $now
+        );
+        $this->db->insert('BranchInformationDetail', $branchInformationDetailRecord);
        return $this->db->insert('BranchInformation', $branchInformationRecord);
     }
 	
@@ -92,13 +106,24 @@ class MBranchInformation extends MariGold_Model {
     public function modify($data){
         $now = date('Y-m-d H:i:s');
         $branchInformationRecord = array(
-            'BranchId  ' => $data['branchid'],
-            'Latitude ' => $data['latitude'],
-            'Longtitude ' => $data['longtitude'],
-            'OpeningDate ' => $data['openingdate'],
+            'BranchId' => $data['branchid'],
+            'Latitude' => $data['latitude'],
+            'Longtitude' => $data['longtitude'],
+            'OpeningDate' => $data['openingdate'],
             'UpdatedAt' => $now
         );
 
+        $branchInformationDetailRecord = array(
+            'ContactPerson' => $data['contactperson'],
+            'ContactNumber' => $data['contactnumber'],
+            'ContactAddress' => $data['contactaddress'],
+            'SquareMeter' => $data['squaremeter'],
+            'Description' => $data['description'],
+            'RentalPrice' =>  $data['rentalprice'],
+            'UpdatedAt' => $now
+        );
+        $this->db->where('BranchInformationDetailId', $data['branchinformationdetailid']);
+        $this->db->update('BranchInformationDetail', $branchInformationDetailRecord);
 
         $this->db->where('BranchInformationId', $data['branchinformationid']);
         return $this->db->update('BranchInformation', $branchInformationRecord);
@@ -120,9 +145,9 @@ class MBranchInformation extends MariGold_Model {
 
         foreach($data['photoname'] as $photoname ){
             $branchInfomrationPhoto = array(
-                'BranchInformationPhotoId ' =>  $this->Guid(),
-                'BranchInformationId ' =>  $data['branchinformationid'],
-                'PhotoName ' => $photoname,
+                'BranchInformationPhotoId' =>  $this->Guid(),
+                'BranchInformationId' =>  $data['branchinformationid'],
+                'PhotoName' => $photoname,
                 'CreatedAt' => $now,
                 'UpdatedAt' => $now
             );
@@ -143,17 +168,26 @@ class MBranchInformation extends MariGold_Model {
             unlink(FCPATH . 'uploads/files/'. $row->PhotoName);    
         }
 
+        $this->db->where('BranchInformationDetailId ', $data['branchinformationdetailid']);
+        $this->db->delete('BranchInformationDetail');
+
         $this->db->where('BranchInformationId ', $data['branchinformationid']);
         $this->db->delete('BranchInformation');
-
         return true;       
     }
 	
+    public function getAllBranchInformationDetailById($branchInformationId){
+        
+        $query = $this->db->get_where('BranchInformationDetail', array('BranchInformationId' => $branchInformationId));
+        return $query->row();
+    }
+
+
+
     public function getAllBranchInformationPhotoByBranchInfomrationId($branchInformationId){
         
         $query = $this->db->get_where('BranchInformationPhoto', array('BranchInformationid' => $branchInformationId));
         return $query->result();
-        return $query;
     }
 
     public function getSpecificLocationProposeBranch($branchInformationId){
@@ -188,6 +222,16 @@ class MBranchInformation extends MariGold_Model {
     public function getApproveBranchLocationList($data){
         $query = $this->db->get_where('BranchInformation', array('IsApprove' => $this->BranchWasApproved));
         return $query->result();
+    }
+
+    public function IsPrimaryKeyExists($primarykeyid , $primarytablename){
+        
+        $query = $this->db->get_where($primarytablename, array( $primarytablename . 'Id' => $primarykeyid));
+        if(empty($query->row_array())){
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function IsBranchIdExist($locationNameId, $locationTypeId){

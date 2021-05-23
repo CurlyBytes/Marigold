@@ -28,7 +28,7 @@
 												</div>
 											</div>
 											<button type="submit"  name="uploadfile"class="btn btn-primary btn-block">Submit</button>
-											<a class="btn btn-secondary col" href="<?php echo site_url('propose-branch/modify/'.  $propose_branch->BranchInformationId); ?>"> Cancel</a>
+											<a class="btn btn-secondary col" href="<?php echo site_url('propose-branch'); ?>"> Cancel</a>
 										<?php echo form_close(); ?>  
 									</div>
 								</div>

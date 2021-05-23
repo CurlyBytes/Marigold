@@ -82,6 +82,12 @@
             arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude|callback__unique_coordinates'),
             arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude|callback__unique_coordinates'),
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
+            arrayf('contactperson', 'Contact Person', 'required|trim|min_length[4]|max_length[150]|alpha_numeric_spaces'),
+            arrayf('contactnumber', 'Contact Number', 'required|trim|min_length[1]|max_length[25]|is_natural'),
+            arrayf('contactaddress', 'Contact Address', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
+            arrayf('squaremeter', 'Square Meter', 'required|trim|numeric'),
+            arrayf('description', 'Description', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
+            arrayf('rentalprice', 'Rental Price', 'required|trim|numeric'),
             arrayf('files', 'Branch Images', 'callback__file_check')
         ),
         'propose-branch/photo-replace' => array(
@@ -89,18 +95,32 @@
             arrayf('files', 'Branch Images', 'callback__file_check')
         ),
         'propose-branch/modify' => array(
-            arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]'),
+            arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]|callback__primarykey_exist[BranchInformation]'),
+            arrayf('branchinformationdetailid', 'BranchInformationDetailId', 'required|exact_length[36]|callback__primarykey_exist[BranchInformationDetail]'),
             arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist'),
             arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude'),
             arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude'),
-            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]')
+            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
+            arrayf('contactperson', 'Contact Person', 'required|trim|min_length[4]|max_length[150]|alpha_numeric_spaces'),
+            arrayf('contactnumber', 'Contact Number', 'required|trim|min_length[1]|max_length[25]|is_natural'),
+            arrayf('contactaddress', 'Contact Address', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
+            arrayf('squaremeter', 'Square Meter', 'required|trim|numeric'),
+            arrayf('description', 'Description', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
+            arrayf('rentalprice', 'Rental Price', 'required|trim|numeric')
         ),
         'propose-branch/remove' => array(
-            arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]'),
+            arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]|callback__primarykey_exist[BranchInformation]'),
+            arrayf('branchinformationdetailid', 'BranchInformationDetailId', 'required|exact_length[36]|callback__primarykey_exist[BranchInformationDetail]'),
             arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist'),
             arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude'),
             arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude'),
-            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]')
+            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
+            arrayf('contactperson', 'Contact Person', 'required|trim|min_length[4]|max_length[150]|alpha_numeric_spaces'),
+            arrayf('contactnumber', 'Contact Number', 'required|trim|min_length[1]|max_length[25]|is_natural'),
+            arrayf('contactaddress', 'Contact Address', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
+            arrayf('squaremeter', 'Square Meter', 'required|trim|numeric'),
+            arrayf('description', 'Description', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
+            arrayf('rentalprice', 'Rental Price', 'required|trim|numeric')
         ),
         'branch-expansion' => array(
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m]')
