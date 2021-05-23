@@ -36,7 +36,7 @@ class Installer
                 'repos' => 'codeigniter-restserver',
                 'name'  => 'CodeIgniter Rest Server',
                 'dir'   => array('config', 'controllers', 'language', 'libraries', 'views'),
-                'pre'   => 'application/',
+                'pre'   => 'src/',
                 'msg'   => 'See https://github.com/chriskacerguis/codeigniter-restserver',
                 'example_branch' => '2.7.2',
             ),
@@ -164,14 +164,14 @@ class Installer
         
         if (is_string($dir)) {
             $src = realpath(dirname($filepath) . "/$repos-$version/$pre$dir");
-            $dst = realpath(__DIR__ . "/../application/$dir");
+            $dst = realpath(__DIR__ . "/../src/$dir");
             return array($src, $dst);
         }
         
         foreach ($dir as $directory) {
             $src[] = realpath(dirname($filepath) . "/$repos-$version/$pre$directory");
-            @mkdir(__DIR__ . "/../application/$directory");
-            $dst[] = realpath(__DIR__ . "/../application/$directory");
+            @mkdir(__DIR__ . "/../src/$directory");
+            $dst[] = realpath(__DIR__ . "/../src/$directory");
         }
         return array($src, $dst);
     }
@@ -189,14 +189,14 @@ class Installer
         
         if (is_string($dir)) {
             $src = realpath(dirname($filepath) . "/$dirname/$dir");
-            $dst = realpath(__DIR__ . "/../application/$dir");
+            $dst = realpath(__DIR__ . "/../src/$dir");
             return array($src, $dst);
         }
         
         foreach ($dir as $directory) {
             $src[] = realpath(dirname($filepath) . "/$dirname/$directory");
-            @mkdir(__DIR__ . "/../application/$directory");
-            $dst[] = realpath(__DIR__ . "/../application/$directory");
+            @mkdir(__DIR__ . "/../src/$directory");
+            $dst[] = realpath(__DIR__ . "/../src/$directory");
         }
         return array($src, $dst);
     }
