@@ -54,6 +54,18 @@ class MGeoMap extends MariGold_Model {
     }
   
 
+    public function getALlBranchLocation(){
+        $this->db->select('BranchInformation.BranchInformationId, ContactPerson, ContactNumber, ContactAddress, SquareMeter, Description, RentalPrice, Latitude, OpeningDate, Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
+        $this->db->from('BranchInformation');
+        $this->db->join('LocationName AS Region', 'Region.LocationNameId=BranchInformation.RegionId');
+        $this->db->join('LocationName AS District', 'District.LocationNameId=BranchInformation.DistrictId');
+        $this->db->join('LocationName AS Area', 'Area.LocationNameId=BranchInformation.AreaId');
+        $this->db->join('LocationName AS Branch', 'Branch.LocationNameId=BranchInformation.BranchId');
+        $this->db->join('BranchInformationDetail AS BranchInformationDetail', 'BranchInformationDetail.BranchInformationId=BranchInformation.BranchInformationId');
+        $this->db->where('BranchInformation.IsApprove', $this->BranchWasApproved);
+        $query = $this->db->get()->result();   
+        return $query;
+    }
     public function getProposedBranchLocationList($data){
         $query = $this->db->get_where('BranchInformation', array('IsApprove' => $this->BranchProposalForApproval));
         return $query->result();
