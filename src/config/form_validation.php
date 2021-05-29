@@ -124,7 +124,17 @@
         ),
         'branch-expansion' => array(
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m]')
-        )
+        ),
+        'propose-branch/create-isp' => array(
+            arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]|callback__primarykey_exist[BranchInformation]'),
+            arrayf('internetserviceprovidername', 'Internet SErvice Provider Name', 'required|trim|min_length[2]|max_length[70]|alpha_numeric_spaces|callback__has_location_name_has_child')
+        ),
+        'propose-branch/modify-isp' => array(
+            arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist')
+        ),
+        'propose-branch/remove-isp' => array(
+            arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist')
+        ),
     );
 
     $config['error_prefix']= '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button><div class="alert-message">';

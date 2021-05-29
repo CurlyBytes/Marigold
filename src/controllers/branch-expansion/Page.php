@@ -78,6 +78,9 @@ class Page extends MariGold_Controller {
         $this->load->view('themes/demo/includes/footer');
     }
     
+
+ 
+
     public function _branch_name_exist()
     {
         $branchid = $this->input->post('branchid');

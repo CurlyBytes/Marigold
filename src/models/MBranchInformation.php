@@ -173,6 +173,9 @@ class MBranchInformation extends MariGold_Model {
 
         $this->db->where('BranchInformationId ', $data['branchinformationid']);
         $this->db->delete('BranchInformation');
+
+        $this->db->where('BranchInformationId ', $data['branchinformationid']);
+        $this->db->delete('InternetServiceProvider');
         return true;       
     }
 	

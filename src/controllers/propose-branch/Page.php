@@ -14,7 +14,7 @@ class Page extends MariGold_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('MBranchInformation');
+        $this->load->model(array('MBranchInformation','MInternsetServiceProvider'));
         $this->load->helper('file');
         $this->layout->set_body_attr(array('id' => 'propose-branch', 'class' => 'propose-branch'));
     
@@ -216,6 +216,112 @@ class Page extends MariGold_Controller {
         $this->layout->set_title('Propose Branch - Remove');
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/propose_branch/remove', $data);
+        $this->load->view('themes/demo/includes/footer');
+    }
+
+    public function listnternetserviceprovider($branchInformationId)
+    {
+		if(!file_exists(APPPATH.'views/themes/demo/pages/propose_branch/listisp.php')){
+			show_404();
+		}
+        $this->load->library("pagination");
+        $this->config->load('pagination', true);
+
+        $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+        $per_page = $this->config->item('per_page', 'pagination');
+        $settings = $this->config->item('pagination',true);
+        $settings["total_rows"] = $this->MBranchInformation->get_count();
+        $settings['base_url'] = site_url('propose-branch/'. $branchInformationId . '/listisp');
+        
+        $this->pagination->initialize($settings);
+        $data["links"] = $this->pagination->create_links();
+        $data['internetserviceprovider'] = $this->MInternsetServiceProvider->getAllInternetServiceProviderById($branchInformationId);
+        $data['internetservicetechnologytype'] = array('Wired','Wireless');
+        
+
+        $this->layout->set_title('Internet Service Provider - List');
+        $this->load->view('themes/demo/includes/header');
+        $this->load->view('themes/demo/pages/propose_branch/listisp', $data);
+        $this->load->view('themes/demo/includes/footer');
+    }
+
+    public function addinternetserviceprovider($branchInformationId)
+    {
+
+        $data = array();
+ 
+
+        if($this->input->post() && $this->form_validation->run('propose-branch/create-isp') === true){
+
+
+            $data = array(
+				'branchinformationid' => $this->input->post('branchinformationid'),
+                'internetserviceprovidername' => $this->input->post('internetserviceprovidername'),
+                'internetservicetechnologytype' => $this->input->post('internetservicetechnologytype'),
+                'speed' => $this->input->post('speed')
+			);
+            $this->MInternsetServiceProvider->create($data);
+            $this->session->set_flashdata('session_propose_branch_isp_create','Add New ISP: '. $this->input->post('branchinformationid'));
+            redirect(base_url('propose-branch/list-isp/' . $branchInformationId));
+        }
+
+        $this->layout->set_title('Internet Service Provider - Create');
+        $this->load->view('themes/demo/includes/header');
+        $this->load->view('themes/demo/pages/propose_branch/createisp', $data);
+        $this->load->view('themes/demo/includes/footer');
+    }
+
+
+    public function editinternetserviceprovider($branchInformationId, $internetServiceProviderId)
+    {
+
+        $data = array();
+        $data['internetserviceprovider'] = $this->MInternsetServiceProvider->getAllInternetServiceProviderById($internetServiceProviderId);
+        $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
+
+        if($this->input->post() && $this->form_validation->run('propose-branch/modify-isp') === true){
+
+
+            $data = array(
+                'internetserviceproviderid' => $this->input->post('internetserviceproviderid'),
+                'branchinformationid' => $this->input->post('branchinformationid'),
+                'internetserviceprovidername' => $this->input->post('internetserviceprovidername'),
+                'internetservicetechnologytype' => $this->input->post('internetservicetechnologytype'),
+                'speed' => $this->input->post('speed')
+			);
+            $this->MInternsetServiceProvider->modify($data);
+            $this->session->set_flashdata('session_propose_branch_isp_modify','Modify an ISP: '. $this->input->post('branchinformationid'));
+            redirect(base_url('propose-branch/list-isp/' . $branchInformationId));
+        }
+
+        $this->layout->set_title('Internet Service Provider - Modify');
+        $this->load->view('themes/demo/includes/header');
+        $this->load->view('themes/demo/pages/propose_branch/modifyisp', $data);
+        $this->load->view('themes/demo/includes/footer');
+    }
+
+
+    public function removeinternetserviceprovider($branchInformationId, $internetServiceProviderId)
+    {
+
+        $data = array();
+        $data['internetserviceprovider'] = $this->MInternsetServiceProvider->getAllInternetServiceProviderById($internetServiceProviderId);
+        $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
+
+        if($this->input->post() && $this->form_validation->run('propose-branch/remove-isp') === true){
+
+
+            $data = array(
+                'internetserviceproviderid' => $this->input->post('internetserviceproviderid'),
+			);
+            $this->MInternsetServiceProvider->remove($data);
+            $this->session->set_flashdata('session_propose_branch_isp_remove','Remove an ISP: '. $this->input->post('branchinformationid'));
+            redirect(base_url('propose-branch/list-isp/' . $branchInformationId));
+        }
+
+        $this->layout->set_title('Internet Service Provider - Modify');
+        $this->load->view('themes/demo/includes/header');
+        $this->load->view('themes/demo/pages/propose_branch/removeisp', $data);
         $this->load->view('themes/demo/includes/footer');
     }
 

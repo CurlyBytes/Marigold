@@ -109,11 +109,15 @@ $route['propose-branch/modify/(:any)'] = "propose-branch/page/modify/$1";
 $route['propose-branch/remove/(:any)'] = "propose-branch/page/remove/$1";
 $route['propose-branch/(:num)'] = 'propose-branch/page/list/$1';
 
+$route['propose-branch/(:any)/listisp'] = "propose-branch/page/listnternetserviceprovider/$1";
+$route['propose-branch/(:any)/create-isp'] = "propose-branch/page/addinternetserviceprovider/$1";
+$route['propose-branch/list-isp/(:any)'] = "propose-branch/page/listnternetserviceprovider/$1";
+$route['propose-branch/(:any)/modify-isp/(:any)'] = "propose-branch/page/editinternetserviceprovider/$1/$2";
+$route['propose-branch/(:any)/remove-isp/(:any)'] = "propose-branch/page/removeinternetserviceprovider/$1/$2";
+
 $route['branch-expansion'] = 'branch-expansion/page/proposegeomap';
 $route['branch-information'] = 'branch-information/page/allbranches';
-//$route['(:any)'] = 'page/view/$1';
-//$route['(:any)/add'] = 'page/add/$1';
-//$route['(:any)/edit/(:any)'] = 'page/edit/$1/$2';
+
 
 //TASK review remap
 // $controllers=array('admin', 'user', 'blog', 'api');

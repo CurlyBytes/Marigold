@@ -1,6 +1,6 @@
             <main class="content">
 				<div class="container-fluid p-0">
-                <?php if ($this->session->flashdata('session_propose_branch_create')){ ?>
+                <?php if ($this->session->flashdata('session_propose_branch_isp_create')){ ?>
                 <div class="row">    
                     <div class="alert alert-success  alert-outline-coloured alert-dismissible" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -8,12 +8,12 @@
                             <i class="far fa-fw fa-bell"></i>
                         </div>
                         <div class="alert-message">
-                            <strong>Created</strong> - <?php echo $this->session->flashdata('session_propose_branch_create'); ?>
+                            <strong>Created</strong> - <?php echo $this->session->flashdata('session_propose_branch_isp_create'); ?>
                         </div>
                     </div>
                 </div>
                 <?php } ?>
-                <?php if ($this->session->flashdata('session_propose_branch_modify')){ ?>
+                <?php if ($this->session->flashdata('session_propose_branch_isp_modify')){ ?>
                 <div class="row">    
                     <div class="alert alert-primary alert-outline-coloured alert-dismissible" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -21,12 +21,12 @@
                             <i class="far fa-fw fa-bell"></i>
                         </div>
                         <div class="alert-message">
-                            <strong>Updated</strong> - <?php echo $this->session->flashdata('session_propose_branch_modify'); ?>
+                            <strong>Updated</strong> - <?php echo $this->session->flashdata('session_propose_branch_isp_modify'); ?>
                         </div>
                     </div>
                 </div>
                 <?php } ?>
-                <?php if ($this->session->flashdata('session_propose_branch_reupload')){ ?>
+                <?php if ($this->session->flashdata('session_propose_branch_isp_reupload')){ ?>
                 <div class="row">    
                     <div class="alert alert-primary alert-outline-coloured alert-dismissible" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -34,12 +34,12 @@
                             <i class="far fa-fw fa-bell"></i>
                         </div>
                         <div class="alert-message">
-                            <strong>Updated All images </strong> - <?php echo $this->session->flashdata('session_propose_branch_reupload'); ?>
+                            <strong>Updated All images </strong> - <?php echo $this->session->flashdata('session_propose_branch_isp_reupload'); ?>
                         </div>
                     </div>
                 </div>
                 <?php } ?>
-                <?php if ($this->session->flashdata('session_propose_branch_remove')){ ?>
+                <?php if ($this->session->flashdata('session_propose_branch_isp_remove')){ ?>
                 <div class="row">    
                     <div class="alert alert-danger alert-outline-coloured alert-dismissible" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -47,7 +47,7 @@
                             <i class="far fa-fw fa-bell"></i>
                         </div>
                         <div class="alert-message">
-                            <strong>Deleted</strong> - <?php echo $this->session->flashdata('session_propose_branch_remove'); ?>
+                            <strong>Deleted</strong> - <?php echo $this->session->flashdata('session_propose_branch_isp_remove'); ?>
                         </div>
                     </div>
                 </div>
@@ -70,41 +70,34 @@
                                     <table class="table table-striped table-responsive table-striped  is-narrow table-hover is-fullwidth">
                                         <thead>
                                             <tr>
-                                                <th>Region Name</th>
-                                                <th>District Name</th>
-                                                <th>Area Name</th>
-                                                <th>Branch Name</th>
-                                                <th>Latitude</th>
-                                                <th>Longtitude</th>
+                                                <th>Internet Service Provider Name</th>
+                                                <th>Technology Type</th>
+                                                <th>Speed</th>
                                                 <th>Date Created</th>
                                                 <th>Date Updated</th>
-                                                <th colspan="3">Operations</th>
+                                                <th colspan="2">Operations</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                                if($propose_branch){
-                                                    foreach ($propose_branch as $propose_branchrow): 
+                                                if($internetserviceprovider){
+                                                    foreach ($internetserviceprovider as $internetserviceproviderrow): 
                                             ?>
                                 
                                                     <tr>
-                                                        <td><?php echo html_escape($propose_branchrow->RegionName); ?></td>
-                                                        <td><?php echo html_escape($propose_branchrow->DistrictName); ?></td>
-                                                        <td><?php echo html_escape($propose_branchrow->AreaName); ?></td>  
-                                                        <td><?php echo html_escape($propose_branchrow->BranchName); ?></td>
-                                                        <td><?php echo html_escape($propose_branchrow->Latitude); ?></td>  
-                                                        <td><?php echo html_escape($propose_branchrow->Longtitude); ?></td>  
-                                                        <td><?php echo html_escape($propose_branchrow->CreatedAt); ?></td>
-                                                        <td><?php echo html_escape($propose_branchrow->UpdatedAt); ?></td>
-                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/'.$propose_branchrow->BranchInformationId); ?>/listisp"> isp</a></td>
-                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/modify/'.$propose_branchrow->BranchInformationId); ?>"> modify</a></td>
-                                                        <td><a class="btn btn-danger" href="<?php echo site_url('propose-branch/remove/'.$propose_branchrow->BranchInformationId); ?>"> remove</a></td>
+                                                        <td><?php echo html_escape($internetserviceproviderrow->InternetServiceProviderName); ?></td>
+                                                        <td><?php echo html_escape($internetserviceproviderrow->InternetServiceTechnologyType); ?></td>
+                                                        <td><?php echo html_escape($internetserviceproviderrow->Speed); ?></td>  
+                                                        <td><?php echo html_escape($internetserviceproviderrow->CreatedAt); ?></td>
+                                                        <td><?php echo html_escape($internetserviceproviderrow->UpdatedAt); ?></td>
+                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/'. $internetserviceproviderrow->BranchInformationId . '/modify-isp/'.$internetserviceproviderrow->InternetServiceProviderId); ?>"> modify</a></td>
+                                                        <td><a class="btn btn-danger" href="<?php echo site_url('propose-branch/'. $internetserviceproviderrow->BranchInformationId . '/remove/'.$internetserviceproviderrow->InternetServiceProviderId); ?>"> remove</a></td>
                                                     </tr>
                                             <?php 
                                                     endforeach;
                                                 } else {
                                             ?>
-                                                        <tr><td colspan="11">No Propose Branch record found.</td></tr>
+                                                        <tr><td colspan="7">No ISP   record found.</td></tr>
                                             <?php 
                                                 }
                                             ?>
