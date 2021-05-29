@@ -96,8 +96,8 @@
                                                         <td><?php echo html_escape($propose_branchrow->Longtitude); ?></td>  
                                                         <td><?php echo html_escape($propose_branchrow->CreatedAt); ?></td>
                                                         <td><?php echo html_escape($propose_branchrow->UpdatedAt); ?></td>
-                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/'.$propose_branchrow->BranchInformationId); ?>/listisp"> isp</a></td>
-                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/modify/'.$propose_branchrow->BranchInformationId); ?>"> modify</a></td>
+                                                        <td><a class="btn btn-info" href="<?php echo site_url('propose-branch/list-isp/'.$propose_branchrow->BranchInformationId); ?>"> isp</a></td>
+                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/modify/'.$propose_branchrow->BranchInformationId . '/' . $propose_branchrow->BranchInformationId); ?>"> modify</a></td>
                                                         <td><a class="btn btn-danger" href="<?php echo site_url('propose-branch/remove/'.$propose_branchrow->BranchInformationId); ?>"> remove</a></td>
                                                     </tr>
                                             <?php 

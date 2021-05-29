@@ -63,7 +63,7 @@
 								</div>
 								<div class="card-body">
                                 <div class="row col-2 offset-10">
-                                    <a class="btn btn-primary col" href="<?php echo site_url('propose-branch/create'); ?>"> Add</a>
+                                    <a class="btn btn-primary col" href="<?php echo site_url('propose-branch/create-isp/'. $branchinformationid); ?>"> Add</a>
                                     
                                </div>
                                 <div class="column table-responsive">
@@ -90,14 +90,14 @@
                                                         <td><?php echo html_escape($internetserviceproviderrow->Speed); ?></td>  
                                                         <td><?php echo html_escape($internetserviceproviderrow->CreatedAt); ?></td>
                                                         <td><?php echo html_escape($internetserviceproviderrow->UpdatedAt); ?></td>
-                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/'. $internetserviceproviderrow->BranchInformationId . '/modify-isp/'.$internetserviceproviderrow->InternetServiceProviderId); ?>"> modify</a></td>
-                                                        <td><a class="btn btn-danger" href="<?php echo site_url('propose-branch/'. $internetserviceproviderrow->BranchInformationId . '/remove/'.$internetserviceproviderrow->InternetServiceProviderId); ?>"> remove</a></td>
+                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/modify-isp/'. $internetserviceproviderrow->BranchInformationId . '/'. $internetserviceproviderrow->InternetServiceProviderId); ?>"> modify</a></td>
+                                                        <td><a class="btn btn-danger" href="<?php echo site_url('propose-branch/remove-isp/'. $internetserviceproviderrow->BranchInformationId . '/' . $internetserviceproviderrow->InternetServiceProviderId); ?>"> remove</a></td>
                                                     </tr>
                                             <?php 
                                                     endforeach;
                                                 } else {
                                             ?>
-                                                        <tr><td colspan="7">No ISP   record found.</td></tr>
+                                                        <tr><td colspan="7">No ISP record found.</td></tr>
                                             <?php 
                                                 }
                                             ?>

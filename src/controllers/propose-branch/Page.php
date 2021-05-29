@@ -221,9 +221,6 @@ class Page extends MariGold_Controller {
 
     public function listnternetserviceprovider($branchInformationId)
     {
-		if(!file_exists(APPPATH.'views/themes/demo/pages/propose_branch/listisp.php')){
-			show_404();
-		}
         $this->load->library("pagination");
         $this->config->load('pagination', true);
 
@@ -231,12 +228,12 @@ class Page extends MariGold_Controller {
         $per_page = $this->config->item('per_page', 'pagination');
         $settings = $this->config->item('pagination',true);
         $settings["total_rows"] = $this->MBranchInformation->get_count();
-        $settings['base_url'] = site_url('propose-branch/'. $branchInformationId . '/listisp');
+        $settings['base_url'] = site_url('propose-branch/list-isp/'. $branchInformationId );
         
         $this->pagination->initialize($settings);
         $data["links"] = $this->pagination->create_links();
-        $data['internetserviceprovider'] = $this->MInternsetServiceProvider->getAllInternetServiceProviderById($branchInformationId);
-        $data['internetservicetechnologytype'] = array('Wired','Wireless');
+        $data['internetserviceprovider'] = $this->MInternsetServiceProvider->getAllInternetServiceProviderByBranchIinformationdId($branchInformationId);
+        $data['branchinformationid'] = $branchInformationId;
         
 
         $this->layout->set_title('Internet Service Provider - List');
@@ -248,8 +245,8 @@ class Page extends MariGold_Controller {
     public function addinternetserviceprovider($branchInformationId)
     {
 
-        $data = array();
- 
+        $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
+        $data['internetservicetechnologytype'] = array('Wired','Wireless');
 
         if($this->input->post() && $this->form_validation->run('propose-branch/create-isp') === true){
 
@@ -365,6 +362,26 @@ class Page extends MariGold_Controller {
             return true;
         }
     }
+
+    
+
+    public function _is_unique_internetserviceprovidername()
+    {
+
+        $data['branchinformationid'] = $this->input->post('branchinformationid');
+        $data['internetserviceprovidername']   = $this->input->post('internetserviceprovidername');
+
+        $isExist = $this->MInternsetServiceProvider->IsIspNameExists($data);
+
+        if ($isExist === true)
+        {
+            $this->form_validation->set_message('_is_unique_internetserviceprovidername', 'The {field} already exist.');
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 
     public function _valid_longtitude($longtitude)
     {

@@ -127,7 +127,8 @@
         ),
         'propose-branch/create-isp' => array(
             arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]|callback__primarykey_exist[BranchInformation]'),
-            arrayf('internetserviceprovidername', 'Internet SErvice Provider Name', 'required|trim|min_length[2]|max_length[70]|alpha_numeric_spaces|callback__has_location_name_has_child')
+            arrayf('internetserviceprovidername', 'Internet SErvice Provider Name', 'required|trim|min_length[2]|max_length[70]|alpha_numeric_spaces|callback__is_unique_internetserviceprovidername'),
+            arrayf('speed', 'Speed', 'required|trim|numeric'),
         ),
         'propose-branch/modify-isp' => array(
             arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist')

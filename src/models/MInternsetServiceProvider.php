@@ -48,10 +48,30 @@ class MInternsetServiceProvider extends MariGold_Model {
         $this->db->delete('InternetServiceProvider');
         return true;       
     }
-    public function getAllInternetServiceProviderById($branchInformationId){
+    public function getAllInternetServiceProviderById($internetServiceProviderId){
         
-        $query = $this->db->get_where('InternetServiceProvider', array('InternetServiceProviderId' => $branchInformationId));
+        $query = $this->db->get_where('InternetServiceProvider', array('InternetServiceProviderId' => $internetServiceProviderId));
         return $query->row();
     }
 	
+    public function getAllInternetServiceProviderByBranchIinformationdId($branchInformationId){
+        
+        $query = $this->db->get_where('InternetServiceProvider', array('BranchInformationId' => $branchInformationId));
+        return $query->result();
+    }
+
+    public function IsIspNameExists($data){
+        $query = $this->db->get_where('InternetServiceProvider', 
+            array(
+                'BranchInformationId' => $data['branchinformationid'] ,
+                'InternetServiceProviderName' => $data['internetserviceprovidername']  
+            )
+        );
+
+        if(empty($query->row_array())){
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

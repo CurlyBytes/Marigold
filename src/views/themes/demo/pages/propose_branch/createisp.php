@@ -13,7 +13,7 @@
 								<div class="card-body">
 
 									<div class="column">
-										<?php echo form_open_multipart('propose-branch/create'); ?>
+										<?php echo form_open('propose-branch/create-isp/' . $propose_branch->BranchInformationId); ?>
 										<input type="hidden" name="branchinformationid" value="<?php echo $propose_branch->BranchInformationId; ?>">
 					
 
@@ -39,73 +39,18 @@
 														<?php echo form_error('internetservicetechnologytype'); ?> 
 													</div>
 												</div>
-											</div>
-
-											<div class="row">
-												<div class="col mb-3">
-													<div class="form-group">
-														<label class="form-label" for="contactperson">Contact Person</label>
-														<input type="text" class="form-control  <?php echo (form_error('contactperson') ? 'is-invalid' : 'is-valid');?>" id="contactperson" name="contactperson" placeholder="Contact Person" value="<?php echo html_escape(set_value('contactperson')); ?>">
-														<?php echo form_error('contactperson'); ?> 
-													</div>
-												</div>
 
 												<div class="col mb-3">
 													<div class="form-group">
-														<label class="form-label" for="contactnumber">Contact Number</label>
-														<input type="text" class="form-control  <?php echo (form_error('contactnumber') ? 'is-invalid' : 'is-valid');?>" id="contactnumber" name="contactnumber" placeholder="Contact Number" value="<?php echo html_escape(set_value('contactnumber')); ?>">
-														<?php echo form_error('contactnumber'); ?> 
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col mb-3">
-													<div class="form-group">
-														<label class="form-label" for="contactaddress">Contact Address</label>
-														
-														<textarea  class="form-control  <?php echo (form_error('contactaddress') ? 'is-invalid' : 'is-valid');?>" id="contactaddress" name="contactaddress" cols="20"  rows="2"><?php echo html_escape(set_value('contactaddress')); ?></textarea>
-														<?php echo form_error('contactaddress'); ?> 
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col mb-3">
-													<div class="form-group">
-														<label class="form-label" for="rentalprice">Rental Price</label>
-														<input type="text" class="form-control  <?php echo (form_error('rentalprice') ? 'is-invalid' : 'is-valid');?>" id="rentalprice" name="rentalprice" placeholder="rentalprice" value="<?php echo html_escape(set_value('rentalprice')); ?>">
-														<?php echo form_error('rentalprice'); ?> 
-													</div>
-												</div>
-												<div class="col mb-3">
-													<div class="form-group">
-														<label class="form-label" for="squaremeter">Square Meter</label>
-														<input type="text" class="form-control  <?php echo (form_error('squaremeter') ? 'is-invalid' : 'is-valid');?>" id="squaremeter" name="squaremeter" placeholder="squaremeter" value="<?php echo html_escape(set_value('squaremeter')); ?>">
-														<?php echo form_error('squaremeter'); ?> 
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col mb-3">
-													<div class="form-group">
-														<label class="form-label" for="description">Description</label>
-														
-														<textarea  class="form-control  <?php echo (form_error('description') ? 'is-invalid' : 'is-valid');?>" id="description" name="description" cols="20"  rows="2"><?php echo html_escape(set_value('description')); ?></textarea>
-														<?php echo form_error('description'); ?> 
+														<label class="form-label" for="speed">Speed</label>
+														<input type="text" class="form-control  <?php echo (form_error('speed') ? 'is-invalid' : 'is-valid');?>" id="speed" name="speed" placeholder="Speed" value="<?php echo html_escape(set_value('speed')); ?>">
+														<?php echo form_error('speed'); ?> 
 													</div>
 												</div>
 											</div>
 
-											<div class="row">
-												<div class="col mb-3">
-													<div class="form-group">
-														<label class="form-label" for="files">Branch Images</label>
-														<input type="file" class="form-control" name="files[]" multiple/>
-														<?php echo form_error('files'); ?> 
-													</div>
-												</div>
-											</div>
 											<button type="submit"  name="uploadfile"class="btn btn-primary btn-block">Submit</button>
-											<a class="btn btn-secondary col" href="<?php echo site_url('propose-branch'); ?>"> Cancel</a>
+											<a class="btn btn-secondary col" href="<?php echo site_url('propose-branch/list-isp/' . $propose_branch->BranchInformationId); ?>"> Cancel</a>
 										<?php echo form_close(); ?>  
 									</div>
 								</div>
