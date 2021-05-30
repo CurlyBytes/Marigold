@@ -61,17 +61,66 @@ class MInternsetServiceProvider extends MariGold_Model {
     }
 
     public function IsIspNameExists($data){
-        $query = $this->db->get_where('InternetServiceProvider', 
-            array(
-                'BranchInformationId' => $data['branchinformationid'] ,
-                'InternetServiceProviderName' => $data['internetserviceprovidername']  
-            )
-        );
+        $query = array();
+        if($data['internetserviceproviderid']){
+            $query = $this->db->get_where('InternetServiceProvider', 
+                array(
+                    'BranchInformationId' => $data['branchinformationid'] ,
+                    'InternetServiceProviderId !=' => $data['internetserviceproviderid'] ,
+                    'InternetServiceProviderName' => $data['internetserviceprovidername']  
+                )
+            );
+
+        }else {
+            $query = $this->db->get_where('InternetServiceProvider', 
+                array(
+                    'BranchInformationId' => $data['branchinformationid'] ,
+                    'InternetServiceProviderName' => $data['internetserviceprovidername']  
+                )
+            );
+
+
+        }
+     
+
+        
+
 
         if(empty($query->row_array())){
             return false;
         } else {
             return true;
+        }
+    }
+
+    public function HasReachMaximumIspCount($data){
+        $query = $this->db->get_where('InternetServiceProvider', 
+            array(
+                'BranchInformationId' => $data['branchinformationid']
+            )
+        );
+
+    
+        if(count($query->result()) >= 6 ){
+            return true;
+        } else {         
+            return false;
+        }
+    }
+
+
+    public function HasReachMinimum($data){
+        $query = $this->db->get_where('InternetServiceProvider', 
+            array(
+                'BranchInformationId' => $data['branchinformationid']
+            )
+        );
+        $test =count($query->result());
+    
+        if(count($query->result()) <= 3 ){
+            return true;
+        } else {         
+            return false;
         }
     }
 }

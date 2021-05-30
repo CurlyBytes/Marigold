@@ -275,6 +275,7 @@ class Page extends MariGold_Controller {
         $data = array();
         $data['internetserviceprovider'] = $this->MInternsetServiceProvider->getAllInternetServiceProviderById($internetServiceProviderId);
         $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
+        $data['internetservicetechnologytype'] = array('Wired','Wireless');
 
         if($this->input->post() && $this->form_validation->run('propose-branch/modify-isp') === true){
 
@@ -367,7 +368,7 @@ class Page extends MariGold_Controller {
 
     public function _is_unique_internetserviceprovidername()
     {
-
+        $data['internetserviceproviderid'] = false;
         $data['branchinformationid'] = $this->input->post('branchinformationid');
         $data['internetserviceprovidername']   = $this->input->post('internetserviceprovidername');
 
@@ -381,6 +382,43 @@ class Page extends MariGold_Controller {
             return true;
         }
     }
+
+    
+   
+    public function _is_unique_internetserviceprovidername_edit()
+    {
+        $data['internetserviceproviderid'] = $this->input->post('internetserviceproviderid');
+        $data['branchinformationid'] = $this->input->post('branchinformationid');
+        $data['internetserviceprovidername']   = $this->input->post('internetserviceprovidername');
+
+        $isExist = $this->MInternsetServiceProvider->IsIspNameExists($data);
+
+        if ($isExist === true)
+        {
+            $this->form_validation->set_message('_is_unique_internetserviceprovidername_edit', 'The {field} already exist.');
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public function _maximum_ispprovider()
+    {
+
+        $data['branchinformationid'] = $this->input->post('branchinformationid');
+
+
+        $hasReachmaxCount = $this->MInternsetServiceProvider->HasReachMaximumIspCount($data);
+
+        if ($hasReachmaxCount === true)
+        {
+            $this->form_validation->set_message('_maximum_ispprovider', 'ISP Should not more than 6');
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 
 
     public function _valid_longtitude($longtitude)

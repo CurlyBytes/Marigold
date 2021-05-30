@@ -127,11 +127,16 @@
         ),
         'propose-branch/create-isp' => array(
             arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]|callback__primarykey_exist[BranchInformation]'),
-            arrayf('internetserviceprovidername', 'Internet SErvice Provider Name', 'required|trim|min_length[2]|max_length[70]|alpha_numeric_spaces|callback__is_unique_internetserviceprovidername'),
-            arrayf('speed', 'Speed', 'required|trim|numeric'),
+            arrayf('internetserviceprovidername', 'Internet SErvice Provider Name', 'required|trim|min_length[2]|max_length[70]|alpha_numeric_spaces|callback__is_unique_internetserviceprovidername|callback__maximum_ispprovider'),
+            arrayf('internetservicetechnologytype', 'internetservicetechnologytype', 'required'),
+            arrayf('speed', 'Speed', 'required|trim|numeric')
         ),
         'propose-branch/modify-isp' => array(
-            arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist')
+            arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]|callback__primarykey_exist[BranchInformation]'),
+            arrayf('internetserviceproviderid', 'InternetServiceProviderId', 'required|exact_length[36]|callback__primarykey_exist[InternetServiceProvider]'),
+            arrayf('internetserviceprovidername', 'Internet SErvice Provider Name', 'required|trim|min_length[2]|max_length[70]|alpha_numeric_spaces|callback__is_unique_internetserviceprovidername_edit'),
+            arrayf('internetservicetechnologytype', 'internetservicetechnologytype', 'required'),
+            arrayf('speed', 'Speed', 'required|trim|numeric')
         ),
         'propose-branch/remove-isp' => array(
             arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist')
