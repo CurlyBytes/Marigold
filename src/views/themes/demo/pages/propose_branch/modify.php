@@ -147,11 +147,53 @@
 												</div>
 											</div>
 
-											
+											<div class="row">
+											<div class="column table-responsive">
+                                    <table class="table table-striped table-responsive table-striped  is-narrow table-hover is-fullwidth">
+                                        <thead>
+                                            <tr>
+                                                <th>Internet Service Provider Name</th>
+                                                <th>Technology Type</th>
+                                                <th>Speed</th>
+                                                <th>Date Created</th>
+                                                <th>Date Updated</th>
+                                                <th colspan="2">Operations</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                if($internetserviceprovider){
+                                                    foreach ($internetserviceprovider as $internetserviceproviderrow): 
+                                            ?>
+                                
+                                                    <tr>
+                                                        <td><?php echo html_escape($internetserviceproviderrow->InternetServiceProviderName); ?></td>
+                                                        <td><?php echo html_escape($internetserviceproviderrow->InternetServiceTechnologyType); ?></td>
+                                                        <td><?php echo html_escape($internetserviceproviderrow->Speed); ?></td>  
+                                                        <td><?php echo html_escape($internetserviceproviderrow->CreatedAt); ?></td>
+                                                        <td><?php echo html_escape($internetserviceproviderrow->UpdatedAt); ?></td>
+                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/modify-isp/'. $internetserviceproviderrow->BranchInformationId . '/'. $internetserviceproviderrow->InternetServiceProviderId); ?>"> modify</a></td>
+                                                        <td><a class="btn btn-danger" href="<?php echo site_url('propose-branch/remove-isp/'. $internetserviceproviderrow->BranchInformationId . '/' . $internetserviceproviderrow->InternetServiceProviderId); ?>"> remove</a></td>
+                                                    </tr>
+                                            <?php 
+                                                    endforeach;
+                                                } else {
+                                            ?>
+                                                        <tr><td colspan="7">No ISP record found.</td></tr>
+                                            <?php 
+                                                }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                    <p><?php echo $links; ?></p>
+                                </div>
+											</div>
+
 					
 
 											<button type="submit" class="btn btn-primary btn-block">Submit</button>
 											<a class="btn btn-secondary col" href="<?php echo site_url('propose-branch'); ?>"> Cancel</a>
+											
 											<a class="btn btn-info col" href="<?php echo site_url('propose-branch/photo-replace/'. $propose_branch->BranchInformationId); ?>"> Replace All Images</a>
 										<?php echo form_close(); ?>  
 									</div>

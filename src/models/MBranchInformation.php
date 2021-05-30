@@ -92,13 +92,11 @@ class MBranchInformation extends MariGold_Model {
             'UpdatedAt' => $now
         );
 
-        $this->db->where('BranchInformationId ', $data['locationnameid']);
+        $this->db->where('BranchInformationId ', $data['branchinformationid']);
         $result = $this->db->update('BranchInformation', $branchInformationRecord);
-
-        $query = ' IsApprove = '. $this->$BranchProposalForApproval.' AND BranchId = '. $data['branchid'] ;
-        $this->db->where($query);
-        $this->db->delete('BranchInformation');
-
+        $param = array('IsApprove' => $this->BranchProposalForApproval, 'BranchId' => $data['branchid']);
+     
+        $this->db->delete('BranchInformation', $param);
         return $result;     
     }
 	
@@ -283,16 +281,32 @@ class MBranchInformation extends MariGold_Model {
         }
     }
     
-    public function hasMinimumBranchProposal($data){
+    public function hasMinimumBranchProposal($branchinformationid){
         $query = $this->db->get_where('BranchInformation', 
             array(
-                'BranchId' => $data['branchid'] ,
+                'BranchId' => $branchinformationid ,
                 'IsApprove' => $this->BranchProposalForApproval
+            )
+        );
+        $count = count($query->result_array());
+    
+        if(count($query->result_array()) >= 3 ){
+            return true;
+        } else {
+            
+            return false;
+        }
+    }
+
+    public function hasMinimumIsp($branchinformationid){
+        $query = $this->db->get_where('InternetServiceProvider', 
+            array(
+                'BranchInformationId' => $branchinformationid,
             )
         );
 
     
-        if(empty($query->row_array()) || count($query->row_array()) >= $this->MinimumBranchProposal ){
+        if(count($query->result_array()) >= $this->MinimumBranchProposal ){
             return true;
         } else {
             
@@ -309,7 +323,22 @@ class MBranchInformation extends MariGold_Model {
         );
 
     
-        if(count($query->row_array()) <= $this->MaximumBranchProposal ){
+        if(count($query->result_array()) <= $this->MaximumBranchProposal ){
+            return true;
+        } else {         
+            return false;
+        }
+    }
+
+    public function hasMinimimumImages($branchinformationid){
+        $query = $this->db->get_where('BranchInformationPhoto', 
+            array(
+                'BranchInformationId' => $branchinformationid 
+            )
+        );
+
+    
+        if(count($query->result_array()) >= 3 ){
             return true;
         } else {         
             return false;

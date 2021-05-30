@@ -62,6 +62,7 @@
 
 											<div class="dropdown-menu dropdown-menu-end">
 												<a class="dropdown-item" href="<?php echo site_url('propose-branch/approve/' .$propose_branchrow->BranchInformationId);?>">Approve</a>
+												<a class="dropdown-item" href="<?php echo site_url('propose-branch/list-isp/' .$propose_branchrow->BranchInformationId);?>">ISP</a>
 												<a class="dropdown-item" href="<?php echo site_url('propose-branch/modify/' .$propose_branchrow->BranchInformationId);?>">Modify</a>
 												<a class="dropdown-item" href="<?php echo site_url('propose-branch/remove/' .$propose_branchrow->BranchInformationId);?>">Remove</a>
 											</div>

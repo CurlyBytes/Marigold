@@ -106,11 +106,23 @@ class Page extends MariGold_Controller {
 
     public function modify($branchInformationId)
     {
+        $this->load->library("pagination");
+        $this->config->load('pagination', true);
+        
         $data['branch'] = $this->MBranchInformation->branchWithoutLocation();
         $data['branchphoto'] = $this->MBranchInformation->getAllBranchInformationPhotoByBranchInfomrationId($branchInformationId);
         $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
         $data['propose_branch_details'] = $this->MBranchInformation->getAllBranchInformationDetailById($branchInformationId);
-       
+        $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+        $per_page = $this->config->item('per_page', 'pagination');
+        $settings = $this->config->item('pagination',true);
+        $settings["total_rows"] = $this->MBranchInformation->get_count();
+        $settings['base_url'] = site_url('propose-branch/list-isp/'. $branchInformationId );
+        
+        $this->pagination->initialize($settings);
+        $data["links"] = $this->pagination->create_links();
+        $data['internetserviceprovider'] = $this->MInternsetServiceProvider->getAllInternetServiceProviderByBranchIinformationdId($branchInformationId);
+        
         if($data['propose_branch'] === null){
             show_404();
         }
@@ -216,6 +228,46 @@ class Page extends MariGold_Controller {
         $this->layout->set_title('Propose Branch - Remove');
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/propose_branch/remove', $data);
+        $this->load->view('themes/demo/includes/footer');
+    }
+
+
+    public function approve($branchInformationId)
+    {
+        $this->load->library("pagination");
+        $this->config->load('pagination', true);
+
+        $data['branch'] = $this->MBranchInformation->branchWithoutLocation();
+        $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
+        $data['branchphoto'] = $this->MBranchInformation->getAllBranchInformationPhotoByBranchInfomrationId($branchInformationId);
+        $data['propose_branch_details'] = $this->MBranchInformation->getAllBranchInformationDetailById($branchInformationId);
+        $data['internetserviceprovider'] = $this->MInternsetServiceProvider->getAllInternetServiceProviderByBranchIinformationdId($branchInformationId);
+     
+         $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+        $per_page = $this->config->item('per_page', 'pagination');
+        $settings = $this->config->item('pagination',true);
+        $settings["total_rows"] = $this->MBranchInformation->get_count();
+        $settings['base_url'] = site_url('propose-branch/list-isp/'. $branchInformationId );
+        
+        $this->pagination->initialize($settings);
+        $data["links"] = $this->pagination->create_links();
+        if($data['propose_branch'] === null){
+            show_404();
+        }
+        
+        if($this->input->post() && $this->form_validation->run('propose-branch/approve') === true){
+            $data = array(
+                'branchinformationid' => $this->input->post('branchinformationid'),
+                'branchid' => $this->input->post('branchid')
+			);
+            $this->MBranchInformation->approve($data);
+            $this->session->set_flashdata('session_propose_branch_approve','The branch is now approve:'. $this->input->post('branchinformationid'));
+            redirect(base_url('propose-branch'));
+        }
+
+        $this->layout->set_title('Propose Branch - Approve');
+        $this->load->view('themes/demo/includes/header');
+        $this->load->view('themes/demo/pages/propose_branch/approve', $data);
         $this->load->view('themes/demo/includes/footer');
     }
 
@@ -460,6 +512,48 @@ class Page extends MariGold_Controller {
 
 
 
+    public function _has_minimumimages(){
+       
+        $branchinformationid = $this->input->post('branchinformationid');
+        $reachminimum = $this->MBranchInformation->hasMinimimumImages($branchinformationid);
+
+        if ($reachminimum === false)
+        {
+            $this->form_validation->set_message('_has_minimumimages', 'The images should atleast 6 image being uploaded');
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public function _has_minimumbranchproposal(){
+       
+        $branchid = $this->input->post('branchid');
+        $reachminimum = $this->MBranchInformation->hasMinimumBranchProposal($branchid);
+
+        if ($reachminimum === false)
+        {
+            $this->form_validation->set_message('_has_minimumbranchproposal', 'Should atleast 3 branch proposal');
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+
+    public function _has_minimum_internetserviceprovider(){
+       
+        $branchinformationid = $this->input->post('branchinformationid');
+        $reachminimum = $this->MBranchInformation->hasMinimumIsp($branchinformationid);
+
+        if ($reachminimum === false)
+        {
+            $this->form_validation->set_message('_has_minimum_internetserviceprovider', 'The isp information should have atleast 3 of them');
+            return false;
+        }else{
+            return true;
+        }
+    }
        /*
      * file value and type check during validation
      */
@@ -510,33 +604,6 @@ class Page extends MariGold_Controller {
     }
 
   
-    private function upload_files($title, $files)
-    {
-  
-
-        $images = array();
-
-        foreach ($files['name'] as $key => $image) {
-            $_FILES['userfile']['name']= $files['name'][$key];
-            $_FILES['userfile']['type']= $files['type'][$key];
-            $_FILES['userfile']['tmp_name']= $files['tmp_name'][$key];
-            $_FILES['userfile']['error']= $files['error'][$key];
-            $_FILES['userfile']['size']= $files['size'][$key];
-            $config['file_name'] = $title .'_'. $image;
-           $this->upload->initialize($config);
-            $test = $this->upload->do_upload('userfile');
-
-            if ($test) {
-                $uploadData = $this->upload->data();
-                $uploadedFile = $uploadData['file_name'];
-                array_push($this->final_files_data, $uploadedFile);
-            } else {
-                return false;
-            }
-        }
-
-        return $images;
-    }
 
   
 }

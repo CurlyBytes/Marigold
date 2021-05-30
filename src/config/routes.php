@@ -113,6 +113,7 @@ $route['propose-branch/list-isp/(:any)'] = "propose-branch/page/listnternetservi
 $route['propose-branch/create-isp/(:any)'] = "propose-branch/page/addinternetserviceprovider/$1";
 $route['propose-branch/modify-isp/(:any)/(:any)'] = "propose-branch/page/editinternetserviceprovider/$1/$2";
 $route['propose-branch/remove-isp/(:any)/(:any)'] = "propose-branch/page/removeinternetserviceprovider/$1/$2";
+$route['propose-branch/approve/(:any)'] = "propose-branch/page/approve/$1";
 
 $route['branch-expansion'] = 'branch-expansion/page/proposegeomap';
 $route['branch-information'] = 'branch-information/page/allbranches';

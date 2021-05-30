@@ -52,6 +52,21 @@
                     </div>
                 </div>
                 <?php } ?>
+
+
+                <?php if ($this->session->flashdata('session_propose_branch_approve')){ ?>
+                <div class="row">    
+                    <div class="alert alert-primary alert-outline-coloured alert-dismissible" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="alert-icon">
+                            <i class="far fa-fw fa-bell"></i>
+                        </div>
+                        <div class="alert-message">
+                            <strong>Updated</strong> - <?php echo $this->session->flashdata('session_propose_branch_approve'); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
 					<h1 class="h3 mb-3">Propose Branch</h1>
                     
 					<div class="row">
@@ -97,7 +112,7 @@
                                                         <td><?php echo html_escape($propose_branchrow->CreatedAt); ?></td>
                                                         <td><?php echo html_escape($propose_branchrow->UpdatedAt); ?></td>
                                                         <td><a class="btn btn-info" href="<?php echo site_url('propose-branch/list-isp/'.$propose_branchrow->BranchInformationId); ?>"> isp</a></td>
-                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/modify/'.$propose_branchrow->BranchInformationId . '/' . $propose_branchrow->BranchInformationId); ?>"> modify</a></td>
+                                                        <td><a class="btn btn-primary" href="<?php echo site_url('propose-branch/modify/'.$propose_branchrow->BranchInformationId); ?>"> modify</a></td>
                                                         <td><a class="btn btn-danger" href="<?php echo site_url('propose-branch/remove/'.$propose_branchrow->BranchInformationId); ?>"> remove</a></td>
                                                     </tr>
                                             <?php 

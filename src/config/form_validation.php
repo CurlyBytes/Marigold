@@ -142,6 +142,9 @@
             arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]|callback__primarykey_exist[BranchInformation]'),
             arrayf('internetserviceproviderid', 'InternetServiceProviderId', 'required|exact_length[36]|callback__primarykey_exist[InternetServiceProvider]')
         ),
+        'propose-branch/approve' => array(
+            arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]|callback__primarykey_exist[BranchInformation]|callback__has_minimumimages|callback__has_minimumbranchproposal|callback__has_minimum_internetserviceprovider')
+        ),
     );
 
     $config['error_prefix']= '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button><div class="alert-message">';

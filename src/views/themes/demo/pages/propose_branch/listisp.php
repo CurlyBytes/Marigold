@@ -105,7 +105,7 @@
                                     </table>
                                     <p><?php echo $links; ?></p>
                                 </div>
-                        
+                                <a class="btn btn-secondary col" href="<?php echo site_url('propose-branch'); ?>"> Propose Branch List</a>
                                 
 
 								</div>
