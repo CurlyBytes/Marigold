@@ -51,7 +51,7 @@
 												</div>
 											</div>
 
-											<button type="submit"  name="uploadfile"class="btn btn-primary btn-block">Submit</button>
+											<button type="submit"  name="uploadfile"class="btn btn-primary btn-block">Save</button>
 											<a class="btn btn-secondary col" href="<?php echo site_url('propose-branch/list-isp/' . $propose_branch->BranchInformationId); ?>"> Cancel</a>
 										<?php echo form_close(); ?>  
 									</div>

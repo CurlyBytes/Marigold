@@ -305,6 +305,7 @@ class Page extends MariGold_Controller {
         $data = array();
         $data['internetserviceprovider'] = $this->MInternsetServiceProvider->getAllInternetServiceProviderById($internetServiceProviderId);
         $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
+        $data['internetservicetechnologytype'] = array('Wired','Wireless');
 
         if($this->input->post() && $this->form_validation->run('propose-branch/remove-isp') === true){
 
@@ -351,6 +352,8 @@ class Page extends MariGold_Controller {
             return true;
         }
     }
+
+   
 
 
     public function _valid_latitude($latitude)

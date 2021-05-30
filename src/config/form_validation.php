@@ -139,7 +139,8 @@
             arrayf('speed', 'Speed', 'required|trim|numeric')
         ),
         'propose-branch/remove-isp' => array(
-            arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist')
+            arrayf('branchinformationid', 'BranchInformationId', 'required|exact_length[36]|callback__primarykey_exist[BranchInformation]'),
+            arrayf('internetserviceproviderid', 'InternetServiceProviderId', 'required|exact_length[36]|callback__primarykey_exist[InternetServiceProvider]')
         ),
     );
 
