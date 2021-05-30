@@ -1,56 +1,58 @@
 {
-	"name": "curlybytes/marigold",
-	"description" : "The Branch Application with branch expansion, branch information and internet module",
-	"scripts": {
-		"check-xdebug": [
-			"XDEBUG_MODE=coverage phpunit  -vvv --testdox --colors=always"
-		],
-		"check-phpdbg": [
-			"XDEBUG_MODE=coverage phpdbg -qrr   vendor/bin/phpunit -vvv --testdox --colors=always"
-		],
-		"check-pcov": [
-			"pecl install pcov",
-			"php -d pcov.enabled=1 vendor/bin/phpunit —coverage-html=var/coverage-report"
-		],
-		"check-watch": [
-			"phpunit-watcher watch"
-		]
-	  },
-	  "scripts-descriptions": {
-		"check-xdebug": "use this to invoke xdebug in phpunit.",
-		"check-phpdbg": "use this to invoke phpdbg in phpunit.",
-		"check-pcov": "use this to invoke pcov in phpunit.",
-		"check-watch": "use this to auto run phpunit tests scripts"
-	  },
-	"require": {
-		"chriskacerguis/codeigniter-restserver": "^3.1",
-		"codeigniter/framework": "3.1.11",
-		"geocoder-php/google-maps-provider": "^4.6",
-		"nltbinh/codeigniter-service-layer": "^1.0",
-		"php-http/guzzle6-adapter": "^2.0",
-		"zircote/swagger-php": "^3.1"
-	},
-	"repositories": [{
-		"type": "composer",
-		"url": "https://packagist.org"
-	  }],
-	"config": {
-		"sort-packages": true,
-		"secure-http": true,
-		"htaccess-protect": true
-	},
-	"autoload": {
-        "psr-4": {
-            "Marigold\\Domain\\": "src/libraries"
-        }
-    },
-	"require-dev": {
-		"nerones/codeigniter-phpcs": "dev-master",
-		"vlucas/phpdotenv": "4.2.0",
-		"filp/whoops": "2.12.0",
-		"spatie/phpunit-watcher": "1.23.2",
-		"mikey179/vfsstream": "1.1.0",
-		"kenjis/ci-phpunit-test": "3.0.0",
-		"phpunit/phpunit": "9.4.4"
-	}
+  "name": "curlybytes/marigold",
+  "description": "The Branch Application with branch expansion, branch information and internet module",
+  "scripts": {
+    "check-xdebug": [
+      "XDEBUG_MODE=coverage phpunit  -vvv --testdox --colors=always"
+    ],
+    "check-phpdbg": [
+      "XDEBUG_MODE=coverage phpdbg -qrr   vendor/bin/phpunit -vvv --testdox --colors=always"
+    ],
+    "check-pcov": [
+      "pecl install pcov",
+      "php -d pcov.enabled=1 vendor/bin/phpunit —coverage-html=var/coverage-report"
+    ],
+    "check-watch": [
+      "phpunit-watcher watch"
+    ]
+  },
+  "scripts-descriptions": {
+    "check-xdebug": "use this to invoke xdebug in phpunit.",
+    "check-phpdbg": "use this to invoke phpdbg in phpunit.",
+    "check-pcov": "use this to invoke pcov in phpunit.",
+    "check-watch": "use this to auto run phpunit tests scripts"
+  },
+  "require": {
+    "chriskacerguis/codeigniter-restserver": "^3.1",
+    "codeigniter/framework": "3.1.11",
+    "geocoder-php/google-maps-provider": "^4.6",
+    "nltbinh/codeigniter-service-layer": "^1.0",
+    "php-http/guzzle6-adapter": "^2.0",
+    "zircote/swagger-php": "^3.1"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packagist.org"
+    }
+  ],
+  "config": {
+    "sort-packages": true,
+    "secure-http": true,
+    "htaccess-protect": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Marigold\\Domain\\": "src/libraries"
+    }
+  },
+  "require-dev": {
+    "nerones/codeigniter-phpcs": "dev-master",
+    "vlucas/phpdotenv": "4.2.0",
+    "filp/whoops": "2.12.0",
+    "spatie/phpunit-watcher": "1.23.2",
+    "mikey179/vfsstream": "1.1.0",
+    "kenjis/ci-phpunit-test": "3.0.0",
+    "phpunit/phpunit": "9.4.4"
+  }
 }
