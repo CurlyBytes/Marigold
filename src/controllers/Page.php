@@ -19,7 +19,7 @@ class Page extends MariGold_Controller {
         $this->layout->set_body_attr(array('id' => 'branch-information', 'class' => 'branch-information'));
     }
 
-	public function allbranches(){
+	public function index(){
 		if(!file_exists(APPPATH.'views/themes/demo/pages/branch_information/geomap.php')){
 			show_404();
 		}

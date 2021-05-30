@@ -62,6 +62,11 @@
 							<i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Location Settings</span>
 						</a>
 					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<?php echo  site_url('logout'); ?>">
+							<i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Logout</span>
+						</a>
+					</li>
 				</ul>
 
 	

@@ -53,16 +53,18 @@ $guidRegex = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
 */
 // TASK http verbs $route['products']['put'] = 'product/insert';
 
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'page';
 $route['404_override'] = 'PageNotFound';
 $route['translate_uri_dashes'] = false;
+$route['login'] = 'user/login';
+$route['logout'] = 'user/logout';
+$route['callback'] = 'user/callback';
 
+// // URI like '/en/about' -> use controller 'about'
+// $route['^(en|fil)/(.+)$'] = "$2";
 
-// URI like '/en/about' -> use controller 'about'
-$route['^(en|fil)/(.+)$'] = "$2";
-
-// '/en', '/fil', '/fr'  URIs -> use default controller
-$route['^(en|fil)$'] = $route['default_controller'];
+// // '/en', '/fil', '/fr'  URIs -> use default controller
+// $route['^(en|fil)$'] = $route['default_controller'];
 
 
 $route['locationtype'] = 'locationtype/page/list';

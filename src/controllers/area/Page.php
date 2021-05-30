@@ -12,6 +12,7 @@ class Page extends MariGold_Controller {
     public function __construct()
     {
         parent::__construct();
+
         $this->load->model('MLocationName');
         $this->layout->set_body_attr(array('id' => 'area', 'class' => 'area'));
     }
