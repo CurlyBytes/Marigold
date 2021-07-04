@@ -31,14 +31,14 @@
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<?php echo  site_url('branch-expansion'); ?>">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Branch Expansion</span>
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Propose Branch</span>
 						</a>
 					</li>
 
 		
 
 					<li class="sidebar-header">
-						Branch Expansion Setup
+						Propose Branch Setup
 					</li>
 					<li class="sidebar-item">
 						<a data-bs-target="#ui" data-bs-toggle="collapse" class="sidebar-link collapsed">

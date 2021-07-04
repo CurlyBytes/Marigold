@@ -44,7 +44,7 @@ class Page extends MariGold_Controller {
             $this->layout->add_js_rawtext($js_geomap_javascript, 'footer');
         }
 
-        $this->layout->set_title("Branch Expansion - Geomap");	
+        $this->layout->set_title("Propose Branch - Geomap");	
         $this->load->view('themes/demo/includes/header');
         $this->load->view('themes/demo/pages/branch_expansion/geomap', $data);
         $this->load->view('themes/demo/includes/footer');
