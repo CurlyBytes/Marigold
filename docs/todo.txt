@@ -216,7 +216,7 @@ BranchInformationDetailId
 BranchInformationId
 ContactPerson
 ContactNumber
-ContactAddress
+BranchLocation
 SquareMeter
 Description
 RentalPrice

@@ -105,7 +105,7 @@
 										</li>
 										<li class="timeline-item">
 											<strong>Owner Address</strong>
-											<p><?php echo $branch_informationrow->ContactAddress;?>.</p>
+											<p><?php echo $branch_informationrow->BranchLocation;?>.</p>
 										</li>
 										<li class="timeline-item">
 											<strong>Sq. Area</strong>

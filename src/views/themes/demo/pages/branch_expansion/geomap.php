@@ -137,7 +137,7 @@
 										</li>
 										<li class="timeline-item">
 											<strong>Owner Address</strong>
-											<p><?php echo $propose_branchrow->ContactAddress;?>.</p>
+											<p><?php echo $propose_branchrow->BranchLocation;?>.</p>
 										</li>
 										<li class="timeline-item">
 											<strong>Sq. Area</strong>

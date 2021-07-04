@@ -88,10 +88,10 @@
 											<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">
-														<label class="form-label" for="contactaddress">Contact Address</label>
+														<label class="form-label" for="branchlocation">Branch Location</label>
 														
-														<textarea  class="form-control  <?php echo (form_error('contactaddress') ? 'is-invalid' : 'is-valid');?>" id="contactaddress" name="contactaddress" cols="20"  rows="2" readonly><?php echo html_escape(set_value('contactaddress', $propose_branch_details->ContactAddress)); ?></textarea>
-														<?php echo form_error('contactaddress'); ?> 
+														<textarea  class="form-control  <?php echo (form_error('branchlocation') ? 'is-invalid' : 'is-valid');?>" id="branchlocation" name="branchlocation" cols="20"  rows="2" readonly><?php echo html_escape(set_value('branchlocation', $propose_branch_details->BranchLocation)); ?></textarea>
+														<?php echo form_error('branchlocation'); ?> 
 													</div>
 												</div>
 											</div>

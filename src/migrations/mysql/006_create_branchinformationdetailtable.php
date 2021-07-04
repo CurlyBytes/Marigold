@@ -33,7 +33,7 @@ class Migration_Create_BranchInformationDetailTable extends CI_Migration
                 'constraint' => 25,
                 'null' => FALSE
             ),
-            'ContactAddress' => array(
+            'BranchLocation' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 250,
                 'null' => FALSE

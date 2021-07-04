@@ -84,7 +84,7 @@
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
             arrayf('contactperson', 'Contact Person', 'required|trim|min_length[4]|max_length[150]|alpha_numeric_spaces'),
             arrayf('contactnumber', 'Contact Number', 'required|trim|min_length[1]|max_length[25]|is_natural'),
-            arrayf('contactaddress', 'Contact Address', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
+            arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
             arrayf('squaremeter', 'Square Meter', 'required|trim|numeric'),
             arrayf('description', 'Description', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
             arrayf('rentalprice', 'Rental Price', 'required|trim|numeric'),
@@ -103,7 +103,7 @@
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
             arrayf('contactperson', 'Contact Person', 'required|trim|min_length[4]|max_length[150]|alpha_numeric_spaces'),
             arrayf('contactnumber', 'Contact Number', 'required|trim|min_length[1]|max_length[25]|is_natural'),
-            arrayf('contactaddress', 'Contact Address', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
+            arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
             arrayf('squaremeter', 'Square Meter', 'required|trim|numeric'),
             arrayf('description', 'Description', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
             arrayf('rentalprice', 'Rental Price', 'required|trim|numeric')
@@ -117,7 +117,7 @@
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
             arrayf('contactperson', 'Contact Person', 'required|trim|min_length[4]|max_length[150]|alpha_numeric_spaces'),
             arrayf('contactnumber', 'Contact Number', 'required|trim|min_length[1]|max_length[25]|is_natural'),
-            arrayf('contactaddress', 'Contact Address', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
+            arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
             arrayf('squaremeter', 'Square Meter', 'required|trim|numeric'),
             arrayf('description', 'Description', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
             arrayf('rentalprice', 'Rental Price', 'required|trim|numeric')

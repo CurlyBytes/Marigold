@@ -87,7 +87,7 @@ class Page extends MariGold_Controller {
                 'longtitude' => $this->input->post('longtitude'),
                 'contactperson' => $this->input->post('contactperson'),
                 'contactnumber' => $this->input->post('contactnumber'),
-                'contactaddress' => $this->input->post('contactaddress'),
+                'branchlocation' => $this->input->post('branchlocation'),
                 'squaremeter' => $this->input->post('squaremeter'),
                 'description' => $this->input->post('description'),
                 'rentalprice' => $this->input->post('rentalprice'),
@@ -137,7 +137,7 @@ class Page extends MariGold_Controller {
                 'longtitude' => $this->input->post('longtitude'),
                 'contactperson' => $this->input->post('contactperson'),
                 'contactnumber' => $this->input->post('contactnumber'),
-                'contactaddress' => $this->input->post('contactaddress'),
+                'branchlocation' => $this->input->post('branchlocation'),
                 'squaremeter' => $this->input->post('squaremeter'),
                 'description' => $this->input->post('description'),
                 'rentalprice' => $this->input->post('rentalprice')
