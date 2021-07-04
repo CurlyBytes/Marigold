@@ -28,7 +28,7 @@ class MGeoMap extends MariGold_Model {
 	
 
     public function getAllProposeLocationByBranchNameWithOpeningDateRange($data){
-        $this->db->select('BranchInformation.BranchInformationId,Latitude, OpeningDate, Longtitude,  Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
+        $this->db->select('BranchInformation.BranchInformationId,Latitude,Ratings,RentalPrice, OpeningDate, Longtitude,  Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
         $this->db->from('BranchInformation');
         $this->db->join('LocationName AS Region', 'Region.LocationNameId=BranchInformation.RegionId');
         $this->db->join('LocationName AS District', 'District.LocationNameId=BranchInformation.DistrictId');
@@ -42,25 +42,27 @@ class MGeoMap extends MariGold_Model {
     }
 
     public function getAllProposeLocationWithOpeningDateRange($data){
-        $this->db->select('BranchInformation.BranchInformationId,   BranchLocation,  OtherDetails, RentalPrice, Latitude, OpeningDate, Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
+        $this->db->select('BranchInformation.BranchInformationId, PhotoName,  BranchLocation, Ratings,RentalPrice, OtherDetails, RentalPrice, Latitude, OpeningDate, Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
         $this->db->from('BranchInformation');
         $this->db->join('LocationName AS Region', 'Region.LocationNameId=BranchInformation.RegionId');
         $this->db->join('LocationName AS District', 'District.LocationNameId=BranchInformation.DistrictId');
         $this->db->join('LocationName AS Area', 'Area.LocationNameId=BranchInformation.AreaId');
         $this->db->join('LocationName AS Branch', 'Branch.LocationNameId=BranchInformation.BranchId');
         $this->db->join('BranchInformationDetail AS BranchInformationDetail', 'BranchInformationDetail.BranchInformationId=BranchInformation.BranchInformationId');
+        $this->db->join('BranchInformationPhoto AS BranchInformationPhoto', 'BranchInformationPhoto.BranchInformationId=BranchInformation.BranchInformationId');
         $this->db->where('BranchInformation.IsApprove', $this->BranchProposalForApproval);
         if($data['proposebranchid'] != 0){
             $this->db->where('BranchInformation.BranchId', $data['proposebranchid']);
         }
         $this->db->where('DATE_FORMAT(BranchInformation.OpeningDate,"%Y-%m")',$data['openingdate']);
+        $this->db->limit(1); 
         $query = $this->db->get()->result();   
         return $query;
     }
   
 
     public function getALlBranchLocation(){
-        $this->db->select('BranchInformation.BranchInformationId,   BranchLocation,  OtherDetails, RentalPrice, Latitude, OpeningDate, Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
+        $this->db->select('BranchInformation.BranchInformationId,   BranchLocation,  OtherDetails, Ratings,RentalPrice, Latitude, OpeningDate, Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
         $this->db->from('BranchInformation');
         $this->db->join('LocationName AS Region', 'Region.LocationNameId=BranchInformation.RegionId');
         $this->db->join('LocationName AS District', 'District.LocationNameId=BranchInformation.DistrictId');

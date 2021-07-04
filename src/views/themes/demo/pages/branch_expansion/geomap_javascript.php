@@ -25,13 +25,16 @@ function initMap() {
         <?php if($propose_branch !== null){ 
             foreach($propose_branch as $propose_branchrow){  ?>
                 ['<div class="info_content">' +
+                '<img src="uploads/files/<?php echo $propose_branchrow->PhotoName; ?>" width="300" height="150" class="" alt="">' + + 
                 '<h3><?php echo $propose_branchrow->BranchName; ?></h3>' +
+                '<h5><b>Latitude: </b><?php echo $propose_branchrow->Latitude; ?></h5>' + 
+                '<h5><b>Longtitude: </b><?php echo $propose_branchrow->Longtitude; ?></h5>' + 
                 '<h5><b>Region Name: </b><?php echo $propose_branchrow->RegionName; ?></h5>' + 
                 '<h5><b>District Name: </b><?php echo $propose_branchrow->DistrictName; ?></h5>' + 
                 '<h5><b>Area Name: </b><?php echo $propose_branchrow->AreaName; ?></h5>' + 
                 '<h5><b>Branch Name: </b><?php echo $propose_branchrow->BranchName; ?></h5>' + 
                 '<h5><b>Ratings: </b><?php echo $propose_branchrow->Ratings; ?></h5>' + 
-                '<h5><b>Cost: </b><?php echo $propose_branchrow->Cost; ?></h5>' + 
+                '<h5><b>RentalPrice: </b><?php echo $propose_branchrow->RentalPrice; ?></h5>' +     
                 '</div>'],
         <?php } 
         } 
