@@ -26,7 +26,13 @@ function initMap() {
             foreach($propose_branch as $propose_branchrow){  ?>
                 ['<div class="info_content">' +
                 '<h3><?php echo $propose_branchrow->BranchName; ?></h3>' +
-                '<button class="btn btn-primary my-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight-<?php echo $propose_branchrow->BranchInformationId;?>" aria-controls="offcanvasRight">View</button>' + '</div>'],
+                '<h5><b>Region Name: </b><?php echo $propose_branchrow->RegionName; ?></h5>' + 
+                '<h5><b>District Name: </b><?php echo $propose_branchrow->DistrictName; ?></h5>' + 
+                '<h5><b>Area Name: </b><?php echo $propose_branchrow->AreaName; ?></h5>' + 
+                '<h5><b>Branch Name: </b><?php echo $propose_branchrow->BranchName; ?></h5>' + 
+                '<h5><b>Ratings: </b><?php echo $propose_branchrow->Ratings; ?></h5>' + 
+                '<h5><b>Cost: </b><?php echo $propose_branchrow->Cost; ?></h5>' + 
+                '</div>'],
         <?php } 
         } 
         ?>

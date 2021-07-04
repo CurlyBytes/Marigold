@@ -29,7 +29,11 @@ class Migration_Create_BranchInformationDetailTable extends CI_Migration
                 'constraint' => 250,
                 'null' => FALSE
             ),
-
+            'Ratings' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 11,
+                'null' => FALSE
+            ),
             'OtherDetails' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 450,

@@ -88,6 +88,16 @@
 											<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">
+														<label class="form-label" for="ratings">Ratings</label>
+														<input type="text" class="form-control  <?php echo (form_error('ratings') ? 'is-invalid' : 'is-valid');?>" id="ratings" name="ratings" placeholder="ratings" value="<?php echo html_escape(set_value('ratings', $propose_branch_details->Ratings)); ?>">
+														<?php echo form_error('ratings'); ?> 
+													</div>
+												</div>
+											
+											</div>
+											<div class="row">
+												<div class="col mb-3">
+													<div class="form-group">
 														<label class="form-label" for="otherdetails">OtherDetails</label>
 														
 														<textarea  class="form-control  <?php echo (form_error('otherdetails') ? 'is-invalid' : 'is-valid');?>" id="description" name="description" cols="20"  rows="2"> 

@@ -84,6 +84,16 @@
 											<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">
+														<label class="form-label" for="ratings">Ratings</label>
+														
+														<input type="text" class="form-control  <?php echo (form_error('ratings') ? 'is-invalid' : 'is-valid');?>" id="ratings" name="ratings" placeholder="ratings" value="<?php echo html_escape(set_value('ratings')); ?>">
+														<?php echo form_error('ratings'); ?>  
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col mb-3">
+													<div class="form-group">
 														<label class="form-label" for="otherdetails">OtherDetails</label>
 														
 														<textarea  class="form-control  <?php echo (form_error('otherdetails') ? 'is-invalid' : 'is-valid');?>" id="otherdetails" name="otherdetails" cols="20"  rows="2"><?php echo html_escape(set_value('otherdetails')); ?></textarea>

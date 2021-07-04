@@ -86,7 +86,7 @@ class Page extends MariGold_Controller {
                 'latitude' => $this->input->post('latitude'),
                 'longtitude' => $this->input->post('longtitude'),
                 'branchlocation' => $this->input->post('branchlocation'),
-     
+                'ratings' => $this->input->post('ratings'),
                 'otherdetails' => $this->input->post('otherdetails'),
                 'rentalprice' => $this->input->post('rentalprice'),
                 'photoname' =>  $photoNames  
@@ -134,7 +134,7 @@ class Page extends MariGold_Controller {
                 'latitude' => $this->input->post('latitude'),
                 'longtitude' => $this->input->post('longtitude'),
                 'branchlocation' => $this->input->post('branchlocation'),
-
+                'ratings' => $this->input->post('ratings'),
                 'otherdetails' => $this->input->post('otherdetails'),
                 'rentalprice' => $this->input->post('rentalprice')
 			);
