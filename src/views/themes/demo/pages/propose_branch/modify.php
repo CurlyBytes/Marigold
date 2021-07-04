@@ -83,13 +83,7 @@
 														<?php echo form_error('rentalprice'); ?> 
 													</div>
 												</div>
-												<div class="col mb-3">
-													<div class="form-group">
-														<label class="form-label" for="squaremeter">Square Meter</label>
-														<input type="text" class="form-control  <?php echo (form_error('squaremeter') ? 'is-invalid' : 'is-valid');?>" id="squaremeter" name="squaremeter" placeholder="squaremeter" value="<?php echo html_escape(set_value('squaremeter', $propose_branch_details->SquareMeter)); ?>">
-														<?php echo form_error('squaremeter'); ?> 
-													</div>
-												</div>
+											
 											</div>
 											<div class="row">
 												<div class="col mb-3">

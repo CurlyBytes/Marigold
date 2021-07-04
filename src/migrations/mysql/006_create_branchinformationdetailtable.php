@@ -29,11 +29,7 @@ class Migration_Create_BranchInformationDetailTable extends CI_Migration
                 'constraint' => 250,
                 'null' => FALSE
             ),
-            'SquareMeter' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'null' => FALSE
-            ),
+
             'OtherDetails' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 450,

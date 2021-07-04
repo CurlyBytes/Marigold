@@ -100,10 +100,7 @@
 											<strong>Owner Address</strong>
 											<p><?php echo $branch_informationrow->BranchLocation;?>.</p>
 										</li>
-										<li class="timeline-item">
-											<strong>Sq. Area</strong>
-											<p><?php echo $branch_informationrow->SquareMeter;?>.</p>
-										</li>
+								
 			
 										<li class="timeline-item">
 											<strong>Rental Price</strong>

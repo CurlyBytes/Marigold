@@ -132,10 +132,7 @@
 											<strong>Owner Address</strong>
 											<p><?php echo $propose_branchrow->BranchLocation;?>.</p>
 										</li>
-										<li class="timeline-item">
-											<strong>Sq. Area</strong>
-											<p><?php echo $propose_branchrow->SquareMeter;?>.</p>
-										</li>
+								
 			
 										<li class="timeline-item">
 											<strong>Rental Price</strong>
