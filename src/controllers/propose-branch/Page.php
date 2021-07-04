@@ -139,7 +139,7 @@ class Page extends MariGold_Controller {
                 'rentalprice' => $this->input->post('rentalprice')
 			);
             $this->MBranchInformation->modify($data);
-            $this->session->set_flashdata('session_propose_branch_modify','Area updated successfully:'. $this->input->post('branchid'));
+            $this->session->set_flashdata('session_propose_branch_modify','Propose updated successfully:'. $this->input->post('branchid'));
             redirect(base_url('propose-branch'));
         }
 

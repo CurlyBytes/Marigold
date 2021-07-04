@@ -101,7 +101,7 @@
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
             arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
           
-            arrayf('otherdetails', 'OtherDetails', 'required|trim|min_length[4]|max_length[450]'),
+            arrayf('otherdetails', 'OtherDetails', 'required|trim'),
             arrayf('rentalprice', 'Rental Price', 'required|trim|numeric')
         ),
         'propose-branch/remove' => array(
