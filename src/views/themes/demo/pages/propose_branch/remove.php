@@ -111,12 +111,12 @@
 											<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">
-														<label class="form-label" for="description">Description</label>
+														<label class="form-label" for="otherdetails">OtherDetails</label>
 														
-														<textarea  class="form-control  <?php echo (form_error('description') ? 'is-invalid' : 'is-valid');?>" id="description" name="description" cols="20"  rows="2" readonly> 
-															<?php echo html_escape(set_value('description', $propose_branch_details->Description)); ?>
+														<textarea  class="form-control  <?php echo (form_error('otherdetails') ? 'is-invalid' : 'is-valid');?>" id="otherdetails" name="otherdetails" cols="20"  rows="2" readonly> 
+															<?php echo html_escape(set_value('otherdetails', $propose_branch_details->OtherDetails)); ?>
 														</textarea>
-														<?php echo form_error('description'); ?> 
+														<?php echo form_error('otherdetails'); ?> 
 													</div>
 												</div>
 											</div>

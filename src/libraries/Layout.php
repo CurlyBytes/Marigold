@@ -44,7 +44,7 @@ class Layout
         'author'      => '',
         'viewport'    => 'width=device-width, initial-scale=1.0',
         'keywords'    => '',
-        'description' => '',
+        'otherdetails' => '',
         'canonical'   => '',
         'robots'      => ''
     );
@@ -55,7 +55,7 @@ class Layout
         'creator'     => '',
         'card'        => '', // summary_large_image
         'title'       => '',
-        'description' => '',
+        'otherdetails' => '',
         'image_src'   => ''
     );
 
@@ -64,7 +64,7 @@ class Layout
         'url'         => '',
         'title'       => '',
         'type'        => '',
-        'description' => '',
+        'otherdetails' => '',
         'image'       => '',
         'admins'      => '',
         'app_id'      => ''

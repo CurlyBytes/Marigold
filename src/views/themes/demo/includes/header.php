@@ -3,7 +3,7 @@
 <html lang="en"> 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Branch Information System">
+	<meta name="otherdetails" content="Branch Information System">
 	<meta name="author" content="curlybytes">
 	<title><?php echo CI_title(); ?></title>
 	<?php echo CI_head(); ?>

@@ -90,8 +90,8 @@
 											<img src="<?php echo base_url();?>assets/theme-demo/img/lightblue-pin.png" width="64" height="64" class="rounded-circle mt-2" alt="Angelica Ramos">
 										</div>
 										<div class="col-sm-9 col-xl-12 col-xxl-9">
-											<strong>Description</strong>
-											<p><?php echo $propose_branchrow->Description;?>.</p>
+											<strong>OtherDetails</strong>
+											<p><?php echo $propose_branchrow->OtherDetails;?>.</p>
 										</div>
 									</div>
 

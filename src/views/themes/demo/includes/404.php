@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Branch Information System">
+	<meta name="otherdetails" content="Branch Information System">
 	<meta name="author" content="Curlybytes">
 	<title><?php echo CI_title(); ?></title>
 	<?php echo CI_head(); ?>

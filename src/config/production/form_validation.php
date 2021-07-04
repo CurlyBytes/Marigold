@@ -86,7 +86,7 @@
             arrayf('contactnumber', 'Contact Number', 'required|trim|min_length[1]|max_length[25]|is_natural'),
             arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
             arrayf('squaremeter', 'Square Meter', 'required|trim|numeric'),
-            arrayf('description', 'Description', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
+            arrayf('otherdetails', 'OtherDetails', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
             arrayf('rentalprice', 'Rental Price', 'required|trim|numeric'),
             arrayf('files', 'Branch Images', 'callback__file_check')
         ),
@@ -105,7 +105,7 @@
             arrayf('contactnumber', 'Contact Number', 'required|trim|min_length[1]|max_length[25]|is_natural'),
             arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
             arrayf('squaremeter', 'Square Meter', 'required|trim|numeric'),
-            arrayf('description', 'Description', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
+            arrayf('otherdetails', 'OtherDetails', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
             arrayf('rentalprice', 'Rental Price', 'required|trim|numeric')
         ),
         'propose-branch/remove' => array(
@@ -119,7 +119,7 @@
             arrayf('contactnumber', 'Contact Number', 'required|trim|min_length[1]|max_length[25]|is_natural'),
             arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
             arrayf('squaremeter', 'Square Meter', 'required|trim|numeric'),
-            arrayf('description', 'Description', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
+            arrayf('otherdetails', 'OtherDetails', 'required|trim|min_length[4]|max_length[450]|alpha_numeric_spaces'),
             arrayf('rentalprice', 'Rental Price', 'required|trim|numeric')
         ),
         'branch-expansion' => array(

@@ -43,7 +43,7 @@ class Migration_Create_BranchInformationDetailTable extends CI_Migration
                 'constraint' => 11,
                 'null' => FALSE
             ),
-            'Description' => array(
+            'OtherDetails' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 450,
                 'null' => FALSE

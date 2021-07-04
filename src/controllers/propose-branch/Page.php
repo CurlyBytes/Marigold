@@ -89,7 +89,7 @@ class Page extends MariGold_Controller {
                 'contactnumber' => $this->input->post('contactnumber'),
                 'branchlocation' => $this->input->post('branchlocation'),
                 'squaremeter' => $this->input->post('squaremeter'),
-                'description' => $this->input->post('description'),
+                'otherdetails' => $this->input->post('otherdetails'),
                 'rentalprice' => $this->input->post('rentalprice'),
                 'photoname' =>  $photoNames  
 			);
@@ -139,7 +139,7 @@ class Page extends MariGold_Controller {
                 'contactnumber' => $this->input->post('contactnumber'),
                 'branchlocation' => $this->input->post('branchlocation'),
                 'squaremeter' => $this->input->post('squaremeter'),
-                'description' => $this->input->post('description'),
+                'otherdetails' => $this->input->post('otherdetails'),
                 'rentalprice' => $this->input->post('rentalprice')
 			);
             $this->MBranchInformation->modify($data);

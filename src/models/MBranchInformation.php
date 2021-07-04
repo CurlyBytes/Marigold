@@ -73,7 +73,7 @@ class MBranchInformation extends MariGold_Model {
             'ContactNumber' => $data['contactnumber'],
             'BranchLocation' => $data['branchlocation'],
             'SquareMeter' => $data['squaremeter'],
-            'Description' => $data['description'],
+            'OtherDetails' => $data['otherdetails'],
             'RentalPrice' =>  $data['rentalprice'],
             'CreatedAt' => $now,
             'UpdatedAt' => $now
@@ -116,7 +116,7 @@ class MBranchInformation extends MariGold_Model {
             'ContactNumber' => $data['contactnumber'],
             'BranchLocation' => $data['branchlocation'],
             'SquareMeter' => $data['squaremeter'],
-            'Description' => $data['description'],
+            'OtherDetails' => $data['otherdetails'],
             'RentalPrice' =>  $data['rentalprice'],
             'UpdatedAt' => $now
         );
