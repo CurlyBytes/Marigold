@@ -67,15 +67,12 @@
                     </div>
                 </div>
                 <?php } ?>
-					<h1 class="h3 mb-3">Propose Branch</h1>
+					
                     
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title mb-0 col">Propose Branch - List</h5>
-                                  
-								</div>
+						
 								<div class="card-body">
                                 <div class="row col-2 offset-10">
                                     <a class="btn btn-primary col" href="<?php echo site_url('propose-branch/create'); ?>"> Add</a>

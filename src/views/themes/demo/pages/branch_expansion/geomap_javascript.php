@@ -25,7 +25,7 @@ function initMap() {
         <?php if($propose_branch !== null){ 
             foreach($propose_branch as $propose_branchrow){  ?>
                 ['<div class="info_content">' +
-                '<img src="uploads/files/<?php echo $propose_branchrow->PhotoName; ?>" width="300" height="150" class="" alt="">' + + 
+                '<img src="uploads/files/<?php echo $propose_branchrow->PhotoName; ?>" width="300" height="150" class="" alt="">' + 
                 '<h3><?php echo $propose_branchrow->BranchName; ?></h3>' +
                 '<h5><b>Latitude: </b><?php echo $propose_branchrow->Latitude; ?></h5>' + 
                 '<h5><b>Longtitude: </b><?php echo $propose_branchrow->Longtitude; ?></h5>' + 
