@@ -81,7 +81,7 @@
             arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist'),
             arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude|callback__unique_coordinates'),
             arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude|callback__unique_coordinates'),
-            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m]'),
+            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
             arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
 
             arrayf('otherdetails', 'OtherDetails', 'required|trim|min_length[4]|max_length[450]'),
@@ -98,7 +98,7 @@
             arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist'),
             arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude'),
             arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude'),
-            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m]'),
+            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
             arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
           
             arrayf('otherdetails', 'OtherDetails', 'required|trim|min_length[4]|max_length[450]'),
@@ -110,7 +110,7 @@
             arrayf('branchid', 'Branch Name', 'required|exact_length[36]|callback__branch_name_exist'),
             arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude'),
             arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude'),
-            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m]'),
+            arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
             arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
 
             arrayf('otherdetails', 'OtherDetails', 'required|trim|min_length[4]|max_length[450]'),
