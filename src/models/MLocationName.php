@@ -21,7 +21,7 @@ class MLocationName extends MariGold_Model {
         $locationNameRecord = array(
             'LocationNameId' => $locationNameId,
             'LocationTypeId' => $data['locationtypeid'],
-            'LocationName' => $data['locationname'],
+            'LocationName' => strtoupper($data['locationname']),
             'CreatedAt' => $now,
             'UpdatedAt' => $now
         );
@@ -46,7 +46,7 @@ class MLocationName extends MariGold_Model {
         $now = date('Y-m-d H:i:s');
         $branchId = '';
         $record = array(
-            'LocationName' => $data['locationname'],
+            'LocationName' => strtoupper($data['locationname']),
             'UpdatedAt' => $now
         );
   
@@ -171,7 +171,7 @@ class MLocationName extends MariGold_Model {
         $query = '';
         $paramaters = array(
             'LocationTypeId' => $locationTypeId ,
-            'LocationName' => $locationName
+            'LocationName' => strtoupper($locationName),
             );
 
         if($locationNameId == false){

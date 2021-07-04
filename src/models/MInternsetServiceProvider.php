@@ -19,9 +19,9 @@ class MInternsetServiceProvider extends MariGold_Model {
         $internetServiceProviderRecord = array(
             'InternetServiceProviderId' => $internetServiceProviderId,
             'BranchInformationId' => $data['branchinformationid'],
-            'InternetServiceProviderName' => $data['internetserviceprovidername'],
-            'InternetServiceProviderPackageName' => $data['internetserviceproviderpackagename'],
-            'InternetServiceTechnologyType' => $data['internetservicetechnologytype'],
+            'InternetServiceProviderName' => strtoupper($data['internetserviceprovidername']),
+            'InternetServiceProviderPackageName' => strtoupper($data['internetserviceproviderpackagename']),
+            'InternetServiceTechnologyType' => strtoupper($data['internetservicetechnologytype']),
             'Speed' => $data['speed'],
             'CreatedAt' => $now,
             'UpdatedAt' => $now
@@ -34,9 +34,9 @@ class MInternsetServiceProvider extends MariGold_Model {
         $now = date('Y-m-d H:i:s');  
 
         $internetServiceProviderRecord = array(
-            'InternetServiceProviderName' => $data['internetserviceprovidername'],
-            'InternetServiceProviderPackageName' => $data['internetserviceproviderpackagename'],
-            'InternetServiceTechnologyType' => $data['internetservicetechnologytype'],
+            'InternetServiceProviderName' => strtoupper($data['internetserviceprovidername']),
+            'InternetServiceProviderPackageName' => strtoupper($data['internetserviceproviderpackagename']),
+            'InternetServiceTechnologyType' => strtoupper($data['internetservicetechnologytype']),
             'Speed' => $data['speed'],
             'UpdatedAt' => $now
         );

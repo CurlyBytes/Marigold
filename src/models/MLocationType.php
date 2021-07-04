@@ -17,7 +17,7 @@ class MLocationType extends MariGold_Model {
 
         $locationTypeRecord = array(
             'LocationTypeId' => $locationTypeId,
-            'LocationType' => $data['locationtype'],
+            'LocationType' => strtoupper($data['locationtype']),
             'CreatedAt' =>  $now,
             'UpdatedAt' => $now
         );
@@ -30,7 +30,7 @@ class MLocationType extends MariGold_Model {
     public function modify($data){ 
         $now = date('Y-m-d H:i:s');
         $record = array(
-            'LocationType' => $data['locationtype'],
+            'LocationType' => strtoupper($data['locationtype']),
             'UpdatedAt' => $now
         );
 
