@@ -12,7 +12,7 @@
             "log": true,
             "externalConsole": false,
             "pathMappings": {
-                "/application/public": "${workspaceRoot}/public",
+                "/application/public_html": "${workspaceRoot}/public_html",
                 "/application/src": "${workspaceRoot}/src"
             },
             "ignore": [
