@@ -11,16 +11,18 @@ class MGeoMap extends MariGold_Model {
          parent::__construct(); 
          
     }
+    
 
     	//Insert single data
 	public function branchWithoutLocation(){    
 
         $this->db->select("LocationName, LocationNameId");
         $this->db->from('LocationName AS LocationName');
-        $this->db->where('LocationName.LocationTypeId', GUID_BRANCH);
-        $this->db->join('BranchInformation AS BranchInformation', 'BranchInformation.BranchId = LocationName.LocationNameId','left');
+     
+        $this->db->join('BranchInformation AS BranchInformation', 'BranchInformation.BranchId = LocationName.LocationNameId','RIGHT');
         $this->db->group_by('LocationNameId');
-
+        $this->db->where('LocationName.LocationTypeId', GUID_BRANCH);
+        $this->db->where('BranchInformation.IsApprove', $this->BranchProposalForApproval);
         return $this->db->get()->result();     
     }
 	
@@ -48,6 +50,9 @@ class MGeoMap extends MariGold_Model {
         $this->db->join('LocationName AS Branch', 'Branch.LocationNameId=BranchInformation.BranchId');
         $this->db->join('BranchInformationDetail AS BranchInformationDetail', 'BranchInformationDetail.BranchInformationId=BranchInformation.BranchInformationId');
         $this->db->where('BranchInformation.IsApprove', $this->BranchProposalForApproval);
+        if($data['proposebranchid'] != 0){
+            $this->db->where('BranchInformation.BranchId', $data['proposebranchid']);
+        }
         $this->db->where('DATE_FORMAT(BranchInformation.OpeningDate,"%Y-%m")',$data['openingdate']);
         $query = $this->db->get()->result();   
         return $query;

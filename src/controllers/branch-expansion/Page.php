@@ -26,12 +26,14 @@ class Page extends MariGold_Controller {
               
         if($this->input->post() && $this->form_validation->run('branch-expansion') === true){
             $parameter = array(
-                'openingdate' => $this->input->post('openingdate')
+                'openingdate' => $this->input->post('openingdate'),
+                'proposebranchid' => $this->input->post('locationnameid')
             );
         }else{
             $dateToday = date('Y-m-d'); 
             $parameter = array(
-                'openingdate' => $dateToday
+                'openingdate' => $dateToday,
+                'proposebranchid' => 0
             );      
         }
         $data['branch'] = $this->MGeoMap->branchWithoutLocation();
