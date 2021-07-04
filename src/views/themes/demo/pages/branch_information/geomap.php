@@ -95,14 +95,7 @@
 									<strong>Branch Information Details</strong>
 
 									<ul class="timeline mt-2 mb-0">
-										<li class="timeline-item">
-											<strong>Contact Name</strong>
-											<p><?php echo $branch_informationrow->ContactPerson;?>.</p>
-										</li>
-										<li class="timeline-item">
-											<strong>Contact Number</strong>
-											<p><?php echo $branch_informationrow->ContactNumber;?>.</p>
-										</li>
+			
 										<li class="timeline-item">
 											<strong>Owner Address</strong>
 											<p><?php echo $branch_informationrow->BranchLocation;?>.</p>

@@ -68,23 +68,7 @@
 											</div>
 
 										
-											<div class="row">
-												<div class="col mb-3">
-													<div class="form-group">
-														<label class="form-label" for="contactperson">Contact Person</label>
-														<input type="text" class="form-control  <?php echo (form_error('contactperson') ? 'is-invalid' : 'is-valid');?>" id="contactperson" name="contactperson" placeholder="Contact Person" value="<?php echo html_escape(set_value('contactperson', $propose_branch_details->ContactPerson)); ?>" readonly>
-														<?php echo form_error('contactperson'); ?> 
-													</div>
-												</div>
-
-												<div class="col mb-3">
-													<div class="form-group">
-														<label class="form-label" for="contactnumber">Contact Number</label>
-														<input type="text" class="form-control  <?php echo (form_error('contactnumber') ? 'is-invalid' : 'is-valid');?>" id="contactnumber" name="contactnumber" placeholder="Contact Number" value="<?php echo html_escape(set_value('contactnumber', $propose_branch_details->ContactNumber)); ?>" readonly>
-														<?php echo form_error('contactnumber'); ?> 
-													</div>
-												</div>
-											</div>
+								
 											<div class="row">
 												<div class="col mb-3">
 													<div class="form-group">

@@ -23,16 +23,7 @@ class Migration_Create_BranchInformationDetailTable extends CI_Migration
                 'constraint' => 36,
                 'null' => FALSE
             ),
-            'ContactPerson' => array(
-                'type' => 'VARCHAR',
-                'constraint' => 150,
-                'null' => FALSE
-            ),
-            'ContactNumber' => array(
-                'type' => 'VARCHAR',
-                'constraint' => 25,
-                'null' => FALSE
-            ),
+
             'BranchLocation' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 250,

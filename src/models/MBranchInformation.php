@@ -69,8 +69,6 @@ class MBranchInformation extends MariGold_Model {
         $branchInformationDetailRecord = array(
             'BranchInformationDetailId ' => $branchInformationDetailId,
             'BranchInformationId' => $branchInformation,
-            'ContactPerson' => $data['contactperson'],
-            'ContactNumber' => $data['contactnumber'],
             'BranchLocation' => $data['branchlocation'],
             'SquareMeter' => $data['squaremeter'],
             'OtherDetails' => $data['otherdetails'],
@@ -112,8 +110,6 @@ class MBranchInformation extends MariGold_Model {
         );
 
         $branchInformationDetailRecord = array(
-            'ContactPerson' => $data['contactperson'],
-            'ContactNumber' => $data['contactnumber'],
             'BranchLocation' => $data['branchlocation'],
             'SquareMeter' => $data['squaremeter'],
             'OtherDetails' => $data['otherdetails'],
