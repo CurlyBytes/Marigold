@@ -72,6 +72,9 @@ class OktaApiService
     {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FAILONERROR, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, CI_ENVIRONMENT !== "production");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, CI_ENVIRONMENT !== "production"); 
         if ($params) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
         }
