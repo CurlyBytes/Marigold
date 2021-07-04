@@ -33,6 +33,7 @@ bin/build/*
 .env
 
 ##Attachments 
-/public/uploads/files
+public/uploads/files/*
+!public/uploads/files/.gitkeep
 
 

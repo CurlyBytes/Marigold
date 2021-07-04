@@ -28,6 +28,14 @@
 
 												<div class="col mb-3">
 													<div class="form-group">
+														<label class="form-label" for="internetserviceproviderpackagename">Internet Service Package Name</label>
+														<input type="text" class="form-control  <?php echo (form_error('internetserviceproviderpackagename') ? 'is-invalid' : 'is-valid');?>" id="internetserviceproviderpackagename" name="internetserviceproviderpackagename" placeholder="Internet Service Package Name" value="<?php echo html_escape(set_value('internetserviceproviderpackagename')); ?>">
+														<?php echo form_error('internetserviceproviderpackagename'); ?> 
+													</div>
+												</div>
+
+												<div class="col mb-3">
+													<div class="form-group">
 														<label class="form-label" for="internetservicetechnologytype">Technology Type</label>
 														<select class="form-control mb-3 <?php echo (form_error('internetservicetechnologytype') ? 'is-invalid' : 'is-valid');?>" id="internetservicetechnologytype" name="internetservicetechnologytype">
 												

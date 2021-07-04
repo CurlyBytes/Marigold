@@ -86,6 +86,7 @@
                                 
                                                     <tr>
                                                         <td><?php echo html_escape($internetserviceproviderrow->InternetServiceProviderName); ?></td>
+                                                        <td><?php echo html_escape($internetserviceproviderrow->InternetServiceProviderPackageName); ?></td>
                                                         <td><?php echo html_escape($internetserviceproviderrow->InternetServiceTechnologyType); ?></td>
                                                         <td><?php echo html_escape($internetserviceproviderrow->Speed); ?></td>  
                                                         <td><?php echo html_escape($internetserviceproviderrow->CreatedAt); ?></td>

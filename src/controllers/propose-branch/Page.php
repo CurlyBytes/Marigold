@@ -298,7 +298,7 @@ class Page extends MariGold_Controller {
     {
 
         $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
-        $data['internetservicetechnologytype'] = array('Wired','Wireless');
+        $data['internetservicetechnologytype'] = array('Fibre','Wired','Wireless');
 
         if($this->input->post() && $this->form_validation->run('propose-branch/create-isp') === true){
 
@@ -306,6 +306,7 @@ class Page extends MariGold_Controller {
             $data = array(
 				'branchinformationid' => $this->input->post('branchinformationid'),
                 'internetserviceprovidername' => $this->input->post('internetserviceprovidername'),
+                'internetserviceproviderpackagename' => $this->input->post('internetserviceproviderpackagename'),
                 'internetservicetechnologytype' => $this->input->post('internetservicetechnologytype'),
                 'speed' => $this->input->post('speed')
 			);
@@ -327,7 +328,7 @@ class Page extends MariGold_Controller {
         $data = array();
         $data['internetserviceprovider'] = $this->MInternsetServiceProvider->getAllInternetServiceProviderById($internetServiceProviderId);
         $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
-        $data['internetservicetechnologytype'] = array('Wired','Wireless');
+        $data['internetservicetechnologytype'] = array('Fibre','Wired','Wireless');
 
         if($this->input->post() && $this->form_validation->run('propose-branch/modify-isp') === true){
 
@@ -336,6 +337,7 @@ class Page extends MariGold_Controller {
                 'internetserviceproviderid' => $this->input->post('internetserviceproviderid'),
                 'branchinformationid' => $this->input->post('branchinformationid'),
                 'internetserviceprovidername' => $this->input->post('internetserviceprovidername'),
+                'internetserviceproviderpackagename' => $this->input->post('internetserviceproviderpackagename'),
                 'internetservicetechnologytype' => $this->input->post('internetservicetechnologytype'),
                 'speed' => $this->input->post('speed')
 			);
@@ -357,7 +359,7 @@ class Page extends MariGold_Controller {
         $data = array();
         $data['internetserviceprovider'] = $this->MInternsetServiceProvider->getAllInternetServiceProviderById($internetServiceProviderId);
         $data['propose_branch'] = $this->MBranchInformation->getSpecificLocationProposeBranch($branchInformationId);
-        $data['internetservicetechnologytype'] = array('Wired','Wireless');
+        $data['internetservicetechnologytype'] = array('Fibre','Wired','Wireless');
 
         if($this->input->post() && $this->form_validation->run('propose-branch/remove-isp') === true){
 

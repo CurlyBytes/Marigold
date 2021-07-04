@@ -20,6 +20,7 @@ class MInternsetServiceProvider extends MariGold_Model {
             'InternetServiceProviderId' => $internetServiceProviderId,
             'BranchInformationId' => $data['branchinformationid'],
             'InternetServiceProviderName' => $data['internetserviceprovidername'],
+            'InternetServiceProviderPackageName' => $data['internetserviceproviderpackagename'],
             'InternetServiceTechnologyType' => $data['internetservicetechnologytype'],
             'Speed' => $data['speed'],
             'CreatedAt' => $now,
@@ -34,6 +35,7 @@ class MInternsetServiceProvider extends MariGold_Model {
 
         $internetServiceProviderRecord = array(
             'InternetServiceProviderName' => $data['internetserviceprovidername'],
+            'InternetServiceProviderPackageName' => $data['internetserviceproviderpackagename'],
             'InternetServiceTechnologyType' => $data['internetservicetechnologytype'],
             'Speed' => $data['speed'],
             'UpdatedAt' => $now

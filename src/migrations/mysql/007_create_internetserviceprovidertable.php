@@ -28,6 +28,11 @@ class Migration_Create_InternetServiceProviderTable extends CI_Migration
                 'constraint' => 25,
                 'null' => FALSE
             ),
+            'InternetServiceProviderPackageName' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 50,
+                'null' => FALSE
+            ),
             'InternetServiceTechnologyType' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 25,
