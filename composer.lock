@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2411c50a41786b47ae47d97be41d1c01",
+    "content-hash": "6889626defc78e18153cdeb10ef8fb88",
     "packages": [
         {
             "name": "chriskacerguis/codeigniter-restserver",
@@ -2233,16 +2233,16 @@
         },
         {
             "name": "kenjis/ci-phpunit-test",
-            "version": "v3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kenjis/ci-phpunit-test.git",
-                "reference": "d6be984ea405c3e7c6adc9692f2e27f883d90af1"
+                "reference": "b6dc7b6765db1ef6bf968940004bb1ef13e50462"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kenjis/ci-phpunit-test/zipball/d6be984ea405c3e7c6adc9692f2e27f883d90af1",
-                "reference": "d6be984ea405c3e7c6adc9692f2e27f883d90af1",
+                "url": "https://api.github.com/repos/kenjis/ci-phpunit-test/zipball/b6dc7b6765db1ef6bf968940004bb1ef13e50462",
+                "reference": "b6dc7b6765db1ef6bf968940004bb1ef13e50462",
                 "shasum": ""
             },
             "require": {
@@ -2278,9 +2278,9 @@
             "support": {
                 "forum": "http://forum.codeigniter.com/thread-61725.html",
                 "issues": "https://github.com/kenjis/ci-phpunit-test/issues",
-                "source": "https://github.com/kenjis/ci-phpunit-test/tree/v3.0.0"
+                "source": "https://github.com/kenjis/ci-phpunit-test/tree/v3.0.1"
             },
-            "time": "2021-03-03T05:44:41+00:00"
+            "time": "2021-07-14T06:13:14+00:00"
         },
         {
             "name": "mikey179/vfsstream",
