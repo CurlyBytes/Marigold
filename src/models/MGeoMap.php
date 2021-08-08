@@ -14,18 +14,18 @@ class MGeoMap extends MariGold_Model {
     
 
     	//Insert single data
-	public function branchWithoutLocation(){    
+
+    public function mulitplerecords(){    
 
         $this->db->select("LocationName, LocationNameId");
         $this->db->from('LocationName AS LocationName');
-     
-        $this->db->join('BranchInformation AS BranchInformation', 'BranchInformation.BranchId = LocationName.LocationNameId','RIGHT');
-        $this->db->group_by('LocationNameId');
+        $this->db->join('BranchInformation AS BranchInformation', 'BranchInformation.BranchId = LocationName.LocationNameId','right');
         $this->db->where('LocationName.LocationTypeId', GUID_BRANCH);
         $this->db->where('BranchInformation.IsApprove', $this->BranchProposalForApproval);
+        $this->db->group_by("LocationName.LocationNameId");
+
         return $this->db->get()->result();     
     }
-	
 
     public function getAllProposeLocationByBranchNameWithOpeningDateRange($data){
         $this->db->select('BranchInformation.BranchInformationId,Latitude,Ratings,RentalPrice, OpeningDate, Longtitude,  Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
@@ -55,20 +55,21 @@ class MGeoMap extends MariGold_Model {
             $this->db->where('BranchInformation.BranchId', $data['proposebranchid']);
         }
         $this->db->where('DATE_FORMAT(BranchInformation.OpeningDate,"%Y-%m")',$data['openingdate']);
-        $this->db->limit(1); 
+      
         $query = $this->db->get()->result();   
         return $query;
     }
   
 
     public function getALlBranchLocation(){
-        $this->db->select('BranchInformation.BranchInformationId,   BranchLocation,  OtherDetails, Ratings,RentalPrice, Latitude, OpeningDate, Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
+        $this->db->select('BranchInformation.BranchInformationId, PhotoName,  BranchLocation, Ratings,RentalPrice, OtherDetails, RentalPrice, Latitude, OpeningDate, Longtitude, Branch.LocationName As BranchName, Area.LocationName As AreaName, District.LocationName As DistrictName, Region.LocationName As RegionName, BranchInformation.CreatedAt As CreatedAt, BranchInformation.UpdatedAt As UpdatedAt');
         $this->db->from('BranchInformation');
         $this->db->join('LocationName AS Region', 'Region.LocationNameId=BranchInformation.RegionId');
         $this->db->join('LocationName AS District', 'District.LocationNameId=BranchInformation.DistrictId');
         $this->db->join('LocationName AS Area', 'Area.LocationNameId=BranchInformation.AreaId');
         $this->db->join('LocationName AS Branch', 'Branch.LocationNameId=BranchInformation.BranchId');
         $this->db->join('BranchInformationDetail AS BranchInformationDetail', 'BranchInformationDetail.BranchInformationId=BranchInformation.BranchInformationId');
+        $this->db->join('BranchInformationPhoto AS BranchInformationPhoto', 'BranchInformationPhoto.BranchInformationId=BranchInformation.BranchInformationId');
         $this->db->where('BranchInformation.IsApprove', $this->BranchWasApproved);
         $query = $this->db->get()->result();   
         return $query;

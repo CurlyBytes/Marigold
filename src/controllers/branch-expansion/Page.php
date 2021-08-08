@@ -36,7 +36,7 @@ class Page extends MariGold_Controller {
                 'proposebranchid' => 0
             );      
         }
-        $data['branch'] = $this->MGeoMap->branchWithoutLocation();
+        $data['branch'] = $this->MGeoMap->mulitplerecords();
         $propose_branch['propose_branch'] = $this->MGeoMap->getAllProposeLocationWithOpeningDateRange($parameter);
         $data['propose_branch'] = $propose_branch['propose_branch'];
         if(!empty($propose_branch['propose_branch'])){

@@ -82,7 +82,7 @@
             arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude|callback__unique_coordinates'),
             arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude|callback__unique_coordinates'),
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
-            arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
+            arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]'),
 
             arrayf('otherdetails', 'OtherDetails', 'required|trim|min_length[4]|max_length[450]'),
             arrayf('rentalprice', 'Rental Price', 'required|trim|numeric'),
@@ -99,7 +99,7 @@
             arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude'),
             arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude'),
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
-            arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
+            arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]'),
           
             arrayf('otherdetails', 'OtherDetails', 'required|trim|min_length[4]|max_length[450]'),
             arrayf('rentalprice', 'Rental Price', 'required|trim|numeric')
@@ -111,7 +111,7 @@
             arrayf('latitude', 'Latitude', 'required|trim|callback__valid_latitude'),
             arrayf('longtitude', 'Longtitude', 'required|trim|callback__valid_longtitude'),
             arrayf('openingdate', 'Opening Date', 'required|trim|callback__valid_date[Y-m-d]'),
-            arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]|alpha_numeric_spaces'),
+            arrayf('branchlocation', 'Branch Location', 'required|trim|min_length[4]|max_length[250]'),
 
             arrayf('otherdetails', 'OtherDetails', 'required|trim|min_length[4]|max_length[450]'),
             arrayf('rentalprice', 'Rental Price', 'required|trim|numeric')

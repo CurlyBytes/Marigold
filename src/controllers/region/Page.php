@@ -73,6 +73,7 @@ class Page extends MariGold_Controller {
 
         if($this->input->post() && $this->form_validation->run('region/modify') === true){
             $data = array(
+                'locationtypeid' => GUID_REGION,
                 'locationnameid' => $this->input->post('locationnameid'),
 				'locationname' => $this->input->post('locationname'),
                 'locationnameidparent' => false

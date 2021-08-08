@@ -97,7 +97,7 @@
 													<div class="form-group">
 														<label class="form-label" for="otherdetails">OtherDetails</label>
 														
-														<textarea  class="form-control  <?php echo (form_error('otherdetails') ? 'is-invalid' : 'is-valid');?>" id="description" name="description" cols="20"  rows="2"> 
+														<textarea  class="form-control  <?php echo (form_error('otherdetails') ? 'is-invalid' : 'is-valid');?>" id="otherdetails" name="otherdetails" cols="20"  rows="2"> 
 															<?php echo html_escape(set_value('otherdetails', $propose_branch_details->OtherDetails)); ?>
 														</textarea>
 														<?php echo form_error('otherdetails'); ?> 

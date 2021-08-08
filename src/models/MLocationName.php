@@ -172,11 +172,9 @@ class MLocationName extends MariGold_Model {
         $paramaters = array(
             'LocationTypeId' => $locationTypeId ,
             'LocationName' => strtoupper($locationName),
+            'LocationNameId !=' => $locationNameId,
             );
 
-        if($locationNameId == false){
-            $paramaters['LocationNameId !='] = $locationNameId;
-        }
        
         
         $query = $this->db->get_where($this->locationName,  $paramaters);

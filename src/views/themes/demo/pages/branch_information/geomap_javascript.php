@@ -25,16 +25,16 @@ function initMap() {
         <?php if($branch_information !== null){ 
             foreach($branch_information as $branch_informationrow){  ?>
                 ['<div class="info_content">' +
-                '<img src="uploads/files/<?php echo $propose_branchrow->PhotoName; ?>" width="300" height="150" class="" alt="">' + 
-                '<h3><?php echo $propose_branchrow->BranchName; ?></h3>' +
-                '<h5><b>Latitude: </b><?php echo $propose_branchrow->Latitude; ?></h5>' + 
-                '<h5><b>Longtitude: </b><?php echo $propose_branchrow->Longtitude; ?></h5>' + 
-                '<h5><b>Region Name: </b><?php echo $propose_branchrow->RegionName; ?></h5>' + 
-                '<h5><b>District Name: </b><?php echo $propose_branchrow->DistrictName; ?></h5>' + 
-                '<h5><b>Area Name: </b><?php echo $propose_branchrow->AreaName; ?></h5>' + 
-                '<h5><b>Branch Name: </b><?php echo $propose_branchrow->BranchName; ?></h5>' + 
-                '<h5><b>Ratings: </b><?php echo $propose_branchrow->Ratings; ?></h5>' + 
-                '<h5><b>RentalPrice: </b><?php echo $propose_branchrow->RentalPrice; ?></h5>' +     
+                '<img src="uploads/files/<?php echo $branch_informationrow->PhotoName; ?>" width="300" height="150" class="" alt="">' + 
+                '<h3><?php echo $branch_informationrow->BranchName; ?></h3>' +
+                '<h5><b>Latitude: </b><?php echo $branch_informationrow->Latitude; ?></h5>' + 
+                '<h5><b>Longtitude: </b><?php echo $branch_informationrow->Longtitude; ?></h5>' + 
+                '<h5><b>Region Name: </b><?php echo $branch_informationrow->RegionName; ?></h5>' + 
+                '<h5><b>District Name: </b><?php echo $branch_informationrow->DistrictName; ?></h5>' + 
+                '<h5><b>Area Name: </b><?php echo $branch_informationrow->AreaName; ?></h5>' + 
+                '<h5><b>Branch Name: </b><?php echo $branch_informationrow->BranchName; ?></h5>' + 
+                '<h5><b>Ratings: </b><?php echo $branch_informationrow->Ratings; ?></h5>' + 
+                '<h5><b>RentalPrice: </b><?php echo $branch_informationrow->RentalPrice; ?></h5>' +     
                 '</div>'],
         <?php } 
         } 

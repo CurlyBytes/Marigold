@@ -35,6 +35,7 @@ function initMap() {
                 '<h5><b>Branch Name: </b><?php echo $propose_branchrow->BranchName; ?></h5>' + 
                 '<h5><b>Ratings: </b><?php echo $propose_branchrow->Ratings; ?></h5>' + 
                 '<h5><b>RentalPrice: </b><?php echo $propose_branchrow->RentalPrice; ?></h5>' +     
+                '<a class="btn btn-primary btn-block" href="<?php echo site_url('propose-branch/approve/' .$propose_branchrow->BranchInformationId);?>">Approve</a>' +
                 '</div>'],
         <?php } 
         } 

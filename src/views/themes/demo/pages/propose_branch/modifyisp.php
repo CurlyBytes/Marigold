@@ -49,9 +49,15 @@
 
 												<div class="col mb-3">
 													<div class="form-group">
-														<label class="form-label" for="speed">Speed</label>
-														<input type="text" class="form-control  <?php echo (form_error('speed') ? 'is-invalid' : 'is-valid');?>" id="speed" name="speed" placeholder="Speed" value="<?php echo html_escape(set_value('speed',$internetserviceprovider->Speed)); ?>">
-														<?php echo form_error('speed'); ?> 
+													<label class="form-label" for="speed">Speed</label>
+														<select class="form-control mb-3 <?php echo (form_error('speed') ? 'is-invalid' : 'is-valid');?>" id="speed" name="speed">
+												
+												<?php for ($x = 1; $x <= 100; $x++) { ?>
+																<option value="<?php echo $x; ?>" <?php echo set_select('speed', $x, (($x == $internetserviceprovider->Speed) ? true: false)); ?> ><?php echo $x; ?></option>
+															<?php } ?>
+													
+														</select>
+											
 													</div>
 												</div>
 											</div>

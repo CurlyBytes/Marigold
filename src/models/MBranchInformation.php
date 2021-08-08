@@ -17,13 +17,15 @@ class MBranchInformation extends MariGold_Model {
 
         $this->db->select("LocationName, LocationNameId");
         $this->db->from('LocationName AS LocationName');
+        $this->db->join('BranchInformation AS BranchInformation', 'BranchInformation.BranchId = LocationName.LocationNameId','right');
         $this->db->where('LocationName.LocationTypeId', GUID_BRANCH);
-        $this->db->join('BranchInformation AS BranchInformation', 'BranchInformation.BranchId = LocationName.LocationNameId','left');
+        $this->db->where('BranchInformation.IsApprove', $this->BranchProposalForApproval);
         $this->db->group_by('LocationNameId');
 
         return $this->db->get()->result();     
     }
 	
+
 
 	//Insert single data
 	public function propose($data){    
