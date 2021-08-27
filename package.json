@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/CurlyBytes/Marigold#readme",
   "dependencies": {
-    "@adminkit/core": "^2.3.0"
+    "@adminkit/core": "^3.0.0"
   }
 }
