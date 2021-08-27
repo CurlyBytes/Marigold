@@ -26,9 +26,7 @@ class MariGold_Controller extends CI_Controller {
         $this->layout->add_js_files(array('app.js'), base_url().'assets/theme-demo/js/', 'footer');
 
         $this->username = $this->session->username ?? null;
-        if (! $this->username) {
-            redirect('login');
-        }
+     
  
     } 
 

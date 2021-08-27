@@ -2,6 +2,7 @@
 class MUser extends MariGold_Model
 {
 
+
     public function __construct()
     {
         $this->load->database();
@@ -12,22 +13,19 @@ class MUser extends MariGold_Model
         $now = date('Y-m-d H:i:s');  
         $userId =  $this->Guid();
         $data = [
-            'UserEmail' => $email
+            'UserId' => $userId,
+            'UserEmail' => $email,
+            'CreatedAt' => $now,
+            'UpdatedAt' => $now
         ];
 
-        $query = $this->db->get_where('User', $data);
+        $query = $this->db->get_where('User', array('UserEmail' => $email));
         $result = $query->row_array();
 
-        if (! $result) {
-            $data = [
-                'UserId' => $userId,
-                'UserEmail' => $email,
-                'CreatedAt' => $now,
-                'UpdatedAt' => $now,
-            ];
+        if (!$result) {
             $this->db->insert('User', $data);
             return $userId;
-        }
+        };
 
         return $result['UserId'];
     }

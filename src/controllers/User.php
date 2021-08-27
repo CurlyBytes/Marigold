@@ -46,8 +46,9 @@ class User extends CI_Controller
 
     public function logout()
     {
+        session_destroy();
         $this->session->userId = null;
         $this->session->username = null;
-        redirect('/');
+        redirect('login');
     }
 }
