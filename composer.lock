@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2411c50a41786b47ae47d97be41d1c01",
+    "content-hash": "3b1fa336324dcd94c3f1b4694f60b5ae",
     "packages": [
         {
             "name": "chriskacerguis/codeigniter-restserver",
@@ -2233,16 +2233,16 @@
         },
         {
             "name": "kenjis/ci-phpunit-test",
-            "version": "v3.0.0",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kenjis/ci-phpunit-test.git",
-                "reference": "d6be984ea405c3e7c6adc9692f2e27f883d90af1"
+                "reference": "7478cb6a90e987186c5d4b1516acea6fa5021691"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kenjis/ci-phpunit-test/zipball/d6be984ea405c3e7c6adc9692f2e27f883d90af1",
-                "reference": "d6be984ea405c3e7c6adc9692f2e27f883d90af1",
+                "url": "https://api.github.com/repos/kenjis/ci-phpunit-test/zipball/7478cb6a90e987186c5d4b1516acea6fa5021691",
+                "reference": "7478cb6a90e987186c5d4b1516acea6fa5021691",
                 "shasum": ""
             },
             "require": {
@@ -2278,9 +2278,9 @@
             "support": {
                 "forum": "http://forum.codeigniter.com/thread-61725.html",
                 "issues": "https://github.com/kenjis/ci-phpunit-test/issues",
-                "source": "https://github.com/kenjis/ci-phpunit-test/tree/v3.0.0"
+                "source": "https://github.com/kenjis/ci-phpunit-test/tree/v3.0.3"
             },
-            "time": "2021-03-03T05:44:41+00:00"
+            "time": "2022-03-17T02:49:23+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -2408,16 +2408,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.11.0",
+            "version": "v4.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "fe14cf3672a149364fb66dfe11bf6549af899f94"
+                "reference": "210577fe3cf7badcc5814d99455df46564f3c077"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/fe14cf3672a149364fb66dfe11bf6549af899f94",
-                "reference": "fe14cf3672a149364fb66dfe11bf6549af899f94",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/210577fe3cf7badcc5814d99455df46564f3c077",
+                "reference": "210577fe3cf7badcc5814d99455df46564f3c077",
                 "shasum": ""
             },
             "require": {
@@ -2458,9 +2458,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.11.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.2"
             },
-            "time": "2021-07-03T13:36:55+00:00"
+            "time": "2021-11-30T19:35:32+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -5407,5 +5407,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
