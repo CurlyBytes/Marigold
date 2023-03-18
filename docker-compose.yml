@@ -59,7 +59,7 @@ services:
         - vnet-backend-marigold
               
     phpmyadmin-gui:
-      image: phpmyadmin/phpmyadmin:5.0.1
+      image: phpmyadmin/phpmyadmin:5.2.1
       container_name: marigold-phpmyadmin-gui
       restart: always
       environment:
