@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "chriskacerguis/codeigniter-restserver",
-            "version": "3.1.1",
+            "version": "3.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskacerguis/codeigniter-restserver.git",
-                "reference": "6ced70d12c7e8d207eaded3f208a201330950b57"
+                "reference": "70bcd18e590df90b33949153455695ac8a6e2bd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskacerguis/codeigniter-restserver/zipball/6ced70d12c7e8d207eaded3f208a201330950b57",
-                "reference": "6ced70d12c7e8d207eaded3f208a201330950b57",
+                "url": "https://api.github.com/repos/chriskacerguis/codeigniter-restserver/zipball/70bcd18e590df90b33949153455695ac8a6e2bd7",
+                "reference": "70bcd18e590df90b33949153455695ac8a6e2bd7",
                 "shasum": ""
             },
             "type": "library",
@@ -39,9 +39,9 @@
             "description": "CI Rest Server",
             "support": {
                 "issues": "https://github.com/chriskacerguis/codeigniter-restserver/issues",
-                "source": "https://github.com/chriskacerguis/codeigniter-restserver/tree/master"
+                "source": "https://github.com/chriskacerguis/codeigniter-restserver/tree/3.1.7"
             },
-            "time": "2019-11-12T15:39:34+00:00"
+            "time": "2024-09-17T02:20:27+00:00"
         },
         {
             "name": "codeigniter/framework",
@@ -5407,5 +5407,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.6.0"
 }
