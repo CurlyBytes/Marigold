@@ -11,7 +11,7 @@ services:
         - vnet-backend-marigold
 
     memcached-server:
-      image: memcached:1.6.9-alpine
+      image: memcached:1.6.32-alpine
       container_name: marigold-memcached-server
       networks:
         - vnet-backend-marigold
